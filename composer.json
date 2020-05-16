@@ -39,9 +39,7 @@
     "config": {
         "sort-packages": true
     },
-    "scripts": {
-        "post-install-cmd": [
-            "rm -rf web/libraries/dropzone/test"
-        ]
+    "extra": {
+        "installer-name": "idea"
     }
 }
