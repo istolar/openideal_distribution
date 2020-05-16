@@ -1,0 +1,47 @@
+{
+    "name": "istolar/openideal_distribution",
+    "description": "The OpenideaL distribution profile",
+    "type": "drupal-profile",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "drupal/admin_toolbar": "^2.2",
+        "drupal/adminimal_admin_toolbar": "^1.10",
+        "drupal/adminimal_theme": "^1.5",
+        "drupal/allowed_formats": "^1.2",
+        "drupal/better_exposed_filters": "^3.0",
+        "drupal/bootstrap": "^3.21",
+        "drupal/config_pages": "^2.6",
+        "drupal/ctools": "^3.4",
+        "drupal/dropzonejs": "^2.1",
+        "drupal/entity_browser": "^2.5",
+        "drupal/flag": "^4.0",
+        "drupal/paragraphs": "^1.11",
+        "drupal/rabbit_hole": "^1.0",
+        "drupal/token": "^1.6",
+        "drupal/twig_field_value": "^1.2",
+        "drupal/twig_tweak": "^2.5",
+        "drupal/ultimate_cron": "^2.0@alpha",
+        "npm-asset/dropzone": "^5.7",
+        "oomphinc/composer-installers-extender": "^1.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -rf web/libraries/dropzone/test"
+        ]
+    }
+}
