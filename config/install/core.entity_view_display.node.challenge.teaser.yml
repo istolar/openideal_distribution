@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.challenge.body
+    - field.field.node.challenge.field_category
+    - field.field.node.challenge.field_close_on
+    - field.field.node.challenge.field_images
+    - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_main_image
+    - field.field.node.challenge.field_open_on
+    - field.field.node.challenge.field_supporting_data
+    - node.type.challenge
+  module:
+    - text
+    - user
+id: node.challenge.teaser
+targetEntityType: node
+bundle: challenge
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  flag_challenge_flag:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_category: true
+  field_close_on: true
+  field_images: true
+  field_is_open: true
+  field_main_image: true
+  field_open_on: true
+  field_supporting_data: true

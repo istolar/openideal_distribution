@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Idea Life Cycle Phases'
+vid: idea_lifecycle_phase
+description: 'The different phases in an idea life cycle'
+weight: 0

@@ -1,0 +1,77 @@
+name: OpenideaL
+type: profile
+description: 'Basic installation profile for OpenideaL sites.'
+core: 8.x
+
+# Required modules
+dependencies:
+  # Core and contrib modules.
+  - admin_toolbar
+  - admin_toolbar_search
+  - admin_toolbar_tools
+  - adminimal_admin_toolbar
+  - allowed_formats
+  - automated_cron
+  - better_exposed_filters
+  - big_pipe
+  - block
+  - block_content
+  - breakpoint
+  - ckeditor
+  - comment
+  - config
+  - config_pages
+  - contact
+  - contextual
+  - ctools
+  - datetime
+  - dblog
+  - dropzonejs
+  - dropzonejs_eb_widget
+  - dynamic_page_cache
+  - editor
+  - entity_browser
+  - entity_reference_revisions
+  - field
+  - field_ui
+  - file
+  - filter
+  - flag
+  - history
+  - image
+  - layout_builder
+  - layout_discovery
+  - link
+  - menu_ui
+  - node
+  - options
+  - page_cache
+  - path
+  - path_alias
+  - quickedit
+  - rabbit_hole
+  - rh_node
+  - rh_taxonomy
+  - shortcut
+  - system
+  - taxonomy
+  - text
+  - token
+  - toolbar
+  - tour
+  - twig_field_value
+  - twig_tweak
+  - ultimate_cron
+  - update
+  - user
+  - views_ui
+  - menu_link_content
+  - views
+  - paragraphs
+  # Custom modules
+  - openideal_challenge
+  - openideal_idea
+
+themes:
+  - adminimal_theme
+  - openideal_theme

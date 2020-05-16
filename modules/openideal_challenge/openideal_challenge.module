@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_challenge.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_cron().
+ */
+function openideal_challenge_cron() {
+  // Processing open/close scheduling challenge nodes via cron.
+  /** @var \Drupal\openideal_challenge\Service\OpenidealChallengeService $challenge_service */
+  $challenge_service = \Drupal::service('openideal_challenge.challenge_service');
+  $challenge_service->openChallenges();
+  $challenge_service->closeChallenges();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function openideal_challenge_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!in_array($form_id, ['node_challenge_edit_form', 'node_challenge_form'])) {
+    return;
+  }
+
+  // Added visibility states to open_on and close_on form elements.
+  $form['field_open_on']['#states'] = [
+    'visible' => [
+      ':input[name="field_is_open[value]"]' => ['checked' => FALSE],
+    ],
+  ];
+
+  $form['field_close_on']['#states'] = [
+    'visible' => [
+      ':input[name="field_is_open[value]"]' => ['checked' => TRUE],
+    ],
+  ];
+
+  // Move open_on/close_on form elements to the sidebar of the form.
+  $form['challenge_scheduling_options'] = [
+    '#type' => 'details',
+    '#title' => t('Challenge scheduling options'),
+    '#group' => 'advanced',
+  ];
+
+  $form['challenge_scheduling_options'][] = $form['field_open_on'];
+  $form['challenge_scheduling_options'][] = $form['field_close_on'];
+  unset($form['field_open_on']);
+  unset($form['field_close_on']);
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if ($view->id() === 'challenges' && $view->current_display === 'all_challenges_page' && $view->exposed_data['sort_by'] === 'field_close_on_value') {
+    $table = 'node__field_close_on';
+    $field = 'field_close_on_value';
+    $alias = implode('_', [$table, $field, 'is_null']);
+
+    // Add extra sort order to show challenges with empty "Closed On" field
+    // value at the end.
+    $query->addOrderBy(NULL, "ISNULL($table.$field)", 'ASC', $alias);
+    $new_order_index = count($query->orderby) - 1;
+    array_unshift($query->orderby, $query->orderby[$new_order_index]);
+    unset($query->orderby[$new_order_index]);
+  }
+}

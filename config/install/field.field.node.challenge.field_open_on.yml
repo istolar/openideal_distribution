@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_open_on
+    - node.type.challenge
+id: node.challenge.field_open_on
+field_name: field_open_on
+entity_type: node
+bundle: challenge
+label: 'Open on'
+description: 'Enter a date and time or leave it blank for no scheduled opening.'
+required: false
+translatable: false
+default_value:
+  -
+    value: null
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

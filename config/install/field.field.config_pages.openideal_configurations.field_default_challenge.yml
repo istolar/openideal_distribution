@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.openideal_configurations
+    - field.storage.config_pages.field_default_challenge
+id: config_pages.openideal_configurations.field_default_challenge
+field_name: field_default_challenge
+entity_type: config_pages
+bundle: openideal_configurations
+label: 'Default Challenge'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: list_of_challenges
+      display_name: challenges_entity_reference
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,5 @@
+name: 'OpenideaL Challenge'
+type: module
+description: 'Provides main features/functionality for OpenideaL Challenge.'
+core: 8.x
+package: 'OpenideaL'

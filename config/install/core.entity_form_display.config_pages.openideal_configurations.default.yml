@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.openideal_configurations
+    - field.field.config_pages.openideal_configurations.field_default_challenge
+id: config_pages.openideal_configurations.default
+targetEntityType: config_pages
+bundle: openideal_configurations
+mode: default
+content:
+  field_default_challenge:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  label: true

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.idea_lifecycle_phase
+id: taxonomy_vocabulary_idea_lifecycle_phase
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301

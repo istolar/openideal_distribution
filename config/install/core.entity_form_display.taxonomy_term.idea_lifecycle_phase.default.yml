@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.idea_lifecycle_phase
+id: taxonomy_term.idea_lifecycle_phase.default
+targetEntityType: taxonomy_term
+bundle: idea_lifecycle_phase
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 1
+    region: content
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

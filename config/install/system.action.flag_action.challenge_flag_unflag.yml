@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.challenge_flag
+  module:
+    - flag
+id: flag_action.challenge_flag_unflag
+label: 'Unflag this challenge'
+type: node
+plugin: 'flag_action:challenge_flag_unflag'
+configuration:
+  flag_id: challenge_flag
+  flag_action: unflag
