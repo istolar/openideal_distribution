@@ -1,0 +1,66 @@
+{
+    "_links": {
+        "self": {
+            "href": "\/admin\/config\/development\/openideal_configurations?config_pages=1&_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/config_pages\/openideal_configurations"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/config_pages\/openideal_configurations\/field_default_challenge": [
+            {
+                "href": "http:\/\/default\/node\/1?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 1
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a22429ec-5f73-473a-90e6-dd813e3bb5d1"
+        }
+    ],
+    "label": [
+        {
+            "value": "OpenideaL Configurations"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "openideal_configurations"
+        }
+    ],
+    "context": [
+        {
+            "value": "a:1:{i:0;a:1:{s:8:\"language\";s:2:\"en\";}}"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2020-05-14T11:51:41+00:00",
+            "lang": "und",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/config_pages\/openideal_configurations\/field_default_challenge": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/node\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/challenge"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "de8afb2b-b73c-4541-ba73-150f67fa92f9"
+                    }
+                ]
+            }
+        ]
+    }
+}

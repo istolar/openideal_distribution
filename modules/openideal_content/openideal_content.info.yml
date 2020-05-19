@@ -1,0 +1,8 @@
+name: 'OpenideaL Content'
+type: module
+description: 'Provides main features/functionality with content for OpenideaL project.'
+core: 8.x
+package: 'OpenideaL'
+
+dependencies:
+  - default_content
