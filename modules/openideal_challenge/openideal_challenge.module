@@ -44,12 +44,14 @@ function openideal_challenge_form_alter(&$form, FormStateInterface $form_state, 
   // Move open_on/close_on form elements to the sidebar of the form.
   $form['challenge_scheduling_options'] = [
     '#type' => 'details',
-    '#title' => t('Challenge scheduling options'),
+    '#title' => t('Challenge Status'),
     '#group' => 'advanced',
   ];
 
+  $form['challenge_scheduling_options'][] = $form['field_is_open'];
   $form['challenge_scheduling_options'][] = $form['field_open_on'];
   $form['challenge_scheduling_options'][] = $form['field_close_on'];
+  unset($form['field_is_open']);
   unset($form['field_open_on']);
   unset($form['field_close_on']);
 }

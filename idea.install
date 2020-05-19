@@ -20,44 +20,6 @@ function idea_install() {
   $user->roles[] = 'administrator';
   $user->save();
 
-  $entity_type_manager = \Drupal::entityTypeManager();
-  $taxonomy_term_storage = $entity_type_manager->getStorage('taxonomy_term');
-  $node_storage = $entity_type_manager->getStorage('node');
-  $config_pages_storage = $entity_type_manager->getStorage('config_pages');
-
-  // Create default life cycles taxonomy terms.
-  $default_life_cycles = [
-    'Ideation',
-    'Internal process',
-    'Accepted',
-    'Rejected',
-    'Merged',
-  ];
-
-  foreach ($default_life_cycles as $key => $term_name) {
-    $taxonomy_term_storage->create([
-      'name' => $term_name,
-      'vid' => 'idea_lifecycle_phase',
-      'weight' => $key
-    ])->save();
-  }
-
-  // Create default challenge item.
-  $node_storage->create([
-    'type' => 'challenge',
-    'title' => 'The ideas bucket',
-    'langcode' => 'en',
-    'uid' => '1',
-    'status' => 1,
-    'field_is_open' => TRUE,
-  ])->save();
-
-  // Set default challenge for openideal pages configuration.
-  $config_pages_storage->create([
-    'type' => 'openideal_configurations',
-    'context' => serialize([0 => ["language" => "en"]]),
-    'status' => 1,
-    'label' => 'OpenideaL Configurations',
-    'field_default_challenge' => 1,
-  ])->save();
+  // Install 'openideal_content' module.
+  \Drupal::service('module_installer')->install(['openideal_content']);
 }

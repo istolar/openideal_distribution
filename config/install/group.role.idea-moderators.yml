@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.idea
+id: idea-moderators
+label: Moderators
+weight: 3
+internal: false
+audience: member
+group_type: idea
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'administer members'
+  - 'create group_node:idea content'
+  - 'create group_node:idea entity'
+  - 'leave group'
+  - 'update any group_node:idea content'
+  - 'update any group_node:idea entity'
+  - 'update own group_membership content'
+  - 'update own group_node:idea content'
+  - 'update own group_node:idea entity'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:idea content'
+  - 'view group_node:idea entity'
+  - 'view unpublished group_node:idea entity'
