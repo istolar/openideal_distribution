@@ -1,2 +1,2 @@
 ## Quick installation
-Checkout this repository for a Composer template: [istolar/openideal_project](https://github.com/istolar/openideal_project).
+Installation instruction of the OpenideaL distribution can be found at the Composer template: [istolar/openideal_project](https://github.com/istolar/openideal_project).
