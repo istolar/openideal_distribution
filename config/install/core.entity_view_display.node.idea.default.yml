@@ -52,7 +52,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 1
+            weight: 2
           205c421a-4db4-4531-a7a1-bb3dd6981f08:
             uuid: 205c421a-4db4-4531-a7a1-bb3dd6981f08
             region: content
@@ -69,7 +69,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: image
             additional: {  }
-            weight: 2
+            weight: 3
           f467ff95-26bb-4900-8e6d-a34dd64e9875:
             uuid: f467ff95-26bb-4900-8e6d-a34dd64e9875
             region: content
@@ -85,7 +85,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: file_default
             additional: {  }
-            weight: 3
+            weight: 4
           76815c36-e680-40ea-a6d4-a671b3261573:
             uuid: 76815c36-e680-40ea-a6d4-a671b3261573
             region: content
@@ -150,6 +150,24 @@ third_party_settings:
                 type: entity_reference_label
             additional: {  }
             weight: 8
+          cac9f1dd-6bc2-4b2d-8bdc-8e74ac55210e:
+            uuid: cac9f1dd-6bc2-4b2d-8bdc-8e74ac55210e
+            region: content
+            configuration:
+              id: 'field_block:node:idea:field_duplicate_of'
+              label: 'Duplicate of'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: openideal_duplicate_of_idea
+                settings: {  }
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
