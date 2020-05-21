@@ -59,3 +59,66 @@ function openideal_idea_node_presave(EntityInterface $entity) {
     $entity->field_idea_phase->target_id = 5;
   }
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function openideal_idea_node_insert(EntityInterface $entity) {
+  if ($entity->bundle() == 'idea') {
+    try {
+      // Create the group for the node.
+      /** @var \Drupal\group\Entity\Group $group */
+      $group = \Drupal::entityTypeManager()->getStorage('group')
+        ->create([
+          'label' => $entity->label(),
+          'type' => 'idea',
+          'langcode' => 'en',
+        ]);
+      $group->save();
+      // Define the plugin id.
+      $plugin_id = 'group_node:' . $entity->bundle();
+      // Add the entity to the group.
+      $group->addContent($entity, $plugin_id);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('openideal_idea')->error($e->getMessage());
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete().
+ */
+function openideal_idea_node_predelete(EntityInterface $entity) {
+  if ($entity->bundle() == 'idea') {
+    // Delete the group that contains this node.
+    if ($group_id = _openideal_idea_get_group_id_by_entity($entity)) {
+      $group = \Drupal::entityTypeManager()->getStorage('group')
+        ->load($group_id);
+      $group->delete();
+    }
+  }
+}
+
+/**
+ * Get group id for specific entity.
+ *
+ * @param object $entity
+ *   Entity instance.
+ *
+ * @return string|null
+ *   Group id or NULL.
+ */
+function _openideal_idea_get_group_id_by_entity($entity) {
+  $group_ids = [];
+  // In our case we will have one node per group.
+  // We get all group ids but return just the first one.
+  $group_contents = \Drupal::entityTypeManager()
+    ->getStorage('group_content')
+    ->loadByEntity($entity);
+  foreach ($group_contents as $group_content) {
+    $group_ids[] = $group_content->getGroup()->id();
+  }
+
+  return !empty($group_ids) ? array_shift($group_ids) : NULL;
+}
