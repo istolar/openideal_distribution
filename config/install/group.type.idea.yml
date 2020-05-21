@@ -6,4 +6,5 @@ label: Idea
 description: 'It provides an idea group type.'
 creator_membership: true
 creator_wizard: true
-creator_roles: {  }
+creator_roles:
+  - idea-author
