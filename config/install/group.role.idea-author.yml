@@ -3,8 +3,8 @@ status: true
 dependencies:
   config:
     - group.type.idea
-id: idea-moderators
-label: Moderators
+id: idea-author
+label: Author
 weight: 3
 internal: false
 audience: member
@@ -13,17 +13,15 @@ permissions_ui: true
 permissions:
   - 'access content overview'
   - 'access group_node overview'
-  - 'administer members'
   - 'create group_node:idea content'
   - 'create group_node:idea entity'
-  - 'leave group'
+  - 'delete any group_node:idea entity'
+  - 'delete own group_node:idea entity'
   - 'update any group_node:idea content'
   - 'update any group_node:idea entity'
-  - 'update own group_membership content'
   - 'update own group_node:idea content'
   - 'update own group_node:idea entity'
   - 'view group'
-  - 'view group_membership content'
   - 'view group_node:idea content'
   - 'view group_node:idea entity'
   - 'view unpublished group_node:idea entity'
