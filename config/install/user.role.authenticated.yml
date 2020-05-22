@@ -10,6 +10,7 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'create idea content'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
