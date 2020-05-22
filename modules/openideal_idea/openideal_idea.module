@@ -26,6 +26,13 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
     }
   }
 
+  // Unset useless group roles for group idea membership add form.
+  if ($form_id == 'group_content_idea-group_membership_add_form') {
+    // @TODO: add condition by user role.
+    unset($form['group_roles']['widget']['#options']['idea-author']);
+    unset($form['group_roles']['widget']['#options']['idea-expert']);
+  }
+
   if (!in_array($form_id, ['node_idea_edit_form', 'node_idea_form'])) {
     return;
   }
