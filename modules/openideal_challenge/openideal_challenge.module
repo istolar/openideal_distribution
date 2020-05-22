@@ -77,20 +77,6 @@ function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPlugin
 }
 
 /**
- * Implements hook_token_info_alter().
- */
-function openideal_challenge_token_info_alter(&$data) {
-  if (isset($data['tokens']['node'])) {
-    $node = &$data['tokens']['node'];
-
-    $node['count-of-ideas'] = [
-      'name' => t('OpenideaL - count of ideas'),
-      'description' => t('Count of idea for specific challenge'),
-    ];
-  }
-}
-
-/**
  * Implements hook_token_info().
  */
 function openideal_challenge_token_info() {
