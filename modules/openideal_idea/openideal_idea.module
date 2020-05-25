@@ -5,8 +5,11 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_form_alter().
@@ -104,6 +107,29 @@ function openideal_idea_node_predelete(EntityInterface $entity) {
         ->load($group_id);
       $group->delete();
     }
+  }
+}
+
+/**
+ * Implements hook_entity_access().
+ */
+function openideal_idea_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity->getEntityTypeId() === 'comment') {
+    $commented_entity = $entity->getCommentedEntity();
+    if ($commented_entity->bundle() === 'idea' && $operation === 'update') {
+      return AccessResult::forbiddenIf(!$commented_entity->get('field_duplicate_of')->isEmpty());
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create_access().
+ */
+function openideal_idea_comment_create_access(AccountInterface $account, array $context, $entity_bundle) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface && $node->bundle() === 'idea') {
+    return AccessResult::forbiddenIf(!$node->get('field_duplicate_of')->isEmpty());
   }
 }
 
