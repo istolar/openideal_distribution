@@ -105,9 +105,7 @@ function openideal_idea_node_insert(EntityInterface $entity) {
 function openideal_idea_node_predelete(EntityInterface $entity) {
   if ($entity->bundle() == 'idea') {
     // Delete the group that contains this node.
-    if ($group_id = _openideal_idea_get_group_id_by_entity($entity)) {
-      $group = \Drupal::entityTypeManager()->getStorage('group')
-        ->load($group_id);
+    if ($group = _openideal_idea_get_group_by_entity($entity)) {
       $group->delete();
     }
   }
@@ -145,14 +143,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
   }
 
   $node = \Drupal::routeMatch()->getParameter('node');
-  $group_content = GroupContent::loadByEntity($node);
-  if (empty($group_content)) {
-    return;
-  }
-  $group = end($group_content)->getGroup();
-
-  if (!empty($group)) {
-    // Add a tab linking to node/add to all pages.
+  if ($node->bundle() === 'idea' && $group = _openideal_idea_get_group_by_entity($node)) {
     $data['tabs'][0]['group.members'] = [
       '#theme' => 'menu_local_task',
       '#link' => [
@@ -161,31 +152,30 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
       ],
       '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
     ];
-  }
 
-  // The tab we're adding is dependent on a user's access to add content.
-  $cacheability->addCacheContexts(['user.permissions']);
+    // The tab we're adding is dependent on a user's access to add content.
+    $cacheability->addCacheContexts(['user.group_permissions']);
+  }
 }
 
 /**
- * Get group id for specific entity.
+ * Get single group entity that represents a given entity.
  *
  * @param object $entity
  *   Entity instance.
  *
- * @return string|null
- *   Group id or NULL.
+ * @return \Drupal\group\Entity\GroupInterface|null
+ *   Group entity or NULL.
  */
-function _openideal_idea_get_group_id_by_entity($entity) {
-  $group_ids = [];
+function _openideal_idea_get_group_by_entity($entity) {
   // In our case we will have one node per group.
   // We get all group ids but return just the first one.
   $group_contents = \Drupal::entityTypeManager()
     ->getStorage('group_content')
     ->loadByEntity($entity);
   foreach ($group_contents as $group_content) {
-    $group_ids[] = $group_content->getGroup()->id();
+    $groups[] = $group_content->getGroup();
   }
 
-  return !empty($group_ids) ? array_shift($group_ids) : NULL;
+  return !empty($groups) ? array_shift($groups) : NULL;
 }
