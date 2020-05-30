@@ -6,9 +6,12 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupContent;
 use Drupal\node\NodeInterface;
 
 /**
@@ -131,6 +134,37 @@ function openideal_idea_comment_create_access(AccountInterface $account, array $
   if ($node instanceof NodeInterface && $node->bundle() === 'idea') {
     return AccessResult::forbiddenIf(!$node->get('field_duplicate_of')->isEmpty());
   }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  if ($route_name !== 'entity.node.canonical') {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $group_content = GroupContent::loadByEntity($node);
+  if (empty($group_content)) {
+    return;
+  }
+  $group = end($group_content)->getGroup();
+
+  if (!empty($group)) {
+    // Add a tab linking to node/add to all pages.
+    $data['tabs'][0]['group.members'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => t('Group Members'),
+        'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
+      ],
+      '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
+    ];
+  }
+
+  // The tab we're adding is dependent on a user's access to add content.
+  $cacheability->addCacheContexts(['user.permissions']);
 }
 
 /**
