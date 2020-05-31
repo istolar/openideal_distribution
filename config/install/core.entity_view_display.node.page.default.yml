@@ -2,24 +2,97 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.body
+    - field.field.node.page.field_body
+    - field.field.node.page.field_faq_items
     - node.type.page
   module:
-    - text
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
     - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          caad9e1f-7b8c-4754-9a79-df57693e6046:
+            uuid: caad9e1f-7b8c-4754-9a79-df57693e6046
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:page:links'
+            additional: {  }
+            weight: 0
+          5cea2f4e-3c48-4759-9fe4-1f21cf9510ab:
+            uuid: 5cea2f4e-3c48-4759-9fe4-1f21cf9510ab
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_faq_items'
+              label: 'FAQ Items'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          3499348b-28b8-49a8-8c47-a00caf94ac33:
+            uuid: 3499348b-28b8-49a8-8c47-a00caf94ac33
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:page:field_body'
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            additional: {  }
+            weight: 2
+        third_party_settings: {  }
 id: node.page.default
 targetEntityType: node
 bundle: page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 100
-    region: content
-    settings: {  }
+  field_body:
+    type: entity_reference_revisions_entity_view
+    weight: 103
+    label: above
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
+    region: content
+  field_faq_items:
+    type: entity_reference_revisions_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
   links:
     weight: 101
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
