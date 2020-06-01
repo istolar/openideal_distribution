@@ -9,7 +9,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
-use Drupal\Core\Render\BubbleableMetadata;
 
 /**
  * Implements hook_cron().
@@ -74,81 +73,4 @@ function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPlugin
     array_unshift($query->orderby, $query->orderby[$new_order_index]);
     unset($query->orderby[$new_order_index]);
   }
-}
-
-/**
- * Implements hook_token_info().
- */
-function openideal_challenge_token_info() {
-  $openideal = [
-    'name' => t('OpenideaL'),
-    'description' => t('OpenideaL token types.'),
-  ];
-
-  $count_of_ideas['count-of-ideas'] = [
-    'name' => t('OpenideaL - count of ideas'),
-    'description' => t('Count of idea for specific challenge'),
-    'type' => 'openideal',
-  ];
-
-  return [
-    'types' => [
-      'openideal' => $openideal,
-    ],
-    'tokens' => [
-      'openideal' => $count_of_ideas,
-    ],
-  ];
-}
-
-/**
- * Implements hook_tokens().
- */
-function openideal_challenge_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
-  $replacements = [];
-
-  if ($type == 'openideal' && !empty($data['challenge_id'])) {
-    $challenge_id = $data['challenge_id']->jsonSerialize();
-    $entity_type_manager = \Drupal::entityTypeManager()->getStorage('node');
-    /** @var \Drupal\node\Entity\Node $challenge */
-    $challenge = $entity_type_manager->load((int) $challenge_id);
-
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'count-of-ideas':
-          $count = _openideal_challenge_get_count_of_ideas($challenge->id());
-          $replacements[$original] = $count;
-          $bubbleable_metadata->addCacheableDependency($challenge);
-          break;
-      }
-    }
-  }
-
-  return $replacements;
-}
-
-/**
- * Get the number of ideas which belongs to specific challenge.
- *
- * @param string $challenge_id
- *   Challenge id.
- *
- * @return string
- *   THe count of ideas.
- *
- * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
- * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
- */
-function _openideal_challenge_get_count_of_ideas($challenge_id) {
-  $query = \Drupal::entityTypeManager()
-    ->getStorage('node')
-    ->getQuery();
-  $query->condition('type', 'idea');
-  $query->condition('status', NodeInterface::PUBLISHED);
-  $query->condition('field_challenge', $challenge_id);
-  $query->accessCheck(FALSE);
-  $query->count();
-  $result = $query->execute();
-
-  return !empty($result) ? $result : '0';
 }

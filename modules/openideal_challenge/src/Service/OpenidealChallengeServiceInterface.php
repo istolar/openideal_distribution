@@ -17,4 +17,15 @@ interface OpenidealChallengeServiceInterface {
    */
   public function closeChallenges();
 
+  /**
+   * Get the number of ideas which belongs to specific challenge.
+   *
+   * @param string $challenge_id
+   *   Challenge id.
+   *
+   * @return string
+   *   The count of ideas.
+   */
+  public function getCountOfIdeas($challenge_id);
+
 }
