@@ -38,7 +38,7 @@ class FAQViewFormatBehaviour extends ParagraphsBehaviorBase {
    * {@inheritDoc}
    */
   public static function isApplicable(ParagraphsType $paragraphs_type) {
-    return $paragraphs_type->id() == 'faq_items';
+    return $paragraphs_type->id() == 'faq';
   }
 
   /**
@@ -68,7 +68,7 @@ class FAQViewFormatBehaviour extends ParagraphsBehaviorBase {
     $form['view_format'] = [
       '#type' => 'select',
       '#options' => $this->configuration['formats'],
-      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'default_view', $this->configuration['default_view']),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'view_format', $this->configuration['default_view']),
       '#description' => $this->t('View format for FAQ.'),
     ];
     return $form;
@@ -80,8 +80,8 @@ class FAQViewFormatBehaviour extends ParagraphsBehaviorBase {
   public function view(array &$build, Paragraph $paragraphs_entity, EntityViewDisplayInterface $display, $view_mode) {
     // If FAQ formatter has been changed then apply new formatter to it.
     if (($default_view = $paragraphs_entity->getBehaviorSetting($this->getPluginId(), 'view_format', $this->configuration['default_view']))
-      && $default_view != $display->getComponent('field_faq_item')['type']) {
-      $display->setComponent('field_faq_item', ['type' => $default_view]);
+      && $default_view != $display->getComponent('field_faq_items')['type']) {
+      $display->setComponent('field_faq_items', ['type' => $default_view]);
       $display->save();
     }
   }
