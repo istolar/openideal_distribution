@@ -2,16 +2,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq_items.field_faq_item
-    - paragraphs.paragraphs_type.faq_items
+    - field.field.paragraph.faq.field_body
+    - field.field.paragraph.faq.field_faq_items
+    - paragraphs.paragraphs_type.faq
   module:
     - faqfield
-id: paragraph.faq_items.default
+    - text
+id: paragraph.faq.default
 targetEntityType: paragraph
-bundle: faq_items
+bundle: faq
 mode: default
 content:
-  field_faq_item:
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_faq_items:
     weight: 0
     settings:
       answer_widget: text_format

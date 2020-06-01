@@ -3,15 +3,15 @@ status: true
 dependencies:
   module:
     - openideal_faq
-id: faq_items
-label: 'FAQ Items'
+id: faq
+label: FAQ
 icon_uuid: null
 icon_default: null
 description: ''
 behavior_plugins:
   faq_view_behaviour:
     enabled: true
-    default_view: faqfield_accordion
+    default_view: faqfield_anchor_list
     formats:
       faqfield_accordion: Accordion
       faqfield_anchor_list: 'Anchor list'

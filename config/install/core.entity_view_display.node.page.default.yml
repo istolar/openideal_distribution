@@ -2,8 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_body
-    - field.field.node.page.field_faq_items
+    - field.field.node.page.field_paragraphs
     - node.type.page
   module:
     - entity_reference_revisions
@@ -30,33 +29,14 @@ third_party_settings:
               id: 'extra_field_block:node:page:links'
             additional: {  }
             weight: 0
-          5cea2f4e-3c48-4759-9fe4-1f21cf9510ab:
-            uuid: 5cea2f4e-3c48-4759-9fe4-1f21cf9510ab
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_faq_items'
-              label: 'FAQ Items'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
-          3499348b-28b8-49a8-8c47-a00caf94ac33:
-            uuid: 3499348b-28b8-49a8-8c47-a00caf94ac33
+          4c573703-410b-4bb6-9eb4-8a85cd6b0b08:
+            uuid: 4c573703-410b-4bb6-9eb4-8a85cd6b0b08
             region: content
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:page:field_body'
+              id: 'field_block:node:page:field_paragraphs'
               formatter:
                 type: entity_reference_revisions_entity_view
                 label: above
@@ -65,23 +45,14 @@ third_party_settings:
                   link: ''
                 third_party_settings: {  }
             additional: {  }
-            weight: 2
+            weight: 1
         third_party_settings: {  }
 id: node.page.default
 targetEntityType: node
 bundle: page
 mode: default
 content:
-  field_body:
-    type: entity_reference_revisions_entity_view
-    weight: 103
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  field_faq_items:
+  field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 102
     label: above

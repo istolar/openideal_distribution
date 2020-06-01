@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_faq_item
-    - paragraphs.paragraphs_type.faq_items
+    - field.storage.paragraph.field_faq_items
+    - paragraphs.paragraphs_type.faq
   module:
     - faqfield
-id: paragraph.faq_items.field_faq_item
-field_name: field_faq_item
+id: paragraph.faq.field_faq_items
+field_name: field_faq_items
 entity_type: paragraph
-bundle: faq_items
-label: 'FAQ Item'
+bundle: faq
+label: 'FAQ Items'
 description: ''
 required: false
 translatable: false

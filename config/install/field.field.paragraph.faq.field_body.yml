@@ -3,20 +3,20 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_body
-    - paragraphs.paragraphs_type.body
+    - paragraphs.paragraphs_type.faq
   module:
     - allowed_formats
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
+    basic_html: '0'
     restricted_html: '0'
     full_html: '0'
     plain_text: '0'
-id: paragraph.body.field_body
+id: paragraph.faq.field_body
 field_name: field_body
 entity_type: paragraph
-bundle: body
+bundle: faq
 label: Body
 description: ''
 required: false

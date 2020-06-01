@@ -3,8 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.page.field_body
-    - field.field.node.page.field_faq_items
+    - field.field.node.page.field_paragraphs
     - node.type.page
   module:
     - user
@@ -17,5 +16,4 @@ content:
     weight: 101
     region: content
 hidden:
-  field_body: true
-  field_faq_items: true
+  field_paragraphs: true

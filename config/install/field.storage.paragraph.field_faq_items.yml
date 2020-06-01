@@ -2,16 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - entity_reference_revisions
-    - node
+    - faqfield
     - paragraphs
-id: node.field_faq_items
+id: paragraph.field_faq_items
 field_name: field_faq_items
-entity_type: node
-type: entity_reference_revisions
-settings:
-  target_type: paragraph
-module: entity_reference_revisions
+entity_type: paragraph
+type: faqfield
+settings: {  }
+module: faqfield
 locked: false
 cardinality: -1
 translatable: true
