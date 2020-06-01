@@ -5,8 +5,14 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupContent;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_form_alter().
@@ -99,33 +105,77 @@ function openideal_idea_node_insert(EntityInterface $entity) {
 function openideal_idea_node_predelete(EntityInterface $entity) {
   if ($entity->bundle() == 'idea') {
     // Delete the group that contains this node.
-    if ($group_id = _openideal_idea_get_group_id_by_entity($entity)) {
-      $group = \Drupal::entityTypeManager()->getStorage('group')
-        ->load($group_id);
+    if ($group = _openideal_idea_get_group_by_entity($entity)) {
       $group->delete();
     }
   }
 }
 
 /**
- * Get group id for specific entity.
+ * Implements hook_entity_access().
+ */
+function openideal_idea_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity->getEntityTypeId() === 'comment') {
+    $commented_entity = $entity->getCommentedEntity();
+    if ($commented_entity->bundle() === 'idea' && $operation === 'update') {
+      return AccessResult::forbiddenIf(!$commented_entity->get('field_duplicate_of')->isEmpty());
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create_access().
+ */
+function openideal_idea_comment_create_access(AccountInterface $account, array $context, $entity_bundle) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface && $node->bundle() === 'idea') {
+    return AccessResult::forbiddenIf(!$node->get('field_duplicate_of')->isEmpty());
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  if ($route_name !== 'entity.node.canonical') {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node->bundle() === 'idea' && $group = _openideal_idea_get_group_by_entity($node)) {
+    $data['tabs'][0]['group.members'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => t('Group Members'),
+        'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
+      ],
+      '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
+    ];
+
+    // The tab we're adding is dependent on a user's access to add content.
+    $cacheability->addCacheContexts(['user.group_permissions']);
+  }
+}
+
+/**
+ * Get single group entity that represents a given entity.
  *
  * @param object $entity
  *   Entity instance.
  *
- * @return string|null
- *   Group id or NULL.
+ * @return \Drupal\group\Entity\GroupInterface|null
+ *   Group entity or NULL.
  */
-function _openideal_idea_get_group_id_by_entity($entity) {
-  $group_ids = [];
+function _openideal_idea_get_group_by_entity($entity) {
   // In our case we will have one node per group.
   // We get all group ids but return just the first one.
   $group_contents = \Drupal::entityTypeManager()
     ->getStorage('group_content')
     ->loadByEntity($entity);
   foreach ($group_contents as $group_content) {
-    $group_ids[] = $group_content->getGroup()->id();
+    $groups[] = $group_content->getGroup();
   }
 
-  return !empty($group_ids) ? array_shift($group_ids) : NULL;
+  return !empty($groups) ? array_shift($groups) : NULL;
 }
