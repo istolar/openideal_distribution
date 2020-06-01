@@ -28,7 +28,7 @@ widgets:
       resize_quality: !!float 1
       resize_method: contain
       thumbnail_method: contain
-      submit_text: 'Select entities'
+      submit_text: 'Select files'
       auto_select: false
     uuid: 07fd1311-3fa2-4498-98a4-51a8bf40e9f5
     weight: 1
