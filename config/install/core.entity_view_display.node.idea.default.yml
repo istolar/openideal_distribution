@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.idea.body
     - field.field.node.idea.field_attached_docs
     - field.field.node.idea.field_category
