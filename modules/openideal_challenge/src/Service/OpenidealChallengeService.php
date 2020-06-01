@@ -130,4 +130,21 @@ class OpenidealChallengeService implements OpenidealChallengeServiceInterface {
     $this->challengesOperation('close');
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getCountOfIdeas($challenge_id) {
+    $query = $this->entityTypeManager
+      ->getStorage('node')
+      ->getQuery();
+    $query->condition('type', 'idea');
+    $query->condition('status', NodeInterface::PUBLISHED);
+    $query->condition('field_challenge', $challenge_id);
+    $query->accessCheck(TRUE);
+    $query->count();
+    $result = $query->execute();
+
+    return !empty($result) ? $result : '0';
+  }
+
 }
