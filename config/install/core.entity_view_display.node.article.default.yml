@@ -2,18 +2,102 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
-    - field.field.node.article.comment
-    - field.field.node.article.field_image
+    - field.field.node.article.field_attached_docs
+    - field.field.node.article.field_images
     - field.field.node.article.field_tags
-    - image.style.large
     - node.type.article
   module:
-    - comment
+    - file
     - image
+    - layout_builder
     - text
     - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          3172c6cf-69e0-4afd-b8ea-87e4c780b918:
+            uuid: 3172c6cf-69e0-4afd-b8ea-87e4c780b918
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:body'
+              formatter:
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+                label: hidden
+            additional: {  }
+            weight: 0
+          feec0d89-411a-4810-bbd4-3504aa989365:
+            uuid: feec0d89-411a-4810-bbd4-3504aa989365
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_tags'
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            additional: {  }
+            weight: 1
+          ce2c8dcb-0448-44db-b048-2874494feeb8:
+            uuid: ce2c8dcb-0448-44db-b048-2874494feeb8
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:article:links'
+            additional: {  }
+            weight: 2
+          f27f8885-5f87-435a-b782-438f70fd1d94:
+            uuid: f27f8885-5f87-435a-b782-438f70fd1d94
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_images'
+              formatter:
+                label: above
+                settings:
+                  image_style: ''
+                  image_link: ''
+                third_party_settings: {  }
+                type: image
+            additional: {  }
+            weight: 3
+          fbb4bca3-ee6e-4e65-b198-5bbc671786ee:
+            uuid: fbb4bca3-ee6e-4e65-b198-5bbc671786ee
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_attached_docs'
+              formatter:
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+                type: file_default
+            additional: {  }
+            weight: 4
+        third_party_settings: {  }
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -26,24 +110,23 @@ content:
     settings: {  }
     third_party_settings: {  }
     label: hidden
-  comment:
-    type: comment_default
-    weight: 110
-    region: content
+  field_attached_docs:
+    weight: 102
     label: above
     settings:
-      view_mode: default
-      pager_id: 0
+      use_description_as_link_text: true
     third_party_settings: {  }
-  field_image:
-    type: image
-    weight: -1
+    type: file_default
     region: content
+  field_images:
+    weight: 101
+    label: above
     settings:
-      image_style: large
+      image_style: ''
       image_link: ''
     third_party_settings: {  }
-    label: hidden
+    type: image
+    region: content
   field_tags:
     type: entity_reference_label
     weight: 10
