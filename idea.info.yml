@@ -22,6 +22,7 @@ dependencies:
   - config
   - config_pages
   - contact
+  - content_moderation
   - contextual
   - ctools
   - datetime
@@ -70,6 +71,7 @@ dependencies:
   - update
   - user
   - views_ui
+  - workflows
   - menu_link_content
   - views
   - paragraphs
