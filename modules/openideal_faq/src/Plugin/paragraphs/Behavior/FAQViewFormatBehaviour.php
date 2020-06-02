@@ -83,6 +83,8 @@ class FAQViewFormatBehaviour extends ParagraphsBehaviorBase {
       && $default_view != $display->getComponent('field_faq_items')['type']) {
       $display->setComponent('field_faq_items', ['type' => $default_view]);
       $display->save();
+      // Replace old renderable array with new one.
+      $build = $display->build($paragraphs_entity);
     }
   }
 
