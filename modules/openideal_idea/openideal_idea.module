@@ -11,7 +11,6 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
-use Drupal\group\Entity\GroupContent;
 use Drupal\node\NodeInterface;
 
 /**
@@ -30,6 +29,11 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
         $form['field_challenge']['widget'][0]['target_id']['#default_value'] = $predefined_challenge;
       }
     }
+
+    // Hide content moderation form on the node idea create form.
+    $form['moderation_state']['#access'] = FALSE;
+    $form['actions']['submit']['#value'] = t('Save as Draft');
+    $form['#validate'][] = '_openideal_idea_node_form_validation';
   }
 
   // Unset useless group roles for group idea membership add form.
@@ -178,4 +182,18 @@ function _openideal_idea_get_group_by_entity($entity) {
   }
 
   return !empty($groups) ? array_shift($groups) : NULL;
+}
+
+
+/**
+ * Validation handler for the node idea form.
+ */
+function _openideal_idea_node_form_validation($form, FormStateInterface $form_state) {
+  // Make sure that the default moderation state of idea is draft.
+  if (
+    !empty($form_state->getValue('moderation_state')[0]['value'])
+    && $form_state->getValue('moderation_state')[0]['value'] !== 'draft'
+  ) {
+    $form_state->setError($form, t('Default moderation state of the idea node should be draft.'));
+  }
 }
