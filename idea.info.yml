@@ -33,6 +33,7 @@ dependencies:
   - editor
   - entity_browser
   - entity_reference_revisions
+  - faqfield
   - field
   - field_ui
   - file
@@ -47,6 +48,7 @@ dependencies:
   - layout_discovery
   - link
   - menu_ui
+  - multiple_fields_remove_button
   - node
   - options
   - page_cache
