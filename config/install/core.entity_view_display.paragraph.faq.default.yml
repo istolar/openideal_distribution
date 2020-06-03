@@ -2,36 +2,27 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq.field_body
     - field.field.paragraph.faq.field_faq_items
     - paragraphs.paragraphs_type.faq
   module:
     - faqfield
-    - text
 id: paragraph.faq.default
 targetEntityType: paragraph
 bundle: faq
 mode: default
 content:
-  field_body:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  field_faq_item:
-    type: faqfield_accordion
-    weight: 21
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_faq_items:
-    type: faqfield_anchor_list
-    weight: 33
+    weight: 0
     label: above
     settings:
-      anchor_list_type: ul
+      active: 0
+      heightStyle: auto
+      collapsible: false
+      event: click
+      animate:
+        easing: linear
+        duration: 200
     third_party_settings: {  }
+    type: faqfield_accordion
     region: content
 hidden: {  }
