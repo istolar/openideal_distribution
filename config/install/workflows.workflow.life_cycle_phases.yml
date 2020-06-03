@@ -1,0 +1,130 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.idea
+  module:
+    - content_moderation
+id: life_cycle_phases
+label: 'Life Cycle Phases'
+type: content_moderation
+type_settings:
+  states:
+    approved:
+      published: true
+      default_revision: true
+      label: Approved
+      weight: 5
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: 0
+    ex:
+      published: true
+      default_revision: true
+      label: 'Expert Review'
+      weight: 3
+    ideation:
+      published: true
+      default_revision: true
+      label: Ideation
+      weight: 2
+    launched:
+      published: true
+      default_revision: true
+      label: Launched
+      weight: 7
+    needs_work:
+      published: true
+      default_revision: true
+      label: 'Needs Work'
+      weight: 4
+    postponed:
+      published: true
+      default_revision: true
+      label: Postponed
+      weight: 6
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: 1
+    rejected:
+      published: true
+      default_revision: true
+      label: Rejected
+      weight: 8
+  transitions:
+    approved:
+      label: Approved
+      from:
+        - approved
+        - needs_work
+      to: approved
+      weight: 6
+    back_to_expert_review:
+      label: 'Back to Expert Review'
+      from:
+        - needs_work
+      to: ex
+      weight: 5
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: 0
+      from:
+        - draft
+        - published
+    draft_approval:
+      label: 'Draft Approval'
+      from:
+        - draft
+        - ideation
+      to: ideation
+      weight: 2
+    expert_review:
+      label: 'Expert Review'
+      from:
+        - ex
+        - ideation
+      to: ex
+      weight: 3
+    launched:
+      label: Launched
+      from:
+        - approved
+        - launched
+      to: launched
+      weight: 8
+    needs_work:
+      label: 'Needs Work'
+      from:
+        - ex
+        - needs_work
+      to: needs_work
+      weight: 4
+    postponed:
+      label: Postponed
+      from:
+        - approved
+        - postponed
+      to: postponed
+      weight: 7
+    publish:
+      label: Publish
+      to: published
+      weight: 1
+      from:
+        - draft
+        - published
+    rejected:
+      label: Rejected
+      from:
+        - ex
+      to: rejected
+      weight: 9
+  entity_types:
+    node:
+      - idea
+  default_moderation_state: draft
