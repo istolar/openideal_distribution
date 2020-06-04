@@ -1,0 +1,5 @@
+services:
+  openideal_user_registration.route_subscriber:
+    class: Drupal\openideal_user_registration\Routing\OpenIdealRouteSubscriber
+    tags:
+      - { name: event_subscriber }

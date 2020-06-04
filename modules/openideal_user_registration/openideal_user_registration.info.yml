@@ -1,0 +1,9 @@
+name: openideal_user_registration
+type: module
+description: The description.
+package: OpenideaL
+core: 8.x
+core_version_requirement: ^8 || ^9
+
+dependencies:
+  - user_registrationpassword:user_registrationpassword

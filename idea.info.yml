@@ -83,6 +83,7 @@ dependencies:
   - openideal_challenge
   - openideal_faq
   - openideal_idea
+  - openideal_user_registration
 
 themes:
   - adminimal_theme
