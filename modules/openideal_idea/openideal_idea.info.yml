@@ -2,4 +2,5 @@ name: 'OpenideaL Idea'
 type: module
 description: 'Provides main features/functionality for OpenideaL Idea content type.'
 core: 8.x
+core_version_requirement: ^8 || ^9
 package: 'OpenideaL'
