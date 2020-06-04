@@ -1,5 +1,5 @@
 services:
-  openideal_user_registration.route_subscriber:
-    class: Drupal\openideal_user_registration\Routing\OpenIdealRouteSubscriber
+  openideal_user_registration.social_auth.user_login:
+    class: Drupal\openideal_user_registration\EventSubscriber\OpenidealSocialAuthSubscriber
     tags:
       - { name: event_subscriber }

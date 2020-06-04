@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_idea.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\user\UserInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_user_registration_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['actions']['social_buttons'] = [
+    '#theme' => 'login_with',
+    '#social_networks' => \Drupal::config('social_auth.settings')->get('auth'),
+    '#weight' => '1',
+  ];
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function openideal_user_registration_faq_user_login(UserInterface $account) {
+  if (strpos(\Drupal::request()->getRequestUri(), 'user/registrationpassword')) {
+    $response = new RedirectResponse(URL::fromRoute('entity.user.edit_form', ['user' => $account->id()])->toString());
+    $response->send();
+
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_user_registration_preprocess_status_messages(&$variables) {
+  // Change status message provided by user_registrationpassword module.
+  if (isset($variables['message_list']['status'])) {
+    $status_messages = $variables['message_list']['status'];
+    foreach ($status_messages as $delta => $message) {
+      if (strpos((string) $message, 'You have just used your one-time login link. Your account is now active and you are authenticated.') !== FALSE) {
+        $variables['message_list']['status'][$delta] = t('Please fill your profile.');
+      }
+    }
+  }
+}
