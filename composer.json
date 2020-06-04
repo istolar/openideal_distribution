@@ -28,6 +28,7 @@
         "drupal/ctools": "^3.4",
         "drupal/default_content": "^1.0",
         "drupal/dropzonejs": "^2.1",
+        "drupal/email_registration": "^1.0",
         "drupal/entity_browser": "^2.5",
         "drupal/faqfield": "^1.1",
         "drupal/flag": "^4.0",
@@ -39,6 +40,7 @@
         "drupal/twig_field_value": "^1.2",
         "drupal/twig_tweak": "^2.5",
         "drupal/ultimate_cron": "^2.0@alpha",
+        "drupal/user_registrationpassword": "^1.0@alpha",
         "npm-asset/dropzone": "^5.7",
         "oomphinc/composer-installers-extender": "^1.1"
     },
