@@ -2,6 +2,7 @@ name: OpenideaL
 type: profile
 description: 'Basic installation profile for OpenideaL sites.'
 core: 8.x
+core_version_requirement: ^8 || ^9
 
 # Required modules
 dependencies:
