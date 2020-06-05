@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_idea.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatch;
+use Drupal\Core\Url;
+use Drupal\user\UserInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $configs = Drupal::config('social_auth.settings')->get('auth');
+  $result = [];
+  // Check if socials have credentials.
+  foreach ($configs as $config => $data) {
+    $social_config = Drupal::config($config . '.settings');
+    if ($config == 'social_auth_twitter' && $social_config->get('consumer_key') && $social_config->get('consumer_secret')) {
+      $result[$config] = $data;
+    }
+    elseif ($config == 'social_auth_facebook' && $social_config->get('app_id') && $social_config->get('app_secret')) {
+      $result[$config] = $data;
+    }
+    elseif ($social_config->get('client_id') && $social_config->get('client_secret')) {
+      $result[$config] = $data;
+    }
+  }
+  $form['actions']['social_buttons'] = [
+    '#theme' => 'login_with',
+    '#social_networks' => $result,
+    '#weight' => '1',
+  ];
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function openideal_user_user_login(UserInterface $account) {
+  if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
+    $response = new RedirectResponse(URL::fromRoute('entity.user.edit_form', ['user' => $account->id()])->toString());
+    $response->send();
+  }
+}

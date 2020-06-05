@@ -1,6 +1,6 @@
-name: openideal_user_registration
+name: 'OpenideaL User'
 type: module
-description: The description.
+description: 'Provides main features/functionality for OpenideaL User module.'
 package: OpenideaL
 core: 8.x
 core_version_requirement: ^8 || ^9
