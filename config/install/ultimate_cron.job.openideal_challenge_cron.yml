@@ -12,7 +12,7 @@ scheduler:
   id: simple
   configuration:
     rules:
-      - '*/5+@ * * * *'
+      - '* * * * *'
 launcher:
   id: serial
   configuration:
