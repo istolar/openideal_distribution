@@ -30,13 +30,13 @@ function openideal_challenge_form_alter(&$form, FormStateInterface $form_state, 
   }
 
   // Added visibility states to open_on and close_on form elements.
-  $form['field_open_on']['#states'] = [
+  $form['field_schedule_open']['#states'] = [
     'visible' => [
       ':input[name="field_is_open[value]"]' => ['checked' => FALSE],
     ],
   ];
 
-  $form['field_close_on']['#states'] = [
+  $form['field_schedule_close']['#states'] = [
     'visible' => [
       ':input[name="field_is_open[value]"]' => ['checked' => TRUE],
     ],
@@ -45,25 +45,26 @@ function openideal_challenge_form_alter(&$form, FormStateInterface $form_state, 
   // Move open_on/close_on form elements to the sidebar of the form.
   $form['challenge_scheduling_options'] = [
     '#type' => 'details',
+    '#description' => t('The schedule will be triggered by cron job and run every minute.'),
     '#title' => t('Challenge Status'),
     '#group' => 'advanced',
   ];
 
   $form['challenge_scheduling_options'][] = $form['field_is_open'];
-  $form['challenge_scheduling_options'][] = $form['field_open_on'];
-  $form['challenge_scheduling_options'][] = $form['field_close_on'];
+  $form['challenge_scheduling_options'][] = $form['field_schedule_open'];
+  $form['challenge_scheduling_options'][] = $form['field_schedule_close'];
   unset($form['field_is_open']);
-  unset($form['field_open_on']);
-  unset($form['field_close_on']);
+  unset($form['field_schedule_open']);
+  unset($form['field_schedule_close']);
 }
 
 /**
  * Implements hook_views_query_alter().
  */
 function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
-  if ($view->id() === 'challenges' && $view->current_display === 'all_challenges_page' && $view->exposed_data['sort_by'] === 'field_close_on_value') {
-    $table = 'node__field_close_on';
-    $field = 'field_close_on_value';
+  if ($view->id() === 'challenges' && $view->current_display === 'all_challenges_page' && $view->exposed_data['sort_by'] === 'field_schedule_close_value') {
+    $table = 'node__field_schedule_close';
+    $field = 'field_schedule_close_value';
     $alias = implode('_', [$table, $field, 'is_null']);
 
     // Add extra sort order to show challenges with empty "Closed On" field

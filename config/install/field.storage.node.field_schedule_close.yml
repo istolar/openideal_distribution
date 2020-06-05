@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_close_on
-field_name: field_close_on
+id: node.field_schedule_close
+field_name: field_schedule_close
 entity_type: node
 type: timestamp
 settings: {  }
