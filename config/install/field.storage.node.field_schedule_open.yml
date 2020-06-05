@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_open_on
-field_name: field_open_on
+id: node.field_schedule_open
+field_name: field_schedule_open
 entity_type: node
 type: timestamp
 settings: {  }
