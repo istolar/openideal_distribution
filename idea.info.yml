@@ -33,6 +33,7 @@ dependencies:
   - dropzonejs_eb_widget
   - dynamic_page_cache
   - editor
+  - email_registration
   - entity_browser
   - entity_reference_revisions
   - faqfield
@@ -62,6 +63,11 @@ dependencies:
   - rh_taxonomy
   - serialization
   - shortcut
+  - social_auth_facebook,
+  - social_auth_github,
+  - social_auth_google,
+  - social_auth_linkedin,
+  - social_auth_twitter,
   - system
   - taxonomy
   - text
@@ -73,6 +79,7 @@ dependencies:
   - ultimate_cron
   - update
   - user
+  - user_registrationpassword
   - views_ui
   - workflows
   - menu_link_content
@@ -82,6 +89,7 @@ dependencies:
   - openideal_challenge
   - openideal_faq
   - openideal_idea
+  - openideal_user
 
 themes:
   - adminimal_theme
