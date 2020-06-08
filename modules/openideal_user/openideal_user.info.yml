@@ -7,3 +7,9 @@ core_version_requirement: ^8 || ^9
 
 dependencies:
   - user_registrationpassword:user_registrationpassword
+  - social_auth:social_auth
+  - social_auth_facebook:social_auth_facebook
+  - social_auth_github:social_auth_github
+  - social_auth_google:social_auth_google
+  - social_auth_linkedin:social_auth_linkedin
+  - social_auth_twitter:social_auth_twitter
