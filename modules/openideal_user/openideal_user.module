@@ -15,24 +15,19 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * Implements hook_form_FORM_ID_alter().
  */
 function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $configs = Drupal::config('social_auth.settings')->get('auth');
-  $result = [];
-  // Check if socials have credentials.
-  foreach ($configs as $config => $data) {
-    $social_config = Drupal::config($config . '.settings');
-    if ($config == 'social_auth_twitter' && $social_config->get('consumer_key') && $social_config->get('consumer_secret')) {
-      $result[$config] = $data;
-    }
-    elseif ($config == 'social_auth_facebook' && $social_config->get('app_id') && $social_config->get('app_secret')) {
-      $result[$config] = $data;
-    }
-    elseif ($social_config->get('client_id') && $social_config->get('client_secret')) {
-      $result[$config] = $data;
+  /** @var \Drupal\social_api\Plugin\NetworkManager $network_manager */
+  $network_manager = \Drupal::service('plugin.network.manager');
+  $social_plugins = Drupal::config('social_auth.settings')->get('auth');
+
+  // Remove socials that aren't configured properly.
+  foreach ($social_plugins as $plugin_id => $data) {
+    if (!$network_manager->createInstance($plugin_id)->getSdk()) {
+      unset($social_plugins[$plugin_id]);
     }
   }
   $form['actions']['social_buttons'] = [
     '#theme' => 'login_with',
-    '#social_networks' => $result,
+    '#social_networks' => $social_plugins,
     '#weight' => '1',
   ];
 }
