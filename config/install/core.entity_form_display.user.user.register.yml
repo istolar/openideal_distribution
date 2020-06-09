@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.user.compact
+    - core.entity_form_mode.user.register
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -10,15 +10,22 @@ dependencies:
     - field.field.user.user.user_picture
   module:
     - user
-id: user.user.compact
+id: user.user.register
 targetEntityType: user
 bundle: user
-mode: compact
-content: {  }
+mode: register
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  contact: true
   field_age_group: true
   field_first_name: true
   field_gender: true
   field_last_name: true
-  member_for: true
+  language: true
+  timezone: true
   user_picture: true

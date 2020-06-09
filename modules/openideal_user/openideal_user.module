@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_idea.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatch;
+use Drupal\Core\Url;
+use Drupal\user\UserInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\social_api\Plugin\NetworkManager $network_manager */
+  $network_manager = \Drupal::service('plugin.network.manager');
+  $social_plugins = Drupal::config('social_auth.settings')->get('auth');
+
+  // Remove socials that aren't configured properly.
+  foreach ($social_plugins as $plugin_id => $data) {
+    if (!$network_manager->createInstance($plugin_id)->getSdk()) {
+      unset($social_plugins[$plugin_id]);
+    }
+  }
+  $form['actions']['social_buttons'] = [
+    '#theme' => 'login_with',
+    '#social_networks' => $social_plugins,
+    '#weight' => '1',
+  ];
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function openideal_user_user_login(UserInterface $account) {
+  if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
+    $response = new RedirectResponse(URL::fromRoute('entity.user.edit_form', ['user' => $account->id()])->toString());
+    $response->send();
+  }
+}

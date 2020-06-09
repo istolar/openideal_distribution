@@ -2,62 +2,54 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.user.edit
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
     - field.field.user.user.field_last_name
     - field.field.user.user.user_picture
   module:
-    - image
-    - options
     - user
-id: user.user.default
+id: user.user.edit
 targetEntityType: user
 bundle: user
-mode: default
+mode: edit
 content:
-  field_age_group:
-    weight: 5
-    label: above
+  account:
+    weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+  field_age_group:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_first_name:
-    weight: 1
-    label: above
+    weight: 0
     settings:
-      link_to_entity: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: string
+    type: string_textfield
     region: content
   field_gender:
-    weight: 4
-    label: above
+    weight: 2
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: options_select
     region: content
   field_last_name:
-    weight: 2
-    label: above
+    weight: 1
     settings:
-      link_to_entity: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: string
+    type: string_textfield
     region: content
-  member_for:
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  user_picture:
-    type: image
-    weight: 3
-    region: content
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  contact: true
+  language: true
+  timezone: true
+  user_picture: true

@@ -72,7 +72,7 @@ class OpenidealChallengeService implements OpenidealChallengeServiceInterface {
    */
   protected function challengesOperation($operation) {
     $result = FALSE;
-    $operation_field_name = $operation == 'open' ? 'field_open_on' : 'field_close_on';
+    $operation_field_name = $operation == 'open' ? 'field_schedule_open' : 'field_schedule_close';
     $event_name = $operation == 'open' ? OpenidealChallengeEvent::CHALLENGE_OPEN : OpenidealChallengeEvent::CHALLENGE_CLOSE;
 
     // Select all nodes of the challenge type that are enabled for scheduled

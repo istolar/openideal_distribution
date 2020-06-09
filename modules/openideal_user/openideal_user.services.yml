@@ -1,0 +1,9 @@
+services:
+  openideal_user.social_auth.user_login:
+    class: Drupal\openideal_user\EventSubscriber\OpenidealSocialAuthSubscriber
+    arguments:
+      - '@social_auth_google.manager'
+      - '@social_auth_linkedin.manager'
+      - '@social_auth_facebook.manager'
+    tags:
+      - { name: event_subscriber }
