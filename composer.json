@@ -57,9 +57,6 @@
         "patches": {
             "drupal/core": {
                 "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch"
-            },
-            "drupal/social_auth_twitter": {
-                "Twitter Auth plugin is missing config validation method": "https://www.drupal.org/files/issues/2020-06-08/3149887-2.patch"
             }
         }
     }
