@@ -51,6 +51,7 @@ dependencies:
   - drupal:layout_discovery
   - drupal:link
   - drupal:menu_ui
+  - metatag:metatag
   - multiple_fields_remove_button:multiple_fields_remove_button
   - drupal:node
   - drupal:options

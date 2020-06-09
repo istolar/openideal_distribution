@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
     - text
@@ -29,12 +30,18 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
     region: content
 hidden:
+  addtoany: true
   field_attached_docs: true
   field_category: true
   field_challenge: true
@@ -43,3 +50,4 @@ hidden:
   field_idea_phase: true
   field_idea_tags: true
   field_images: true
+  field_meta_tags: true
