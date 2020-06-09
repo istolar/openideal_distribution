@@ -92,5 +92,5 @@ dependencies:
   - openideal_user:openideal_user
 
 themes:
-  - adminimal_theme:adminimal_theme
-  - openideal_theme:openideal_theme
+  - adminimal_theme
+  - openideal_theme
