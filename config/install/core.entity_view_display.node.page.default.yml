@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_paragraphs
+    - field.field.node.page.field_body
     - node.type.page
   module:
-    - entity_reference_revisions
     - layout_builder
     - layout_discovery
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -29,23 +29,19 @@ third_party_settings:
               id: 'extra_field_block:node:page:links'
             additional: {  }
             weight: 0
-          4734e07e-19bb-4a0a-a4fd-4a4e259d2aa5:
-            uuid: 4734e07e-19bb-4a0a-a4fd-4a4e259d2aa5
+          f0c20d47-4171-4ce2-8bbc-34817fd33fc4:
+            uuid: f0c20d47-4171-4ce2-8bbc-34817fd33fc4
             region: content
             configuration:
-              id: 'field_block:node:page:field_paragraphs'
-              label: Paragraphs
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
-                view_mode: view_mode
+              id: 'field_block:node:page:field_body'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
             additional: {  }
             weight: 1
         third_party_settings: {  }
@@ -54,14 +50,12 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
-  field_paragraphs:
-    type: entity_reference_revisions_entity_view
+  field_body:
     weight: 102
     label: above
-    settings:
-      view_mode: default
-      link: ''
+    settings: {  }
     third_party_settings: {  }
+    type: text_default
     region: content
   links:
     weight: 101

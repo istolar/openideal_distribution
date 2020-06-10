@@ -12,7 +12,8 @@ bundle: faq
 mode: default
 content:
   field_faq_items:
-    weight: 0
+    type: faqfield_accordion
+    weight: 2
     label: hidden
     settings:
       active: 0
@@ -23,6 +24,5 @@ content:
         easing: linear
         duration: 200
     third_party_settings: {  }
-    type: faqfield_accordion
     region: content
 hidden: {  }

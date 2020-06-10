@@ -2,17 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_paragraphs
-    - node.type.page
-    - paragraphs.paragraphs_type.body
+    - field.storage.node.field_faq_items
+    - node.type.faq
     - paragraphs.paragraphs_type.faq
   module:
     - entity_reference_revisions
-id: node.page.field_paragraphs
-field_name: field_paragraphs
+id: node.faq.field_faq_items
+field_name: field_faq_items
 entity_type: node
-bundle: page
-label: Paragraphs
+bundle: faq
+label: 'FAQ Items'
 description: ''
 required: false
 translatable: false
@@ -24,12 +23,8 @@ settings:
     negate: 0
     target_bundles:
       faq: faq
-      body: body
     target_bundles_drag_drop:
-      body:
-        enabled: true
-        weight: -4
       faq:
         enabled: true
-        weight: -5
+        weight: 2
 field_type: entity_reference_revisions

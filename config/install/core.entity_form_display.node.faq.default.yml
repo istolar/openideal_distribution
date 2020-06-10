@@ -2,30 +2,41 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_body
-    - node.type.page
+    - field.field.node.faq.field_faq_items
+    - node.type.faq
   module:
     - content_moderation
+    - paragraphs
     - path
-    - text
-id: node.page.default
+id: node.faq.default
 targetEntityType: node
-bundle: page
+bundle: faq
 mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_body:
-    weight: 101
+  field_faq_items:
+    type: paragraphs
+    weight: 121
     settings:
-      rows: 5
-      placeholder: ''
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings: {  }
-    type: text_textarea
     region: content
   moderation_state:
     type: moderation_state_default
@@ -35,20 +46,34 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 30
     region: content
     settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -56,14 +81,12 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
-    region: content
+    weight: 5
     settings:
       match_operator: CONTAINS
-      match_limit: 10
       size: 60
       placeholder: ''
+      match_limit: 10
+    region: content
     third_party_settings: {  }
-hidden:
-  promote: true
-  sticky: true
+hidden: {  }
