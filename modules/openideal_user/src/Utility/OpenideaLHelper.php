@@ -15,7 +15,7 @@ class OpenideaLHelper {
    * @return bool
    *   TRUE if the Name is in a valid format, FALSE otherwise.
    */
-  public static function isValidateName($name) {
+  public static function isValidName($name) {
     return (bool) preg_match('#^[a-z ,.\'-]+$#i', $name);
   }
 

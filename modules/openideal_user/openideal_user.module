@@ -66,10 +66,10 @@ function openideal_user_form_user_register_form_alter(&$form, FormStateInterface
  */
 function _openideal_user_register_validate(array &$form, FormStateInterface $form_state) {
   $values = $form_state->getValues();
-  if (!OpenideaLHelper::isValidateName($values['first_name'])) {
+  if (!OpenideaLHelper::isValidName($values['first_name'])) {
     $form_state->setErrorByName('first_name', 'Please provide correct name');
   }
-  if (!OpenideaLHelper::isValidateName($values['last_name'])) {
+  if (!OpenideaLHelper::isValidName($values['last_name'])) {
     $form_state->setErrorByName('last_name', 'Please provide correct surname');
   }
 }
