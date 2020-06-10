@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
+    - node
     - text
-id: paragraph.field_body
+id: node.field_body
 field_name: field_body
-entity_type: paragraph
+entity_type: node
 type: text_long
 settings: {  }
 module: text

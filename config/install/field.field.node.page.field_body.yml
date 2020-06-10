@@ -2,8 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_body
-    - paragraphs.paragraphs_type.body
+    - field.storage.node.field_body
+    - node.type.page
   module:
     - allowed_formats
     - text
@@ -13,10 +13,10 @@ third_party_settings:
     basic_html: '0'
     restricted_html: '0'
     plain_text: '0'
-id: paragraph.body.field_body
+id: node.page.field_body
 field_name: field_body
-entity_type: paragraph
-bundle: body
+entity_type: node
+bundle: page
 label: Body
 description: ''
 required: false

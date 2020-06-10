@@ -3,17 +3,19 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.page.field_body
-    - node.type.page
+    - field.field.node.faq.field_faq_items
+    - node.type.faq
   module:
     - user
-id: node.page.teaser
+id: node.faq.teaser
 targetEntityType: node
-bundle: page
+bundle: faq
 mode: teaser
 content:
   links:
-    weight: 101
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
     region: content
 hidden:
-  field_body: true
+  field_faq_items: true

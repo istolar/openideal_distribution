@@ -5,8 +5,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_paragraphs
-field_name: field_paragraphs
+id: node.field_faq_items
+field_name: field_faq_items
 entity_type: node
 type: entity_reference_revisions
 settings:
