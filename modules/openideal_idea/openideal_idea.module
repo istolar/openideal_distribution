@@ -163,3 +163,38 @@ function _openideal_idea_get_group_by_entity($entity) {
 
   return !empty($groups) ? array_shift($groups) : NULL;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] != 'views-exposed-form-ideas-all-ideas-page') {
+    return;
+  }
+  // Get the list of published and opened challenges.
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $query = $node_storage->getQuery()
+    ->condition('type', 'challenge', '=')
+    ->condition('field_is_open', TRUE, '=')
+    ->condition('status', NodeInterface::PUBLISHED)
+    ->latestRevision()
+    ->sort('title');
+  $nids = $query->execute();
+
+  if (empty($nids)) {
+    return;
+  }
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $options = [];
+  foreach ($node_storage->loadMultiple($nids) as $node) {
+    $options[$node->id()] = $node->getTitle();
+  }
+  // Replace existing challenge form element with select.
+  $form['challenge'] = [
+    '#type' => 'select',
+    '#multiple' => FALSE,
+    '#empty_option' => t("Any"),
+    '#options' => $options,
+  ];
+}
