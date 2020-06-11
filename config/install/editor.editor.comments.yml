@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.comments
+  module:
+    - ckeditor
+format: comments
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+            - DrupalLink
+            - Blockquote
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: ''
+    mentions:
+      enable: 1
+      image: 0
+      charcount: '3'
+      timeout: '500'
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null
