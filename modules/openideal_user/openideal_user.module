@@ -8,7 +8,6 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
-use Drupal\openideal_user\Utility\OpenideaLHelper;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -31,65 +30,6 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
     '#social_networks' => $social_plugins,
     '#weight' => '1',
   ];
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * @see _openideal_user_register_submit()
- * @see _openideal_user_register_validate()
- */
-function openideal_user_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $form['first_name'] = [
-    '#type' => 'textfield',
-    '#title' => t('First name'),
-    '#required' => TRUE,
-  ];
-  $form['last_name'] = [
-    '#type' => 'textfield',
-    '#title' => t('Last name'),
-    '#required' => TRUE,
-  ];
-
-  $form['actions']['submit']['#submit'][] = '_openideal_user_register_submit';
-  $form['#validate'][] = '_openideal_user_register_validate';
-  Drupal::service('page_cache_kill_switch')->trigger();
-}
-
-/**
- * User registration form additional validation function.
- *
- * @param array $form
- *   The form array.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   Form state.
- */
-function _openideal_user_register_validate(array &$form, FormStateInterface $form_state) {
-  $values = $form_state->getValues();
-  if (!OpenideaLHelper::isValidName($values['first_name'])) {
-    $form_state->setErrorByName('first_name', 'Please provide correct name');
-  }
-  if (!OpenideaLHelper::isValidName($values['last_name'])) {
-    $form_state->setErrorByName('last_name', 'Please provide correct surname');
-  }
-}
-
-/**
- * Additional submit handler for user registration form.
- *
- * @param array $form
- *   The form array.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   Form state.
- */
-function _openideal_user_register_submit(array &$form, FormStateInterface $form_state) {
-  /** @var \Drupal\user\Entity\User $user */
-  $user = $form_state->getFormObject()->getEntity();
-
-  // Set first and last name to user.
-  $user->set('field_first_name', $form_state->getValue('first_name'));
-  $user->set('field_last_name', $form_state->getValue('last_name'));
-  $user->save();
 }
 
 /**
