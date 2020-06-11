@@ -10,10 +10,10 @@ bundles:
 entity_type: node
 global: false
 weight: 0
-flag_short: Join
+flag_short: 'Subscribe to challenge'
 flag_long: ''
 flag_message: ''
-unflag_short: 'Unflag this challenge'
+unflag_short: Unsubscribe
 unflag_long: ''
 unflag_message: ''
 unflag_denied_text: ''
