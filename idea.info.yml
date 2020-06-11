@@ -84,7 +84,7 @@ dependencies:
   - drupal:workflows
   - drupal:menu_link_content
   - votingapi:votingapi
-    votingapi_widgets:votingapi_widgets
+  - votingapi_widgets:votingapi_widgets
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules
