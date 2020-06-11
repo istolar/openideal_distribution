@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   /** @var \Drupal\social_api\Plugin\NetworkManager $network_manager */
-  $network_manager = \Drupal::service('plugin.network.manager');
+  $network_manager = Drupal::service('plugin.network.manager');
   $social_plugins = Drupal::config('social_auth.settings')->get('auth');
 
   // Remove socials that aren't configured properly.
