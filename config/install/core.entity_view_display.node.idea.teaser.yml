@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_voting
     - node.type.idea
   module:
     - text
@@ -29,6 +30,11 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 100
     settings: {  }
@@ -43,3 +49,4 @@ hidden:
   field_idea_phase: true
   field_idea_tags: true
   field_images: true
+  field_voting: true
