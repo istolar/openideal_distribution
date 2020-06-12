@@ -30,9 +30,10 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
       }
     }
 
-    // Hide content moderation form on the node idea create form.
-    $form['moderation_state']['#access'] = FALSE;
-    $form['actions']['submit']['#value'] = t('Save as Draft');
+    // Rename draft_approval state as Publish.
+    if (isset($form['moderation_state']['widget'][0]['state']['#options']['draft_approval'])) {
+      $form['moderation_state']['widget'][0]['state']['#options']['draft_approval'] = t('Publish');
+    }
   }
 
   // Unset useless group roles for group idea membership add form.
@@ -47,6 +48,18 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
  * Implements hook_ENTITY_TYPE_presave().
  */
 function openideal_idea_node_presave(EntityInterface $entity) {
+  // Add status message for idea with draft or draft_approval state.
+  if (
+    $entity->bundle() == 'idea' &&
+    in_array($entity->get('moderation_state')->value, ['draft', 'draft_approval'])
+  ) {
+    $openideal_config = config_pages_config('openideal_configurations');
+    $message = $openideal_config->field_idea_approval_message->view('default');
+    if (!empty($message)) {
+      \Drupal::messenger()->addMessage($message);
+    }
+  }
+
   // Check entity type and duplicate_of field of the entity.
   if (
     $entity->bundle() == 'idea' &&
