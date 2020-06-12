@@ -40,7 +40,6 @@
         "drupal/social_auth_github": "^2.0",
         "drupal/social_auth_google": "^2.0",
         "drupal/social_auth_linkedin": "^2.0",
-        "drupal/social_auth_twitter": "2.x-dev",
         "drupal/token": "^1.6",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^2.5",
