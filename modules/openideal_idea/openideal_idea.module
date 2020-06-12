@@ -182,6 +182,7 @@ function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface
   $nids = $query->execute();
 
   if (empty($nids)) {
+    unset($form['challenge']);
     return;
   }
 
