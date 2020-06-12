@@ -5,6 +5,7 @@
  * Contains openideal_flavour.module.
  */
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
@@ -44,3 +45,29 @@ function openideal_flavour_node_grants(AccountInterface $account, $op) {
 
   return $grants;
 }
+
+///**
+// * Implements hook_node_access().
+// */
+//function openideal_flavour_node_access(NodeInterface $node, $op, AccountInterface $account) {
+//  if ($node->bundle() == 'idea' && $op == 'view') {
+//    if ($account->hasPermission('view any idea')) {
+//      return AccessResult::allowed();
+//    }
+//
+//    return AccessResult::forbidden();
+//  }
+//
+//  return AccessResult::neutral();
+//}
+//
+///**
+// * Implements hook_module_implements_alter().
+// */
+//function openideal_flavour_module_implements_alter(&$implementations, $hook) {
+//  if ($hook == 'node_access' && isset($implementations['openideal_flavour'])) {
+//    $group = $implementations['openideal_flavour'];
+//    unset($implementations['openideal_flavour']);
+//    $implementations['openideal_flavour'] = $group;
+//  }
+//}
