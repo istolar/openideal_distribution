@@ -14,5 +14,7 @@ permissions:
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'use life_cycle_phases transition create_new_draft'
+  - 'use life_cycle_phases transition publish'
   - 'use text format basic_html'
   - 'use text format comments'
