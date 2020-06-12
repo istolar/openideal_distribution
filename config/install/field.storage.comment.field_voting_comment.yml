@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - votingapi_widgets
+id: comment.field_voting_comment
+field_name: field_voting_comment
+entity_type: comment
+type: voting_api_field
+settings:
+  vote_type: vote
+  vote_plugin: useful
+  status: ''
+module: votingapi_widgets
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_voting
     - node.type.idea
   module:
     - comment
@@ -21,6 +22,7 @@ dependencies:
     - layout_discovery
     - text
     - user
+    - votingapi_widgets
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -171,7 +173,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: comment_default
             additional: {  }
-            weight: 9
+            weight: 11
           cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
             uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
             region: content
@@ -180,6 +182,27 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
               id: 'extra_field_block:node:idea:content_moderation_control'
+            additional: {  }
+            weight: 12
+          ed7b737e-ebf4-4185-aa48-5efba7e14607:
+            uuid: ed7b737e-ebf4-4185-aa48-5efba7e14607
+            region: content
+            configuration:
+              id: 'field_block:node:idea:field_voting'
+              label: Voting
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: voting_api_formatter
+                settings:
+                  style: default
+                  readonly: 0
+                  show_results: 1
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 10
         third_party_settings: {  }
@@ -265,6 +288,17 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
+  field_voting:
+    weight: 110
+    label: above
+    settings:
+      readonly: false
+      style: default
+      show_results: false
+      values: {  }
+    third_party_settings: {  }
+    type: voting_api_formatter
     region: content
   links:
     weight: 100

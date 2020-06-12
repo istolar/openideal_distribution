@@ -47,7 +47,9 @@
         "drupal/twig_tweak": "^2.5",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/user_registrationpassword": "1.x-dev",
+        "drupal/votingapi_widgets": "^1.0",
         "npm-asset/dropzone": "^5.7",
+        "npm-asset/jquery-bar-rating": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1"
     },
     "config": {
@@ -58,6 +60,9 @@
         "patches": {
             "drupal/core": {
                 "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch"
+            },
+            "drupal/votingapi_widgets": {
+                "Previewing a Voting API formatter causes the fatals": "https://www.drupal.org/files/issues/2019-01-09/3024465-votingwidgets-4.patch"
             }
         }
     }

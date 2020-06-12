@@ -4,3 +4,6 @@ description: 'Provides main features/functionality for OpenideaL Idea content ty
 core: 8.x
 core_version_requirement: ^8 || ^9
 package: 'OpenideaL'
+
+dependencies:
+  - votingapi_widgets:votingapi_widgets
