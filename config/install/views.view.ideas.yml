@@ -13,6 +13,7 @@ dependencies:
     - taxonomy.vocabulary.idea_lifecycle_phase
   module:
     - better_exposed_filters
+    - content_moderation
     - image
     - node
     - taxonomy
@@ -782,23 +783,24 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
-        field_idea_phase_target_id:
-          id: field_idea_phase_target_id
-          table: node__field_idea_phase
-          field: field_idea_phase_target_id
+          group: 1
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_idea_phase_target_id_op
+            operator_id: moderation_state_op
             label: Phase
             description: ''
             use_operator: false
-            operator: field_idea_phase_target_id_op
+            operator: moderation_state_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: phase
@@ -822,13 +824,8 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: idea_lifecycle_phase
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
+          entity_type: node
+          plugin_id: moderation_state_filter
         uid:
           id: uid
           table: node_field_data
@@ -1563,7 +1560,6 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1572,3 +1568,4 @@ display:
         - 'config:field.storage.node.field_idea_phase'
         - 'config:field.storage.node.field_idea_tags'
         - 'config:field.storage.user.user_picture'
+        - 'config:workflow_list'

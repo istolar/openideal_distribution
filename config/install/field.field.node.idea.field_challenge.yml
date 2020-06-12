@@ -10,7 +10,7 @@ entity_type: node
 bundle: idea
 label: Challenge
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
