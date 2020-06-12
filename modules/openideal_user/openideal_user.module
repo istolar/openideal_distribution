@@ -5,9 +5,12 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
+use Drupal\openideal_user\Event\OpenidealUserEvents;
+use Drupal\openideal_user\Event\OpenidealUserMentionEvent;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -39,5 +42,22 @@ function openideal_user_user_login(UserInterface $account) {
   if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
     $response = new RedirectResponse(URL::fromRoute('entity.user.edit_form', ['user' => $account->id()])->toString());
     $response->send();
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function openideal_user_comment_insert(EntityInterface $entity) {
+  // Search in comment's body for mentioned users,
+  // if they were here dispatch OPENIDEAL_USER_MENTION event.
+  /** @var \Drupal\text\Plugin\Field\FieldType\TextLongItem $body */
+  $body = $entity->get('comment_body')->first();
+  $markup = $body->getString();
+  if (preg_match_all('#data-mention="(?<ids>[1-9]+)"#', $markup, $matches)) {
+    foreach ($matches['ids'] as $user_id) {
+      $event = new OpenidealUserMentionEvent($user_id);
+      Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEAL_USER_MENTION, $event);
+    }
   }
 }

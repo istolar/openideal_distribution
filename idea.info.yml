@@ -19,6 +19,7 @@ dependencies:
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - ckeditor_mentions:ckeditor_mentions
   - drupal:comment
   - drupal:config
   - config_pages:config_pages
