@@ -68,7 +68,6 @@ dependencies:
   - social_auth_github:social_auth_github
   - social_auth_google:social_auth_google
   - social_auth_linkedin:social_auth_linkedin
-  - social_auth_twitter:social_auth_twitter
   - drupal:system
   - drupal:taxonomy
   - drupal:text
