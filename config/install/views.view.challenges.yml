@@ -5,7 +5,7 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_is_open
     - field.storage.user.user_picture
-    - flag.flag.challenge_flag
+    - flag.flag.follow
     - image.style.thumbnail
     - node.type.challenge
     - system.menu.main
@@ -1070,7 +1070,7 @@ display:
           group_type: group
           admin_label: Flags
           required: false
-          flag: challenge_flag
+          flag: follow
           user_scope: current
           entity_type: node
           plugin_id: flag_relationship
