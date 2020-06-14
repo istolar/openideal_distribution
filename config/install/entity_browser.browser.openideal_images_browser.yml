@@ -3,34 +3,34 @@ status: true
 dependencies:
   module:
     - dropzonejs_eb_widget
-name: openideal_image_browser
-label: 'Openideal Image Browser'
+name: openideal_images_browser
+label: 'Openideal Images Browser'
 display: modal
 display_configuration:
   width: '650'
   height: '500'
-  link_text: 'Select image'
+  link_text: 'Select images'
   auto_open: false
 selection_display: no_display
 selection_display_configuration: {  }
-widget_selector: single
+widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:
-  16dd5543-5e5a-470c-a72d-64b3764b73f5:
+  f8e78972-f432-4330-b55b-88699bf8c50a:
     settings:
       upload_location: 'public://[date:custom:Y]-[date:custom:m]'
-      dropzone_description: 'Drop image here to upload it'
+      dropzone_description: 'Drop images here to upload them'
       max_filesize: 32M
-      extensions: 'jpg jpeg gif png '
+      extensions: 'jpg jpeg gif png'
       clientside_resize: false
       resize_width: null
       resize_height: null
       resize_quality: !!float 1
       resize_method: contain
       thumbnail_method: contain
-      submit_text: 'Select image'
+      submit_text: 'Select images'
       auto_select: false
-    uuid: 16dd5543-5e5a-470c-a72d-64b3764b73f5
+    uuid: f8e78972-f432-4330-b55b-88699bf8c50a
     weight: 1
     label: Browse
     id: dropzonejs
