@@ -40,7 +40,7 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
  */
 function openideal_user_user_login(UserInterface $account) {
   if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
-    $response = new RedirectResponse(URL::fromRoute('entity.user.edit_form', ['user' => $account->id()])->toString());
+    $response = new RedirectResponse(URL::fromRoute('openideal_user.register.user.more_about_you'));
     $response->send();
   }
 }
@@ -60,4 +60,12 @@ function openideal_user_comment_insert(EntityInterface $entity) {
       Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEAL_USER_MENTION, $event);
     }
   }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function openideal_user_entity_type_alter(array &$entity_types) {
+  $entity_types['user']
+    ->setFormClass('additional_details', 'Drupal\openideal_user\Form\OpenidealSecondStepRegistration');
 }
