@@ -1,0 +1,254 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - core.entity_view_mode.node.full
+    - field.field.node.challenge.body
+    - field.field.node.challenge.field_category
+    - field.field.node.challenge.field_comments
+    - field.field.node.challenge.field_images
+    - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_main_image
+    - field.field.node.challenge.field_schedule_close
+    - field.field.node.challenge.field_schedule_open
+    - field.field.node.challenge.field_supporting_data
+    - node.type.challenge
+  module:
+    - comment
+    - file
+    - image
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          d16c62d0-e07f-4374-93eb-33c385c2f579:
+            uuid: d16c62d0-e07f-4374-93eb-33c385c2f579
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:challenge:links'
+            additional: {  }
+            weight: 1
+          6b249eef-e595-4d37-9dce-0be099f30919:
+            uuid: 6b249eef-e595-4d37-9dce-0be099f30919
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:body'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 3
+          78347955-c175-4200-82ba-e808a8ddc8a0:
+            uuid: 78347955-c175-4200-82ba-e808a8ddc8a0
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_main_image'
+              formatter:
+                label: above
+                settings:
+                  image_style: ''
+                  image_link: ''
+                third_party_settings: {  }
+                type: image
+            additional: {  }
+            weight: 5
+          2ee0362a-ebb6-4608-a024-1bf64db42f6d:
+            uuid: 2ee0362a-ebb6-4608-a024-1bf64db42f6d
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_images'
+              formatter:
+                label: above
+                settings:
+                  image_style: ''
+                  image_link: ''
+                third_party_settings: {  }
+                type: image
+            additional: {  }
+            weight: 7
+          c3b18a15-64cb-4c28-ba55-b4ef3f78b828:
+            uuid: c3b18a15-64cb-4c28-ba55-b4ef3f78b828
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_supporting_data'
+              formatter:
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+                type: file_default
+            additional: {  }
+            weight: 9
+          426a6ad9-8ce3-4b17-a90b-0f91c758d869:
+            uuid: 426a6ad9-8ce3-4b17-a90b-0f91c758d869
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_category'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 10
+          bf84f63b-0afa-40a5-a1a1-68c552f53b3c:
+            uuid: bf84f63b-0afa-40a5-a1a1-68c552f53b3c
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_comments'
+              formatter:
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+                type: comment_default
+            additional: {  }
+            weight: 12
+          f9f3e732-c213-4a8c-aaf4-39959ac162ec:
+            uuid: f9f3e732-c213-4a8c-aaf4-39959ac162ec
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:challenge:flag_follow'
+            additional: {  }
+            weight: 11
+        third_party_settings: {  }
+id: node.challenge.full
+targetEntityType: node
+bundle: challenge
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_category:
+    weight: 108
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_comments:
+    weight: 109
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_images:
+    weight: 103
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_is_open:
+    weight: 105
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_main_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_schedule_close:
+    weight: 111
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_schedule_open:
+    weight: 110
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_supporting_data:
+    weight: 104
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
+    region: content
+  flag_challenge_flag:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  flag_follow:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
