@@ -15,7 +15,7 @@ class OpenidealSecondStepRegistrationForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'user-additional-details';
+    return 'user_additional_details';
   }
 
   /**
@@ -27,19 +27,18 @@ class OpenidealSecondStepRegistrationForm extends ContentEntityForm {
 
     /* @var $entity \Drupal\user\Entity\User */
     $form = parent::buildForm($form, $form_state);
-
-    $last_name = $user->get('field_last_name')->getString();
-    $first_name = $user->get('field_first_name')->getString();
-    if (!empty($first_name)) {
-      $form['field_last_name']['widget']['0']['value']['#required'] = FALSE;
-      $form['field_last_name']['#type'] = 'hidden';
-    }
-    if (!empty($last_name)) {
+    $first_name = $user->get('field_first_name');
+    $last_name = $user->get('field_last_name');
+    if (!$first_name->isEmpty()) {
       $form['field_first_name']['widget']['0']['value']['#required'] = FALSE;
-      $form['field_first_name']['#type'] = 'hidden';
+      $form['field_first_name']['#access'] = FALSE;
+    }
+    if (!$last_name->isEmpty()) {
+      $form['field_last_name']['widget']['0']['value']['#required'] = FALSE;
+      $form['field_last_name']['#access'] = FALSE;
     }
 
-    if (!empty($first_name) && !empty($last_name)) {
+    if (!$first_name->isEmpty() && !$last_name->isEmpty()) {
       $form['actions']['skip'] = [
         '#type' => 'link',
         '#title' => $this->t('Skip'),

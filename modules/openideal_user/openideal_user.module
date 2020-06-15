@@ -11,6 +11,7 @@ use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
 use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserMentionEvent;
+use Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -40,7 +41,7 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
  */
 function openideal_user_user_login(UserInterface $account) {
   if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
-    $response = new RedirectResponse(URL::fromRoute('openideal_user.register.user.more_about_you'));
+    $response = new RedirectResponse(URL::fromRoute('openideal_user.register.user.more_about_you')->toString());
     $response->send();
   }
 }
@@ -67,5 +68,5 @@ function openideal_user_comment_insert(EntityInterface $entity) {
  */
 function openideal_user_entity_type_alter(array &$entity_types) {
   $entity_types['user']
-    ->setFormClass('additional_details', 'Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm');
+    ->setFormClass('additional_details', OpenidealSecondStepRegistrationForm::class);
 }
