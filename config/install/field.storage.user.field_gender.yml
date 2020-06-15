@@ -16,6 +16,9 @@ settings:
     -
       value: female
       label: Female
+    -
+      value: other
+      label: 'Other / Prefer not to say'
   allowed_values_function: ''
 module: options
 locked: false

@@ -2,13 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.openideal_image_browser
+    - entity_browser.browser.openideal_images_browser
     - field.field.node.article.body
     - field.field.node.article.field_attached_docs
     - field.field.node.article.field_images
     - field.field.node.article.field_tags
     - node.type.article
   module:
+    - content_moderation
     - entity_browser
     - path
     - text
@@ -50,7 +51,7 @@ content:
   field_images:
     weight: 6
     settings:
-      entity_browser: openideal_image_browser
+      entity_browser: openideal_images_browser
       field_widget_remove: true
       field_widget_replace: true
       selection_mode: selection_append
@@ -70,6 +71,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
     third_party_settings: {  }
   path:
     type: path

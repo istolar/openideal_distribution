@@ -1,0 +1,7 @@
+openideal_user.register.user.more_about_you:
+  path: '/user/register/step-2'
+  defaults:
+    _entity_form: 'user.additional_details'
+    _title: 'Let us know more about you'
+  requirements:
+    _user_is_logged_in: 'TRUE'

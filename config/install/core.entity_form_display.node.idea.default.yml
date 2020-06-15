@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.openideal_image_browser
+    - entity_browser.browser.openideal_images_browser
     - field.field.node.idea.body
     - field.field.node.idea.field_attached_docs
     - field.field.node.idea.field_category
@@ -102,7 +102,7 @@ content:
   field_images:
     weight: 6
     settings:
-      entity_browser: openideal_image_browser
+      entity_browser: openideal_images_browser
       field_widget_remove: true
       field_widget_replace: true
       selection_mode: selection_append
