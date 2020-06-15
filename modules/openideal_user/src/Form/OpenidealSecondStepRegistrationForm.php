@@ -38,6 +38,12 @@ class OpenidealSecondStepRegistrationForm extends ContentEntityForm {
       $form['field_last_name']['#access'] = FALSE;
     }
 
+    // User registration module set the name ['account']['name']
+    // as 'value' type, without specifying #value, that causes that user's
+    // name is saved as '' and throw error.
+    // @see email_registration_form_user_form_alter
+    $form['account']['name']['#value'] = $user->get('name')->value;
+
     if (!$first_name->isEmpty() && !$last_name->isEmpty()) {
       $form['actions']['skip'] = [
         '#type' => 'link',
