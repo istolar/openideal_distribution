@@ -171,6 +171,14 @@ function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface
   if ($form['#id'] != 'views-exposed-form-ideas-all-ideas-page') {
     return;
   }
+  // Remove workflow title form the views exposed filter.
+  // @see https://www.drupal.org/project/drupal/issues/3091182
+  if (isset($form['phase']['#options']['Life Cycle Phases'])) {
+    foreach ($form['phase']['#options']['Life Cycle Phases'] as $key => $phase_option) {
+      $form['phase']['#options'][$key] = $phase_option;
+    }
+    unset($form['phase']['#options']['Life Cycle Phases']);
+  }
   // Get the list of published and opened challenges.
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
   $query = $node_storage->getQuery()
@@ -182,7 +190,7 @@ function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface
   $nids = $query->execute();
 
   if (empty($nids)) {
-    unset($form['challenge']);
+    $form['challenge']['#access'] = FALSE;
     return;
   }
 
