@@ -30,11 +30,9 @@ class OpenidealSecondStepRegistrationForm extends ContentEntityForm {
     $first_name = $user->get('field_first_name');
     $last_name = $user->get('field_last_name');
     if (!$first_name->isEmpty()) {
-      $form['field_first_name']['widget']['0']['value']['#required'] = FALSE;
       $form['field_first_name']['#access'] = FALSE;
     }
     if (!$last_name->isEmpty()) {
-      $form['field_last_name']['widget']['0']['value']['#required'] = FALSE;
       $form['field_last_name']['#access'] = FALSE;
     }
 
