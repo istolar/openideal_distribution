@@ -67,5 +67,5 @@ function openideal_user_comment_insert(EntityInterface $entity) {
  */
 function openideal_user_entity_type_alter(array &$entity_types) {
   $entity_types['user']
-    ->setFormClass('additional_details', 'Drupal\openideal_user\Form\OpenidealSecondStepRegistration');
+    ->setFormClass('additional_details', 'Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm');
 }

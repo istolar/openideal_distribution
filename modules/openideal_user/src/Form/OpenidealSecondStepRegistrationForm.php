@@ -9,7 +9,7 @@ use Drupal\Core\Url;
 /**
  * OpenidealSecondStepRegistration object.
  */
-class OpenidealSecondStepRegistration extends ContentEntityForm {
+class OpenidealSecondStepRegistrationForm extends ContentEntityForm {
 
   /**
    * {@inheritdoc}
