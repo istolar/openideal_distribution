@@ -19,9 +19,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_age_group:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   contact: true
-  field_age_group: true
   field_first_name: true
   field_gender: true
   field_last_name: true

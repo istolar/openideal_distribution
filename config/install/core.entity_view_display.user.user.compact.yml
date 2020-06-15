@@ -21,4 +21,5 @@ hidden:
   field_gender: true
   field_last_name: true
   member_for: true
+  realname: true
   user_picture: true

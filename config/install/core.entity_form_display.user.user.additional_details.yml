@@ -19,7 +19,7 @@ mode: additional_details
 content:
   field_age_group:
     type: options_select
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -33,7 +33,7 @@ content:
     third_party_settings: {  }
   field_gender:
     type: options_select
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
