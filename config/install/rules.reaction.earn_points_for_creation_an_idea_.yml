@@ -66,7 +66,7 @@ expression:
         uuid: feef2e8d-166c-430c-a621-f7b8ea677ca4
         weight: 0
         context_values:
-          immediate: ''
+          immediate: 'true'
         context_mapping:
           transaction: transaction
         context_processors:
