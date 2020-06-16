@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies: {  }
+id: earn_points_for_creation_an_idea_
+label: 'Earn points for creation an idea '
+events:
+  -
+    event_name: 'rules_entity_insert:node--idea'
+description: ''
+tags: {  }
+config_version: '3'
+expression:
+  id: rules_rule
+  uuid: b5b9b830-76dc-475d-b1d4-265d9644e6de
+  weight: 0
+  conditions:
+    id: rules_and
+    uuid: 96a7c334-ac85-439a-b02c-42d570c42979
+    weight: 0
+    conditions: {  }
+  actions:
+    id: rules_action_set
+    uuid: 62b355f8-fd4a-4715-97d2-a2e949ea9168
+    weight: 0
+    actions:
+      -
+        id: rules_action
+        uuid: 37b1725e-e940-49ac-956b-c370aeabde12
+        weight: 0
+        context_values:
+          type: user
+        context_mapping:
+          entity_id: node.uid.target_id
+        context_processors:
+          type:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: rules_entity_fetch_by_id
+      -
+        id: rules_action
+        uuid: 629f3c50-4bc5-42f1-82d1-78cf80feb8a4
+        weight: 0
+        context_values:
+          transaction_type_id: user_points
+          operation_id: earn_points_on_idea_create
+          transaction_field_amount: '10'
+          transaction_field_balance: '0'
+          transaction_field_log_message: ''
+        context_mapping:
+          target_entity: entity_fetched
+        context_processors:
+          transaction_type_id:
+            rules_tokens: {  }
+          operation_id:
+            rules_tokens: {  }
+          transaction_field_amount:
+            rules_tokens: {  }
+          transaction_field_balance:
+            rules_tokens: {  }
+          transaction_field_log_message:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: 'transaction_create:userpoints'
+      -
+        id: rules_action
+        uuid: feef2e8d-166c-430c-a621-f7b8ea677ca4
+        weight: 0
+        context_values:
+          immediate: ''
+        context_mapping:
+          transaction: transaction
+        context_processors:
+          immediate:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: transaction_execute
