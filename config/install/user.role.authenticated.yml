@@ -8,9 +8,13 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access openideal_file_browser entity browser pages'
+  - 'access openideal_image_browser entity browser pages'
+  - 'access openideal_images_browser entity browser pages'
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'create idea content'
+  - 'dropzone upload files'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
