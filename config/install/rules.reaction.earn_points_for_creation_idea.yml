@@ -1,31 +1,53 @@
 langcode: en
 status: true
 dependencies: {  }
-id: earn_points_for_creation_an_idea_
-label: 'Earn points for creation an idea '
+id: earn_points_for_creation_idea
+label: 'Earn points for creation an idea'
 events:
   -
-    event_name: 'rules_entity_insert:node--idea'
+    event_name: 'rules_entity_update:node--idea'
 description: ''
 tags: {  }
 config_version: '3'
 expression:
   id: rules_rule
-  uuid: b5b9b830-76dc-475d-b1d4-265d9644e6de
+  uuid: f4d0ac3f-861a-4e2a-8b99-3ae9d3d29188
   weight: 0
   conditions:
     id: rules_and
-    uuid: 96a7c334-ac85-439a-b02c-42d570c42979
+    uuid: c2d4e27b-ce9e-4604-be1c-4d97d41cdb57
     weight: 0
-    conditions: {  }
+    conditions:
+      -
+        id: rules_condition
+        uuid: 274a8652-d935-42cf-8bd2-44aa17b2cff1
+        weight: 0
+        context_values: {  }
+        context_mapping:
+          entity: node
+        context_processors: {  }
+        provides_mapping: {  }
+        condition_id: openideal_entity_is_moderated
+        negate: false
+      -
+        id: rules_condition
+        uuid: e9f3d183-2b4b-4319-b048-aacb6500ddba
+        weight: 0
+        context_values: {  }
+        context_mapping:
+          idea_id: node.nid.value
+        context_processors: {  }
+        provides_mapping: {  }
+        condition_id: 'openideal_idea_state:ideation'
+        negate: false
   actions:
     id: rules_action_set
-    uuid: 62b355f8-fd4a-4715-97d2-a2e949ea9168
+    uuid: 3f75c70a-2201-4fa2-9c1d-84cac5d6c80a
     weight: 0
     actions:
       -
         id: rules_action
-        uuid: 37b1725e-e940-49ac-956b-c370aeabde12
+        uuid: d28e11cc-ba7f-4956-be74-c1fcecfeda1d
         weight: 0
         context_values:
           type: user
@@ -38,7 +60,7 @@ expression:
         action_id: rules_entity_fetch_by_id
       -
         id: rules_action
-        uuid: 629f3c50-4bc5-42f1-82d1-78cf80feb8a4
+        uuid: 19436b98-441e-4634-80b3-247cabbeca60
         weight: 0
         context_values:
           transaction_type_id: user_points
@@ -63,10 +85,10 @@ expression:
         action_id: 'transaction_create:userpoints'
       -
         id: rules_action
-        uuid: feef2e8d-166c-430c-a621-f7b8ea677ca4
+        uuid: 92ae83e8-574d-468e-b865-4584342ee059
         weight: 0
         context_values:
-          immediate: 'true'
+          immediate: 'TRUE'
         context_mapping:
           transaction: transaction
         context_processors:

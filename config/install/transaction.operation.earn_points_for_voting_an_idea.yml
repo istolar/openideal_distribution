@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - transaction.type.user_points
+id: earn_points_for_voting_an_idea
+label: 'Earn points for voting an idea'
+transaction_type: user_points
+description: 'Voting reward'
+details: {  }
