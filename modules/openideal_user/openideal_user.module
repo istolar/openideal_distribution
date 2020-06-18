@@ -56,11 +56,15 @@ function openideal_user_entity_type_alter(array &$entity_types) {
  */
 function openideal_user_preprocess_page(&$variables) {
   if (\Drupal::currentUser()->isAuthenticated()) {
-    $user = \Drupal::entityTypeManager()->getStorage('user')->load(\Drupal::currentUser()->id());
+    $user_id = \Drupal::currentUser()->id();
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($user_id);
+    $current_route = \Drupal::service('current_route_match')->getRouteName();
     // Check if any of user field empty, if so set a remind message.
-    if ($user->get('field_age_group')->isEmpty() || $user->get('field_gender')->isEmpty()) {
+    if (($user->get('field_age_group')->isEmpty() || $user->get('field_gender')->isEmpty())
+      && ($current_route !== 'entity.user.edit_form' && $current_route !== 'openideal_user.register.user.more_about_you')
+      && !$user->hasRole('administrator')) {
       \Drupal::messenger()->addMessage(t('Please fill your <a href="@link">profile</a>',
-        ['@link' => Url::fromRoute('openideal_user.register.user.more_about_you')->toString()]
+        ['@link' => Url::fromRoute('entity.user.edit_form', ['user' => $user_id])->toString()]
       ));
     }
   }
