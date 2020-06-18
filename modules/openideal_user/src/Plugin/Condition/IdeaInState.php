@@ -25,7 +25,7 @@ class IdeaInState extends RulesConditionBase implements ContainerFactoryPluginIn
    *
    * @var \Drupal\node\NodeStorage
    */
-  private $entityManager;
+  protected $entityManager;
 
   /**
    * {@inheritdoc}

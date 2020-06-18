@@ -7,3 +7,11 @@ services:
       - '@social_auth_facebook.manager'
     tags:
       - { name: event_subscriber }
+
+  openideal_user.event_subscriber:
+    class: Drupal\openideal_user\EventSubscriber\OpenidealUserEventSubscriber
+    arguments:
+      - '@event_dispatcher'
+      - '@entity_type.manager'
+    tags:
+      - { name: event_subscriber }

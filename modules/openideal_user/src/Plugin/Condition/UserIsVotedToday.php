@@ -32,14 +32,14 @@ class UserIsVotedToday extends RulesConditionBase implements ContainerFactoryPlu
    *
    * @var \Drupal\Core\Entity\EntityTypeManager
    */
-  private $entityTypeManager;
+  protected $entityTypeManager;
 
   /**
    * Time service.
    *
    * @var \Drupal\Component\Datetime\Time
    */
-  private $time;
+  protected $time;
 
   /**
    * {@inheritdoc}

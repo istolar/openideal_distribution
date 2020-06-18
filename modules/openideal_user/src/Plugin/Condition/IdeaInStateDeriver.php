@@ -24,7 +24,7 @@ class IdeaInStateDeriver extends DeriverBase implements ContainerDeriverInterfac
    *
    * @var \Drupal\content_moderation\ModerationInformationInterface
    */
-  private $moderationInformation;
+  protected $moderationInformation;
 
   /**
    * Creates a new TransactionCreateDeriver object.

@@ -1,0 +1,10 @@
+openideal_user.user_mention:
+  label: 'After user was mentioned'
+  category: 'User'
+  context_definitions:
+    comment:
+      type: 'entity:comment'
+      label: 'The comment that mentions user.'
+    user:
+      type: 'entity:user'
+      label: 'Mentioned user.'
