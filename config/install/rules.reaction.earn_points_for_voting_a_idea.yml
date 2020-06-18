@@ -35,6 +35,17 @@ expression:
         provides_mapping: {  }
         condition_id: rules_text_comparison
         negate: false
+      -
+        id: rules_condition
+        uuid: f8e70bdc-3ebd-416a-88c7-8d51fea56a84
+        weight: 0
+        context_values: {  }
+        context_mapping:
+          entity: vote
+        context_processors: {  }
+        provides_mapping: {  }
+        condition_id: openideal_user_is_voted
+        negate: false
   actions:
     id: rules_action_set
     uuid: 6e2e6d92-312b-4899-ae41-b4688bd8d0d9
