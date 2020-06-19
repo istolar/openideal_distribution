@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Condition(
  *   id = "openideal_user_is_voted",
- *   label = @Translation("User is voted today"),
+ *   label = @Translation("User voted today"),
  *   category = @Translation("Vote"),
  *   context_definitions = {
  *     "entity" = @ContextDefinition("entity:vote",
@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class UserIsVotedToday extends RulesConditionBase implements ContainerFactoryPluginInterface {
+class UserVotedToday extends RulesConditionBase implements ContainerFactoryPluginInterface {
 
   /**
    * Entity type manager.

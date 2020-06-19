@@ -8,3 +8,33 @@ openideal_user.user_mention:
     user:
       type: 'entity:user'
       label: 'Mentioned user.'
+
+openideal_user.user_joined_group:
+  label: 'After user joined the group'
+  category: 'User'
+  context_definitions:
+    group:
+      type: 'entity:group_content'
+      label: 'Group that contains the user.'
+    user:
+      type: 'entity:user'
+      label: 'Group owner user.'
+
+openideal_user.user_left_group:
+  label: 'After user left the group'
+  category: 'User'
+  context_definitions:
+    group:
+      type: 'entity:group_content'
+      label: 'Group that contains the user.'
+    user:
+      type: 'entity:user'
+      label: 'Group owner user.'
+
+openideal_user.user_joined_site:
+  label: 'User joined the site'
+  category: 'User'
+  context_definitions:
+    user:
+      type: 'entity:user'
+      label: 'User entity.'

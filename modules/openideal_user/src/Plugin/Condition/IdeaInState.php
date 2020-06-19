@@ -3,13 +3,12 @@
 namespace Drupal\openideal_user\Plugin\Condition;
 
 use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Logger\LoggerChannelTrait;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\rules\Core\RulesConditionBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a generic 'Create a new entity' action.
+ * Provides a generic 'Idea in state' condition.
  *
  * @Condition(
  *   id = "openideal_idea_state",
@@ -18,21 +17,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class IdeaInState extends RulesConditionBase implements ContainerFactoryPluginInterface {
 
-  use LoggerChannelTrait;
-
   /**
    * Node type manager.
    *
    * @var \Drupal\node\NodeStorage
    */
-  protected $entityManager;
+  protected $storage;
 
   /**
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManager $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->entityManager = $entityTypeManager->getStorage('node');
+    $this->storage = $entityTypeManager->getStorage('node');
   }
 
   /**
@@ -53,11 +50,11 @@ class IdeaInState extends RulesConditionBase implements ContainerFactoryPluginIn
    * @param int $id
    *   The entity id.
    *
-   * @return bool|void
+   * @return bool
    *   TRUE if the provided entity is new.
    */
   protected function doEvaluate($id) {
-    return $this->entityManager->load($id)->moderation_state->value === $this->getDerivativeId();
+    return $this->storage->load($id)->moderation_state->value === $this->getDerivativeId();
   }
 
 }

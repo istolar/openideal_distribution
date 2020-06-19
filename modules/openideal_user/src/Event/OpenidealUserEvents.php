@@ -3,7 +3,7 @@
 namespace Drupal\openideal_user\Event;
 
 /**
- * Contains all events thrown by openideal_user module.
+ * Contains all events provided by openideal_user module.
  */
 final class OpenidealUserEvents {
 
@@ -16,5 +16,26 @@ final class OpenidealUserEvents {
    * @var string
    */
   const OPENIDEAL_USER_MENTION = 'openideal_user.user_mention';
+
+  /**
+   * Name of the event fired when the user joined the group.
+   *
+   * @var string
+   */
+  const OPENIDEA_USER_JOINED_GROUP = 'openideal_user.user_joined_group';
+
+  /**
+   * Name of the event fired when the user joined the group.
+   *
+   * @var string
+   */
+  const OPENIDEA_USER_LEFT_GROUP = 'openideal_user.user_left_group';
+
+  /**
+   * Name of the event fired when the user joined the site.
+   *
+   * @var string
+   */
+  const OPENIDEA_USER_JOINED_THE_SITE = 'openideal_user.user_joined_site';
 
 }
