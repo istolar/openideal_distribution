@@ -9,7 +9,6 @@ dependencies:
     - node.type.page
   module:
     - allowed_formats
-    - content_moderation
     - entity_browser
     - path
     - text

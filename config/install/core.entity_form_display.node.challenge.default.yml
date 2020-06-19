@@ -15,7 +15,6 @@ dependencies:
     - node.type.challenge
   module:
     - allowed_formats
-    - content_moderation
     - entity_browser
     - openideal_challenge
     - path

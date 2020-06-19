@@ -23,8 +23,8 @@ expression:
         uuid: 8d69e050-ba22-4372-88d3-e4ca084bc604
         weight: -50
         context_values:
-          operator: contains
-          match: idea
+          operator: regex
+          match: ^idea$
         context_mapping:
           text: comment.entity_id.entity.type.target_id
         context_processors:

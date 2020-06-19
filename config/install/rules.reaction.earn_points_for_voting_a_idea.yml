@@ -23,8 +23,8 @@ expression:
         uuid: ec93c57e-9e75-405a-a04c-9c879b1e3eaf
         weight: 0
         context_values:
-          operator: contains
-          match: idea
+          operator: regex
+          match: ^idea$
         context_mapping:
           text: vote.entity_id.entity.type.target_id
         context_processors:
