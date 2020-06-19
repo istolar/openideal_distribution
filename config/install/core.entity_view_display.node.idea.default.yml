@@ -205,6 +205,16 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 10
+          68d787e8-ea54-450d-8e7f-6f70e40f3ed6:
+            uuid: 68d787e8-ea54-450d-8e7f-6f70e40f3ed6
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:idea:flag_follow'
+            additional: {  }
+            weight: 13
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -299,6 +309,11 @@ content:
       values: {  }
     third_party_settings: {  }
     type: voting_api_formatter
+    region: content
+  flag_follow:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
     region: content
   links:
     weight: 100
