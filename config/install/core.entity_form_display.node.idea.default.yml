@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
     - workflows.workflow.life_cycle_phases
@@ -19,6 +20,7 @@ dependencies:
     - allowed_formats
     - content_moderation
     - entity_browser
+    - metatag
     - path
     - text
 id: node.idea.default
@@ -112,6 +114,13 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
+  field_meta_tags:
+    weight: 26
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   moderation_state:
     type: moderation_state_default
