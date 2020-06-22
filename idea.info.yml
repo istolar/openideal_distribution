@@ -20,6 +20,7 @@ dependencies:
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - ckeditor_mentions:ckeditor_mentions
   - drupal:comment
   - drupal:config
   - config_pages:config_pages
@@ -48,6 +49,7 @@ dependencies:
   - drupal:hal
   - drupal:history
   - drupal:image
+  - drupal:inline_form_errors
   - drupal:layout_builder
   - drupal:layout_discovery
   - drupal:link
@@ -69,7 +71,6 @@ dependencies:
   - social_auth_github:social_auth_github
   - social_auth_google:social_auth_google
   - social_auth_linkedin:social_auth_linkedin
-  - social_auth_twitter:social_auth_twitter
   - drupal:system
   - drupal:taxonomy
   - drupal:text
@@ -85,6 +86,8 @@ dependencies:
   - drupal:views_ui
   - drupal:workflows
   - drupal:menu_link_content
+  - votingapi:votingapi
+  - votingapi_widgets:votingapi_widgets
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules

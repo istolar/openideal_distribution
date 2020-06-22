@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - node.type.article
+    - system.menu.main
   module:
     - node
     - user
@@ -163,9 +164,23 @@ display:
       title: News
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<h5>No results found.</h5>'
+            format: basic_html
+          plugin_id: text
       relationships: {  }
       arguments: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -183,6 +198,15 @@ display:
     display_options:
       display_extenders: {  }
       path: news
+      menu:
+        type: normal
+        title: News
+        description: ''
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: main
     cache_metadata:
       max-age: -1
       contexts:

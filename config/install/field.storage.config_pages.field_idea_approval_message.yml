@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
+    - config_pages
     - text
-id: paragraph.field_body
-field_name: field_body
-entity_type: paragraph
+id: config_pages.field_idea_approval_message
+field_name: field_idea_approval_message
+entity_type: config_pages
 type: text_long
 settings: {  }
 module: text

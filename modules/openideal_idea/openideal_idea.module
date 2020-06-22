@@ -30,9 +30,10 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
       }
     }
 
-    // Hide content moderation form on the node idea create form.
-    $form['moderation_state']['#access'] = FALSE;
-    $form['actions']['submit']['#value'] = t('Save as Draft');
+    // Rename draft_approval state as Publish.
+    if (isset($form['moderation_state']['widget'][0]['state']['#options']['draft_approval'])) {
+      $form['moderation_state']['widget'][0]['state']['#options']['draft_approval'] = t('Publish');
+    }
   }
 
   // Unset useless group roles for group idea membership add form.
@@ -41,38 +42,17 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
     unset($form['group_roles']['widget']['#options']['idea-author']);
     unset($form['group_roles']['widget']['#options']['idea-expert']);
   }
-
-  if (!in_array($form_id, ['node_idea_edit_form', 'node_idea_form'])) {
-    return;
-  }
-
-  // Get settings page for default challenge entity.
-  $openideal_config = config_pages_config('openideal_configurations');
-  if (!empty($openideal_config)) {
-    // Get default challenge entity.
-    $default_challenge = $openideal_config->field_default_challenge->entity;
-  }
-
-  if (
-      !empty($default_challenge)
-      && empty($form['field_challenge']['widget'][0]['target_id']['#default_value'])
-  ) {
-    // Set default value for challenge form element of the idea content type.
-    $form['field_challenge']['widget'][0]['target_id']['#default_value'] = $default_challenge;
-  }
 }
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
  */
-function openideal_idea_node_presave(EntityInterface $entity) {
+function openideal_idea_node_presave(NodeInterface $node) {
   // Check entity type and duplicate_of field of the entity.
-  if (
-    $entity->bundle() == 'idea' &&
-    !$entity->get('field_duplicate_of')->isEmpty()
-  ) {
+  if ($node->bundle() == 'idea' && !$node->get('field_duplicate_of')->isEmpty()) {
     // Set 'merged' value for idea_phase field of the entity.
-    $entity->field_idea_phase->target_id = 5;
+    // Todo: Should we remove this in favour of Workflow states?
+    $node->set('field_idea_phase', 5);
   }
 }
 
@@ -181,4 +161,48 @@ function _openideal_idea_get_group_by_entity($entity) {
   }
 
   return !empty($groups) ? array_shift($groups) : NULL;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] != 'views-exposed-form-ideas-all-ideas-page') {
+    return;
+  }
+  // Remove workflow title form the views exposed filter.
+  // @see https://www.drupal.org/project/drupal/issues/3091182
+  if (isset($form['phase']['#options']['Life Cycle Phases'])) {
+    foreach ($form['phase']['#options']['Life Cycle Phases'] as $key => $phase_option) {
+      $form['phase']['#options'][$key] = $phase_option;
+    }
+    unset($form['phase']['#options']['Life Cycle Phases']);
+  }
+  // Get the list of published and opened challenges.
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $query = $node_storage->getQuery()
+    ->condition('type', 'challenge', '=')
+    ->condition('field_is_open', TRUE, '=')
+    ->condition('status', NodeInterface::PUBLISHED)
+    ->latestRevision()
+    ->sort('title');
+  $nids = $query->execute();
+
+  if (empty($nids)) {
+    $form['challenge']['#access'] = FALSE;
+    return;
+  }
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $options = [];
+  foreach ($node_storage->loadMultiple($nids) as $node) {
+    $options[$node->id()] = $node->getTitle();
+  }
+  // Replace existing challenge form element with select.
+  $form['challenge'] = [
+    '#type' => 'select',
+    '#multiple' => FALSE,
+    '#empty_option' => t("Any"),
+    '#options' => $options,
+  ];
 }

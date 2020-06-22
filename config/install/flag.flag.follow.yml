@@ -3,17 +3,18 @@ status: true
 dependencies:
   module:
     - node
-id: challenge_flag
-label: 'Challenge Flag'
+id: follow
+label: Follow
 bundles:
   - challenge
+  - idea
 entity_type: node
 global: false
 weight: 0
-flag_short: Join
+flag_short: Follow
 flag_long: ''
 flag_message: ''
-unflag_short: 'Unflag this challenge'
+unflag_short: Unfollow
 unflag_long: ''
 unflag_message: ''
 unflag_denied_text: ''

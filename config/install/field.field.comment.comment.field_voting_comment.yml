@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment
+    - field.storage.comment.field_voting_comment
+  module:
+    - votingapi_widgets
+id: comment.comment.field_voting_comment
+field_name: field_voting_comment
+entity_type: comment
+bundle: comment
+label: 'Voting Comment'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    status: '1'
+default_value_callback: ''
+settings:
+  anonymous_window: '3600'
+  user_window: '3600'
+  result_function: vote_average
+  widget_format: fivestar
+field_type: voting_api_field

@@ -1,0 +1,6 @@
+services:
+  openideal_idea.subscriber:
+    class: Drupal\openideal_idea\EventSubscriber\OpenidealIdeaEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }

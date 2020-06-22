@@ -13,6 +13,7 @@ dependencies:
     - taxonomy.vocabulary.idea_lifecycle_phase
   module:
     - better_exposed_filters
+    - content_moderation
     - image
     - node
     - taxonomy
@@ -57,25 +58,57 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          input_required: false
           text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
           bef:
             general:
+              autosubmit: true
+              autosubmit_exclude_textfield: true
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: true
+              input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
+              secondary_open: false
             sort:
-              bef_format: default
+              plugin_id: bef_links
               advanced:
-                collapsible: false
-                collapsible_label: 'Sort options'
                 combine: true
                 combine_rewrite: ''
                 reset: false
                 reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
                 is_secondary: false
+            filter:
+              field_idea_phase_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              uid:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_challenge_target_id:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              combine:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
             field_idea_phase_target_id:
               bef_format: default
               more_options:
@@ -109,7 +142,7 @@ display:
               more_options:
                 is_secondary: false
                 placeholder_text: ''
-          text_input_required_format: basic_html
+          input_required: false
       pager:
         type: mini
         options:
@@ -750,23 +783,24 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
-        field_idea_phase_target_id:
-          id: field_idea_phase_target_id
-          table: node__field_idea_phase
-          field: field_idea_phase_target_id
+          group: 1
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_idea_phase_target_id_op
+            operator_id: moderation_state_op
             label: Phase
             description: ''
             use_operator: false
-            operator: field_idea_phase_target_id_op
+            operator: moderation_state_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: phase
@@ -790,13 +824,8 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: idea_lifecycle_phase
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
+          entity_type: node
+          plugin_id: moderation_state_filter
         uid:
           id: uid
           table: node_field_data
@@ -1531,7 +1560,6 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1540,3 +1568,4 @@ display:
         - 'config:field.storage.node.field_idea_phase'
         - 'config:field.storage.node.field_idea_tags'
         - 'config:field.storage.user.user_picture'
+        - 'config:workflow_list'
