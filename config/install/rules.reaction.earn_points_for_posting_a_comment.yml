@@ -20,25 +20,25 @@ expression:
     conditions:
       -
         id: rules_condition
-        uuid: 8d69e050-ba22-4372-88d3-e4ca084bc604
+        uuid: 659937fd-8182-4794-8966-2bc437781c14
         weight: -50
         context_values:
-          operator: regex
-          match: ^idea$
+          operation: '=='
+          value: idea
         context_mapping:
-          text: comment.entity_id.entity.type.target_id
+          data: comment.entity_id.entity.type.target_id
         context_processors:
-          operator:
+          operation:
             rules_tokens: {  }
-          match:
+          value:
             rules_tokens: {  }
         provides_mapping: {  }
-        condition_id: rules_text_comparison
+        condition_id: rules_data_comparison
         negate: false
       -
         id: rules_condition
         uuid: 06f8e054-64bb-4041-baee-c2c49cc3fd47
-        weight: 0
+        weight: -48
         context_values: {  }
         context_mapping:
           idea_id: comment.entity_id.entity.nid.value

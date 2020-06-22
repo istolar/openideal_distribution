@@ -14,7 +14,7 @@ openideal_user.user_points.add_transaction_form:
     _title_callback: '\Drupal\transaction\Controller\TransactionController::transactionAddTitle'
     transaction_type: 'user_points'
   requirements:
-    _entity_create_access: 'transaction:user_points'
+    _entity_create_access: 'transaction:userpoints'
     _entity_access: 'user.view'
     user: \d+
   options:

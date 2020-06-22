@@ -81,15 +81,17 @@ function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPlugin
  * Implements hook_ENTITY_TYPE_presave().
  */
 function openideal_challenge_node_presave(EntityInterface $entity) {
-  $event_dispatcher = Drupal::service('event_dispatcher');
-  // If challenge was created react only on if it was opened
-  // make no sense to react on close.
-  if ($entity->isNew() && $entity->get('field_is_open')->value) {
-    $event = new OpenidealChallengeEvent($entity);
-    $event_dispatcher->dispatch(OpenidealChallengeEvent::CHALLENGE_OPEN, $event);
-  }
-  if (!$entity->isNew() && $entity->original->get('field_is_open')->value != ($action = $entity->get('field_is_open')->value)) {
-    $event = new OpenidealChallengeEvent($entity);
-    $event_dispatcher->dispatch($action ? OpenidealChallengeEvent::CHALLENGE_OPEN : OpenidealChallengeEvent::CHALLENGE_CLOSE, $event);
+  if ($entity->bundle() == 'challenge') {
+    $event_dispatcher = Drupal::service('event_dispatcher');
+    // If challenge was created react only on if it was opened
+    // make no sense to react on close.
+    if ($entity->isNew() && $entity->get('field_is_open')->value) {
+      $event = new OpenidealChallengeEvent($entity);
+      $event_dispatcher->dispatch(OpenidealChallengeEvent::CHALLENGE_OPEN, $event);
+    }
+    if (!$entity->isNew() && $entity->original->get('field_is_open')->value != ($action = $entity->get('field_is_open')->value)) {
+      $event = new OpenidealChallengeEvent($entity);
+      $event_dispatcher->dispatch($action ? OpenidealChallengeEvent::CHALLENGE_OPEN : OpenidealChallengeEvent::CHALLENGE_CLOSE, $event);
+    }
   }
 }

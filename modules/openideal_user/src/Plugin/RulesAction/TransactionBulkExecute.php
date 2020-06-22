@@ -100,6 +100,8 @@ class TransactionBulkExecute extends RulesActionBase implements ContainerFactory
     /** @var \Drupal\group\Entity\GroupContent $group_content */
     $group_contents = $storage->loadByEntity($this->getContextValue('idea'));
     $group_content = reset($group_contents);
+    // @Todo: maybe better to not loop through transaction module "rules" actions
+    // but just create userpoints "transaction" manually.
     $group_members_ships = $this->groupMembershipLoader->loadByGroup($group_content->getGroup());
     foreach ($group_members_ships as $content_group) {
       $member = $content_group->getUser();

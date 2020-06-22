@@ -16,6 +16,10 @@ use Drupal\rules\Context\ContextDefinitionInterface;
 /**
  * Derives transaction execute plugin definitions based on user points.
  *
+ * In the TransactionBulkExecute rules loops through another actions,
+ * and this deriver needed to generate context definitions "on the fly"
+ * because can be added additional required field in UserPoints transactions.
+ *
  * @see \Drupal\openideal_user\Plugin\RulesAction\TransactionBulkExecute
  */
 class TransactionBulkExecuteDeriver extends DeriverBase implements ContainerDeriverInterface {

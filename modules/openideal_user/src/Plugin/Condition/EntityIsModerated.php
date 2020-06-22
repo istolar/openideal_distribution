@@ -11,6 +11,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides an 'Entity is moderated' condition.
  *
+ * @Todo: remove if not needed.
+ *
  * @Condition(
  *   id = "openideal_entity_is_moderated",
  *   label = @Translation("Entity is moderated"),

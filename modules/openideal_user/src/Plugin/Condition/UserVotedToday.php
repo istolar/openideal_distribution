@@ -64,13 +64,13 @@ class UserVotedToday extends RulesConditionBase implements ContainerFactoryPlugi
   }
 
   /**
-   * Check if the provided entity is moderated.
+   * Check if the user voted today.
    *
    * @param \Drupal\votingapi\VoteInterface $vote
    *   The entity to check.
    *
    * @return bool
-   *   TRUE if the provided entity is moderated.
+   *   TRUE if user voted today, false otherwise.
    */
   protected function doEvaluate(VoteInterface $vote) {
     $storage = $this->entityTypeManager->getStorage('vote');
@@ -78,20 +78,10 @@ class UserVotedToday extends RulesConditionBase implements ContainerFactoryPlugi
     // Check if user voted.
     $count = $storage->getQuery()
       ->condition('user_id', $user->id(), '=')
+      ->condition('timestamp', $this->time->getRequestTime() - 86400, '>')
       ->count()
       ->execute();
-    // Check if user first time voted.
-    if ($count > 1) {
-      // Fetch last vote.
-      $id = $storage->getQuery()
-        ->condition('user_id', $user->id(), '=')
-        ->range($count - 2, 1)
-        ->execute();
-      $last_vote = $this->entityTypeManager->getStorage('vote')->load(key($id));
-      // Check if last voted was create more then one day after current vote.
-      return ($vote->getCreatedTime() - $last_vote->getCreatedTime()) > 86400;
-    }
-    return TRUE;
+    return $count > 1;
   }
 
 }

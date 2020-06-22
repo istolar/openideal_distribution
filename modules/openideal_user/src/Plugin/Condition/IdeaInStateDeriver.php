@@ -56,7 +56,7 @@ class IdeaInStateDeriver extends DeriverBase implements ContainerDeriverInterfac
         // Add the derivative.
         $this->derivatives[$state_id] = [
           'label' => $this->t('Idea is in @workflow_state state', ['@workflow_state' => $state_data['label']]),
-          'category' => $this->t('Idea'),
+          'category' => $this->t('Idea workflows'),
           'provides' => [],
           'context_definitions' => [
             'idea_id' => ContextDefinition::create('integer')
