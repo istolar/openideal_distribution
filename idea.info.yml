@@ -55,6 +55,8 @@ dependencies:
   - drupal:link
   - drupal:menu_ui
   - metatag:metatag
+  - metatag:metatag_open_graph
+  - metatag:metatag_twitter_cards
   - multiple_fields_remove_button:multiple_fields_remove_button
   - drupal:node
   - drupal:options
