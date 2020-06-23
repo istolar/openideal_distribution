@@ -1,0 +1,6 @@
+openideal_user.user_points.points:
+  title: Points
+  menu_name: main
+  parent: entity.user.collection
+  route_name: view.user_points.page_totals
+  weight: 20

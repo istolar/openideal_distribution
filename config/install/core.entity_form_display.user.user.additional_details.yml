@@ -8,6 +8,7 @@ dependencies:
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_points
     - field.field.user.user.user_picture
   module:
     - entity_browser
@@ -62,5 +63,6 @@ content:
 hidden:
   account: true
   contact: true
+  field_points: true
   language: true
   timezone: true

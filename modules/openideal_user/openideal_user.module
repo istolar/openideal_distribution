@@ -8,6 +8,10 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
+use Drupal\group\Entity\GroupContent;
+use Drupal\openideal_user\Event\OpenidealUserEvents;
+use Drupal\openideal_user\Event\OpenidealUserGroupEvent;
+use Drupal\openideal_user\Event\OpenidealUserJoinedSiteEvent;
 use Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -38,8 +42,20 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
  */
 function openideal_user_user_login(UserInterface $account) {
   if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
+    $event = new OpenidealUserJoinedSiteEvent($account);
+    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
+
+    // Redirect user if joined the site for the first
+    // time via the user_registrationpassword one time link.
     $response = new RedirectResponse(URL::fromRoute('openideal_user.register.user.more_about_you')->toString());
     $response->send();
+  }
+
+  // If user was created by UI or via social logins then dispatch
+  // OpenidealUserEvents.
+  if (!$account->getLastAccessedTime()) {
+    $event = new OpenidealUserJoinedSiteEvent($account);
+    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
   }
 }
 
@@ -68,4 +84,20 @@ function openideal_user_preprocess_page(&$variables) {
       ));
     }
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function openideal_user_group_content_insert(GroupContent $entity) {
+  $event = new OpenidealUserGroupEvent($entity);
+  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_GROUP, $event);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function openideal_user_group_content_delete(GroupContent $entity) {
+  $event = new OpenidealUserGroupEvent($entity);
+  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
 }

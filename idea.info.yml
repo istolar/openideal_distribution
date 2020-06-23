@@ -67,6 +67,7 @@ dependencies:
   - rabbit_hole:rabbit_hole
   - rh_node:rh_node
   - rh_taxonomy:rh_taxonomy
+  - rules:rules
   - drupal:serialization
   - drupal:shortcut
   - social_auth_facebook:social_auth_facebook
@@ -85,6 +86,7 @@ dependencies:
   - drupal:update
   - drupal:user
   - user_registrationpassword:user_registrationpassword
+  - userpoints:userpoints
   - drupal:views_ui
   - drupal:workflows
   - drupal:menu_link_content

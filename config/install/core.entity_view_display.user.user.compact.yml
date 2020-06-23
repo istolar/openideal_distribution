@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_points
     - field.field.user.user.user_picture
   module:
     - user
@@ -20,6 +21,7 @@ hidden:
   field_first_name: true
   field_gender: true
   field_last_name: true
+  field_points: true
   member_for: true
   realname: true
   user_picture: true

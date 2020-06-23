@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_points
     - field.field.user.user.user_picture
   module:
     - entity_browser
@@ -27,6 +28,13 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_points:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_first_name:
     type: string_textfield
     weight: 0

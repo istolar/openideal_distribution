@@ -1,0 +1,14 @@
+openideal_challenge.open:
+  label: 'After a challenge was open'
+  category: 'Challenge'
+  context_definitions:
+    entity:
+      type: 'entity:node'
+      label: 'Opened challenge'
+openideal_challenge.close:
+  label: 'After a challenge was closed'
+  category: 'Challenge'
+  context_definitions:
+    entity:
+      type: 'entity:node'
+      label: 'Closed challenge'

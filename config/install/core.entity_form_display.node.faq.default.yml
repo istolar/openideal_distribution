@@ -5,7 +5,6 @@ dependencies:
     - field.field.node.faq.field_faq_items
     - node.type.faq
   module:
-    - content_moderation
     - paragraphs
     - path
 id: node.faq.default
