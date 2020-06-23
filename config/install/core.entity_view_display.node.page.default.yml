@@ -87,6 +87,13 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  addtoany:
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
   field_attached_docs:
     weight: 104
     label: above

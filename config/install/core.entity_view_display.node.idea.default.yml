@@ -12,14 +12,17 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
   module:
+    - addtoany
     - comment
     - file
     - image
     - layout_builder
     - layout_discovery
+    - metatag
     - text
     - user
     - votingapi_widgets
@@ -215,6 +218,27 @@ third_party_settings:
               id: 'extra_field_block:node:idea:flag_follow'
             additional: {  }
             weight: 13
+          2078e8be-7d3e-42c1-a6d2-c3efd5a94de5:
+            uuid: 2078e8be-7d3e-42c1-a6d2-c3efd5a94de5
+            region: content
+            configuration:
+              id: addtoany_block
+              label: 'AddToAny buttons'
+              provider: addtoany
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 11
+          b4ea69c6-55c2-450c-a55e-c166e46d48f8:
+            uuid: b4ea69c6-55c2-450c-a55e-c166e46d48f8
+              id: 'field_block:node:idea:field_meta_tags'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: metatag_empty_formatter
+            additional: {  }
+            weight: 12
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -299,6 +323,12 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_meta_tags:
+    weight: 110
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_voting:
     weight: 110
     label: above
@@ -320,4 +350,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  addtoany: true

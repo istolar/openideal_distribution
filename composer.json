@@ -18,6 +18,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
+        "drupal/addtoany": "^1.14",
         "drupal/admin_toolbar": "^2.2",
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/adminimal_theme": "^1.5",
@@ -34,6 +35,7 @@
         "drupal/faqfield": "^1.1",
         "drupal/flag": "^4.0",
         "drupal/group": "^1.0",
+        "drupal/metatag": "^1.13",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
         "drupal/rabbit_hole": "^1.0",
@@ -60,7 +62,9 @@
         "installer-name": "idea",
         "patches": {
             "drupal/core": {
-                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch"
+                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch",
+                "Dispatch events for changing content moderation states": "https://www.drupal.org/files/issues/2018-11-06/2873287-50.patch",
+                "Entity reference error messages are not user friendly": "https://www.drupal.org/files/issues/2020-06-04/3138631-9.patch"
             },
             "drupal/votingapi_widgets": {
                 "Previewing a Voting API formatter causes the fatals": "https://www.drupal.org/files/issues/2019-01-09/3024465-votingwidgets-4.patch"
