@@ -25,11 +25,7 @@ class EntityFieldFilled extends RulesConditionBase {
    *   TRUE if the field was filled.
    */
   protected function doEvaluate(EntityInterface $entity) {
-    // Field is saved as "$field_name . $bundle",
-    // so need to get the field from id.
-    $id = $this->getDerivativeId();
-    $pos = strpos($id, $entity->bundle());
-    $field = substr($id, 0, mb_strlen($id) - $pos);
+    list(,, $field) = explode('.', $this->getDerivativeId());
     return !$entity->get($field)->isEmpty();
   }
 

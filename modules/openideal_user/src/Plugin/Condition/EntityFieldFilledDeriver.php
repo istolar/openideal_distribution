@@ -55,14 +55,14 @@ class EntityFieldFilledDeriver extends DeriverBase implements ContainerDeriverIn
       'challenge' => 'node',
       'user' => 'user',
     ];
-    // Loop through needed bundle and set plugin field definitions for them.
-    foreach ($entity_types as $bundle => $entity_type) {
-      $idea_fields = $this->entityFieldManager->getFieldDefinitions($entity_type, $bundle);
-      foreach ($idea_fields as $field_name => $fieldDefinition) {
+    // Loop through needed entities and set plugin field definitions for them.
+    foreach ($entity_types as $bundle => $entity_type_id) {
+      $entity_fields = $this->entityFieldManager->getFieldDefinitions($entity_type_id, $bundle);
+      foreach ($entity_fields as $field_name => $fieldDefinition) {
         // Add the derivative.
         if ($fieldDefinition instanceof FieldConfig) {
           // Save field + bundle, to avoid problems with repeated fields.
-          $this->derivatives[$field_name . $bundle] = [
+          $this->derivatives["${entity_type_id}.${bundle}.${field_name}"] = [
             'label' => $this->t('@bundle @field field was filled', [
               '@field' => $fieldDefinition->getLabel(),
               '@bundle' => ucfirst($bundle),
