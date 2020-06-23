@@ -30,11 +30,6 @@ type_settings:
       default_revision: true
       label: 'Expert Review'
       weight: -1
-    ideation:
-      published: true
-      default_revision: true
-      label: Ideation
-      weight: -2
     launched:
       published: true
       default_revision: true
@@ -51,10 +46,10 @@ type_settings:
       label: Postponed
       weight: 2
     published:
-      label: Published
+      label: Ideation
       published: true
       default_revision: true
-      weight: -4
+      weight: -2
     rejected:
       published: true
       default_revision: true
@@ -80,19 +75,18 @@ type_settings:
       weight: -5
       from:
         - draft
-        - published
     draft_approval:
       label: Ideation
       from:
         - draft_approval
-        - ideation
-      to: ideation
+        - published
+      to: published
       weight: -3
     expert_review:
       label: 'Expert Review'
       from:
         - ex
-        - ideation
+        - published
       to: ex
       weight: -2
     launched:
