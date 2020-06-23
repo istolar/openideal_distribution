@@ -231,6 +231,11 @@ third_party_settings:
             weight: 11
           b4ea69c6-55c2-450c-a55e-c166e46d48f8:
             uuid: b4ea69c6-55c2-450c-a55e-c166e46d48f8
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
               id: 'field_block:node:idea:field_meta_tags'
               formatter:
                 label: above
