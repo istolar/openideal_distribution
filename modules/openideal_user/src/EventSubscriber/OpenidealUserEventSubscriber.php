@@ -4,7 +4,10 @@ namespace Drupal\openideal_user\EventSubscriber;
 
 use Drupal\ckeditor_mentions\CKEditorMentionEvent;
 use Drupal\comment\Entity\Comment;
+use Drupal\content_moderation\Event\ContentModerationEvents;
+use Drupal\content_moderation\Event\ContentModerationStateChangedEvent;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\openideal_user\Event\OpenidealContentModerationEvent;
 use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserMentionEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -48,6 +51,7 @@ class OpenidealUserEventSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     return [
       CKEditorMentionEvent::MENTION_FIRST => 'usersAreMentioned',
+      ContentModerationEvents::STATE_CHANGED => 'stateChanged',
     ];
   }
 
@@ -68,6 +72,17 @@ class OpenidealUserEventSubscriber implements EventSubscriberInterface {
         $this->eventDispatcher->dispatch(OpenidealUserEvents::OPENIDEAL_USER_MENTION, $event);
       }
     }
+  }
+
+  /**
+   * This method is called when the MENTION_FIRST event is dispatched.
+   *
+   * @param \Drupal\content_moderation\Event\ContentModerationStateChangedEvent $event
+   *   The dispatched event.
+   */
+  public function stateChanged(ContentModerationStateChangedEvent $event) {
+    $event = new OpenidealContentModerationEvent($event);
+    $this->eventDispatcher->dispatch(OpenidealUserEvents::WORKFLOW_STATE_CHANGED, $event);
   }
 
 }
