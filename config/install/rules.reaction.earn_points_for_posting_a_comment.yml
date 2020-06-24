@@ -7,7 +7,9 @@ events:
   -
     event_name: 'rules_entity_insert:comment--comment'
 description: ''
-tags: {  }
+tags:
+  - points
+  - 'user points'
 config_version: '3'
 expression:
   id: rules_rule

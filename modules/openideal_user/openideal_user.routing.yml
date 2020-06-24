@@ -10,7 +10,6 @@ openideal_user.user_points.add_transaction_form:
   path: '/transaction/add/{transaction_type}/user/{user}'
   defaults:
     _entity_form: 'transaction.add'
-    _title: 'Create points transaction'
     _title_callback: '\Drupal\transaction\Controller\TransactionController::transactionAddTitle'
     transaction_type: 'user_points'
   requirements:

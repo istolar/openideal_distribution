@@ -51,13 +51,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_points:
-    type: number
-    weight: 6
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
   user_picture:
     type: entity_browser_file
     weight: 5
@@ -74,5 +67,6 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  field_points: true
   language: true
   timezone: true

@@ -38,3 +38,20 @@ openideal_user.user_joined_site:
     user:
       type: 'entity:user'
       label: 'User entity.'
+
+openideal_user.content_moderation.state_changed:
+  label: 'After changing workflow state of a content'
+  category: 'Workflow'
+  context_definitions:
+    moderatedEntity:
+      type: 'entity:node'
+      label: 'The entity that is being moderated.'
+    newState:
+      type: 'string'
+      label: 'The new state the content is moving to'
+    originalState:
+      type: 'string'
+      label: 'The original state of the content, before the change was made.'
+    workflow:
+      type: 'string'
+      label: 'The ID of the workflow that allowed the state change.'
