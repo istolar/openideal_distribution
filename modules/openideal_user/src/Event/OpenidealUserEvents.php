@@ -10,7 +10,7 @@ final class OpenidealUserEvents {
   /**
    * Name of the event fired when the user is mentioned in comment.
    *
-   * This event allows modules to perform an action whenever the someone mention
+   * This event allows modules to perform an action whenever someone mention
    * user in comments.
    *
    * @var string
@@ -37,5 +37,18 @@ final class OpenidealUserEvents {
    * @var string
    */
   const OPENIDEA_USER_JOINED_THE_SITE = 'openideal_user.user_joined_site';
+
+  /**
+   * Name of the event fired when content changes state.
+   *
+   * Rules module can't get private&public object properties and
+   * that event is a "decorator" for STATE_CHANGED event.
+   *
+   * @see \Drupal\content_moderation\Event\ContentModerationStateChangedEvent
+   * @see \Drupal\content_moderation\Entity\ContentModerationState::realSave()
+   *
+   * @var string
+   */
+  const WORKFLOW_STATE_CHANGED = 'openideal_user.content_moderation.state_changed';
 
 }

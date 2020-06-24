@@ -28,13 +28,6 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_points:
-    type: number
-    weight: 2
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
   field_first_name:
     type: string_textfield
     weight: 0
@@ -73,5 +66,6 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  field_points: true
   language: true
   timezone: true
