@@ -2,10 +2,8 @@
 
 namespace Drupal\openideal_idea\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Cache\Cache;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Plugin implementation of the overall score formatter.
@@ -22,22 +20,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class OpenidealComputedFieldFormatter extends StringFormatter {
 
   /**
-   * The time service.
-   *
-   * @var \Drupal\Component\Datetime\Time
-   */
-  protected $time;
-
-  /**
-   * {@inheritDoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->time = $container->get('datetime.time');
-    return $instance;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
@@ -49,7 +31,7 @@ class OpenidealComputedFieldFormatter extends StringFormatter {
         '#tag' => 'p',
         '#value' => $item->value,
         '#cache' => [
-          'tags' => Cache::mergeTags($item->getEntity()->getCacheTags(), ['openidea:idea:node:overall_score']),
+          'max-age' => 3600,
         ],
       ];
     }
