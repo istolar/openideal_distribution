@@ -21,9 +21,6 @@ class ComputedNumberList extends FieldItemList {
    */
   protected function computeValue() {
     $value = $this->getOverallScore();
-    // Do not store NULL values, in the case where an entity does not have a
-    // score associated with it, we do not create list items for
-    // the computed field.
     $this->list[0] = $this->createItem(0, $value);
   }
 
@@ -61,6 +58,7 @@ class ComputedNumberList extends FieldItemList {
       }
     }
 
+    // @Todo: Move to admin interface.
     return $comments * ($configuration->get('comments_value') ?? 10)
       + $votes * ($configuration->get('votes_value') ?? 5)
       + $node_counter_value;
