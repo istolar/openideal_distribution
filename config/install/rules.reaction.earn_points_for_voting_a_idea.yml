@@ -48,6 +48,21 @@ expression:
         provides_mapping: {  }
         condition_id: openideal_user_is_voted
         negate: false
+      -
+        id: rules_condition
+        uuid: 077a555d-78ba-4e37-bf84-5bfb1bafeed6
+        weight: 0
+        context_values:
+          operation: '=='
+        context_mapping:
+          data: vote.entity_id.entity.uid.target_id
+          value: vote.user_id.target_id
+        context_processors:
+          operation:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        condition_id: rules_data_comparison
+        negate: true
   actions:
     id: rules_action_set
     uuid: 6e2e6d92-312b-4899-ae41-b4688bd8d0d9
