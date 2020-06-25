@@ -87,13 +87,6 @@ class ScoreConfigForm extends ConfigFormBase {
       '#default_value' => $config->get('node') ?? 0.2,
     ];
 
-    $form['comments_score_value'] = [
-      '#type' => 'number',
-      '#title' => $this->t('Node'),
-      '#min' => 0,
-      '#step' => 0.1,
-      '#default_value' => $config->get('node') ?? 2,
-    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -107,7 +100,6 @@ class ScoreConfigForm extends ConfigFormBase {
       ->set('comments_value', $form_state->getValue('comments_value'))
       ->set('votes_value', $form_state->getValue('votes_value'))
       ->set('node_value', $form_state->getValue('node'))
-      ->set('comments_score_value', $form_state->getValue('comments_score_value'))
       ->save();
   }
 

@@ -2,8 +2,6 @@
 
 namespace Drupal\openideal_idea;
 
-use Drupal\Core\Cache\Cache;
-use Drupal\Core\Cache\CacheableDependencyInterface;
 use Drupal;
 use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\TypedData\ComputedItemListTrait;
@@ -12,7 +10,7 @@ use InvalidArgumentException;
 /**
  * A computed field that provides a overall score for Idea node bundle.
  */
-class ComputedNumberList extends FieldItemList implements CacheableDependencyInterface {
+class ComputedNumberList extends FieldItemList {
 
   use ComputedItemListTrait {
     get as traitGet;
@@ -58,17 +56,6 @@ class ComputedNumberList extends FieldItemList implements CacheableDependencyInt
       ->count()
       ->execute();
 
-    $query = Drupal::database()
-      ->select('votingapi_vote', 'vv')
-      ->fields('vv', ['id'])
-      ->condition('vv.entity_type', 'comment');
-
-    $query->join('comment_field_data', 'cd', 'cd.entity_id = :id and cd.cid = vv.entity_id', [':id' => $id]);
-    $comment_votes = $query
-      ->countQuery()
-      ->execute()
-      ->fetchField();
-
     // Compute the score.
     $node_counter_value = 0;
 
@@ -76,12 +63,13 @@ class ComputedNumberList extends FieldItemList implements CacheableDependencyInt
     if (Drupal::moduleHandler()->moduleExists('statistics')) {
       /** @var \Drupal\statistics\StatisticsViewsResult $statistics_result */
       $statistics_result = Drupal::service('statistics.storage.node')->fetchView($id);
-      $node_counter_value = $statistics_result->getTotalCount() * ($configuration->get('node_value') ?? 0.2);
+      if ($statistics_result) {
+        $node_counter_value = $statistics_result->getTotalCount() * ($configuration->get('node_value') ?? 0.2);
+      }
     }
 
     return $comments * ($configuration->get('comments_value') ?? 10)
       + $votes * ($configuration->get('votes_value') ?? 5)
-      + $comment_votes * ($configuration->get('comments_score_value') ?? 2)
       + $node_counter_value;
   }
 
@@ -108,29 +96,6 @@ class ComputedNumberList extends FieldItemList implements CacheableDependencyInt
       throw new InvalidArgumentException('An entity can not have multiple scores at the same time.');
     }
     return $this->traitGet($index);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public function getCacheContexts() {
-    Cache::mergeContexts($this->getEntity()->getCacheContexts());
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public function getCacheTags() {
-    // Todo: finish logic.
-    $node = $this->getEntity();
-    Cache::mergeTags($node->getCacheTags(), ['openideal:node:overall_score' . $node->id()]);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public function getCacheMaxAge() {
-    $this->getEntity()->getCacheMaxAge();
   }
 
 }

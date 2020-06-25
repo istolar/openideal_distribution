@@ -244,6 +244,24 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 12
+          41567fc4-aa06-4041-bd5e-a39b6e50d3fc:
+            uuid: 41567fc4-aa06-4041-bd5e-a39b6e50d3fc
+            region: content
+            configuration:
+              id: 'field_block:node:idea:overall_score'
+              label: 'Overall score'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: above
+                type: openideal_overall_score_formatter
+                settings: {  }
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 14
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -334,6 +352,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_voting:
     weight: 110
     label: above

@@ -1,30 +1,28 @@
 /**
  * @file
- * Attaches is openideal_idea_useful rating.
+ * Attaches like rating.
  */
 
 (function ($, Drupal) {
-  Drupal.behaviors.openidealIdeaUsefulRating = {
+  Drupal.behaviors.likeRating = {
     attach: function (context, settings) {
-      $('body').find('.openideal-idea-useful').each(function () {
+      $('body').find('.like').each(function () {
         var $this = $(this);
         $(this).find('select').once('processed').each(function () {
           $this.find('[type=submit]').hide();
           var $select = $(this);
-          $select.after('<div class="openideal-useful-rating"><a href="#"><i class="fa fa-thumbs-up"></a></i></div>').hide();
-          $this.find('.openideal-useful-rating a').eq(0).each(function () {
+          var isPreview = $select.data('is-edit');
+          $select.after('<div class="like-rating"><a href="#"><i class="fa fa-thumbs-up"></i></a></div>').hide();
+          $this.find('.like-rating a').eq(0).each(function () {
             $(this).bind('click',function (e) {
+              if (isPreview) {
+                return;
+              }
+              // Depending on vote status - trigger appropriate button.
+              var find = settings.openidealUser.voted ? '.openideal-votes-like-delete' : '.openideal-votes-like-submit';
               e.preventDefault();
               $select.get(0).selectedIndex = 0;
-              $this.find('[type=submit]').trigger('click');
-              $this.find('a').addClass('disabled');
-            })
-          })
-          $this.find('.openideal-useful-rating a').eq(1).each(function () {
-            $(this).bind('click',function (e) {
-              e.preventDefault();
-              $select.get(0).selectedIndex = 1;
-              $this.find('[type=submit]').trigger('click');
+              $this.find(find).trigger('click');
               $this.find('a').addClass('disabled');
             })
           })

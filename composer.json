@@ -50,7 +50,8 @@
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/userpoints": "^1.0@alpha",
         "drupal/user_registrationpassword": "1.x-dev",
-        "drupal/votingapi_widgets": "^1.0",
+        "drupal/votingapi": "3.x-dev",
+        "drupal/votingapi_widgets": "1.x-dev",
         "npm-asset/dropzone": "^5.7",
         "npm-asset/jquery-bar-rating": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1"
@@ -65,6 +66,9 @@
                 "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch",
                 "Dispatch events for changing content moderation states": "https://www.drupal.org/files/issues/2018-11-06/2873287-50.patch",
                 "Entity reference error messages are not user friendly": "https://www.drupal.org/files/issues/2020-06-04/3138631-9.patch"
+            },
+            "drupal/votingapi": {
+                "Vote rollover settings are missing the 'Never' option": "https://www.drupal.org/files/issues/2020-05-17/2791129-22-finish-port-of-settings-form.patch"
             },
             "drupal/votingapi_widgets": {
                 "Previewing a Voting API formatter causes the fatals": "https://www.drupal.org/files/issues/2019-01-09/3024465-votingwidgets-4.patch"

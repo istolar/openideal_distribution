@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
@@ -15,6 +16,14 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\openideal_idea\ComputedNumberList;
+use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
+
+/**
+ * Implements hook_cron().
+ */
+function openideal_idea_cron() {
+  Cache::invalidateTags(['openidea:idea:node:overall_score']);
+}
 
 /**
  * Implements hook_form_alter().
@@ -22,9 +31,9 @@ use Drupal\openideal_idea\ComputedNumberList;
 function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'node_idea_form') {
     // Check challenge query parameter.
-    if ($challenge_id = \Drupal::request()->get('challenge')) {
+    if ($challenge_id = Drupal::request()->get('challenge')) {
       // Load predefined challenge node.
-      $predefined_challenge = \Drupal::entityTypeManager()
+      $predefined_challenge = Drupal::entityTypeManager()
         ->getStorage('node')
         ->load($challenge_id);
       if (!empty($predefined_challenge)) {
@@ -67,7 +76,7 @@ function openideal_idea_node_insert(EntityInterface $entity) {
     try {
       // Create the group for the node.
       /** @var \Drupal\group\Entity\Group $group */
-      $group = \Drupal::entityTypeManager()->getStorage('group')
+      $group = Drupal::entityTypeManager()->getStorage('group')
         ->create([
           'label' => $entity->label(),
           'type' => 'idea',
@@ -79,8 +88,8 @@ function openideal_idea_node_insert(EntityInterface $entity) {
       // Add the entity to the group.
       $group->addContent($entity, $plugin_id);
     }
-    catch (\Exception $e) {
-      \Drupal::logger('openideal_idea')->error($e->getMessage());
+    catch (Exception $e) {
+      Drupal::logger('openideal_idea')->error($e->getMessage());
     }
   }
 }
@@ -114,7 +123,7 @@ function openideal_idea_entity_access(EntityInterface $entity, $operation, Accou
  */
 function openideal_idea_comment_create_access(AccountInterface $account, array $context, $entity_bundle) {
   /** @var \Drupal\node\NodeInterface $node */
-  $node = \Drupal::routeMatch()->getParameter('node');
+  $node = Drupal::routeMatch()->getParameter('node');
   if ($node instanceof NodeInterface && $node->bundle() === 'idea') {
     return AccessResult::forbiddenIf(!$node->get('field_duplicate_of')->isEmpty());
   }
@@ -128,7 +137,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
     return;
   }
 
-  $node = \Drupal::routeMatch()->getParameter('node');
+  $node = Drupal::routeMatch()->getParameter('node');
   if ($node->bundle() === 'idea' && $group = _openideal_idea_get_group_by_entity($node)) {
     $data['tabs'][0]['group.members'] = [
       '#theme' => 'menu_local_task',
@@ -136,7 +145,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
         'title' => t('Group Members'),
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
       ],
-      '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
+      '#access' => $group->hasPermission('administer members', Drupal::currentUser()),
     ];
 
     // The tab we're adding is dependent on a user's access to add content.
@@ -156,7 +165,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
 function _openideal_idea_get_group_by_entity($entity) {
   // In our case we will have one node per group.
   // We get all group ids but return just the first one.
-  $group_contents = \Drupal::entityTypeManager()
+  $group_contents = Drupal::entityTypeManager()
     ->getStorage('group_content')
     ->loadByEntity($entity);
   foreach ($group_contents as $group_content) {
@@ -182,7 +191,7 @@ function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface
     unset($form['phase']['#options']['Life Cycle Phases']);
   }
   // Get the list of published and opened challenges.
-  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $node_storage = Drupal::entityTypeManager()->getStorage('node');
   $query = $node_storage->getQuery()
     ->condition('type', 'challenge', '=')
     ->condition('field_is_open', TRUE, '=')
@@ -233,8 +242,16 @@ function openideal_idea_entity_base_field_info(EntityTypeInterface $entity_type)
       ->setLabel(t('Overall score'))
       ->setDescription(t('The moderation state of this piece of content.'))
       ->setComputed(TRUE)
-      ->setClass(ComputedNumberList::class)
-      ->setTranslatable(TRUE);
+      ->setClass(ComputedNumberList::class);
   }
   return $fields;
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function openideal_idea_entity_type_build(array &$entity_types) {
+  // Replace default form for OpenidealLikeWidget widget plugin.
+  // To add "un-like" ability to the Idea bundle.
+  $entity_types['vote']->setFormClass('votingapi_openideal_useful', OpenidealBaseRatingForm::class);
 }
