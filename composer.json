@@ -56,6 +56,9 @@
         "npm-asset/jquery-bar-rating": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1"
     },
+    "replace": {
+        "antennaio/jquery-bar-rating": "1.2.2"
+    },
     "config": {
         "sort-packages": true
     },
