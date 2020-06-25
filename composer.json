@@ -13,18 +13,6 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "antennaio/jquery-bar-rating",
-                "version": "1.2.2",
-                "type": "drupal-library",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://github.com/antennaio/jquery-bar-rating/archive/v1.2.2.zip"
-                }
-            }
         }
     ],
     "require": {
@@ -65,8 +53,11 @@
         "drupal/votingapi": "3.x-dev",
         "drupal/votingapi_widgets": "1.x-dev",
         "npm-asset/dropzone": "^5.7",
-        "antennaio/jquery-bar-rating": "1.2.2",
+        "npm-asset/jquery-bar-rating": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1"
+    },
+    "replace": {
+        "antennaio/jquery-bar-rating": "1.2.2"
     },
     "config": {
         "sort-packages": true
