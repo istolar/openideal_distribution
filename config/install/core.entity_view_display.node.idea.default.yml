@@ -254,8 +254,9 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: above
-                type: openideal_overall_score_formatter
-                settings: {  }
+                type: string
+                settings:
+                  link_to_entity: false
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity

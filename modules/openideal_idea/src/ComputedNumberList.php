@@ -49,13 +49,6 @@ class ComputedNumberList extends FieldItemList {
       ->count()
       ->execute();
 
-    // Get node votes.
-    $votes = Drupal::entityQuery('vote')
-      ->condition('entity_id', $id)
-      ->condition('entity_type', 'node')
-      ->count()
-      ->execute();
-
     // Compute the score.
     $node_counter_value = 0;
 
