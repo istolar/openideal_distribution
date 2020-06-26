@@ -30,11 +30,6 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
-  flag_challenge_flag:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   flag_follow:
     weight: 10
     settings: {  }
