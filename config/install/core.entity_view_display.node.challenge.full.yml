@@ -237,11 +237,6 @@ content:
     third_party_settings: {  }
     type: file_default
     region: content
-  flag_challenge_flag:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   flag_follow:
     weight: 10
     settings: {  }
