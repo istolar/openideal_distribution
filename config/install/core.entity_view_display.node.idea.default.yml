@@ -177,16 +177,6 @@ third_party_settings:
                 type: comment_default
             additional: {  }
             weight: 11
-          cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
-            uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:idea:content_moderation_control'
-            additional: {  }
-            weight: 12
           ed7b737e-ebf4-4185-aa48-5efba7e14607:
             uuid: ed7b737e-ebf4-4185-aa48-5efba7e14607
             region: content
