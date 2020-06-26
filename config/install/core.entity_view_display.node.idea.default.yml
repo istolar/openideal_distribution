@@ -177,16 +177,6 @@ third_party_settings:
                 type: comment_default
             additional: {  }
             weight: 11
-          cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
-            uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:idea:content_moderation_control'
-            additional: {  }
-            weight: 12
           ed7b737e-ebf4-4185-aa48-5efba7e14607:
             uuid: ed7b737e-ebf4-4185-aa48-5efba7e14607
             region: content
@@ -244,6 +234,25 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 12
+          41567fc4-aa06-4041-bd5e-a39b6e50d3fc:
+            uuid: 41567fc4-aa06-4041-bd5e-a39b6e50d3fc
+            region: content
+            configuration:
+              id: 'field_block:node:idea:overall_score'
+              label: 'Overall score'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: above
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 14
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -334,6 +343,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_voting:
     weight: 110
     label: above

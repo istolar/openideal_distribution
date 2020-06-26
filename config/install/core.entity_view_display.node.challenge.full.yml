@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
     - field.field.node.challenge.field_main_image
+    - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
@@ -251,4 +252,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  addtoany: true
+  field_meta_tags: true
