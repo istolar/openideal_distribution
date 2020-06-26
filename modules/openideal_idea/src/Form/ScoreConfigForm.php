@@ -14,34 +14,6 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 class ScoreConfigForm extends ConfigFormBase {
 
   /**
-   * Drupal\Core\Extension\ModuleHandlerInterface definition.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
-   */
-  protected $moduleHandler;
-
-  /**
-   * {@inheritDoc}
-   */
-  public function __construct(
-    ConfigFactoryInterface $config_factory,
-    ModuleHandlerInterface $module_handler
-  ) {
-    parent::__construct($config_factory);
-    $this->moduleHandler = $module_handler;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('config.factory'),
-      $container->get('module_handler')
-    );
-  }
-
-  /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
@@ -81,7 +53,7 @@ class ScoreConfigForm extends ConfigFormBase {
 
     $form['node'] = [
       '#type' => 'number',
-      '#title' => $this->t('Node'),
+      '#title' => $this->t('Views score value'),
       '#min' => 0.1,
       '#step' => 0.1,
       '#default_value' => $config->get('node') ?? 0.2,
