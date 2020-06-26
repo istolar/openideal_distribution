@@ -5,10 +5,15 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
+use Drupal\flag\FlagInterface;
 use Drupal\group\Entity\GroupContent;
+use Drupal\node\NodeInterface;
 use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserGroupEvent;
 use Drupal\openideal_user\Event\OpenidealUserJoinedSiteEvent;
@@ -71,15 +76,15 @@ function openideal_user_entity_type_alter(array &$entity_types) {
  * Implements hook_preprocess_HOOK().
  */
 function openideal_user_preprocess_page(&$variables) {
-  if (\Drupal::currentUser()->isAuthenticated()) {
-    $user_id = \Drupal::currentUser()->id();
-    $user = \Drupal::entityTypeManager()->getStorage('user')->load($user_id);
-    $current_route = \Drupal::service('current_route_match')->getRouteName();
+  if (Drupal::currentUser()->isAuthenticated()) {
+    $user_id = Drupal::currentUser()->id();
+    $user = Drupal::entityTypeManager()->getStorage('user')->load($user_id);
+    $current_route = Drupal::service('current_route_match')->getRouteName();
     // Check if any of user field empty, if so set a remind message.
     if (($user->get('field_age_group')->isEmpty() || $user->get('field_gender')->isEmpty())
       && ($current_route !== 'entity.user.edit_form' && $current_route !== 'openideal_user.register.user.more_about_you')
       && !$user->hasRole('administrator')) {
-      \Drupal::messenger()->addMessage(t('Please fill your <a href="@link">profile</a>',
+      Drupal::messenger()->addMessage(t('Please fill your <a href="@link">profile</a>',
         ['@link' => Url::fromRoute('entity.user.edit_form', ['user' => $user_id])->toString()]
       ));
     }
@@ -90,14 +95,43 @@ function openideal_user_preprocess_page(&$variables) {
  * Implements hook_ENTITY_TYPE_insert().
  */
 function openideal_user_group_content_insert(GroupContent $entity) {
-  $event = new OpenidealUserGroupEvent($entity);
-  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_GROUP, $event);
+  if ($entity->getGroupContentType()->id() == 'idea-group_membership') {
+    $event = new OpenidealUserGroupEvent($entity);
+    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_GROUP, $event);
+  }
 }
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
  */
 function openideal_user_group_content_delete(GroupContent $entity) {
-  $event = new OpenidealUserGroupEvent($entity);
-  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
+  if ($entity->getGroupContentType()->id() == 'idea-group_membership') {
+    $event = new OpenidealUserGroupEvent($entity);
+    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
+  }
+}
+
+/**
+ * Implements hook_flag_action_access().
+ *
+ * If user is Idea creator then restrict "unfollow" access.
+ */
+function openideal_idea_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+  if ($flaggable && $flaggable instanceof NodeInterface && $action == 'unflag' && $flaggable->bundle() == 'idea') {
+    /** @var \Drupal\group\Entity\Storage\GroupContentStorage $storage */
+    $storage = Drupal::entityTypeManager()->getStorage('group_content');
+
+    /** @var \Drupal\group\Entity\GroupContent $group_content */
+    $group_contents = $storage->loadByEntity($flaggable);
+
+    // As one node can be a part of one group,
+    // get the first element.
+    $group_content = reset($group_contents);
+    $member = $group_content->getGroup()->getMember($account);
+
+    if ($member && array_key_exists('idea-author', $member->getRoles())) {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::allowed();
 }
