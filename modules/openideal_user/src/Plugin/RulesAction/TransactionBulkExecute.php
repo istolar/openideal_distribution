@@ -99,6 +99,11 @@ class TransactionBulkExecute extends RulesActionBase implements ContainerFactory
     $storage = $this->entityTypeManager->getStorage('group_content');
     /** @var \Drupal\group\Entity\GroupContent $group_content */
     $group_contents = $storage->loadByEntity($this->getContextValue('idea'));
+    // In case if node were deleted.
+    // Because STATE_CHANGED event invokes even if node deleted.
+    if (empty($group_contents)) {
+      return [];
+    }
     $group_content = reset($group_contents);
     // @Todo: maybe better to not loop through transaction module "rules" actions
     // but just create userpoints "transaction" manually.

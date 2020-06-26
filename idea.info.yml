@@ -70,6 +70,7 @@ dependencies:
   - rules:rules
   - drupal:serialization
   - drupal:shortcut
+  - drupal:statistics
   - social_auth_facebook:social_auth_facebook
   - social_auth_github:social_auth_github
   - social_auth_google:social_auth_google

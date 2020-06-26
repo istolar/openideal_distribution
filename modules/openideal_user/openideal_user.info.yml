@@ -12,3 +12,5 @@ dependencies:
   - social_auth_github:social_auth_github
   - social_auth_google:social_auth_google
   - social_auth_linkedin:social_auth_linkedin
+  - rules:rules
+  - ckeditor_mentions:ckeditor_mentions
