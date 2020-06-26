@@ -4,7 +4,7 @@ dependencies: {  }
 id: idea
 label: Idea
 description: 'It provides an idea group type.'
-creator_membership: true
-creator_wizard: true
+creator_membership: false
+creator_wizard: false
 creator_roles:
   - idea-author
