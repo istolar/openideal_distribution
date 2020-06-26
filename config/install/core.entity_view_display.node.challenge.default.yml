@@ -124,6 +124,16 @@ third_party_settings:
                 type: entity_reference_label
             additional: {  }
             weight: 6
+          5857031f-2b9f-4734-a83c-53f0cb56a2d3:
+            uuid: 5857031f-2b9f-4734-a83c-53f0cb56a2d3
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:challenge:flag_challenge_flag'
+            additional: {  }
+            weight: 7
           a81b245a-667d-4c6c-a532-32b4e873a578:
             uuid: a81b245a-667d-4c6c-a532-32b4e873a578
             region: content
