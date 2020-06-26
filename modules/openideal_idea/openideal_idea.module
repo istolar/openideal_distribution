@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
+use Drupal\flag\FlagInterface;
 use Drupal\node\NodeInterface;
 use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
 
@@ -60,7 +61,7 @@ function openideal_idea_node_presave(NodeInterface $node) {
 /**
  * Implements hook_ENTITY_TYPE_insert().
  */
-function openideal_idea_node_insert(EntityInterface $entity) {
+function openideal_idea_node_insert(NodeInterface $entity) {
   if ($entity->bundle() == 'idea') {
     try {
       // Create the group for the node.
@@ -76,6 +77,12 @@ function openideal_idea_node_insert(EntityInterface $entity) {
       $plugin_id = 'group_node:' . $entity->bundle();
       // Add the entity to the group.
       $group->addContent($entity, $plugin_id);
+
+      // Author follow the node after its creating.
+      /** @var \Drupal\flag\FlagService $flag_service*/
+      $flag_service = Drupal::service('flag');
+      $flag = $flag_service->getFlagById('follow');
+      $flag_service->flag($flag, $entity, $entity->getOwner());
     }
     catch (Exception $e) {
       Drupal::logger('openideal_idea')->error($e->getMessage());
@@ -215,4 +222,33 @@ function openideal_idea_entity_type_build(array &$entity_types) {
   // Replace default form for OpenidealLikeWidget widget plugin.
   // To add "un-like" ability to the Idea bundle.
   $entity_types['vote']->setFormClass('votingapi_openideal_useful', OpenidealBaseRatingForm::class);
+}
+
+/**
+ * Implements hook_flag_action_access().
+ *
+ * If user is Idea creator then restrict "unfollow" access.
+ */
+function openideal_idea_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+  if ($flaggable && $flaggable instanceof NodeInterface && $action == 'unflag' && $flaggable->bundle() == 'idea') {
+    /** @var \Drupal\group\GroupMembershipLoaderInterface $membership_loader */
+    $membership_loader = Drupal::service('group.membership_loader');
+
+    /** @var \Drupal\group\Entity\Storage\GroupContentStorage $storage */
+    $storage = Drupal::entityTypeManager()->getStorage('group_content');
+
+    /** @var \Drupal\group\Entity\GroupContent $group_content */
+    $group_contents = $storage->loadByEntity($flaggable);
+
+    // Don't need to check all of group contents,
+    // such as they all from one group.
+    $group_content = reset($group_contents);
+    $group = $group_content->getGroup();
+
+    /** @var \Drupal\group\GroupMembership $member */
+    $member = $membership_loader->load($group, $account);
+
+    return AccessResult::forbiddenIf(array_key_exists('idea-author', $member->getRoles()));
+  }
+  return AccessResult::neutral();
 }
