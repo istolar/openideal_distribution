@@ -7,6 +7,7 @@ core_version_requirement: ^8 || ^9
 # Required modules
 dependencies:
   # Core and contrib modules.
+  - addtoany:addtoany
   - admin_toolbar:admin_toolbar
   - admin_toolbar_search:admin_toolbar_search
   - admin_toolbar_tools:admin_toolbar_tools
@@ -19,6 +20,7 @@ dependencies:
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - ckeditor_mentions:ckeditor_mentions
   - drupal:comment
   - drupal:config
   - config_pages:config_pages
@@ -47,10 +49,14 @@ dependencies:
   - drupal:hal
   - drupal:history
   - drupal:image
+  - drupal:inline_form_errors
   - drupal:layout_builder
   - drupal:layout_discovery
   - drupal:link
   - drupal:menu_ui
+  - metatag:metatag
+  - metatag:metatag_open_graph
+  - metatag:metatag_twitter_cards
   - multiple_fields_remove_button:multiple_fields_remove_button
   - drupal:node
   - drupal:options
@@ -61,13 +67,14 @@ dependencies:
   - rabbit_hole:rabbit_hole
   - rh_node:rh_node
   - rh_taxonomy:rh_taxonomy
+  - rules:rules
   - drupal:serialization
   - drupal:shortcut
+  - drupal:statistics
   - social_auth_facebook:social_auth_facebook
   - social_auth_github:social_auth_github
   - social_auth_google:social_auth_google
   - social_auth_linkedin:social_auth_linkedin
-  - social_auth_twitter:social_auth_twitter
   - drupal:system
   - drupal:taxonomy
   - drupal:text
@@ -80,9 +87,12 @@ dependencies:
   - drupal:update
   - drupal:user
   - user_registrationpassword:user_registrationpassword
+  - userpoints:userpoints
   - drupal:views_ui
   - drupal:workflows
   - drupal:menu_link_content
+  - votingapi:votingapi
+  - votingapi_widgets:votingapi_widgets
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules

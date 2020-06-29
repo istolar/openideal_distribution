@@ -103,8 +103,6 @@ class OpenidealChallengeService implements OpenidealChallengeServiceInterface {
       $node->set($operation_field_name, NULL);
       $node->save();
 
-      // TODO: implement event subscriber for sending emails to challenge
-      // TODO: maintainer or/and subscribed users.
       // Trigger the CHALLENGE_CLOSE event so that modules can react after the
       // node is closed.
       $event = new OpenidealChallengeEvent($node);

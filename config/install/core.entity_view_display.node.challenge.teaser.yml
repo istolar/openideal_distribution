@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
     - field.field.node.challenge.field_main_image
+    - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
@@ -29,7 +30,7 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
-  flag_challenge_flag:
+  flag_follow:
     weight: 10
     settings: {  }
     third_party_settings: {  }
@@ -40,11 +41,13 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  addtoany: true
   field_category: true
   field_comments: true
   field_images: true
   field_is_open: true
   field_main_image: true
+  field_meta_tags: true
   field_schedule_close: true
   field_schedule_open: true
   field_supporting_data: true

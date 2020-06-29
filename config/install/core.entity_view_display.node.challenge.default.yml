@@ -9,16 +9,19 @@ dependencies:
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
     - field.field.node.challenge.field_main_image
+    - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
   module:
+    - addtoany
     - comment
     - file
     - image
     - layout_builder
     - layout_discovery
+    - metatag
     - text
     - user
 third_party_settings:
@@ -31,16 +34,6 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          3a0f0eaa-1384-4043-836c-acf336dc3678:
-            uuid: 3a0f0eaa-1384-4043-836c-acf336dc3678
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:challenge:links'
-            additional: {  }
-            weight: 0
           1dbf35fd-e81f-4bc3-8c30-77872325ff06:
             uuid: 1dbf35fd-e81f-4bc3-8c30-77872325ff06
             region: content
@@ -55,7 +48,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 2
+            weight: 3
           c1d8734b-4c94-496e-8b70-048c1902283a:
             uuid: c1d8734b-4c94-496e-8b70-048c1902283a
             region: content
@@ -75,7 +68,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
           5bfed01c-5b06-43cb-9951-828b4b7fae2f:
             uuid: 5bfed01c-5b06-43cb-9951-828b4b7fae2f
             region: content
@@ -94,7 +87,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
           f89702f1-7647-45e4-9ef8-a782f8d764f2:
             uuid: f89702f1-7647-45e4-9ef8-a782f8d764f2
             region: content
@@ -114,7 +107,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
           fc3c21ee-7025-45f1-8211-6ccb468ab061:
             uuid: fc3c21ee-7025-45f1-8211-6ccb468ab061
             region: content
@@ -129,16 +122,6 @@ third_party_settings:
                   link: true
                 third_party_settings: {  }
                 type: entity_reference_label
-            additional: {  }
-            weight: 5
-          5857031f-2b9f-4734-a83c-53f0cb56a2d3:
-            uuid: 5857031f-2b9f-4734-a83c-53f0cb56a2d3
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:challenge:flag_challenge_flag'
             additional: {  }
             weight: 6
           a81b245a-667d-4c6c-a532-32b4e873a578:
@@ -157,7 +140,43 @@ third_party_settings:
                 third_party_settings: {  }
                 type: comment_default
             additional: {  }
-            weight: 7
+            weight: 8
+          c516b6c0-2756-43cc-8848-fbe6301c390f:
+            uuid: c516b6c0-2756-43cc-8848-fbe6301c390f
+            region: content
+            configuration:
+              id: addtoany_block
+              label: 'AddToAny buttons'
+              provider: addtoany
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 9
+          3a0f0eaa-1384-4043-836c-acf336dc3678:
+            uuid: 3a0f0eaa-1384-4043-836c-acf336dc3678
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:challenge:links'
+            additional: {  }
+            weight: 1
+          2fca7ae0-60c5-43df-9132-4c3c99bf9f70:
+            uuid: 2fca7ae0-60c5-43df-9132-4c3c99bf9f70
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_meta_tags'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: metatag_empty_formatter
+            additional: {  }
+            weight: 10
         third_party_settings: {  }
 id: node.challenge.default
 targetEntityType: node
@@ -216,6 +235,13 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_meta_tags:
+    weight: 112
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
   field_schedule_close:
     weight: 111
     label: above
@@ -244,14 +270,10 @@ content:
     third_party_settings: {  }
     type: file_default
     region: content
-  flag_challenge_flag:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  addtoany: true
