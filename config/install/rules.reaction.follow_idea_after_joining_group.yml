@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: set_the_user_to_follow_the_idea_after_joining_the_group_
+id: follow_idea_after_joining_group
 label: 'Set the user to follow the idea after joining the group.'
 events:
   -
@@ -46,11 +46,14 @@ expression:
         weight: 0
         context_values:
           operation: flag
+          flag_id: follow
         context_mapping:
           entity: node
           user: user
         context_processors:
           operation:
+            rules_tokens: {  }
+          flag_id:
             rules_tokens: {  }
         provides_mapping: {  }
         action_id: openideal_user_flag_action
