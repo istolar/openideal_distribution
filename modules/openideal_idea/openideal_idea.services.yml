@@ -4,3 +4,7 @@ services:
     arguments: []
     tags:
       - { name: event_subscriber }
+  openideal_idea.helper:
+    class: Drupal\openideal_idea\OpenidealHelper
+    arguments:
+      - '@entity_type.manager'
