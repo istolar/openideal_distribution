@@ -1,5 +1,0 @@
-name: 'OpenideaL Flavour'
-type: module
-description: 'Provides main features/functionality for OpenideaL project.'
-core: 8.x
-package: 'OpenideaL'
