@@ -46,6 +46,12 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
     unset($form['group_roles']['widget']['#options']['idea-author']);
     unset($form['group_roles']['widget']['#options']['idea-expert']);
   }
+
+  // Unset useless group roles for group idea membership edit form.
+  if ($form_id == 'group_content_idea-group_membership_edit_form') {
+    unset($form['group_roles']['widget']['#options']['idea-author']);
+  }
+
 }
 
 /**
