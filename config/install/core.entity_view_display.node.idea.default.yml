@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.idea.field_challenge
     - field.field.node.idea.field_comments
     - field.field.node.idea.field_duplicate_of
+    - field.field.node.idea.field_followers
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
@@ -244,25 +245,25 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 12
-          41567fc4-aa06-4041-bd5e-a39b6e50d3fc:
-            uuid: 41567fc4-aa06-4041-bd5e-a39b6e50d3fc
+          1a9605e4-49ea-4d56-96fd-9463be0cb77d:
+            uuid: 1a9605e4-49ea-4d56-96fd-9463be0cb77d
             region: content
             configuration:
-              id: 'field_block:node:idea:overall_score'
-              label: 'Overall score'
+              id: 'field_block:node:idea:field_followers'
+              label: Followers
               provider: layout_builder
               label_display: '0'
               formatter:
                 label: above
-                type: string
+                type: entity_reference_entity_view
                 settings:
-                  link_to_entity: false
+                  view_mode: follower
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 14
+            weight: 15
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -316,6 +317,14 @@ content:
     region: content
   field_duplicate_of:
     weight: 107
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_followers:
+    weight: 111
     label: above
     settings:
       link: true

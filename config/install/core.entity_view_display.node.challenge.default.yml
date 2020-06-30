@@ -177,6 +177,16 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 10
+          aee3e006-5469-40d1-92f6-90b4bca1a71d:
+            uuid: aee3e006-5469-40d1-92f6-90b4bca1a71d
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:challenge:flag_follow'
+            additional: {  }
+            weight: 11
         third_party_settings: {  }
 id: node.challenge.default
 targetEntityType: node
@@ -269,6 +279,11 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
+    region: content
+  flag_follow:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
     region: content
   links:
     weight: 100
