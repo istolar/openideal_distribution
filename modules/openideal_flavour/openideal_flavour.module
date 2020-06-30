@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_flavour.module.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_access().
+ */
+function openideal_flavour_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  // If current user isn't a member of group restrict access.
+  if ($op == 'view' && $node->bundle() == 'idea') {
+    $group = \Drupal::service('openideal_idea.helper')
+      ->getGroupByNode($node);
+
+    if (!$group->getMember($account)) {
+      return AccessResult::forbidden();
+    }
+  }
+}
+
+/**
+ * Implements hook_node_grants().
+ */
+function openideal_flavour_node_grants(AccountInterface $account, $op) {
+  if (\Drupal::routeMatch()->getRouteName() == 'view.ideas.all_ideas_page') {
+    return ['all' => []];
+  }
+}

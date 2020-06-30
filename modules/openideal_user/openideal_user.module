@@ -5,19 +5,15 @@
  * Contains openideal_idea.module.
  */
 
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
-use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupContent;
-use Drupal\node\NodeInterface;
 use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserGroupEvent;
 use Drupal\openideal_user\Event\OpenidealUserJoinedSiteEvent;
 use Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm;
 use Drupal\user\UserInterface;
-use Drupal\views\ViewExecutable;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -104,46 +100,4 @@ function openideal_user_group_content_insert(GroupContent $entity) {
 function openideal_user_group_content_delete(GroupContent $entity) {
   $event = new OpenidealUserGroupEvent($entity);
   Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
-}
-
-/**
- * Implements hook_views_pre_render().
- */
-function openideal_user_views_pre_render(ViewExecutable $view) {
-  // For the "all ideas" views page set per row "access".
-  if ($view->id() == 'ideas' && !empty($result = $view->result)) {
-    $current_user = \Drupal::currentUser();
-    // If user anonymous don't show ideas.
-    // @Todo: create separate permission for ideas?
-    if ($current_user->isAnonymous()) {
-      $view->result = [];
-    }
-
-    foreach ($result as $key => $item) {
-      /** @var \Drupal\group\Entity\Group $group */
-      $group = \Drupal::service('openideal_idea.helper')
-        ->getGroupByNode($item->_entity);
-
-      $member = $group->getMember($current_user);
-
-      if (!$member) {
-        unset($view->result[$key]);
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_node_access().
- */
-function openideal_user_node_access(NodeInterface $node, $op, AccountInterface $account) {
-  // If current user isn't a member of group restrict access.
-  if ($op == 'view') {
-    $group = \Drupal::service('openideal_idea.helper')
-      ->getGroupByNode($node);
-
-    if (!$group->getMember($account)) {
-      return AccessResult::forbidden();
-    }
-  }
 }

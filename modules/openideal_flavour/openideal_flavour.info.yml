@@ -1,0 +1,7 @@
+name: 'OpenideaL Flavour'
+type: module
+description: 'Provides main features/functionality for OpenideaL project.'
+package: 'OpenideaL'
+
+core: 8.x
+core_version_requirement: ^8 || ^9
