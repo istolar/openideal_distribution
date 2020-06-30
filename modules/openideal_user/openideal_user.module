@@ -5,10 +5,15 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
+use Drupal\flag\FlagInterface;
 use Drupal\group\Entity\GroupContent;
+use Drupal\node\NodeInterface;
 use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserGroupEvent;
 use Drupal\openideal_user\Event\OpenidealUserJoinedSiteEvent;
@@ -21,8 +26,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   /** @var \Drupal\social_api\Plugin\NetworkManager $network_manager */
-  $network_manager = Drupal::service('plugin.network.manager');
-  $social_plugins = Drupal::config('social_auth.settings')->get('auth');
+  $network_manager = \Drupal::service('plugin.network.manager');
+  $social_plugins = \Drupal::config('social_auth.settings')->get('auth');
 
   // Remove socials that aren't configured properly.
   foreach ($social_plugins as $plugin_id => $data) {
@@ -41,9 +46,9 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
  * Implements hook_user_login().
  */
 function openideal_user_user_login(UserInterface $account) {
-  if (RouteMatch::createFromRequest(Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
+  if (RouteMatch::createFromRequest(\Drupal::request())->getRouteName() == 'user_registrationpassword.confirm') {
     $event = new OpenidealUserJoinedSiteEvent($account);
-    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
+    \Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
 
     // Redirect user if joined the site for the first
     // time via the user_registrationpassword one time link.
@@ -55,7 +60,7 @@ function openideal_user_user_login(UserInterface $account) {
   // OpenidealUserEvents.
   if (!$account->getLastAccessedTime()) {
     $event = new OpenidealUserJoinedSiteEvent($account);
-    Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
+    \Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_THE_SITE, $event);
   }
 }
 
@@ -90,14 +95,34 @@ function openideal_user_preprocess_page(&$variables) {
  * Implements hook_ENTITY_TYPE_insert().
  */
 function openideal_user_group_content_insert(GroupContent $entity) {
-  $event = new OpenidealUserGroupEvent($entity);
-  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_GROUP, $event);
+  if ($entity->getGroupContentType()->id() == 'idea-group_membership') {
+    $event = new OpenidealUserGroupEvent($entity);
+    \Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_JOINED_GROUP, $event);
+  }
 }
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
  */
 function openideal_user_group_content_delete(GroupContent $entity) {
-  $event = new OpenidealUserGroupEvent($entity);
-  Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
+  if ($entity->getGroupContentType()->id() == 'idea-group_membership') {
+    $event = new OpenidealUserGroupEvent($entity);
+    \Drupal::service('event_dispatcher')->dispatch(OpenidealUserEvents::OPENIDEA_USER_LEFT_GROUP, $event);
+  }
+}
+
+/**
+ * Implements hook_flag_action_access().
+ *
+ * If user is Idea creator then restrict "unfollow" access.
+ */
+function openideal_idea_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+  if ($flaggable
+    && $flaggable instanceof NodeInterface
+    && $action == 'unflag'
+    && $flaggable->bundle() == 'idea'
+    && $flaggable->uid->target_id == $account->id()) {
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
 }

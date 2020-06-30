@@ -13,9 +13,12 @@ openideal_user.user_joined_group:
   label: 'After user joined the group'
   category: 'User'
   context_definitions:
-    group:
+    groupContent:
       type: 'entity:group_content'
-      label: 'Group that contains the user.'
+      label: 'Group content entity that contains the user.'
+    node:
+      type: 'entity:node'
+      label: 'Node that unite the group.'
     user:
       type: 'entity:user'
       label: 'Group owner user.'
@@ -24,9 +27,12 @@ openideal_user.user_left_group:
   label: 'After user left the group'
   category: 'User'
   context_definitions:
-    group:
+    groupContent:
       type: 'entity:group_content'
-      label: 'Group that contains the user.'
+      label: 'Group content entity that contains the user.'
+    node:
+      type: 'entity:node'
+      label: 'Node that unite the group.'
     user:
       type: 'entity:user'
       label: 'Group owner user.'
