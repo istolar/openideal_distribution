@@ -117,21 +117,12 @@ function openideal_user_group_content_delete(GroupContent $entity) {
  * If user is Idea creator then restrict "unfollow" access.
  */
 function openideal_idea_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
-  if ($flaggable && $flaggable instanceof NodeInterface && $action == 'unflag' && $flaggable->bundle() == 'idea') {
-    /** @var \Drupal\group\Entity\Storage\GroupContentStorage $storage */
-    $storage = \Drupal::entityTypeManager()->getStorage('group_content');
-
-    /** @var \Drupal\group\Entity\GroupContent $group_content */
-    $group_contents = $storage->loadByEntity($flaggable);
-
-    // As one node can be a part of one group,
-    // get the first element.
-    $group_content = reset($group_contents);
-    $member = $group_content->getGroup()->getMember($account);
-
-    if ($member && array_key_exists('idea-author', $member->getRoles())) {
-      return AccessResult::forbidden();
-    }
+  if ($flaggable
+    && $flaggable instanceof NodeInterface
+    && $action == 'unflag'
+    && $flaggable->bundle() == 'idea'
+    && $flaggable->uid->target_id == $account->id()) {
+    return AccessResult::forbidden();
   }
   return AccessResult::allowed();
 }

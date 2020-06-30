@@ -12,7 +12,7 @@ use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'Save entity' action.
+ * Provides a Flag action.
  *
  * @RulesAction(
  *   id = "openideal_user_flag_action",
@@ -106,7 +106,12 @@ class FlagAction extends RulesActionBase implements ContainerFactoryPluginInterf
     if ($this->validateOperation($operation)) {
       $flag = $this->flagService->getFlagById($flag_id);
       if ($flag) {
-        $this->flagService->{$operation}($flag, $entity, $user);
+        try {
+          $this->flagService->{$operation}($flag, $entity, $user);
+        }
+        catch (\LogicException $exception) {
+          $this->logger->warning($exception->getMessage());
+        }
       }
       else {
         $this->logger->warning($this->t("Provided flag id doesn't exists"));
