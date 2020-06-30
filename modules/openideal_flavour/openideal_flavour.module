@@ -28,7 +28,5 @@ function openideal_flavour_node_access(NodeInterface $node, $op, AccountInterfac
  * Implements hook_node_grants().
  */
 function openideal_flavour_node_grants(AccountInterface $account, $op) {
-  if (\Drupal::routeMatch()->getRouteName() == 'view.ideas.all_ideas_page') {
-    return ['all' => []];
-  }
+  return ['all' => []];
 }
