@@ -1,0 +1,52 @@
+openideal_toolbar.help:
+  title: 'OpenideaL'
+  route_name: openideal_toolbar.system
+  menu_name: admin
+  parent: system.admin
+  weight: 4
+
+openideal_toolbar.all_challenges_page:
+  title: 'Challenges'
+  description: 'All challenges page.'
+  route_name: view.challenges.all_challenges_page
+  parent: openideal_toolbar.help
+  weight: 1
+
+openideal_toolbar.all_ideas_page:
+  title: 'Ideas'
+  description: 'All ideas page.'
+  route_name: view.ideas.all_ideas_page
+  parent: openideal_toolbar.help
+  weight: 2
+
+openideal_toolbar.user_points:
+  title: 'Points'
+  route_name: view.user_points.page_totals
+  description: 'User points details.'
+  parent: openideal_toolbar.help
+  weight: 3
+
+openideal_toolbar.user_points.totals:
+  title: 'Totals'
+  route_name: view.user_points.page_totals
+  parent: openideal_toolbar.user_points
+  weight: 1
+
+openideal_toolbar.user_points.transactions:
+  title: 'Transactions'
+  route_name: view.user_points.page_1
+  parent: openideal_toolbar.user_points
+  weight: 2
+
+openideal_toolbar.configuration:
+  title: 'Configuration'
+  route_name: openideal_toolbar.configuration
+  parent: openideal_toolbar.help
+  weight: 4
+
+openideal_toolbar.configuration.formula:
+  title: 'Overall score'
+  route_name: openideal_idea.openideal_idea_score_config_form
+  parent: openideal_toolbar.configuration
+  description: '"Overall score" formula configuration'
+  weight: 1
