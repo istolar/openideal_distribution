@@ -100,7 +100,6 @@ dependencies:
   - openideal_faq:openideal_faq
   - openideal_idea:openideal_idea
   - openideal_user:openideal_user
-  - openideal_flavours:openideal_flavours
 
 themes:
   - adminimal_theme
