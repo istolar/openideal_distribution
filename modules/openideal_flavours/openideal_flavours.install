@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for openideal_flavour.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function openideal_flavours_install() {
+  // Delete grant with id 0 - 'deny all'.
+  node_access_rebuild();
+}
