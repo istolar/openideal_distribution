@@ -1,0 +1,15 @@
+openideal_toolbar.system:
+  path: '/admin/openideal'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'OpenideaL system'
+  requirements:
+    _permission: 'administer site configuration'
+
+openideal_toolbar.configuration:
+  path: '/admin/openideal/configuration'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Configuration'
+  requirements:
+    _permission: 'administer site configuration'
