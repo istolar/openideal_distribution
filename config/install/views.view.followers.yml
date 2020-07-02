@@ -8,7 +8,7 @@ dependencies:
     - flag
     - node
     - user
-id: follower
+id: followers
 label: Followers
 module: views
 description: ''

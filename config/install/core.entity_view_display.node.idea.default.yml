@@ -15,7 +15,7 @@ dependencies:
     - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
-    - views.view.follower
+    - views.view.followers
   module:
     - addtoany
     - comment
@@ -245,33 +245,20 @@ third_party_settings:
                 third_party_settings: {  }
                 type: comment_default
             additional: {  }
+            weight: 17
+          544ed4a5-8443-41dc-b4ab-4b51515aa56f:
+            uuid: 544ed4a5-8443-41dc-b4ab-4b51515aa56f
+            region: content
+            configuration:
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
             weight: 16
-          377a88e8-410e-49b4-a914-285f88e518c9:
-            uuid: 377a88e8-410e-49b4-a914-285f88e518c9
-            region: content
-            configuration:
-              id: 'views_block:follower-followers'
-              label: ''
-              provider: views
-              label_display: visible
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 14
-          c881a9c6-49cb-49bc-ab87-c22b30a37a59:
-            uuid: c881a9c6-49cb-49bc-ab87-c22b30a37a59
-            region: content
-            configuration:
-              id: 'views_block:follower-followers'
-              label: ''
-              provider: views
-              label_display: visible
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 15
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
