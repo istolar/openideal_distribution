@@ -9,13 +9,13 @@ dependencies:
     - field.field.node.idea.field_challenge
     - field.field.node.idea.field_comments
     - field.field.node.idea.field_duplicate_of
-    - field.field.node.idea.field_followers
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
     - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
+    - views.view.follower
   module:
     - addtoany
     - comment
@@ -26,6 +26,7 @@ dependencies:
     - metatag
     - text
     - user
+    - views
     - votingapi_widgets
 third_party_settings:
   layout_builder:
@@ -161,23 +162,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          664a5bb5-dce6-4c0e-b6ab-eefec74a3128:
-            uuid: 664a5bb5-dce6-4c0e-b6ab-eefec74a3128
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_comments'
-              formatter:
-                label: above
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-                type: comment_default
-            additional: {  }
-            weight: 11
           cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
             uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
             region: content
@@ -245,23 +229,47 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 12
-          1a9605e4-49ea-4d56-96fd-9463be0cb77d:
-            uuid: 1a9605e4-49ea-4d56-96fd-9463be0cb77d
+          664a5bb5-dce6-4c0e-b6ab-eefec74a3128:
+            uuid: 664a5bb5-dce6-4c0e-b6ab-eefec74a3128
             region: content
             configuration:
-              id: 'field_block:node:idea:field_followers'
-              label: Followers
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: follower
-                third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
-                view_mode: view_mode
+              id: 'field_block:node:idea:field_comments'
+              formatter:
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+                type: comment_default
+            additional: {  }
+            weight: 16
+          377a88e8-410e-49b4-a914-285f88e518c9:
+            uuid: 377a88e8-410e-49b4-a914-285f88e518c9
+            region: content
+            configuration:
+              id: 'views_block:follower-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 14
+          c881a9c6-49cb-49bc-ab87-c22b30a37a59:
+            uuid: c881a9c6-49cb-49bc-ab87-c22b30a37a59
+            region: content
+            configuration:
+              id: 'views_block:follower-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
             weight: 15
         third_party_settings: {  }
@@ -317,14 +325,6 @@ content:
     region: content
   field_duplicate_of:
     weight: 107
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_followers:
-    weight: 111
     label: above
     settings:
       link: true
