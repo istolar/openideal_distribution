@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.storage.transaction.field_amount
     - field.storage.user.field_points
+    - system.menu.admin
     - transaction.type.user_points
   module:
     - better_exposed_filters
@@ -1003,6 +1004,15 @@ display:
           entity_type: transaction
           entity_field: target_entity
           plugin_id: standard
+      menu:
+        type: normal
+        title: Transactions
+        description: ''
+        expanded: false
+        parent: openideal_toolbar.user_points
+        weight: 0
+        context: '0'
+        menu_name: admin
     cache_metadata:
       max-age: -1
       contexts:
@@ -1558,11 +1568,11 @@ display:
           plugin_id: field
       group_by: true
       menu:
-        type: none
-        title: TotalDWWDWD
+        type: normal
+        title: Total
         description: ''
         expanded: false
-        parent: system.admin
+        parent: openideal_toolbar.user_points
         weight: 0
         context: '0'
         menu_name: admin
