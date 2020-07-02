@@ -22,17 +22,29 @@ class OpenidealUserGroupEvent extends Event {
    *
    * @var \Drupal\group\Entity\GroupContent
    */
-  public $group;
+  public $groupContent;
+
+  /**
+   * Node that unite the group.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
+  public $node;
 
   /**
    * OpenideaLUserMentionEvent construct.
    *
-   * @param \Drupal\group\Entity\GroupContent $group
+   * @param \Drupal\group\Entity\GroupContent $group_content
    *   Group content entity.
    */
-  public function __construct(GroupContent $group) {
-    $this->group = $group;
-    $this->user = $group->getEntity();
+  public function __construct(GroupContent $group_content) {
+    $this->groupContent = $group_content;
+    // As one node can have be part of one group get first element.
+    // @Todo: check if node can be part more then for one group,
+    // and restrict it, if so.
+    $content = $group_content->getGroup()->getContent('group_node:idea');
+    $this->node = reset($content)->getEntity();
+    $this->user = $group_content->getEntity();
   }
 
   /**
@@ -51,8 +63,18 @@ class OpenidealUserGroupEvent extends Event {
    * @return \Drupal\group\Entity\GroupContent
    *   Group content.
    */
-  public function getGroup() {
-    return $this->group;
+  public function getGroupContent() {
+    return $this->groupContent;
+  }
+
+  /**
+   * Get node that unite the group.
+   *
+   * @return \Drupal\node\NodeInterface
+   *   Node.
+   */
+  public function getNode() {
+    return $this->node;
   }
 
 }

@@ -17,7 +17,7 @@ use Drupal\views\ViewExecutable;
 function openideal_challenge_cron() {
   // Processing open/close scheduling challenge nodes via cron.
   /** @var \Drupal\openideal_challenge\Service\OpenidealChallengeService $challenge_service */
-  $challenge_service = Drupal::service('openideal_challenge.challenge_service');
+  $challenge_service = \Drupal::service('openideal_challenge.challenge_service');
   $challenge_service->openChallenges();
   $challenge_service->closeChallenges();
 }
@@ -82,7 +82,7 @@ function openideal_challenge_views_query_alter(ViewExecutable $view, QueryPlugin
  */
 function openideal_challenge_node_presave(EntityInterface $entity) {
   if ($entity->bundle() == 'challenge') {
-    $event_dispatcher = Drupal::service('event_dispatcher');
+    $event_dispatcher = \Drupal::service('event_dispatcher');
     // If challenge was created react only on if it was opened
     // make no sense to react on close.
     if ($entity->isNew() && $entity->get('field_is_open')->value) {

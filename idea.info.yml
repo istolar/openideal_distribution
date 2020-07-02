@@ -98,6 +98,7 @@ dependencies:
   # Custom modules
   - openideal_challenge:openideal_challenge
   - openideal_faq:openideal_faq
+  - openideal_toolbar:openideal_toolbar
   - openideal_idea:openideal_idea
   - openideal_user:openideal_user
 

@@ -2,7 +2,6 @@
 
 namespace Drupal\openideal_idea;
 
-use Drupal;
 use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\TypedData\ComputedItemListTrait;
 use InvalidArgumentException;
@@ -28,19 +27,19 @@ class ComputedNumberList extends FieldItemList {
    * Get overall score.
    */
   protected function getOverallScore() {
-    $configuration = Drupal::configFactory()->get('openideal_idea.scoreconfig');
+    $configuration = \Drupal::configFactory()->get('openideal_idea.scoreconfig');
     // Node id.
     $id = $this->getEntity()->id();
 
     // Get node comments.
-    $comments = Drupal::entityQuery('comment')
+    $comments = \Drupal::entityQuery('comment')
       ->condition('entity_id', $id)
       ->condition('entity_type', 'node')
       ->count()
       ->execute();
 
     // Get node votes.
-    $votes = Drupal::entityQuery('vote')
+    $votes = \Drupal::entityQuery('vote')
       ->condition('entity_id', $id)
       ->condition('entity_type', 'node')
       ->count()
@@ -50,9 +49,9 @@ class ComputedNumberList extends FieldItemList {
     $node_counter_value = 0;
 
     // If statistics module is enabled then add node view count to score.
-    if (Drupal::moduleHandler()->moduleExists('statistics')) {
+    if (\Drupal::moduleHandler()->moduleExists('statistics')) {
       /** @var \Drupal\statistics\StatisticsViewsResult $statistics_result */
-      $statistics_result = Drupal::service('statistics.storage.node')->fetchView($id);
+      $statistics_result = \Drupal::service('statistics.storage.node')->fetchView($id);
       if ($statistics_result) {
         $node_counter_value = $statistics_result->getTotalCount() * ($configuration->get('node_value') ?? 0.2);
       }
