@@ -13,6 +13,7 @@ permissions:
   - 'access openideal_images_browser entity browser pages'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'access user profiles'
   - 'clear own vote on comment:comment:field_voting_comment'
   - 'clear own vote on node:idea:field_voting'
   - 'create idea content'
