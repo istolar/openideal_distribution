@@ -5,7 +5,6 @@ namespace Drupal\openideal_idea\EventSubscriber;
 use Drupal\content_moderation\Event\ContentModerationEvents;
 use Drupal\content_moderation\Event\ContentModerationStateChangedEvent;
 use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\flag\Event\FlagEvents;
 use Drupal\layout_builder\Event\SectionComponentBuildRenderArrayEvent;
 use Drupal\layout_builder\LayoutBuilderEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -23,8 +22,6 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     $events[ContentModerationEvents::STATE_CHANGED] = ['onContentStateChange'];
     $events[LayoutBuilderEvents::SECTION_COMPONENT_BUILD_RENDER_ARRAY] = ['onComponentBuild'];
-    $events[FlagEvents::ENTITY_FLAGGED] = ['onFlag'];
-    $events[FlagEvents::ENTITY_UNFLAGGED] = ['onUnflag'];
     return $events;
   }
 
