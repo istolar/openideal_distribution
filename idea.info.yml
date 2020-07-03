@@ -101,6 +101,7 @@ dependencies:
   - openideal_toolbar:openideal_toolbar
   - openideal_idea:openideal_idea
   - openideal_user:openideal_user
+  - openideal_slideshow:openideal_slideshow
 
 themes:
   - adminimal_theme
