@@ -15,13 +15,21 @@ use Drupal\Core\Link;
 function openideal_theme_preprocess_comment(&$variables) {
   // Change the default permalink of comment title.
   $comment = $variables['elements']['#comment'];
+  $owner = $comment->getOwner();
   $commented_entity = $comment->getCommentedEntity();
   $uri = $commented_entity->toUrl();
+
+  // Set attributes for permalink.
   $attributes = $uri->getOption('attributes') ?: [];
   $attributes += ['class' => ['permalink'], 'rel' => 'bookmark'];
   $uri->setOptions([
     'attributes' => $attributes,
     'fragment' => 'comment-' . $comment->id(),
   ]);
-  $variables['title'] = Link::fromTextAndUrl($comment->getSubject(), $uri)->toString();
+
+  unset($variables['permalink']);
+
+  // Because of user 1 can be without first and last name, just take its name.
+  $owner_name = $owner->realname ?: $owner->name->value;
+  $variables['title'] = Link::fromTextAndUrl($owner_name, $uri)->toString();
 }
