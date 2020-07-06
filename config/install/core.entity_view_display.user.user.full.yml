@@ -9,7 +9,9 @@ dependencies:
     - field.field.user.user.field_last_name
     - field.field.user.user.field_points
     - field.field.user.user.user_picture
+    - views.view.my_comments
     - views.view.user_group_contents
+    - views.view.user_page
   module:
     - image
     - layout_builder
@@ -160,6 +162,32 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 9
+          ac4ecb87-7d13-45e9-a63d-976afb8ce6cb:
+            uuid: ac4ecb87-7d13-45e9-a63d-976afb8ce6cb
+            region: content
+            configuration:
+              id: 'views_block:user_page-things_i_follow'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 10
+          0b15c169-157a-4785-901f-8080c9032d91:
+            uuid: 0b15c169-157a-4785-901f-8080c9032d91
+            region: content
+            configuration:
+              id: 'views_block:my_comments-my_comments'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 11
         third_party_settings: {  }
 id: user.user.full
 targetEntityType: user
