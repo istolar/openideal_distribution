@@ -14,6 +14,8 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
+  - 'avatars avatar_generator user gravatar_generator'
+  - 'avatars avatar_generator user user_upload'
   - 'clear own vote on comment:comment:field_voting_comment'
   - 'clear own vote on node:idea:field_voting'
   - 'create idea content'

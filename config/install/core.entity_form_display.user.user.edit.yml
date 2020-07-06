@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_form_mode.user.edit
     - entity_browser.browser.openideal_image_browser
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -66,6 +68,8 @@ content:
       view_mode: default
     third_party_settings: {  }
 hidden:
+  avatars_avatar_generator: true
+  avatars_user_picture: true
   contact: true
   field_points: true
   language: true

@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_form_mode.user.additional_details
     - entity_browser.browser.openideal_image_browser
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -18,6 +20,20 @@ targetEntityType: user
 bundle: user
 mode: additional_details
 content:
+  avatars_user_picture:
+    type: entity_browser_file
+    weight: 4
+    region: content
+    settings:
+      entity_browser: openideal_image_browser
+      field_widget_remove: true
+      selection_mode: selection_append
+      preview_image_style: thumbnail
+      field_widget_edit: true
+      field_widget_replace: false
+      open: false
+      view_mode: default
+    third_party_settings: {  }
   field_age_group:
     type: options_select
     weight: 3
@@ -46,23 +62,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  user_picture:
-    type: entity_browser_file
-    weight: 4
-    region: content
-    settings:
-      entity_browser: openideal_image_browser
-      field_widget_remove: true
-      selection_mode: selection_append
-      preview_image_style: thumbnail
-      field_widget_edit: true
-      field_widget_replace: false
-      open: false
-      view_mode: default
-    third_party_settings: {  }
 hidden:
   account: true
+  avatars_avatar_generator: true
   contact: true
   field_points: true
   language: true
   timezone: true
+  user_picture: true
