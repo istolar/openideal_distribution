@@ -48,7 +48,6 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
    *   Event.
    */
   public function onComponentBuild(SectionComponentBuildRenderArrayEvent $event) {
-    /** @var \Drupal\layout_builder\Plugin\Block\FieldBlock $kek */
     if ($event->getPlugin()->getPLuginId() == 'field_block:node:idea:overall_score') {
       $build = $event->getBuild();
       $build['content']['#cache']['max-age'] = 3600;

@@ -32,6 +32,7 @@ permissions:
   - 'use life_cycle_phases transition publish'
   - 'use text format basic_html'
   - 'use text format comments'
+  - 'view media'
   - 'view own unpublished content'
   - 'vote on comment:comment:field_voting_comment'
   - 'vote on node:idea:field_voting'
