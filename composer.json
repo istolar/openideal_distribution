@@ -23,6 +23,7 @@
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/adminimal_theme": "^1.5",
         "drupal/allowed_formats": "^1.2",
+        "drupal/avatars": "^1.1",
         "drupal/better_exposed_filters": "^4.0",
         "drupal/bootstrap": "^3.21",
         "drupal/ckeditor_mentions": "2.x-dev",

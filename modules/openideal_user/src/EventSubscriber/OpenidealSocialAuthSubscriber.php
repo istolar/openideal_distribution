@@ -117,6 +117,12 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
           'field_gender' => $resource_owner->getGender() ?? '',
         ];
       }
+
+      if ($plugin_id == self::GOOGLE_PLUGIN_ID) {
+        $user_fields += [
+          'avatars_user_picture' => $event->getSocialAuthUser()->getPicture(),
+        ];
+      }
       $event->setUserFields($user_fields);
     }
   }

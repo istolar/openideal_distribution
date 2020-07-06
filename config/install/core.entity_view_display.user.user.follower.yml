@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.follower
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -33,6 +35,8 @@ content:
       image_link: content
     third_party_settings: {  }
 hidden:
+  avatars_avatar_generator: true
+  avatars_user_picture: true
   field_age_group: true
   field_first_name: true
   field_gender: true

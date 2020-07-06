@@ -13,6 +13,7 @@ dependencies:
   - admin_toolbar_tools:admin_toolbar_tools
   - adminimal_admin_toolbar:adminimal_admin_toolbar
   - allowed_formats:allowed_formats
+  - avatars:avatars_gravatar
   - drupal:automated_cron
   - better_exposed_filters:better_exposed_filters
   - drupal:big_pipe

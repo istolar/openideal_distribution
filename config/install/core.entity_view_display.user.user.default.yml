@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -73,4 +75,6 @@ content:
       image_link: ''
     third_party_settings: {  }
 hidden:
+  avatars_avatar_generator: true
+  avatars_user_picture: true
   realname: true
