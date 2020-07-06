@@ -25,7 +25,7 @@ class OpenidealSlideshowEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Add max-age to overall_score field.
+   * Adds to the Slideshow block context current node.
    *
    * @param \Drupal\layout_builder\Event\SectionComponentBuildRenderArrayEvent $event
    *   Event.

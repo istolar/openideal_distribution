@@ -35,7 +35,7 @@ class Slideshow extends BlockBase implements ContainerFactoryPluginInterface {
   private $slickFormatter;
 
   /**
-   * Constructs a new SearchLocalTask.
+   * Constructs a new Slideshow.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
