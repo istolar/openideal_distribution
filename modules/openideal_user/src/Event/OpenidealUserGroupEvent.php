@@ -40,8 +40,8 @@ class OpenidealUserGroupEvent extends Event {
   public function __construct(GroupContent $group_content) {
     $this->groupContent = $group_content;
 
-    // IF user left group first delete group content,
-    // so we can't get it from group.
+    // When the Idea has been deleted, it first removes the gnode group content,
+    // so can't get it from group.
     if ($content = $group_content->getGroup()->getContent('group_node:idea')) {
       // As one node can have be part of one group get first element.
       // @Todo: check if node can be part more then for one group,
