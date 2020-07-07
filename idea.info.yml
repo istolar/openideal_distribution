@@ -103,6 +103,7 @@ dependencies:
   - openideal_idea:openideal_idea
   - openideal_user:openideal_user
   - openideal_slideshow:openideal_slideshow
+  - openideal_comment:openideal_comment
 
 themes:
   - adminimal_theme
