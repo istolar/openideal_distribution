@@ -13,7 +13,6 @@ transactor:
     roles: ''
     amount: field_amount
     balance: field_balance
-    log_message: field_log_message
     target_balance: field_points
 bundles: {  }
 options: {  }

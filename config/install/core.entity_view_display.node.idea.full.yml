@@ -214,20 +214,22 @@ third_party_settings:
             uuid: e8669a12-114b-478b-b938-3900c1d25e03
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:idea:field_voting'
+              label: Voting
+              provider: layout_builder
+              label_display: '0'
               formatter:
                 label: above
-                settings:
-                  readonly: false
-                  style: default
-                  show_results: false
-                  values: {  }
-                  show_own_vote: false
-                third_party_settings: {  }
                 type: voting_api_formatter
+                settings:
+                  style: default
+                  readonly: 0
+                  show_results: 1
+                  show_own_vote: 0
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 13
           70ac6cf6-01aa-422b-a664-70310b4fa644:

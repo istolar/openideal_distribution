@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.full
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -10,8 +12,7 @@ dependencies:
     - field.field.user.user.field_points
     - field.field.user.user.user_picture
     - views.view.my_comments
-    - views.view.user_group_contents
-    - views.view.user_page
+    - views.view.user_content
   module:
     - image
     - layout_builder
@@ -149,32 +150,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
-          fe30328c-95fb-404c-8fd7-1d26b6ea7a3c:
-            uuid: fe30328c-95fb-404c-8fd7-1d26b6ea7a3c
-            region: content
-            configuration:
-              id: 'views_block:user_group_contents-my_ideas'
-              label: ''
-              provider: views
-              label_display: visible
-              views_label: ''
-              items_per_page: '40'
-              context_mapping: {  }
-            additional: {  }
-            weight: 9
-          ac4ecb87-7d13-45e9-a63d-976afb8ce6cb:
-            uuid: ac4ecb87-7d13-45e9-a63d-976afb8ce6cb
-            region: content
-            configuration:
-              id: 'views_block:user_page-things_i_follow'
-              label: ''
-              provider: views
-              label_display: visible
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 10
           0b15c169-157a-4785-901f-8080c9032d91:
             uuid: 0b15c169-157a-4785-901f-8080c9032d91
             region: content
@@ -188,6 +163,32 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 11
+          d4f485be-72b9-4acc-b786-e1282cb53e2f:
+            uuid: d4f485be-72b9-4acc-b786-e1282cb53e2f
+            region: content
+            configuration:
+              id: 'views_block:user_content-my_ideas_block'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 12
+          c6bf00c0-680f-4842-bc3d-cf71fa64239b:
+            uuid: c6bf00c0-680f-4842-bc3d-cf71fa64239b
+            region: content
+            configuration:
+              id: 'views_block:user_content-things_i_follow'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 13
         third_party_settings: {  }
 id: user.user.full
 targetEntityType: user
@@ -247,4 +248,6 @@ content:
       image_link: ''
     third_party_settings: {  }
 hidden:
+  avatars_avatar_generator: true
+  avatars_user_picture: true
   field_first_name: true

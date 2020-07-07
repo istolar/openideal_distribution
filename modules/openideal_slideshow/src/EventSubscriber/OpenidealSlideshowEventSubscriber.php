@@ -41,7 +41,7 @@ class OpenidealSlideshowEventSubscriber implements EventSubscriberInterface {
       /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList  $images */
       $images = $node->field_images;
 
-      if ($node->bundle() == 'challenge') {
+      if ($node->bundle() == 'challenge' && !$node->field_main_image->isEmpty()) {
         $images->appendItem($node->field_main_image->first()->entity);
       }
       $plugin->setConfigurationValue('images', $images);
