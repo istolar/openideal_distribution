@@ -18,6 +18,7 @@ use Drupal\openideal_user\Event\OpenidealUserEvents;
 use Drupal\openideal_user\Event\OpenidealUserGroupEvent;
 use Drupal\openideal_user\Event\OpenidealUserJoinedSiteEvent;
 use Drupal\openideal_user\Form\OpenidealSecondStepRegistrationForm;
+use Drupal\transaction\TransactionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -116,7 +117,7 @@ function openideal_user_group_content_delete(GroupContent $entity) {
  *
  * If user is Idea creator then restrict "unfollow" access.
  */
-function openideal_idea_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+function openideal_user_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
   if ($flaggable
     && $flaggable instanceof NodeInterface
     && $action == 'unflag'
@@ -125,4 +126,14 @@ function openideal_idea_flag_action_access($action, FlagInterface $flag, Account
     return AccessResult::forbidden();
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function openideal_user_transaction_insert(TransactionInterface $entity) {
+  // If transaction was added manually then execute it immediately.
+  if ($entity->isPending()) {
+    $entity->execute();
+  }
 }
