@@ -25,6 +25,7 @@ dependencies:
   - ckeditor_mentions:ckeditor_mentions
   - drupal:comment
   - drupal:config
+  - comments_order:comments_order
   - config_pages:config_pages
   - drupal:contact
   - drupal:content_moderation

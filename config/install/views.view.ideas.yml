@@ -14,7 +14,6 @@ dependencies:
     - taxonomy.vocabulary.idea_lifecycle_phase
   module:
     - better_exposed_filters
-    - content_moderation
     - image
     - node
     - taxonomy
