@@ -16,7 +16,9 @@ dependencies:
     - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
+    - views.view.followers
   module:
+    - addtoany
     - comment
     - file
     - image
@@ -26,6 +28,7 @@ dependencies:
     - openideal_slideshow
     - text
     - user
+    - views
     - votingapi_widgets
 third_party_settings:
   layout_builder:
@@ -37,16 +40,6 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          f52d2f40-7a18-4f94-abbd-d40c97eafa5d:
-            uuid: f52d2f40-7a18-4f94-abbd-d40c97eafa5d
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:idea:content_moderation_control'
-            additional: {  }
-            weight: 0
           ae959b5f-817f-4ae5-ba4b-2d7ebf23145e:
             uuid: ae959b5f-817f-4ae5-ba4b-2d7ebf23145e
             region: content
@@ -81,7 +74,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 4
+            weight: 6
           16b8cf05-6a81-4506-bec7-0b0bc23bc83a:
             uuid: 16b8cf05-6a81-4506-bec7-0b0bc23bc83a
             region: content
@@ -97,7 +90,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: file_default
             additional: {  }
-            weight: 5
+            weight: 8
           f5ab1c7e-4514-42dc-a03a-84228d04e6ba:
             uuid: f5ab1c7e-4514-42dc-a03a-84228d04e6ba
             region: content
@@ -113,7 +106,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 6
+            weight: 9
           e0f3f3a6-f560-4aab-a034-b536ae91e16d:
             uuid: e0f3f3a6-f560-4aab-a034-b536ae91e16d
             region: content
@@ -129,7 +122,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 7
+            weight: 10
           4c420f65-680f-4724-951d-a6df277e81b4:
             uuid: 4c420f65-680f-4724-951d-a6df277e81b4
             region: content
@@ -145,7 +138,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 8
+            weight: 11
           32db3918-6764-4ede-b25a-7312d603cd96:
             uuid: 32db3918-6764-4ede-b25a-7312d603cd96
             region: content
@@ -161,7 +154,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 9
+            weight: 12
           b02d9754-3844-4aae-879e-508e844cd5fa:
             uuid: b02d9754-3844-4aae-879e-508e844cd5fa
             region: content
@@ -177,24 +170,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 10
-          163c6726-be89-47be-b90e-763c79372d89:
-            uuid: 163c6726-be89-47be-b90e-763c79372d89
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_comments'
-              formatter:
-                label: above
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-                type: comment_default
-            additional: {  }
-            weight: 11
+            weight: 14
           cb4e02ad-316f-4475-8d59-c7f98254805f:
             uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
             region: content
@@ -209,7 +185,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: metatag_empty_formatter
             additional: {  }
-            weight: 12
+            weight: 16
           e8669a12-114b-478b-b938-3900c1d25e03:
             uuid: e8669a12-114b-478b-b938-3900c1d25e03
             region: content
@@ -231,7 +207,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 13
+            weight: 17
           70ac6cf6-01aa-422b-a664-70310b4fa644:
             uuid: 70ac6cf6-01aa-422b-a664-70310b4fa644
             region: content
@@ -243,6 +219,57 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 3
+          9fabf595-53b6-4356-be26-df642efcb233:
+            uuid: 9fabf595-53b6-4356-be26-df642efcb233
+            region: content
+            configuration:
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: '40'
+              context_mapping: {  }
+            additional: {  }
+            weight: 18
+          3581b09c-dc63-4a3e-8139-c32b8f9775e8:
+            uuid: 3581b09c-dc63-4a3e-8139-c32b8f9775e8
+            region: content
+            configuration:
+              id: addtoany_block
+              label: 'AddToAny buttons'
+              provider: addtoany
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 20
+          163c6726-be89-47be-b90e-763c79372d89:
+            uuid: 163c6726-be89-47be-b90e-763c79372d89
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:idea:field_comments'
+              formatter:
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+                type: comment_default
+            additional: {  }
+            weight: 22
+          f52d2f40-7a18-4f94-abbd-d40c97eafa5d:
+            uuid: f52d2f40-7a18-4f94-abbd-d40c97eafa5d
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:idea:content_moderation_control'
+            additional: {  }
+            weight: 21
         third_party_settings: {  }
 id: node.idea.full
 targetEntityType: node
