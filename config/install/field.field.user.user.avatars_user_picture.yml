@@ -19,7 +19,7 @@ default_value_callback: ''
 settings:
   file_directory: pictures
   file_extensions: 'png gif jpg jpeg'
-  max_filesize: '128 KB'
+  max_filesize: '2 MB'
   max_resolution: 1024x1024
   min_resolution: 100x100
   alt_field: false
