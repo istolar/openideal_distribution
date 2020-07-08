@@ -25,6 +25,7 @@
         "drupal/admin_toolbar": "^2.2",
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/adminimal_theme": "^1.5",
+        "drupal/ajax_comments": "1.x-dev",
         "drupal/allowed_formats": "^1.2",
         "drupal/avatars": "^1.1",
         "drupal/better_exposed_filters": "^4.0",
@@ -81,6 +82,9 @@
             },
             "drupal/votingapi_widgets": {
                 "Previewing a Voting API formatter causes the fatals": "https://www.drupal.org/files/issues/2019-01-09/3024465-votingwidgets-4.patch"
+            },
+            "drupal/ajax_comments": {
+                "Ajax not working when using non-default view mode": "https://www.drupal.org/files/issues/2020-02-12/ajax_comments-non-default-view-mode-2896916-24.patch"
             }
         }
     }
