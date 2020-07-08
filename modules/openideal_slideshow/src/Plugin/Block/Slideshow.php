@@ -25,14 +25,14 @@ class Slideshow extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var \Drupal\slick\SlickManager
    */
-  private $slickManager;
+  protected $slickManager;
 
   /**
    * Slick formatter service.
    *
    * @var \Drupal\slick\SlickFormatter
    */
-  private $slickFormatter;
+  protected $slickFormatter;
 
   /**
    * Constructs a new Slideshow.

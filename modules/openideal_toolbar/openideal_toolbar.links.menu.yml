@@ -7,7 +7,7 @@ openideal_toolbar.help:
 
 openideal_toolbar.user_points:
   title: 'Points'
-  route_name: view.user_points.page_totals
+  route_name: view.user_points.user_total_points_page
   description: 'User points details.'
   parent: openideal_toolbar.help
   weight: 1

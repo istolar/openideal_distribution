@@ -73,6 +73,10 @@ class UserVotedToday extends RulesConditionBase implements ContainerFactoryPlugi
    *   TRUE if user voted today, false otherwise.
    */
   protected function doEvaluate(VoteInterface $vote) {
+    // @Todo: Because of the vote is deleted every
+    // time and new one is created when user re-voted
+    // need to create additional logic to check that user
+    // already voted on that entity.
     $storage = $this->entityTypeManager->getStorage('vote');
     $user = $vote->getOwner();
     // Check if user voted.
@@ -81,7 +85,7 @@ class UserVotedToday extends RulesConditionBase implements ContainerFactoryPlugi
       ->condition('timestamp', $this->time->getRequestTime() - 86400, '>')
       ->count()
       ->execute();
-    return $count > 1;
+    return $count == 1;
   }
 
 }

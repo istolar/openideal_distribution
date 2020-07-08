@@ -22,6 +22,7 @@ dependencies:
     - layout_builder
     - layout_discovery
     - metatag
+    - openideal_challenge
     - text
     - user
 third_party_settings:
@@ -187,6 +188,17 @@ third_party_settings:
               id: 'extra_field_block:node:challenge:flag_follow'
             additional: {  }
             weight: 11
+          cd8cd925-5cff-41ff-9da0-f7c8305f248b:
+            uuid: cd8cd925-5cff-41ff-9da0-f7c8305f248b
+            region: content
+            configuration:
+              id: openidel_challenge_add_idea
+              label: 'Add idea button'
+              provider: openideal_challenge
+              label_display: visible
+              context_mapping: {  }
+            additional: {  }
+            weight: 12
         third_party_settings: {  }
 id: node.challenge.default
 targetEntityType: node

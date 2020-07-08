@@ -15,15 +15,18 @@ dependencies:
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
+    - views.view.ideas
   module:
     - comment
     - file
     - image
     - layout_builder
     - layout_discovery
+    - openideal_challenge
     - openideal_slideshow
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -129,6 +132,30 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 4
+          92cc127c-acca-4271-8303-6648766cf18a:
+            uuid: 92cc127c-acca-4271-8303-6648766cf18a
+            region: content
+            configuration:
+              id: openidel_challenge_add_idea
+              label: 'Add idea button'
+              provider: openideal_challenge
+              label_display: visible
+              context_mapping: {  }
+            additional: {  }
+            weight: 10
+          8dc64ab6-2357-40a3-a771-e7c379be5137:
+            uuid: 8dc64ab6-2357-40a3-a771-e7c379be5137
+            region: content
+            configuration:
+              id: 'views_block:ideas-challenge_ideas_block'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 11
         third_party_settings: {  }
 id: node.challenge.full
 targetEntityType: node

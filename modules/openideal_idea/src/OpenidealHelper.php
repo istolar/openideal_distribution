@@ -15,7 +15,7 @@ class OpenidealHelper {
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  private $entityTypeManager;
+  protected $entityTypeManager;
 
   /**
    * OpenidealHelper construct.

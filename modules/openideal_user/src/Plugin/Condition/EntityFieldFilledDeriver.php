@@ -25,7 +25,7 @@ class EntityFieldFilledDeriver extends DeriverBase implements ContainerDeriverIn
    *
    * @var \Drupal\Core\Entity\EntityFieldManagerInterface
    */
-  private $entityFieldManager;
+  protected $entityFieldManager;
 
   /**
    * Creates a new TransactionCreateDeriver object.
