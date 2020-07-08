@@ -23,6 +23,7 @@ dependencies:
   - drupal:breakpoint
   - drupal:ckeditor
   - ckeditor_mentions:ckeditor_mentions
+  - ckeditor_media_embed:ckeditor_media_embed
   - drupal:comment
   - drupal:config
   - config_pages:config_pages

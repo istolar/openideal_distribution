@@ -30,6 +30,7 @@
         "drupal/avatars": "^1.1",
         "drupal/better_exposed_filters": "^4.0",
         "drupal/bootstrap": "^3.21",
+        "drupal/ckeditor_media_embed": "^1.9",
         "drupal/ckeditor_mentions": "2.x-dev",
         "drupal/config_pages": "^2.6",
         "drupal/ctools": "^3.4",

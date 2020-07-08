@@ -6,6 +6,7 @@
  */
 
 use Drupal\user\Entity\User;
+use Symfony\Component\Process\Process;
 
 /**
  * Implements hook_install().
@@ -23,4 +24,12 @@ function idea_install() {
 
   // Install 'openideal_content' module.
   \Drupal::service('module_installer')->install(['openideal_content']);
+
+  // Install pluggins need to ckeditor_media_embed module.
+  $process = new Process('../vendor/bin/drupal ckeditor_media_embed:install');
+  $process->run();
+
+  if (!$process->isSuccessful()) {
+    \Drupal::logger('system')->info(t('An error occured during CKEditor plugins installation.'));
+  }
 }
