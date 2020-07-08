@@ -30,6 +30,6 @@ function idea_install() {
   $process->run();
 
   if (!$process->isSuccessful()) {
-    \Drupal::logger('system')->info(t('An error occured during CKEditor plugins installation.'));
+    \Drupal::logger('system')->error(t('An error occured during CKEditor plugins installation.'));
   }
 }
