@@ -1,0 +1,5 @@
+services:
+  openideal_statistics.lazy_builder:
+    class: Drupal\openideal_statistics\LazyBuilder
+    arguments:
+      - '@entity_type.manager'
