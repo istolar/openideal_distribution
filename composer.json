@@ -39,6 +39,7 @@
         "drupal/dropzonejs": "^2.1",
         "drupal/email_registration": "^1.0",
         "drupal/entity_browser": "^2.5",
+        "drupal/eu_cookie_compliance": "^1.9",
         "drupal/faqfield": "^1.1",
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
