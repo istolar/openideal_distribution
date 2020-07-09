@@ -155,6 +155,18 @@ function openideal_user_views_query_alter(ViewExecutable $view, QueryPluginBase 
       'type' => 'LEFT',
     ];
 
+    // If there is a user object in the current route
+    // then apply it to join extra.
+    if ($user = \Drupal::routeMatch()->getParameter('user')) {
+      if ($user instanceof UserInterface) {
+        $group_content_user_join = $query->getTableInfo('group_content_field_data_groups_field_data')['join'];
+        $group_content_user_join->extra[] = [
+          'field' => 'entity_id',
+          'value' => [$user->id()],
+        ];
+      }
+    }
+
     $join = Views::pluginManager('join')->createInstance('standard', $configuration);
     $query->addRelationship('group_content_field_data_groups_field_data__group_content__group_roles', $join, 'group_content__group_roles');
 
