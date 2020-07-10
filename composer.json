@@ -87,6 +87,9 @@
             },
             "drupal/ajax_comments": {
                 "Ajax not working when using non-default view mode": "https://www.drupal.org/files/issues/2020-02-12/ajax_comments-non-default-view-mode-2896916-24.patch"
+            },
+            "drupal/rules": {
+                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch"
             }
         }
     }
