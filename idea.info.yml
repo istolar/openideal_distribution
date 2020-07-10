@@ -47,6 +47,7 @@ dependencies:
   - drupal:field_ui
   - drupal:file
   - drupal:filter
+  - eu_cookie_compliance:eu_cookie_compliance
   - flag:flag
   - gnode:gnode
   - group:group
