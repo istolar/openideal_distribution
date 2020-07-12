@@ -56,7 +56,7 @@ class ScoreConfigForm extends ConfigFormBase {
 
     $form['node'] = [
       '#type' => 'number',
-      '#title' => $this->t('Views weight.'),
+      '#title' => $this->t('Views weight'),
       '#min' => 0.1,
       '#step' => 0.1,
       '#default_value' => $config->get('node') ?? 0.2,
