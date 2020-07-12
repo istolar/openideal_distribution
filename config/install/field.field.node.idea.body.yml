@@ -9,7 +9,9 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
+    basic_html_with_embedded_video: basic_html_with_embedded_video
+    basic_html: '0'
+    comments: '0'
     restricted_html: '0'
     full_html: '0'
     plain_text: '0'

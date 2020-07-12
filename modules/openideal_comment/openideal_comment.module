@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_comment module.
+ */
+
+use Drupal\ajax_comments\Utility;
+
+/**
+ * Implements hook_ajax_comments_wrapper_id_alter().
+ */
+function openideal_comment_ajax_comments_wrapper_id_alter(&$wrapper_html_id, $commented_entity, $field_name) {
+  $render_array = Utility::getEntityRenderArray($commented_entity, '_custom');
+  if (isset($render_array[$field_name])) {
+    $wrapper_html_id = $render_array[$field_name]['#attributes']['id'];
+  }
+}

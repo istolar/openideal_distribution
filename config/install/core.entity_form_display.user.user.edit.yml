@@ -25,6 +25,20 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  avatars_user_picture:
+    type: entity_browser_file
+    weight: 5
+    region: content
+    settings:
+      entity_browser: openideal_image_browser
+      field_widget_remove: true
+      selection_mode: selection_append
+      preview_image_style: thumbnail
+      field_widget_edit: true
+      field_widget_replace: false
+      open: false
+      view_mode: default
+    third_party_settings: {  }
   field_age_group:
     type: options_select
     weight: 4
@@ -53,24 +67,10 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  user_picture:
-    type: entity_browser_file
-    weight: 5
-    region: content
-    settings:
-      entity_browser: openideal_image_browser
-      field_widget_remove: true
-      selection_mode: selection_append
-      preview_image_style: thumbnail
-      field_widget_edit: true
-      field_widget_replace: false
-      open: false
-      view_mode: default
-    third_party_settings: {  }
 hidden:
   avatars_avatar_generator: true
-  avatars_user_picture: true
   contact: true
   field_points: true
   language: true
   timezone: true
+  user_picture: true

@@ -6,22 +6,3 @@
  *
  * Place your custom PHP code in this file.
  */
-
-use Drupal\Core\Link;
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function openideal_theme_preprocess_comment(&$variables) {
-  // Change the default permalink of comment title.
-  $comment = $variables['elements']['#comment'];
-  $commented_entity = $comment->getCommentedEntity();
-  $uri = $commented_entity->toUrl();
-  $attributes = $uri->getOption('attributes') ?: [];
-  $attributes += ['class' => ['permalink'], 'rel' => 'bookmark'];
-  $uri->setOptions([
-    'attributes' => $attributes,
-    'fragment' => 'comment-' . $comment->id(),
-  ]);
-  $variables['title'] = Link::fromTextAndUrl($comment->getSubject(), $uri)->toString();
-}

@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html_with_embedded_video
+  module:
+    - ckeditor
+format: basic_html_with_embedded_video
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - DrupalImage
+            - EmbedSemantic
+        -
+          name: 'Block formatting'
+          items:
+            - Format
+        -
+          name: Tools
+          items:
+            - Source
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: ''
+    autoembed:
+      status: embedsemantic
+    mentions:
+      enable: 0
+      image: 0
+      charcount: '3'
+      timeout: '500'
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

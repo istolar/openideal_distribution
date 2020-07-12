@@ -1,0 +1,6 @@
+services:
+  openideal_comment.subscriber:
+    class: Drupal\openideal_comment\EventSubscriber\OpenidealCommentEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
