@@ -7,7 +7,7 @@ dependencies:
     - field.storage.user.field_points
     - field.storage.user.user_picture
     - image.style.medium
-    - system.menu.admin
+    - system.menu.main
   module:
     - better_exposed_filters
     - image
@@ -1226,16 +1226,16 @@ display:
         row: false
         exposed_form: false
       display_description: ''
-      path: community_page
+      path: community
       menu:
         type: normal
-        title: 'Community page'
+        title: Community
         description: ''
         expanded: false
-        parent: openideal_toolbar.help
+        parent: ''
         weight: 3
         context: '0'
-        menu_name: admin
+        menu_name: main
       filters:
         uid_raw:
           id: uid_raw
