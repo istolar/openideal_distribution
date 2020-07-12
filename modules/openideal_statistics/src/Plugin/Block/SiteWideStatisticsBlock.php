@@ -63,7 +63,6 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
    */
   public function build() {
     $build['#theme'] = 'site_wide_statistics_block';
-    // @Todo: Add cache tags.
     $build['#content'] = [
       'ideas' => [
         '#lazy_builder' => ['openideal_statistics.lazy_builder:getIdeas', []],
