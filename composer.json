@@ -39,6 +39,7 @@
         "drupal/dropzonejs": "^2.1",
         "drupal/email_registration": "^1.0",
         "drupal/entity_browser": "^2.5",
+        "drupal/eu_cookie_compliance": "^1.9",
         "drupal/faqfield": "^1.1",
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
@@ -79,14 +80,14 @@
                 "Dispatch events for changing content moderation states": "https://www.drupal.org/files/issues/2018-11-06/2873287-50.patch",
                 "Entity reference error messages are not user friendly": "https://www.drupal.org/files/issues/2020-06-04/3138631-9.patch"
             },
-            "drupal/votingapi": {
-                "Vote rollover settings are missing the 'Never' option": "https://www.drupal.org/files/issues/2020-05-17/2791129-22-finish-port-of-settings-form.patch"
-            },
             "drupal/votingapi_widgets": {
                 "Previewing a Voting API formatter causes the fatals": "https://www.drupal.org/files/issues/2019-01-09/3024465-votingwidgets-4.patch"
             },
             "drupal/ajax_comments": {
                 "Ajax not working when using non-default view mode": "https://www.drupal.org/files/issues/2020-02-12/ajax_comments-non-default-view-mode-2896916-24.patch"
+            },
+            "drupal/rules": {
+                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch"
             }
         }
     }
