@@ -16,6 +16,11 @@ function openideal_statistics_token_info() {
     'description' => t('OpenideaL token types.'),
   ];
   $tokens = [
+    'ideas-count' => [
+      'name' => t('OpenideaL - the count of all ideas'),
+      'description' => t('The count of all ideas in the site'),
+      'type' => 'openideal',
+    ],
     'comments-count' => [
       'name' => t('OpenideaL - the count of all comments'),
       'description' => t('The count of all comments in the site'),
@@ -73,6 +78,16 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
             ->execute();
           $replacements[$original] = $result;
           $bubbleable_metadata->addCacheTags(['comment_list']);
+          break;
+
+        case 'ideas-count':
+          $query = $entity_type_manager->getStorage('node')->getQuery();
+          $result = $query
+            ->condition('status', '1')
+            ->count()
+            ->execute();
+          $replacements[$original] = $result;
+          $bubbleable_metadata->addCacheTags(['node_list:idea']);
           break;
 
         case 'votes-count':

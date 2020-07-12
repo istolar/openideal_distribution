@@ -41,9 +41,8 @@ class LazyBuilder {
    * Build element that return idea count.
    */
   public function getIdeas() {
-    $node_type = $this->entityTypeManager->getStorage('node_type')->load('idea');
     return [
-      '#markup' => $this->token->replace('[content-type:node-count]', ['node_type' => $node_type]),
+      '#markup' => $this->token->replace('[openideal:ideas-count]'),
       '#cache' => [
         'tags' => ['node_list:idea'],
       ],
