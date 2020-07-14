@@ -8,12 +8,12 @@
   'use strict';
 
   /**
-   * Builds a div element with the aria-live attribute and add it to the DOM.
+   * Default bootstrap barrio subtheme behaviour.
    *
    * @type {Drupal~behavior}
    *
    * @prop {Drupal~behaviorAttach} attach
-   *   Attaches the behavior for drupalAnnounce.
+   *   Add scroll event to body.
    */
   Drupal.behaviors.bootstrap_barrio_subtheme = {
     attach: function (context, settings) {
@@ -40,12 +40,12 @@
   };
 
   /**
-   * Toggle the
+   * Main navigation behaviour.
    *
    * @type {Drupal~behavior}
    *
    * @prop {Drupal~behaviorAttach} attach
-   *   Attaches the behavior for drupalAnnounce.
+   *   Toggle the main navigation.
    */
   Drupal.behaviors.openidealThemeNavigationToggle = {
     attach: function (context, settings) {
