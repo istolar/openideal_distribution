@@ -25,20 +25,22 @@ class OpenidealDuplicateOfIdeaFormatter extends EntityReferenceFormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
+    // @codingStandardsIgnoreLine
+    if (\Drupal::routeMatch()->getRouteName() != 'layout_builder.defaults.node.view') {
+      foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
+        if ($entity) {
+          $field_text = $this->t('This idea was merged with <a href="@link">@title</a> idea.', [
+            '@link' => $entity->toUrl()->toString(),
+            '@title' => $entity->label(),
+          ]);
+          // @TODO: add css class to the markup.
+          $elements[$delta] = [
+            '#type' => 'markup',
+            '#markup' => '<div>' . $field_text . '</div>',
+          ];
 
-    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-      if ($entity) {
-        $field_text = $this->t('This idea was merged with <a href="@link">@title</a> idea.', [
-          '@link' => $entity->toUrl()->toString(),
-          '@title' => $entity->label(),
-        ]);
-        // @TODO: add css class to the markup.
-        $elements[$delta] = [
-          '#type' => 'markup',
-          '#markup' => '<div>' . $field_text . '</div>',
-        ];
-
-        $elements[$delta]['#cache']['tags'] = $entity->getCacheTags();
+          $elements[$delta]['#cache']['tags'] = $entity->getCacheTags();
+        }
       }
     }
 
