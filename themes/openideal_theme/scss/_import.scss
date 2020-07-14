@@ -7,10 +7,7 @@
 @import "typography";
 //bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";
-//material design bootstrap
-//@import "../node_modules/mdbootstrap/scss/mdb-free.scss";
-// barrio
-@import "barrio";
-
 // mixins
 @import "mixins";
+// barrio
+@import "barrio";

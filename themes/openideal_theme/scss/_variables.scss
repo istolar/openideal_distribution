@@ -43,3 +43,9 @@ $comment-spacer-y: 1.25em;
 $enable-responsive-font-sizes: true;
 $enable-shadows: false;
 $enable-gradients: false;
+
+// Grid columns
+//
+// Re-set the number of columns and specify the width of the gutters.
+$grid-columns:                18;
+$grid-gutter-width:           15px;

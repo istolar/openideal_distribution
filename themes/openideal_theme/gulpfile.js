@@ -13,7 +13,7 @@ const paths = {
     src: './scss/style.scss',
     dest: './css',
     watch: './scss/**/*.scss',
-    bootstrap: './bootstrap/bootstrap.scss'
+    bootstrap: './node_modules/bootstrap/scss/bootstrap.scss',
   },
   js: {
     bootstrap: './node_modules/bootstrap/dist/js/bootstrap.min.js',

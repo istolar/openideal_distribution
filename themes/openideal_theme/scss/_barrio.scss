@@ -1,6 +1,11 @@
-@import "./regions/footer.scss";
-@import "./regions/navigation.scss";
-@import "./regions/sidebar.scss";
+// Regions
+@import "./regions/footer";
+@import "./regions/navigation";
+@import "./regions/sidebar";
+@import "./regions/content";
+// Components
+@import "./components/overlay";
+@import "./components/mobile_header";
 @import "./components/affix";
 @import "./components/alerts";
 @import "./components/book";

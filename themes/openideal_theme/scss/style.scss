@@ -8,15 +8,18 @@ Description: Bootstrap 4 with Sass
 
 /* GENERAL STYLES
 -------------------------------------------------*/
+html {
+  font-size: 18px;
+}
 
 body {
   padding: 0;
+  color: #343352;
   margin: 0;
   height: 100vh;
   overflow-x: hidden;
   background-color: $body-bg;
 }
-
 
 /* COLORS 
 --------------------------------------------------*/
