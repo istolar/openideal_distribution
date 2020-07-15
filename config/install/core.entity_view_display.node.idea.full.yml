@@ -42,17 +42,6 @@ third_party_settings:
         layout_settings:
           label: Idea
         components:
-          70ac6cf6-01aa-422b-a664-70310b4fa644:
-            uuid: 70ac6cf6-01aa-422b-a664-70310b4fa644
-            region: square_one
-            configuration:
-              id: openidel_slideshow_block
-              label: Slideshow
-              provider: openideal_slideshow
-              label_display: visible
-              context_mapping: {  }
-            additional: {  }
-            weight: 7
           62208d1d-6a67-47f9-b7db-6670007de3fe:
             uuid: 62208d1d-6a67-47f9-b7db-6670007de3fe
             region: square_one
@@ -67,7 +56,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 10
+            weight: -6
           48c3a193-8a16-42b9-8a58-86427700ca3a:
             uuid: 48c3a193-8a16-42b9-8a58-86427700ca3a
             region: square_one
@@ -88,7 +77,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: -8
           16b8cf05-6a81-4506-bec7-0b0bc23bc83a:
             uuid: 16b8cf05-6a81-4506-bec7-0b0bc23bc83a
             region: square_one
@@ -104,7 +93,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: file_default
             additional: {  }
-            weight: 13
+            weight: -4
           f5ab1c7e-4514-42dc-a03a-84228d04e6ba:
             uuid: f5ab1c7e-4514-42dc-a03a-84228d04e6ba
             region: square_one
@@ -120,7 +109,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 12
+            weight: -5
           e0f3f3a6-f560-4aab-a034-b536ae91e16d:
             uuid: e0f3f3a6-f560-4aab-a034-b536ae91e16d
             region: square_one
@@ -136,7 +125,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 14
+            weight: -3
           32db3918-6764-4ede-b25a-7312d603cd96:
             uuid: 32db3918-6764-4ede-b25a-7312d603cd96
             region: square_one
@@ -152,7 +141,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 16
+            weight: -2
           b02d9754-3844-4aae-879e-508e844cd5fa:
             uuid: b02d9754-3844-4aae-879e-508e844cd5fa
             region: square_one
@@ -168,22 +157,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 9
-          cb4e02ad-316f-4475-8d59-c7f98254805f:
-            uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
-            region: square_one
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_meta_tags'
-              formatter:
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-                type: metatag_empty_formatter
-            additional: {  }
-            weight: 5
+            weight: -7
           f52d2f40-7a18-4f94-abbd-d40c97eafa5d:
             uuid: f52d2f40-7a18-4f94-abbd-d40c97eafa5d
             region: square_one
@@ -193,7 +167,7 @@ third_party_settings:
                 entity: layout_builder.entity
               id: 'extra_field_block:node:idea:content_moderation_control'
             additional: {  }
-            weight: 18
+            weight: -1
           9fabf595-53b6-4356-be26-df642efcb233:
             uuid: 9fabf595-53b6-4356-be26-df642efcb233
             region: side_bar
@@ -223,7 +197,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: comment_default
             additional: {  }
-            weight: 6
+            weight: 15
           9f31fe07-dae2-437a-9bf6-40f209357caa:
             uuid: 9f31fe07-dae2-437a-9bf6-40f209357caa
             region: side_bar
@@ -287,6 +261,108 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: -9
+          cb4e02ad-316f-4475-8d59-c7f98254805f:
+            uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
+            region: square_two
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:idea:field_meta_tags'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: metatag_empty_formatter
+            additional: {  }
+            weight: 14
+          d41f1f75-bcf8-4ef7-8e95-243153e7345a:
+            uuid: d41f1f75-bcf8-4ef7-8e95-243153e7345a
+            region: square_one
+            configuration:
+              id: openidel_slideshow_block
+              label: Slideshow
+              provider: openideal_slideshow
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: -9
+          8ded0605-03b3-4d45-acf1-28c9fa8187aa:
+            uuid: 8ded0605-03b3-4d45-acf1-28c9fa8187aa
+            region: sidebar
+            configuration:
+              id: 'views_block:ideas-idea_flag_vote_block'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+          ccb96db5-2c15-40cd-b70c-46e2862652e9:
+            uuid: ccb96db5-2c15-40cd-b70c-46e2862652e9
+            region: sidebar
+            configuration:
+              id: 'views_block:ideas-idea_statistics_block'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 3
+          2ebde2ff-56f3-4be8-b07d-800dc80b0700:
+            uuid: 2ebde2ff-56f3-4be8-b07d-800dc80b0700
+            region: sidebar
+            configuration:
+              id: 'views_block:ideas-block_3'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 2
+          7a73990d-cfeb-4600-83bd-73c6c75e431a:
+            uuid: 7a73990d-cfeb-4600-83bd-73c6c75e431a
+            region: sidebar
+            configuration:
+              id: 'views_block:ideas-block_2'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+          46e20ee7-b592-4932-881c-82a6461d5771:
+            uuid: 46e20ee7-b592-4932-881c-82a6461d5771
+            region: sidebar
+            configuration:
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 4
+          b3c35153-85b7-443f-8c81-76ed0f63be81:
+            uuid: b3c35153-85b7-443f-8c81-76ed0f63be81
+            region: sidebar
+            configuration:
+              id: addtoany_block
+              label: 'AddToAny buttons'
+              provider: addtoany
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 5
         third_party_settings: {  }
 id: node.idea.full
 targetEntityType: node

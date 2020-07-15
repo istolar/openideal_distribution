@@ -11,26 +11,26 @@
  */
 #}
 {% if content %}
-  <div{{ attributes.addClass('row') }}>
+  <div{{ attributes.addClass('row', 'container-fluid', 'idea') }}>
 
-    <div class="col-lg-8">
+    <div class="col-lg-13">
         {% if content.square_one %}
-            <section {{ region_attributes.square_one.addClass('layout__region--first') }}>
+            <section {{ region_attributes.square_one.addClass('layout__region--first', 'idea--content') }}>
                 {{ content.square_one }}
             </section>
         {% endif %}
 
         {% if content.square_two %}
-            <section {{ region_attributes.square_two.addClass('layout__region--second') }}>
+            <section {{ region_attributes.square_two.addClass('layout__region--second', 'idea--comments') }}>
                 {{ content.square_two }}
             </section>
         {% endif %}
     </div>
 
-    <div class="col-lg-4">
-        {% if content.side_bar %}
-            <section {{ region_attributes.second.addClass('layout__region--sidebar') }}>
-                {{ content.side_bar }}
+    <div class="col-lg-5">
+        {% if content.sidebar %}
+            <section {{ region_attributes.sidebar.addClass('layout__region--sidebar', 'idea--sidebar') }}>
+                {{ content.sidebar }}
             </section>
         {% endif %}
     </div>
