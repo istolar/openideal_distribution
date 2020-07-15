@@ -3,7 +3,6 @@
 namespace Drupal\openideal_slideshow\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\slick\SlickFormatter;
 use Drupal\slick\SlickManager;
@@ -74,81 +73,15 @@ class Slideshow extends BlockBase implements ContainerFactoryPluginInterface {
    */
   public function build() {
     $configuration = $this->getConfiguration();
-    $build = [];
-    $settings = [];
-
-    /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList $image_field */
-    if (isset($configuration['images'])) {
-      $images = $configuration['images'];
-      $entities = $this->getEntitiesToView($images);
-      $this->slickFormatter->buildSettings($settings, $images);
-      // Build the settings.
-      $build = ['settings' => $settings];
-
-      $entities = empty($entities) ? [] : array_values($entities);
-      $elements = $entities ?: $images;
-      $this->buildElements($build, $elements);
-    }
-
-    return $this->slickManager->build($build);
-  }
-
-  /**
-   * Returns the referenced entities for display.
-   *
-   * @param \Drupal\Core\Field\EntityReferenceFieldItemListInterface $items
-   *   The item list.
-   *
-   * @return \Drupal\Core\Entity\EntityInterface[]
-   *   The array of referenced entities to display, keyed by delta.
-   */
-  protected function getEntitiesToView(EntityReferenceFieldItemListInterface $items) {
-    $entities = [];
-
-    foreach ($items as $delta => $item) {
-      $entity = $item->entity;
-      $access = $entity->access('view', NULL, TRUE);
-
-      if ($access->isAllowed()) {
-        $entities[$delta] = $entity;
-      }
-    }
-
-    return $entities;
-  }
-
-  /**
-   * Build the slick carousel elements.
-   *
-   * @param array $build
-   *   Build array.
-   * @param mixed $files
-   *   Files to render.
-   */
-  public function buildElements(array &$build, $files) {
-    $settings = &$build['settings'];
-
-    foreach ($files as $delta => $file) {
-      $settings['delta'] = $delta;
-      $settings['type'] = 'image';
-
-      $item = $file->_referringItem;
-
-      $settings['file_tags'] = $file->getCacheTags();
-      $settings['uri']       = $file->getFileUri();
-
-      $element = ['item' => $item, 'settings' => $settings];
-
-      $settings = $element['settings'];
-
-      // Image with responsive image, lazyLoad, and lightbox supports.
-      $element['slide'] = $this->slickFormatter->getBlazy($element);
-
-      // Build individual slick item.
-      $build['items'][$delta] = $element;
-
-      unset($element);
-    }
+    return empty($configuration['images'])
+      ? []
+      : [
+        '#theme' => 'openideal_slideshow',
+        '#items' => $configuration['images'],
+        '#attached' => [
+          'library' => ['openideal_slideshow/openideal_slideshow.slick'],
+        ],
+      ];
   }
 
 }
