@@ -12,7 +12,7 @@
           $this.find('[type=submit]').hide();
           var $select = $(this);
           var isPreview = $select.data('is-edit');
-          $select.after('<div class="like-rating"><a href="#"><i class="fa fa-thumbs-up"></i></a></div>').hide();
+          $select.after('<div class="like-rating"><a href="#"><span class="mr-2"><i class="fa fa-star" aria-hidden="true"></i></span> RATE IDEA</a></div>').hide();
           $this.find('.like-rating a').eq(0).each(function () {
             $(this).bind('click',function (e) {
               if (isPreview) {

@@ -45,7 +45,7 @@
  * - content_attributes: Items for the header region.
  * - sidebar_first_attributes: Items for the highlighted region.
  * - sidebar_second_attributes: Items for the primary menu region.
- * - sidebar_collapse: If the sidebar_first will collapse.
+ * - idea_sidebar: If the current page is Idea node.
  *
  * @see template_preprocess_page()
  * @see bootstrap_barrio_preprocess_page()
@@ -128,7 +128,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-5">
+            <div class="sidebar site-sidebar col-5 {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

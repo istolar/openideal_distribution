@@ -1,0 +1,118 @@
+/* ------------------ Sidebar ----------------- */
+
+.region-sidebar {
+  flex-direction: column;
+
+  & > div:not(:first-child) {
+    margin: 0 25px;
+    padding: 40px 0;
+    border-bottom: 1px solid #E0E0E0;
+  }
+}
+
+.site-sidebar-idea.site-sidebar {
+  background-color: $white;
+
+  h2 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+  }
+}
+
+// Votes block.
+.block-views-blockideas-idea-flag-vote-block {
+  background-color: #F6F7F8;
+
+  .idea-flag-and-vote-block {
+    .views-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .views-field {
+        width: 50%;
+
+        a,
+        .idea-flag-and-vote-block--flag {
+          display: flex;
+          padding: 15px 50px;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
+        }
+
+        .like-rating {
+          margin-bottom: 59px;
+
+          a {
+            @include btn-theme($btn-dark, #1e7697);
+            margin-right: 0;
+          }
+        }
+
+        .flag-follow {
+          margin: 70px 0 11px 0;
+
+          a {
+            @include btn-theme($btn-light, #5eaed2);
+          }
+        }
+
+        // If user has no access to flag, then show rewrite,
+        // and need to apply styles for that text.
+        .idea-flag-and-vote-block--flag {
+          @include btn-theme($btn-light, #5eaed2);
+          margin: 70px 0 11px 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// Dates block
+.idea-dates-block {
+  .views-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    .views-label {
+      font-weight: $font-weight-bold;
+      font-size: $font-size-sm;
+      margin-bottom: 16px;
+    }
+
+    .field-content {
+      color: #676C72;
+    }
+  }
+}
+
+// Statistics block
+.idea-statistics-block {
+  .field-content {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+
+  &--type {
+    font-size: $font-size-xs;
+    color: #676C72;
+    font-weight: $font-weight-normal;
+  }
+}
+
+// Followers block
+.idea-followers-block {
+  .view-content {
+    display: flex;
+    flex-wrap: wrap;
+
+    img {
+      margin-right: 12px;
+      border-radius: 50%;
+    }
+  }
+}

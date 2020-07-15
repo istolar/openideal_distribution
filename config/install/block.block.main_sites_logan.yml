@@ -1,12 +1,14 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - openideal_theme
 id: main_sites_logan
 theme: openideal_theme
 region: content
-weight: -4
+weight: -8
 provider: null
 plugin: 'block_content:3ed7eeba-0dcc-45a5-9ade-c53cacbc3c0e'
 settings:
@@ -17,4 +19,9 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/ideas\r\n/challenges\r\n/user/*"
+    negate: false
+    context_mapping: {  }

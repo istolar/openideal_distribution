@@ -179,7 +179,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: Followers
+      title: FOLLOWERS
       header: {  }
       footer: {  }
       empty:
@@ -258,6 +258,7 @@ display:
           entity_field: nid
           plugin_id: node_nid
       display_extenders: {  }
+      css_class: idea-followers-block
     cache_metadata:
       max-age: -1
       contexts:
@@ -269,6 +270,7 @@ display:
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.follower'
+        - 'config:core.entity_view_display.user.user.full'
   followers:
     display_plugin: block
     id: followers
@@ -288,3 +290,4 @@ display:
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.follower'
+        - 'config:core.entity_view_display.user.user.full'

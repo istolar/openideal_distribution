@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - addtoany
+    - node
+  theme:
+    - openideal_theme
+id: addtoanybuttons
+theme: openideal_theme
+region: sidebar
+weight: -3
+provider: null
+plugin: addtoany_block
+settings:
+  id: addtoany_block
+  label: 'SHARE IDEA'
+  provider: addtoany
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
