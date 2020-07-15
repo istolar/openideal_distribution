@@ -7,7 +7,6 @@ dependencies:
     - field.storage.node.field_challenge
     - field.storage.node.field_idea_phase
     - field.storage.node.field_idea_tags
-    - field.storage.node.field_voting
     - field.storage.user.user_picture
     - flag.flag.follow
     - image.style.thumbnail
@@ -16,7 +15,6 @@ dependencies:
     - taxonomy.vocabulary.idea_lifecycle_phase
   module:
     - better_exposed_filters
-    - content_moderation
     - flag
     - image
     - node
@@ -25,7 +23,6 @@ dependencies:
     - text
     - user
     - votingapi
-    - votingapi_widgets
 id: ideas
 label: Ideas
 module: views
