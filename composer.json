@@ -42,6 +42,7 @@
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/group": "^1.0",
+        "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/metatag": "^1.13",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",

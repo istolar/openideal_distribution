@@ -1,0 +1,82 @@
+.node--type-idea {
+  .card-body {
+    padding: 26px 101px 50px 19px;
+    // Block created.
+    .block-field-blocknodeideacreated {
+      font-size: $font-size-xs;
+      color: $dark-gray;
+      margin-bottom: 10px;
+    }
+
+    // Block title
+    .block-field-blocknodeideatitle {
+      font-size: 1.6rem;
+      line-height: 30px;
+      margin-bottom: 26px;
+    }
+
+    // Block creator.
+    .block-views-blockideas-idea-creator-block {
+      margin-bottom: 26px;
+      .views-row {
+        display: flex;
+        align-items: center;
+
+        img {
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    // Block body.
+    .block-field-blocknodeideabody {
+      color: $dark-gray;
+      line-height: 24px;
+    }
+
+    // Block tags
+    .block-field-blocknodeideafield-idea-tags {
+      .field--name-field-idea-tags {
+        display: flex;
+        flex-wrap: wrap;
+        .field__item {
+          a {
+            @include btn-theme($white, $white);
+            border: 1px $primary-color solid;
+            padding: .2em 1em;
+            margin-right: 3px;
+            font-size: $font-size-sm;
+            color: $primary-color;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .node--type-idea .card-body {
+    padding: 26px 19px;
+
+    .block-field-blocknodeideatitle {
+      font-size: 24px;
+    }
+  }
+  .idea-statistics-block-and-status {
+    margin-bottom: 44px;
+    .views-row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .block-views-blockfollowers-followers {
+    h2 {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      margin-bottom: 16px;
+    }
+  }
+}

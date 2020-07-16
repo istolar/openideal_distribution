@@ -10,7 +10,7 @@ entity_type: comment
 type: voting_api_field
 settings:
   vote_type: vote
-  vote_plugin: useful
+  vote_plugin: openideal_useful
   status: ''
 module: votingapi_widgets
 locked: false

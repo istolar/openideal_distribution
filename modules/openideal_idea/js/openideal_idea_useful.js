@@ -12,7 +12,12 @@
           $this.find('[type=submit]').hide();
           var $select = $(this);
           var isPreview = $select.data('is-edit');
-          $select.after('<div class="like-rating"><a href="#"><span class="mr-2"><i class="fa fa-star" aria-hidden="true"></i></span> RATE IDEA</a></div>').hide();
+          // Depending on vote entity change the body.
+          var likeBody = settings.openidealUser.comment
+          ? '<i class="fa fa-thumbs-up"></i>'
+          : '<span class="mr-2"><i class="fa fa-thumbs-up"></i></span> RATE IDEA';
+
+          $select.after(`<div class="like-rating"><a href="#">${likeBody}</a></div>`).hide();
           $this.find('.like-rating a').eq(0).each(function () {
             $(this).bind('click',function (e) {
               if (isPreview) {

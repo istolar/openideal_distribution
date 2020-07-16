@@ -104,7 +104,7 @@
                 {# @Todo: once activity stream complete add appropriate styles. #}
                 col-xl-{{ page.sidebar ? 11 : 16 }}
                 col-lg-{{ page.sidebar ? 11 : 15 }}
-                col-md-{{ page.sidebar ? 11 : 14 }}"
+                col-md-{{ page.sidebar ? 13 : 14 }}"
         >
             {% if page.highlighted %}
                 <div class="highlighted">
@@ -128,7 +128,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-5 {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none-sm {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

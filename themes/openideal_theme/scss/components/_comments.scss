@@ -1,0 +1,109 @@
+.comments {
+  padding-top: 58px;
+  margin-top: 50px;
+  border-top: 1px solid #E0E0E0;
+
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &__add-comment-btn {
+      @include btn-theme(transparent, transparent);
+      border: 1.5px solid $btn-dark;
+      font-size: $font-size-xs;
+      color: $btn-dark;
+      padding: 15px 70px;
+
+      &:hover,
+      &:active {
+        color: $btn-dark;
+      }
+    }
+  }
+
+  // Add form
+  &--bottom {
+    padding: 25px 23px;
+    display: none;
+  }
+}
+
+
+.comment-comment-form .form-actions {
+  display: inline-flex;
+  font-size: 14px;
+
+  .font-submit-btn-wrapper {
+    position: relative;
+
+    .form-submit {
+      font-size: inherit;
+      @include btn-theme($btn-dark, #1e7697);
+      padding-left: 25px;
+    }
+
+    i {
+      font-size: inherit;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-55%);
+      position: absolute;
+      color: white;
+    }
+  }
+
+  .comment-form--cancel-btn {
+    font-size: inherit;
+  }
+}
+
+// Single comment
+.single-comment {
+  padding: 24px;
+  margin-bottom: 8px;
+
+  // Created block.
+  .block-field-blockcommentcommentcreated {
+    .content {
+      display: flex;
+      justify-content: space-between;
+
+      .profile {
+        display: flex;
+        align-items: center;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+
+        img {
+          border-radius: 50%;
+          margin: 0;
+        }
+      }
+
+      .field--name-field-first-name {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .block-field-blockcommentcommentcomment-body {
+    margin-top: 16px;
+    color: $dark-gray;
+    font-size: $font-size-sm;
+  }
+
+  .block-extra-field-blockcommentcommentlinks {
+    display: inline-block;
+    width: 95%;
+  }
+
+  .block-field-blockcommentcommentfield-voting-comment {
+    display: inline-block;
+
+    form {
+      display: flex;
+    }
+  }
+}

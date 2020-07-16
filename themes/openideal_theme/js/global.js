@@ -65,5 +65,22 @@
     }
   }
 
+  /**
+   * Comments form behaviour.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Hide/show comments add form.
+   */
+  Drupal.behaviors.openidealThemeCommentsFormAnimation = {
+    attach: function (context, settings) {
+      $('.comments--header__add-comment-btn, .comment-form--cancel-btn', context).once('openideal-themec-omments-form-animation').on('click', function () {
+        // hide sidebar
+        $('.comments--bottom').toggle('slow');
+      });
+    }
+  }
+
 }
 )(jQuery, Drupal);

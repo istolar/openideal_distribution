@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.idea.field_meta_tags
     - field.field.node.idea.field_voting
     - node.type.idea
+    - views.view.followers
     - views.view.ideas
   module:
     - comment
@@ -69,7 +70,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 12
           48c3a193-8a16-42b9-8a58-86427700ca3a:
             uuid: 48c3a193-8a16-42b9-8a58-86427700ca3a
             region: second
@@ -90,7 +91,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 6
           f5ab1c7e-4514-42dc-a03a-84228d04e6ba:
             uuid: f5ab1c7e-4514-42dc-a03a-84228d04e6ba
             region: second
@@ -106,7 +107,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 9
+            weight: 15
           16b8cf05-6a81-4506-bec7-0b0bc23bc83a:
             uuid: 16b8cf05-6a81-4506-bec7-0b0bc23bc83a
             region: second
@@ -122,7 +123,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: file_default
             additional: {  }
-            weight: 10
+            weight: 16
           b02d9754-3844-4aae-879e-508e844cd5fa:
             uuid: b02d9754-3844-4aae-879e-508e844cd5fa
             region: second
@@ -138,7 +139,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 8
+            weight: 14
           32db3918-6764-4ede-b25a-7312d603cd96:
             uuid: 32db3918-6764-4ede-b25a-7312d603cd96
             region: second
@@ -154,7 +155,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 7
+            weight: 13
           f52d2f40-7a18-4f94-abbd-d40c97eafa5d:
             uuid: f52d2f40-7a18-4f94-abbd-d40c97eafa5d
             region: second
@@ -164,7 +165,7 @@ third_party_settings:
                 entity: layout_builder.entity
               id: 'extra_field_block:node:idea:content_moderation_control'
             additional: {  }
-            weight: 12
+            weight: 18
           e0f3f3a6-f560-4aab-a034-b536ae91e16d:
             uuid: e0f3f3a6-f560-4aab-a034-b536ae91e16d
             region: second
@@ -180,20 +181,50 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 11
-          59759e22-1dd7-43c2-9ab9-84cb001eb623:
-            uuid: 59759e22-1dd7-43c2-9ab9-84cb001eb623
+            weight: 17
+          cb4e02ad-316f-4475-8d59-c7f98254805f:
+            uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
             region: second
             configuration:
-              id: 'views_block:ideas-block_1'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:idea:field_meta_tags'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: metatag_empty_formatter
+            additional: {  }
+            weight: 2
+          2421e4ac-d4c3-429b-b635-a1546c5a8a12:
+            uuid: 2421e4ac-d4c3-429b-b635-a1546c5a8a12
+            region: second
+            configuration:
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional:
+              layout_builder_styles_style: mobile_status_and_statistics
+            weight: 19
+          189f030b-cef1-4cf6-be25-90e2c0b7bdb8:
+            uuid: 189f030b-cef1-4cf6-be25-90e2c0b7bdb8
+            region: second
+            configuration:
+              id: 'views_block:ideas-ideas_dates_block'
               label: ''
               provider: views
               label_display: '0'
               views_label: ''
               items_per_page: none
               context_mapping: {  }
-            additional: {  }
-            weight: 5
+            additional:
+              layout_builder_styles_style: mobile_status_and_statistics
+            weight: 20
           9b268c06-2068-45ad-9fae-eed8766df86f:
             uuid: 9b268c06-2068-45ad-9fae-eed8766df86f
             region: second
@@ -212,22 +243,34 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
-          cb4e02ad-316f-4475-8d59-c7f98254805f:
-            uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
+            weight: 8
+          a2b066ac-d6fe-41d2-a40d-2d3d01595218:
+            uuid: a2b066ac-d6fe-41d2-a40d-2d3d01595218
             region: second
             configuration:
+              id: 'views_block:ideas-idea_creator_block'
+              label: ''
+              provider: views
               label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_meta_tags'
-              formatter:
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-                type: metatag_empty_formatter
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
-            weight: 2
+            weight: 9
+          07408077-c987-49a4-88c0-4f973942e782:
+            uuid: 07408077-c987-49a4-88c0-4f973942e782
+            region: second
+            configuration:
+              id: 'views_block:ideas-idea_statistics_and_statusblock'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional:
+              layout_builder_styles_style: mobile_status_and_statistics
+            weight: 11
         third_party_settings: {  }
       -
         layout_id: layout_onecol

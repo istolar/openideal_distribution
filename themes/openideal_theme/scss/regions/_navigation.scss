@@ -82,10 +82,11 @@
 
 @media (max-width: 991px) {
   .site-navigation {
-    width: 250px;
+    width: 312px;
+    padding-left: 0;
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -312px;
     height: 100vh;
     z-index: 999;
     transition: all 0.3s;

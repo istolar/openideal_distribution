@@ -34,9 +34,9 @@
         width: 50%;
 
         a,
-        .idea-flag-and-vote-block--flag {
+        .flag-follow--body {
           display: flex;
-          padding: 15px 50px;
+          padding: $font-size-xs 0;
           align-items: center;
           justify-content: center;
           line-height: 1;
@@ -52,19 +52,13 @@
         }
 
         .flag-follow {
+          display: block;
           margin: 70px 0 11px 0;
 
-          a {
+          a,
+          &--body {
             @include btn-theme($btn-light, #5eaed2);
           }
-        }
-
-        // If user has no access to flag, then show rewrite,
-        // and need to apply styles for that text.
-        .idea-flag-and-vote-block--flag {
-          @include btn-theme($btn-light, #5eaed2);
-          margin: 70px 0 11px 0;
-          cursor: pointer;
         }
       }
     }
@@ -85,7 +79,7 @@
     }
 
     .field-content {
-      color: #676C72;
+      color: $dark-gray;
     }
   }
 }
@@ -99,7 +93,7 @@
 
   &--type {
     font-size: $font-size-xs;
-    color: #676C72;
+    color: $dark-gray;
     font-weight: $font-weight-normal;
   }
 }
@@ -114,5 +108,11 @@
       margin-right: 12px;
       border-radius: 50%;
     }
+  }
+}
+
+@media (max-width: 1099px) {
+  .block-views-blockideas-idea-flag-vote-block {
+    font-size: $font-size-sm;
   }
 }
