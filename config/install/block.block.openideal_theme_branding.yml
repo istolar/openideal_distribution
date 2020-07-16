@@ -7,7 +7,7 @@ dependencies:
     - openideal_theme
 id: openideal_theme_branding
 theme: openideal_theme
-region: header
+region: logo
 weight: 0
 provider: null
 plugin: system_branding_block
@@ -18,5 +18,5 @@ settings:
   label_display: '0'
   use_site_logo: true
   use_site_name: true
-  use_site_slogan: true
+  use_site_slogan: false
 visibility: {  }

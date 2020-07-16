@@ -33,18 +33,23 @@ class OpenidealSlideshowEventSubscriber implements EventSubscriberInterface {
   public function onBuildRender(SectionComponentBuildRenderArrayEvent $event) {
     $context = $event->getContexts();
     if ($event->getPlugin()->getPLuginId() == 'openidel_slideshow_block' && isset($context['entity'])) {
+      $result = [];
       /** @var \Drupal\openideal_slideshow\Plugin\Block\Slideshow $plugin */
       $plugin = $event->getPlugin();
-
       // Get the node from context, and prepare field for the slideshow plugin.
       $node = $context['entity']->getContextValue();
-      /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList  $images */
-      $images = $node->field_images;
 
       if ($node->bundle() == 'challenge' && !$node->field_main_image->isEmpty()) {
-        $images->appendItem($node->field_main_image->first()->entity);
+        $result[] = $node->field_main_image->first()->entity;
       }
-      $plugin->setConfigurationValue('images', $images);
+
+      /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList  $images */
+      $images = $node->field_images;
+      foreach ($images as $image) {
+        $result[] = $image->entity;
+      }
+
+      $plugin->setConfigurationValue('images', $result);
     }
   }
 

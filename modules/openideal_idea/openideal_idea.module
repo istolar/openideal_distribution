@@ -158,6 +158,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
       '#link' => [
         'title' => t('Group Members'),
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
+        'localized_options' => [],
       ],
       '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
     ];

@@ -1,0 +1,16 @@
+openideal_slideshow.slick:
+  remote: http://kenwheeler.github.io/slick/
+  version: 1.x
+  license:
+    name: MIT
+    url: https://github.com/kenwheeler/slick/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    /libraries/slick-carousel/slick/slick.js: {}
+    js/slick-configuration.js: {}
+  css:
+    base:
+      /libraries/slick-carousel/slick/slick.css: {}
+      /libraries/slick-carousel/slick/slick-theme.css: {}
+  dependencies:
+    - core/jquery

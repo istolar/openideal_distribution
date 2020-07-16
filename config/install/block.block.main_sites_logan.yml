@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - openideal_theme
+id: main_sites_logan
+theme: openideal_theme
+region: content
+weight: -4
+provider: null
+plugin: 'block_content:3ed7eeba-0dcc-45a5-9ade-c53cacbc3c0e'
+settings:
+  id: 'block_content:3ed7eeba-0dcc-45a5-9ade-c53cacbc3c0e'
+  label: 'Main site slogan'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

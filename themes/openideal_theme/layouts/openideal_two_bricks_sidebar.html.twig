@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a two-bricks and sidebar layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass('row', 'container-fluid', 'idea') }}>
+
+    <div class="col-lg-13">
+        {% if content.square_one %}
+            <section {{ region_attributes.square_one.addClass('layout__region--first', 'idea--content') }}>
+                {{ content.square_one }}
+            </section>
+        {% endif %}
+
+        {% if content.square_two %}
+            <section {{ region_attributes.square_two.addClass('layout__region--second', 'idea--comments') }}>
+                {{ content.square_two }}
+            </section>
+        {% endif %}
+    </div>
+
+    <div class="col-lg-5">
+        {% if content.sidebar %}
+            <section {{ region_attributes.sidebar.addClass('layout__region--sidebar', 'idea--sidebar') }}>
+                {{ content.sidebar }}
+            </section>
+        {% endif %}
+    </div>
+
+  </div>
+{% endif %}

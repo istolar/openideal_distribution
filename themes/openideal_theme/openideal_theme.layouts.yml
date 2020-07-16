@@ -1,17 +1,17 @@
 openideal_two_bricks_sidebar:
   label: 'Two bricks and sidebar'
-  path: templates/layouts
+  path: layouts
   template: openideal_two_bricks_sidebar
-  library: layout_builder/twocol_section
+  library: openideal/global-styling
   category: OpenideaL
   default_region: first
   icon_map:
-    - [square_one, side_bar]
-    - [square_two, side_bar]
+    - [square_one, sidebar]
+    - [square_two, sidebar]
   regions:
     square_one:
       label: First
     square_two:
       label: Second
-    side_bar:
+    sidebar:
       label: 'Side bar'

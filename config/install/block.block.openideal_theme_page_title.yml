@@ -6,7 +6,7 @@ dependencies:
 id: openideal_theme_page_title
 theme: openideal_theme
 region: content
-weight: -50
+weight: -3
 provider: null
 plugin: page_title_block
 settings:
