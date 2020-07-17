@@ -59,7 +59,10 @@
           {{ link(item.title, item.url, {'class': link_classes, 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'aria-haspopup': 'true' }) }}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% else %}
-          {{ link(item.title, item.url, {'class': link_classes}) }}
+          <a href="{{ item.url }}" {{ attributes.addClass(link_classes) }}>
+            <img src="/{{ active_theme_path() }}/misc/icons/{{ item.title }}.png" alt="{{ item.title }}">
+            <span class="nav-link--text">{{ item.title }}</span>
+          </a>
         {% endif %}
       </li>
     {% endfor %}

@@ -14,7 +14,7 @@ provider: null
 plugin: addtoany_block
 settings:
   id: addtoany_block
-  label: 'SHARE IDEA'
+  label: 'Share idea'
   provider: addtoany
   label_display: visible
 visibility:

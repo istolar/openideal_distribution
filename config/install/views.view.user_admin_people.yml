@@ -8,7 +8,7 @@ dependencies:
     - field.storage.user.user_picture
     - image.style.medium
     - image.style.thumbnail
-    - system.menu.admin
+    - system.menu.main
   module:
     - better_exposed_filters
     - image
@@ -860,7 +860,7 @@ display:
           plugin_id: date
           entity_type: user
           entity_field: created
-      title: People
+      title: Community
       empty:
         area_text_custom:
           id: area_text_custom
@@ -1603,7 +1603,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: '0'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -1634,16 +1634,16 @@ display:
         row: false
         exposed_form: false
       display_description: ''
-      path: community_page
+      path: community
       menu:
         type: normal
-        title: 'Community page'
+        title: Community
         description: ''
         expanded: false
-        parent: openideal_toolbar.help
-        weight: 3
+        parent: ''
+        weight: 4
         context: '0'
-        menu_name: admin
+        menu_name: main
       filters:
         uid_raw:
           id: uid_raw

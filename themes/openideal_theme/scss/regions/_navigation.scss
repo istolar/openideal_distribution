@@ -60,15 +60,26 @@
       }
     }
   }
+  &--top {
+    margin-top: 47px;
+  }
   &__menu-list {
     &--item {
       margin-bottom: 15px;
       transition: border-left 0.3s ease-in-out, background-color 0.7s;
       border-left: 0 solid #fff;
       a {
+        display: flex;
+        flex-direction: row;
         padding: 18.59px 15px !important;
         font-size: $font-size-sm;
         line-height: 21px;
+
+        img {
+          margin-right: 11px;
+          width: 26px;
+          height: 26px;
+        }
       }
       .is-active,
       &:hover {

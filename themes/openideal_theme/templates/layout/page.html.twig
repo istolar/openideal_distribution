@@ -128,7 +128,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none-sm {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>
@@ -143,10 +143,8 @@
     <footer class="site-footer">
         {% block footer %}
             <div class="{{ container }}">
-                {# @Todo: move to block? Add Logo. #}
-                <div class="text-align-center text-white">{{ 'Powered by'|t }} <span class="font-weight-bold">OpenideaL</span>
-                </div>
                 <div class="site-footer__bottom">
+                    <div class="text-align-center text-white d-none d-md-block">{{ 'Powered by'|t }} <span class="font-weight-bold">{{ 'OpenideaL'|t }}</span></div>
                     {{ page.footer }}
                 </div>
             </div>

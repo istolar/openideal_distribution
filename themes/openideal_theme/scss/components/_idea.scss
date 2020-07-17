@@ -63,12 +63,38 @@
     .block-field-blocknodeideatitle {
       font-size: 24px;
     }
+    .block-views-blockideas-ideas-dates-block {
+      border-top: 1px solid #E0E0E0;
+      padding-top: 17px;
+      .idea-dates-block .views-field {
+        .view-content {
+          font-size: $font-size-sm;
+        }
+
+        .views-label {
+          font-size: $font-size-xs;
+        }
+      }
+    }
   }
   .idea-statistics-block-and-status {
     margin-bottom: 44px;
     .views-row {
       display: flex;
       justify-content: space-between;
+    }
+
+    &--statistics {
+      display: flex;
+      font-weight: $font-weight-bold;
+
+      img {
+        width: 24px;
+      }
+
+      &__element {
+        margin-right: 8px;
+      }
     }
   }
 
@@ -77,6 +103,7 @@
       font-size: $font-size-xs;
       font-weight: $font-weight-bold;
       margin-bottom: 16px;
+      text-transform: uppercase;
     }
   }
 }

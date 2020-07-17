@@ -197,20 +197,6 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 2
-          2421e4ac-d4c3-429b-b635-a1546c5a8a12:
-            uuid: 2421e4ac-d4c3-429b-b635-a1546c5a8a12
-            region: second
-            configuration:
-              id: 'views_block:followers-followers'
-              label: ''
-              provider: views
-              label_display: visible
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional:
-              layout_builder_styles_style: mobile_status_and_statistics
-            weight: 19
           189f030b-cef1-4cf6-be25-90e2c0b7bdb8:
             uuid: 189f030b-cef1-4cf6-be25-90e2c0b7bdb8
             region: second
@@ -271,6 +257,20 @@ third_party_settings:
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
             weight: 11
+          2421e4ac-d4c3-429b-b635-a1546c5a8a12:
+            uuid: 2421e4ac-d4c3-429b-b635-a1546c5a8a12
+            region: second
+            configuration:
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional:
+              layout_builder_styles_style: mobile_status_and_statistics
+            weight: 21
         third_party_settings: {  }
       -
         layout_id: layout_onecol

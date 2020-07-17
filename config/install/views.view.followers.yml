@@ -179,7 +179,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: FOLLOWERS
+      title: Followers
       header: {  }
       footer: {  }
       empty:
@@ -267,6 +267,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.follower'
@@ -287,6 +288,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.follower'
