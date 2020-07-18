@@ -15,7 +15,7 @@
           // Depending on vote entity change the body.
           var likeBody = settings.openidealUser.comment
           ? '<i class="fa fa-thumbs-up"></i>'
-          : '<span class="mr-2 text-uppercase"><i class="fa fa-thumbs-up"></i></span> RATE IDEA';
+          : '<span class="mr-2 text-uppercase"><i class="fa fa-thumbs-up"></i>' + Drupal.t(' Like idea') + '</span>';
 
           $select.after(`<div class="like-rating"><a href="#">${likeBody}</a></div>`).hide();
           $this.find('.like-rating a').eq(0).each(function () {
