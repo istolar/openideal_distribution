@@ -55,9 +55,8 @@
 <div id="page-wrapper container-fluid">
     {# Mobile header. #}
     <div class="site-navigation-toggle d-lg-none">
-        <button id="sidebar-collapse" class="btn btn-info">
-            {# @Todo: once icons provided add them #}
-            <span>X</span>
+        <button id="sidebar-collapse" class="btn">
+            <span>{% include active_theme_path() ~ '/misc/icons/Menu.svg' %}</span>
         </button>
         {% if page.logo %}
             <div class="site-navigation--logo">
@@ -89,11 +88,9 @@
                             {{ page.user }}
                         </div>
                     {% endif %}
-                    {% if page.footer %}
-                        <footer class="site-navigation--footer d-lg-none">
-                            {{ page.footer }}
-                        </footer>
-                    {% endif %}
+                    <footer class="site-navigation--footer d-lg-none">
+                        {{ drupal_block('openidel_footer_powered_by') }}
+                    </footer>
                 </div>
             </div>
 
@@ -142,12 +139,7 @@
 {% if page.footer %}
     <footer class="site-footer">
         {% block footer %}
-            <div class="{{ container }}">
-                <div class="site-footer__bottom">
-                    <div class="text-align-center text-white d-none d-md-block">{{ 'Powered by'|t }} <span class="font-weight-bold">{{ 'OpenideaL'|t }}</span></div>
-                    {{ page.footer }}
-                </div>
-            </div>
+            {{ page.footer }}
         {% endblock %}
     </footer>
 {% endif %}

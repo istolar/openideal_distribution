@@ -4,7 +4,7 @@
   #sidebar-collapse {
     position: absolute;
     top: 25%;
-    left: 10%;
+    left: 2%;
   }
   .site-navigation--logo {
     display: flex;
@@ -16,5 +16,12 @@
     display: flex;
     margin: 0;
     padding: 0;
+  }
+
+  .site-branding--link {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    margin: 15px;
   }
 }

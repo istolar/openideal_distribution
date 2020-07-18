@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - addtoany
+  theme:
+    - openideal_theme
+id: addtoanybuttons_2
+theme: openideal_theme
+region: footer
+weight: -8
+provider: null
+plugin: addtoany_block
+settings:
+  id: addtoany_block
+  label: 'AddToAny buttons'
+  provider: addtoany
+  label_display: '0'
+visibility: {  }
