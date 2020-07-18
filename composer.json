@@ -74,7 +74,7 @@
         "installer-name": "idea",
         "patches": {
             "drupal/core": {
-                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch",
+                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-07-18/2879087-65.patch",
                 "Dispatch events for changing content moderation states": "https://www.drupal.org/files/issues/2018-11-06/2873287-50.patch",
                 "Entity reference error messages are not user friendly": "https://www.drupal.org/files/issues/2020-06-04/3138631-9.patch"
             },
