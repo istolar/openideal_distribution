@@ -15,7 +15,7 @@ $font-family-base: $font-family-assistant;
 $font-size-base: 1rem;
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * .8889;
-$font-size-xs: $font-size-base * .75;
+$font-size-xs: $font-size-base * .8333333333333334;
 
 // Weight
 $font-weight-light: 300;
@@ -27,12 +27,11 @@ $font-weight-base: $font-weight-normal;
 $line-height-base: 1.333;
 
 // Heading
-$h1-font-size-h1: $font-size-base * 2;
-$h2-font-size-h2: 1.377rem;
-$h3-font-size-h3: 1.33rem;
-$h4-font-size-h4: 1.33rem;
-$h5-font-size-h5: 1.33rem;
-$h6-font-size-h6: 1.33rem;
-
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: 1.377rem;
+$h3-font-size: 1.33rem;
+$h4-font-size: 1.33rem;
+$h5-font-size: 1.33rem;
+$h6-font-size: 0.889rem;
 // Color
 $main-font-color: #343352;

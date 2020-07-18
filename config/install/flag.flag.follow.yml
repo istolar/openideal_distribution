@@ -11,13 +11,13 @@ bundles:
 entity_type: node
 global: false
 weight: 0
-flag_short: Follow
+flag_short: '<span class="mr-2"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span> Follow</a>'
 flag_long: ''
 flag_message: ''
 unflag_short: Unfollow
 unflag_long: ''
 unflag_message: ''
-unflag_denied_text: ''
+unflag_denied_text: Followed
 flag_type: 'entity:node'
 link_type: ajax_link
 flagTypeConfig:
@@ -26,5 +26,5 @@ flagTypeConfig:
   show_on_form: false
   show_contextual_link: false
   extra_permissions:
-    owner: '0'
+    owner: owner
 linkTypeConfig: {  }

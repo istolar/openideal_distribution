@@ -45,7 +45,7 @@
  * - content_attributes: Items for the header region.
  * - sidebar_first_attributes: Items for the highlighted region.
  * - sidebar_second_attributes: Items for the primary menu region.
- * - sidebar_collapse: If the sidebar_first will collapse.
+ * - idea_sidebar: If the current page is Idea node.
  *
  * @see template_preprocess_page()
  * @see bootstrap_barrio_preprocess_page()
@@ -104,7 +104,7 @@
                 {# @Todo: once activity stream complete add appropriate styles. #}
                 col-xl-{{ page.sidebar ? 11 : 16 }}
                 col-lg-{{ page.sidebar ? 11 : 15 }}
-                col-md-{{ page.sidebar ? 11 : 14 }}"
+                col-md-{{ page.sidebar ? 13 : 14 }}"
         >
             {% if page.highlighted %}
                 <div class="highlighted">
@@ -128,7 +128,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-5">
+            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>
@@ -143,10 +143,8 @@
     <footer class="site-footer">
         {% block footer %}
             <div class="{{ container }}">
-                {# @Todo: move to block? Add Logo. #}
-                <div class="text-align-center text-white">{{ 'Powered by'|t }} <span class="font-weight-bold">OpenideaL</span>
-                </div>
                 <div class="site-footer__bottom">
+                    <div class="text-align-center text-white d-none d-md-block">{{ 'Powered by'|t }} <span class="font-weight-bold">{{ 'OpenideaL'|t }}</span></div>
                     {{ page.footer }}
                 </div>
             </div>

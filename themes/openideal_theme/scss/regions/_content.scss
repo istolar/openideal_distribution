@@ -1,5 +1,4 @@
 .main-content-outer {
-  padding: 30px;
     // Content site slogan.
     .main-site-logo {
       &--heading {
@@ -12,7 +11,7 @@
         color: $main-font-color;
       }
       &--subline {
-        color: #676C72;
+        color: $dark-gray;
       }
     }
 

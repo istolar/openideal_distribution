@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -28,5 +29,41 @@ function openideal_theme_form_system_theme_settings_alter(&$form, FormStateInter
     'bg-dark' => t('Dark'),
     'bg-white' => t('White'),
     'bg-transparent' => t('Transparent'),
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_page(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface && $node->bundle() == 'idea') {
+    $variables['idea_sidebar'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_field__comment(&$variables) {
+  $node = $variables['element']['#object'];
+  $statistics = \Drupal::service('comment.statistics')->read([$node->id() => $node], 'node');
+  $variables['comments_count'] = (reset($statistics))->comment_count;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openideal_theme_form_comment_comment_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['comment_body']['widget'][0]['#title'] = t('Add comment');
+  $form['actions']['submit']['#value'] = t('SEND');
+  $form['actions']['submit']['#prefix'] = '<div class="font-submit-btn-wrapper"><i class="fa fa-paper-plane" aria-hidden="true"></i>';
+  $form['actions']['submit']['#suffix'] = '</div>';
+  $form['actions']['cancel'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'span',
+    '#value' => t('Cancel'),
+    '#attributes' => ['class' => ['comment-form--cancel-btn', 'btn']],
+    '#weight' => 99,
   ];
 }

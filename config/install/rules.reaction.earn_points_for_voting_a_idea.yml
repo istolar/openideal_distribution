@@ -28,7 +28,7 @@ expression:
           operation: '=='
           value: idea
         context_mapping:
-          data: vote.entity_id.entity.type.target_id
+          data: vote.entity_type.value
         context_processors:
           operation:
             rules_tokens: {  }

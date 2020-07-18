@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 name: slideshow_large
-label: 'Slideshow large'
+label: 'Slideshow large (1200x250)'
 effects:
   6e2833f1-aaaf-4a30-981f-73716c8708d3:
     uuid: 6e2833f1-aaaf-4a30-981f-73716c8708d3
