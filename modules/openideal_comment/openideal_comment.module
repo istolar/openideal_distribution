@@ -7,6 +7,7 @@
 
 use Drupal\ajax_comments\Controller\AjaxCommentsController;
 use Drupal\Component\Utility\Html;
+use Drupal\openideal_comment\OpenidealCommentViewBuilder;
 
 /**
  * Implements hook_ajax_comments_wrapper_id_alter().
@@ -34,4 +35,12 @@ function openideal_comment_preprocess_comment(&$variables) {
   /** @var \Drupal\comment\CommentInterface $comment */
   $comment = $variables['elements']['#comment'];
   $variables['attributes']['class'][] = AjaxCommentsController::$commentClassPrefix . $comment->id();
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function openideal_comment_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['comment']->setHandlerClass('view_builder', OpenidealCommentViewBuilder::class);
 }
