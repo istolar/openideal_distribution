@@ -1,8 +1,71 @@
-// Default variables.
-@import "default-variables";
+/* 
+Theme Name: Bootstrap 4 Sass
+Description: Bootstrap 4 with Sass
+*/
 
-// Bootstrap Framework.
-@import '../bootstrap/assets/stylesheets/bootstrap';
+// import files
+@import "import";
 
-// Base-theme overrides.
-@import 'drupal-bootstrap';
+/* GENERAL STYLES
+-------------------------------------------------*/
+html {
+  font-size: 18px;
+}
+
+body {
+  padding: 0;
+  color: $primary-color;
+  margin: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: $body-bg;
+}
+
+/* COLORS 
+--------------------------------------------------*/
+
+a {
+  color: $accent-shade;
+}
+
+.bg-inverse {
+  background: $primary-shade;
+}
+
+.site-footer {
+  background: #3C414F;
+}
+
+.menu--main li a {
+  color: $white;
+}
+
+.menu--account li a {
+  color: $white;
+}
+
+.site-name-slogan a {
+  text-decoration: none;
+}
+
+.card-group img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+.card-group .field--type-image {
+  margin: 0
+}
+
+.slick {
+  width: 100%;
+}
+
+.slick > div {
+  margin: 0 15px;
+}
+
+.color-white {
+  color: $white !important;
+}

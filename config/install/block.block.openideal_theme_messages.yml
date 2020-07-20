@@ -8,7 +8,7 @@ dependencies:
 id: openideal_theme_messages
 theme: openideal_theme
 region: highlighted
-weight: 0
+weight: -6
 provider: null
 plugin: system_messages_block
 settings:

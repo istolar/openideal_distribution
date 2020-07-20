@@ -1,0 +1,108 @@
+.site-navigation {
+  background-color: #242A36;
+  padding-right: 0;
+  height: 101vh;
+  position: sticky;
+  top: 0;
+  &--dismiss {
+    position: absolute;
+    left: 90%;
+    color: #27C0FF;
+    font-size: 1.5rem;
+  }
+  &--inner {
+    top: 0;
+    z-index: 500;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+  &--elements {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: space-between;
+  }
+
+  &--logo {
+    .site-branding--link {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  }
+  &--nav {
+  }
+  &--user-info {
+    .views-row {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      color: $white;
+      img {
+        border-radius: 50%;
+      }
+      .views-field-field-last-name {
+        margin-top: 6px;
+        .field-content {
+          font-size: 0.7778rem;
+          font-weight: $font-weight-bold;
+        }
+      }
+      .views-field-edit-user {
+        line-height: 0.3;
+        a {
+          color: $white;
+          font-size: $font-size-xs;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &--top {
+    margin-top: 47px;
+  }
+  &__menu-list {
+    &--item {
+      margin-bottom: 15px;
+      transition: border-left 0.3s ease-in-out, background-color 0.7s;
+      border-left: 0 solid #fff;
+      a {
+        display: flex;
+        flex-direction: row;
+        padding: 18.59px 15px !important;
+        font-size: $font-size-sm;
+        line-height: 21px;
+
+        img {
+          margin-right: 11px;
+          width: 26px;
+          height: 26px;
+        }
+      }
+      .is-active,
+      &:hover {
+        border-left: 7px solid #3AC0F7;
+        background-color: #393F4A;
+        transition: border-left 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .site-navigation {
+    width: 312px;
+    padding-left: 0;
+    position: fixed;
+    top: 0;
+    left: -312px;
+    height: 100vh;
+    z-index: 999;
+    transition: all 0.3s;
+    &.active {
+      left: 0;
+    }
+  }
+}

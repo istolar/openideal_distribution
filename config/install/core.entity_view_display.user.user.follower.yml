@@ -11,7 +11,7 @@ dependencies:
     - field.field.user.user.field_last_name
     - field.field.user.user.field_points
     - field.field.user.user.user_picture
-    - image.style.mentions_icon
+    - image.style.follower_icon
   module:
     - image
     - layout_builder
@@ -31,7 +31,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: mentions_icon
+      image_style: follower_icon
       image_link: content
     third_party_settings: {  }
 hidden:

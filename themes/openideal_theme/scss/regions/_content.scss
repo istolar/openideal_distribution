@@ -1,0 +1,18 @@
+.main-content-outer {
+    // Content site slogan.
+    .main-site-logo {
+      &--heading {
+        color: #1294CA;
+        font-weight: $font-weight-bold;
+      }
+      &--sub-heading {
+        display: block;
+        font-weight: $font-weight-light;
+        color: $main-font-color;
+      }
+      &--subline {
+        color: $dark-gray;
+      }
+    }
+
+}

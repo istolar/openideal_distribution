@@ -1,0 +1,5 @@
+<div class="openideal-slideshow">
+    {% for item in items %}
+        <img src="{{ item.uri.value | image_style('slideshow_large') }}" alt="{{ item._referringItem.alt }}">
+    {% endfor %}
+</div>

@@ -16,8 +16,6 @@
         }
     ],
     "require": {
-        "bower-asset/jquery-mousewheel": "^3.1",
-        "bower-asset/jquery.easing": "^1.3",
         "bower-asset/slick-carousel": "^1.8",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
@@ -29,7 +27,7 @@
         "drupal/allowed_formats": "^1.2",
         "drupal/avatars": "^1.1",
         "drupal/better_exposed_filters": "^4.0",
-        "drupal/bootstrap": "^3.21",
+        "drupal/bootstrap_barrio": "^5.0",
         "drupal/ckeditor_media_embed": "^1.9",
         "drupal/ckeditor_mentions": "2.x-dev",
         "drupal/comments_order": "^1.1",
@@ -44,7 +42,7 @@
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/group": "^1.0",
-        "drupal/slick": "^2.2",
+        "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/metatag": "^1.13",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
@@ -76,7 +74,7 @@
         "installer-name": "idea",
         "patches": {
             "drupal/core": {
-                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-04-25/drupal-comment_access-2879087-61-d8_0.patch",
+                "Fix comment access handling": "https://www.drupal.org/files/issues/2020-07-18/2879087-65.patch",
                 "Dispatch events for changing content moderation states": "https://www.drupal.org/files/issues/2018-11-06/2873287-50.patch",
                 "Entity reference error messages are not user friendly": "https://www.drupal.org/files/issues/2020-06-04/3138631-9.patch"
             },
