@@ -1,0 +1,50 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set classes = [
+    'site-footer-mobile-block',
+] %}
+<div{{ attributes.addClass(classes) }}>
+    <div class="site-footer-mobile-block--element">
+        {{ like }}
+    </div>
+
+    <div class="site-footer-mobile-block--element">
+        {% if follow['#flag'] is not empty %}
+            {{ follow }}
+        {% else %}
+            <div class="flag-follow--body">
+                {% include active_theme_path() ~ '/misc/icons/follow.svg' %}
+                <span class="site-footer-mobile-block--element__text">
+                    Followed
+                </span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="site-footer-mobile-block--element site-footer-open-comments-btn">
+        <span class="site-footer-mobile-block--element__icon">
+            {% include active_theme_path() ~ '/misc/icons/comment.svg' %}
+        </span>
+        <span class="site-footer-mobile-block--element__text">
+            Comment
+        </span>
+    </div>
+
+    <div class="site-footer-mobile-block--element">
+        <span class="site-footer-mobile-block--element__icon">
+            {% include active_theme_path() ~ '/misc/icons/Share.svg' %}
+        </span>
+        <span class="site-footer-mobile-block--element__text">
+            {# Todo: change once share will be changed. #}
+            Share
+        </span>
+    </div>
+</div>

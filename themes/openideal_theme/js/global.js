@@ -75,9 +75,15 @@
    */
   Drupal.behaviors.openidealThemeCommentsFormAnimation = {
     attach: function (context, settings) {
-      $('.comments--header__add-comment-btn', context).once('openideal-theme-comments-form-animation').on('click', function () {
+      $('.comments--header__add-comment-btn, .site-footer-open-comments-btn', context).once('openideal-theme-comments-form-animation').on('click', function () {
+        var commentsBottom = $('.comments--bottom');
         // hide sidebar
-        $('.comments--bottom').toggle('slow');
+        commentsBottom.toggle('slow');
+
+        // Scroll to comments body.
+        $([document.documentElement, document.body]).animate({
+          scrollTop: commentsBottom.offset().top
+        }, 1000);
       });
 
       $('.comment-form--cancel-btn', context).once('openideal-theme-comments-form-animation-reply').on('click', function () {
@@ -92,6 +98,26 @@
       });
 
       $('.ajax-comments-form-edit .comment-form--cancel-btn').once('openideal-theme-comments-form-animation-edit').addClass('d-none');
+    }
+  }
+
+  /**
+   * Change votingapi_reaction like label.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Change label.
+   */
+  Drupal.behaviors.openidealThemeLikeWidgetLabel = {
+    attach: function (context, settings) {
+      var $label = $('.votingapi-reaction-label', context);
+      if ($label.parents('.region-sidebar').length) {
+        $label.text('Like idea')
+      }
+      else if ($label.parents('.site-footer').length) {
+        $label.text('Like')
+      }
     }
   }
 

@@ -19,6 +19,7 @@ dependencies:
   - better_exposed_filters:better_exposed_filters
   - drupal:big_pipe
   - drupal:block
+  - go_back:go_back
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
@@ -99,6 +100,7 @@ dependencies:
   - drupal:menu_link_content
   - votingapi:votingapi
   - votingapi_widgets:votingapi_widgets
+  - votingapi_reaction:votingapi_reaction
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules

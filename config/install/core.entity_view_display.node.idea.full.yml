@@ -13,8 +13,8 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
-    - field.field.node.idea.field_voting
     - node.type.idea
     - views.view.followers
     - views.view.ideas
@@ -30,7 +30,6 @@ dependencies:
     - text
     - user
     - views
-    - votingapi_widgets
   theme:
     - bootstrap_barrio
 third_party_settings:
@@ -74,7 +73,7 @@ third_party_settings:
               custom_url: ''
               context_mapping: {  }
             additional: {  }
-            weight: 0
+            weight: -9
         third_party_settings: {  }
       -
         layout_id: barrio_cardtopimage
@@ -91,7 +90,7 @@ third_party_settings:
               label_display: '0'
               context_mapping: {  }
             additional: {  }
-            weight: 0
+            weight: 1
           6f6bbc35-927a-4c57-b10f-b5c0b4f5edc2:
             uuid: 6f6bbc35-927a-4c57-b10f-b5c0b4f5edc2
             region: second
@@ -424,18 +423,6 @@ content:
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
-  field_voting:
-    weight: 110
-    label: above
-    settings:
-      readonly: false
-      style: default
-      show_results: false
-      values: {  }
-      show_own_vote: false
-    third_party_settings: {  }
-    type: voting_api_formatter
-    region: content
   flag_follow:
     weight: 10
     settings: {  }
@@ -448,3 +435,4 @@ content:
     third_party_settings: {  }
 hidden:
   addtoany: true
+  field_like: true

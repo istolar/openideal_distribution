@@ -4,10 +4,12 @@ dependencies:
   config:
     - comment.type.comment
     - field.field.comment.comment.comment_body
+    - field.field.comment.comment.field_like
     - field.field.comment.comment.field_voting_comment
   module:
     - allowed_formats
     - text
+    - votingapi_reaction
 id: comment.comment.default
 targetEntityType: comment
 bundle: comment
@@ -29,6 +31,12 @@ content:
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
+  field_like:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: votingapi_reaction_default
+    region: content
 hidden:
   field_voting_comment: true
   subject: true

@@ -4,11 +4,13 @@ dependencies:
   config:
     - comment.type.comment
     - field.field.comment.comment.comment_body
+    - field.field.comment.comment.field_like
     - field.field.comment.comment.field_voting_comment
   module:
     - layout_builder
     - layout_discovery
     - text
+    - votingapi_reaction
     - votingapi_widgets
 third_party_settings:
   layout_builder:
@@ -86,6 +88,26 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+          b944681b-c2dd-4077-a9ea-4bfbe1266eec:
+            uuid: b944681b-c2dd-4077-a9ea-4bfbe1266eec
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:comment:comment:field_like'
+              formatter:
+                label: above
+                settings:
+                  show_summary: true
+                  show_icon: true
+                  show_label: true
+                  show_count: true
+                  sort_reactions: desc
+                third_party_settings: {  }
+                type: votingapi_reaction_default
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
 id: comment.comment.default
 targetEntityType: comment
@@ -99,6 +121,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_like:
+    weight: 4
+    label: above
+    settings:
+      show_summary: true
+      show_icon: true
+      show_label: true
+      show_count: true
+      sort_reactions: desc
+    third_party_settings: {  }
+    type: votingapi_reaction_default
+    region: content
   field_voting_comment:
     weight: 3
     label: hidden

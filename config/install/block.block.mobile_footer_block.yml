@@ -2,21 +2,21 @@ langcode: en
 status: true
 dependencies:
   module:
-    - addtoany
     - node
+    - openideal_footer
   theme:
     - openideal_theme
-id: addtoanybuttons
+id: mobile_footer_block
 theme: openideal_theme
-region: sidebar
-weight: -4
+region: footer
+weight: 0
 provider: null
-plugin: addtoany_block
+plugin: openideal_footer_mobile_footer_block
 settings:
-  id: addtoany_block
-  label: 'Share idea'
-  provider: addtoany
-  label_display: visible
+  id: openideal_footer_mobile_footer_block
+  label: 'Mobile footer block'
+  provider: openideal_footer
+  label_display: '0'
 visibility:
   node_type:
     id: node_type

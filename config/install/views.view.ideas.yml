@@ -7,7 +7,6 @@ dependencies:
     - field.storage.node.field_challenge
     - field.storage.node.field_idea_phase
     - field.storage.node.field_idea_tags
-    - field.storage.node.field_voting
     - field.storage.user.field_first_name
     - field.storage.user.field_last_name
     - field.storage.user.user_picture
@@ -19,7 +18,6 @@ dependencies:
     - taxonomy.vocabulary.idea_lifecycle_phase
   module:
     - better_exposed_filters
-    - content_moderation
     - flag
     - image
     - node
@@ -28,7 +26,6 @@ dependencies:
     - text
     - user
     - votingapi
-    - votingapi_widgets
 id: ideas
 label: Ideas
 module: views
@@ -2105,10 +2102,10 @@ display:
           hide_alter_empty: false
           entity_type: flagging
           plugin_id: flag_link
-        field_voting:
-          id: field_voting
-          table: node__field_voting
-          field: field_voting
+        field_like:
+          id: field_like
+          table: node__field_like
+          field: field_like
           relationship: none
           group_type: group
           admin_label: ''
@@ -2116,7 +2113,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: '{{ field_voting }}'
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -2142,7 +2139,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: idea-flag-and-vote-block--voting
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -2152,14 +2149,15 @@ display:
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
+          hide_alter_empty: true
           click_sort_column: status
-          type: voting_api_formatter
+          type: votingapi_reaction_default
           settings:
-            style: default
-            readonly: 0
-            show_results: 0
-            show_own_vote: 0
+            show_summary: false
+            show_icon: false
+            show_label: true
+            show_count: false
+            sort_reactions: desc
           group_column: status
           group_columns: {  }
           group_rows: true
@@ -2316,7 +2314,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_voting'
+        - 'config:field.storage.node.field_like'
   idea_mobile_footer_block:
     display_plugin: block
     id: idea_mobile_footer_block
@@ -2375,72 +2373,6 @@ display:
           hide_alter_empty: false
           entity_type: flagging
           plugin_id: flag_link
-        field_voting:
-          id: field_voting
-          table: node__field_voting
-          field: field_voting
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: '{{ field_voting }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: idea-flag-and-vote-block--voting
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: false
-          click_sort_column: status
-          type: voting_api_formatter
-          settings:
-            style: default
-            readonly: 0
-            show_results: 0
-            show_own_vote: 0
-          group_column: status
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         nothing:
           id: nothing
           table: views
@@ -2678,7 +2610,6 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -2686,8 +2617,7 @@ display:
         - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.node.field_voting'
+      tags: {  }
   idea_statistics_and_statusblock:
     display_plugin: block
     id: idea_statistics_and_statusblock
@@ -2700,7 +2630,7 @@ display:
           id: value
           table: votingapi_result
           field: value
-          relationship: node_vote_result_vote_count_vote
+          relationship: node_vote_result_vote_count_reaction_like
           group_type: group
           admin_label: ''
           label: ''
@@ -3096,13 +3026,13 @@ display:
         groups:
           1: AND
       relationships:
-        node_vote_result_vote_count_vote:
-          id: node_vote_result_vote_count_vote
+        node_vote_result_vote_count_reaction_like:
+          id: node_vote_result_vote_count_reaction_like
           table: node_field_data
-          field: node_vote_result_vote_count_vote
+          field: node_vote_result_vote_count_reaction_like
           relationship: none
           group_type: group
-          admin_label: 'Vote Result "Count" for content items: Normal vote'
+          admin_label: 'Vote Result "Count" for content items: I like this'
           required: false
           entity_type: node
           plugin_id: standard
@@ -3143,7 +3073,7 @@ display:
           id: value
           table: votingapi_result
           field: value
-          relationship: node_vote_result_vote_count_vote
+          relationship: node_vote_result_vote_count_reaction_like
           group_type: group
           admin_label: ''
           label: ''
@@ -3427,13 +3357,13 @@ display:
         groups:
           1: AND
       relationships:
-        node_vote_result_vote_count_vote:
-          id: node_vote_result_vote_count_vote
+        node_vote_result_vote_count_reaction_like:
+          id: node_vote_result_vote_count_reaction_like
           table: node_field_data
-          field: node_vote_result_vote_count_vote
+          field: node_vote_result_vote_count_reaction_like
           relationship: none
           group_type: group
-          admin_label: 'Vote Result "Count" for content items: Normal vote'
+          admin_label: 'Vote Result "Count" for content items: I like this'
           required: false
           entity_type: node
           plugin_id: standard

@@ -52,7 +52,7 @@
  * @see html.html.twig
  */
 #}
-<div id="page-wrapper container-fluid">
+<div id="page-wrapper">
     {# Mobile header. #}
     <div class="site-navigation-toggle d-lg-none">
         <button id="sidebar-collapse" class="btn">
@@ -67,7 +67,9 @@
     <div id="page" class="row">
         {# Main navigation #}
         <section id="site-navigation" class="site-navigation col-xl-2 col-lg-3">
-            <div class="site-navigation--dismiss d-lg-none">x</div>
+            <div class="site-navigation--dismiss d-lg-none">
+                {% include active_theme_path() ~ '/misc/icons/exit.svg' %}
+            </div>
             <div class="site-navigation--inner">
                 {% block nav %}
                 {% if page.logo %}
@@ -98,7 +100,6 @@
         {% endblock %}
         <div id="main-wrapper"
              class="layout-main-wrapper main-content-outer clearfix
-                {# @Todo: once activity stream complete add appropriate styles. #}
                 col-xl-{{ page.sidebar ? 11 : 16 }}
                 col-lg-{{ page.sidebar ? 11 : 15 }}
                 col-md-{{ page.sidebar ? 13 : 14 }}"
