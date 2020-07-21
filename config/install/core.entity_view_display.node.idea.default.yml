@@ -242,20 +242,23 @@ third_party_settings:
             uuid: 52ddfd3f-a23b-45f8-a19c-31f9d0c97291
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:idea:field_like'
+              label: Like
+              provider: layout_builder
+              label_display: '0'
               formatter:
                 label: above
+                type: votingapi_reaction_default
                 settings:
-                  show_summary: true
+                  show_summary: false
                   show_icon: true
-                  show_label: true
+                  show_label: false
                   show_count: true
                   sort_reactions: desc
                 third_party_settings: {  }
-                type: votingapi_reaction_default
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 18
         third_party_settings: {  }

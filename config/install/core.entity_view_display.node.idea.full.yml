@@ -21,11 +21,11 @@ dependencies:
   module:
     - comment
     - file
-    - go_back
     - image
     - layout_builder
     - layout_discovery
     - metatag
+    - openideal_idea
     - openideal_slideshow
     - text
     - user
@@ -42,38 +42,17 @@ third_party_settings:
         layout_settings:
           label: 'Go back'
         components:
-          94385b92-9e87-4fe0-b30e-ae58c894de61:
-            uuid: 94385b92-9e87-4fe0-b30e-ae58c894de61
+          f74371b0-c4cf-44ca-896c-f982e9ee2ddd:
+            uuid: f74371b0-c4cf-44ca-896c-f982e9ee2ddd
             region: content
             configuration:
-              id: go_back
-              label: 'Go Back Block'
-              provider: go_back
+              id: openideal_idea_go_back_block
+              label: 'Go back'
+              provider: openideal_idea
               label_display: '0'
-              News:
-                go_back: ''
-                quick_display: 0
-                smart_mode: 0
-              Challenge:
-                go_back: ''
-                quick_display: 0
-                smart_mode: 0
-              FAQ:
-                go_back: ''
-                quick_display: 0
-                smart_mode: 0
-              Idea:
-                go_back: /ideas
-                quick_display: 1
-                smart_mode: 1
-              'Basic page':
-                go_back: ''
-                quick_display: 0
-                smart_mode: 0
-              custom_url: ''
               context_mapping: {  }
             additional: {  }
-            weight: -9
+            weight: -8
         third_party_settings: {  }
       -
         layout_id: barrio_cardtopimage

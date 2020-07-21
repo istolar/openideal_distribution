@@ -23,7 +23,7 @@
             <div class="flag-follow--body">
                 {% include active_theme_path() ~ '/misc/icons/follow.svg' %}
                 <span class="site-footer-mobile-block--element__text">
-                    Followed
+                    {{ 'Followed'|t }}
                 </span>
             </div>
         {% endif %}
@@ -34,7 +34,7 @@
             {% include active_theme_path() ~ '/misc/icons/comment.svg' %}
         </span>
         <span class="site-footer-mobile-block--element__text">
-            Comment
+            {{ 'Comment'|t }}
         </span>
     </div>
 
@@ -44,7 +44,7 @@
         </span>
         <span class="site-footer-mobile-block--element__text">
             {# Todo: change once share will be changed. #}
-            Share
+            {{ 'Share'|t }}
         </span>
     </div>
 </div>

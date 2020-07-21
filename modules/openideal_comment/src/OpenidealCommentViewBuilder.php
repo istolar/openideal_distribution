@@ -16,24 +16,26 @@ class OpenidealCommentViewBuilder extends CommentViewBuilder {
    */
   public function buildComponents(array &$build, array $entities, array $displays, $view_mode) {
     parent::buildComponents($build, $entities, $displays, $view_mode);
+    $previous_thread = NULL;
+    $previous_key = NULL;
 
-    $prev = FALSE;
-    foreach ($entities as $id => $entity) {
-      $build[$id]['#comment_section_start'] = TRUE;
-      $build[$id]['#comment_section_end'] = TRUE;
-
-      // If this is nested comment, then previous one should not close the
-      // comments section and this one should not start a new one.
-      if ($build[$id]['#comment_threaded'] && $build[$id]['#comment_indent'] > 0 && $prev) {
-        $build[$id]['#comment_section_start'] = FALSE;
-        $build[$prev]['#comment_section_end'] = FALSE;
+    // Point last child of thread.
+    foreach ($entities as $key => $entity) {
+      $thread = $entity->getThread();
+      if (strpos($thread, '.') === FALSE
+        && isset($previous_thread)
+        && (isset($previous_key) && $entities[$previous_key]->hasParentComment())) {
+        $build[$previous_key]['#attributes']['class'][] = 'comments--thread__last_child';
       }
-
-      $prev = $id;
+      $previous_thread = $thread;
+      $previous_key = $key;
     }
 
-    // Final comment should close the section for sure.
-    $build[$id]['#comment_section_end'] = TRUE;
+    // Point the last item as section end and last child.
+    $build[$key]['#comment_section_end'] = TRUE;
+    if ($entity->hasParentComment()) {
+      $build[$key]['#attributes']['class'][] = 'comments--thread__last_child';
+    }
   }
 
   /**
@@ -41,19 +43,22 @@ class OpenidealCommentViewBuilder extends CommentViewBuilder {
    */
   protected function alterBuild(array &$build, EntityInterface $comment, EntityViewDisplayInterface $display, $view_mode) {
     parent::alterBuild($build, $comment, $display, $view_mode);
-
+    // Change default drupal comments behaviour
+    // to wrap thread and "main" comment together.
     if (empty($comment->in_preview)) {
-
-      // Add one more div to wrap comment with all replies.
-      if ($build['#comment_section_start']) {
-        $build['#prefix'] .= '<div class="comments-section">';
+      // If comment has parent then nothing to do here.
+      if (!$comment->hasParentComment()) {
+        // Check if it's not the first comment.
+        $closing_div = isset($this->previousIntent) ? '</div>' : '';
+        // Open thread.
+        $build['#prefix'] .= $closing_div . '<div class="comments--thread card">';
       }
 
-      $build['#suffix'] = empty($build['#suffix']) ? '' : $build['#suffix'];
+      // Need to keep in memory last intent.
+      $this->previousIntent = $build['#comment_indent'];
 
-      // Close comment section div.
-      if ($build['#comment_section_end']) {
-        $build['#suffix'] .= '</div>';
+      if (isset($build['#comment_section_end'])) {
+        $build['#suffix'] = isset($build['#suffix']) ? ($build['#suffix'] . '</div>') : '</div>';
       }
     }
   }

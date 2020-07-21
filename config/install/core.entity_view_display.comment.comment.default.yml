@@ -5,13 +5,11 @@ dependencies:
     - comment.type.comment
     - field.field.comment.comment.comment_body
     - field.field.comment.comment.field_like
-    - field.field.comment.comment.field_voting_comment
   module:
     - layout_builder
     - layout_discovery
     - text
     - votingapi_reaction
-    - votingapi_widgets
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -47,26 +45,6 @@ third_party_settings:
               id: 'extra_field_block:comment:comment:links'
             additional: {  }
             weight: 2
-          0649b091-fd23-41cc-ba66-bc4c70aa7076:
-            uuid: 0649b091-fd23-41cc-ba66-bc4c70aa7076
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:comment:comment:field_voting_comment'
-              formatter:
-                label: hidden
-                settings:
-                  style: default
-                  show_results: '1'
-                  readonly: 0
-                  values: {  }
-                  show_own_vote: false
-                third_party_settings: {  }
-                type: voting_api_formatter
-            additional: {  }
-            weight: 3
           68436313-ad30-4361-8454-b9448b100777:
             uuid: 68436313-ad30-4361-8454-b9448b100777
             region: content
@@ -92,20 +70,23 @@ third_party_settings:
             uuid: b944681b-c2dd-4077-a9ea-4bfbe1266eec
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:comment:comment:field_like'
+              label: Like
+              provider: layout_builder
+              label_display: '0'
               formatter:
-                label: above
+                label: hidden
+                type: votingapi_reaction_default
                 settings:
-                  show_summary: true
+                  show_summary: false
                   show_icon: true
-                  show_label: true
+                  show_label: false
                   show_count: true
                   sort_reactions: desc
                 third_party_settings: {  }
-                type: votingapi_reaction_default
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 4
         third_party_settings: {  }
@@ -132,18 +113,6 @@ content:
       sort_reactions: desc
     third_party_settings: {  }
     type: votingapi_reaction_default
-    region: content
-  field_voting_comment:
-    weight: 3
-    label: hidden
-    settings:
-      style: default
-      show_results: '1'
-      readonly: 0
-      values: {  }
-      show_own_vote: false
-    third_party_settings: {  }
-    type: voting_api_formatter
     region: content
   links:
     weight: 2

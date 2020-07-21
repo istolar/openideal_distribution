@@ -1,5 +1,5 @@
 buttons_size: 32
-additional_html: "<a class=\"a2a_button_facebook\"></a>\r\n<a class=\"a2a_button_twitter\"></a>\r\n<a class=\"a2a_button_copy_link\"></a>\r\n"
+additional_html: "<a class=\"a2a_button_facebook\"></a>\r\n<a class=\"a2a_button_twitter\"></a>\r\n"
 additional_css: ''
 additional_js: ''
 universal_button: none
@@ -25,3 +25,7 @@ entities:
   taxonomy_term: 0
   user: 0
   paragraph: 0
+  avatars_preview: 0
+  transaction: 0
+  vote_result: 0
+  vote: 0

@@ -103,6 +103,7 @@
 
   /**
    * Change votingapi_reaction like label.
+   * @Todo: Do the logic in the backend.
    *
    * @type {Drupal~behavior}
    *
@@ -113,11 +114,34 @@
     attach: function (context, settings) {
       var $label = $('.votingapi-reaction-label', context);
       if ($label.parents('.region-sidebar').length) {
-        $label.text('Like idea')
+        $label.text(Drupal.t('Like idea'))
       }
       else if ($label.parents('.site-footer').length) {
-        $label.text('Like')
+        $label.text(Drupal.t('Like'))
       }
+    }
+  }
+
+  /**
+   * Add the behaviour to comment reply link.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Add the count of replies in from of reply link,
+   *   and logic to hide/show replies.
+   */
+  Drupal.behaviors.openidealThemeCommentsReply = {
+    attach: function (context, settings) {
+      $('.comments--thread', context).once('openideal_theme_comments_reply').each(function () {
+        var $this = $(this);
+
+        // If the comment has not children then don't need to show border.
+        if (!$this.has('.indented').length > 0) {
+          $('.single-comment', $this).last().addClass('comments--thread__last_child')
+        }
+      });
+      $('.single-comment--reply-button').after(settings.openidealTheme.);
     }
   }
 

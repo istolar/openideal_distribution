@@ -1,15 +1,12 @@
 .node__content{
-  .block-go-back {
-    border: none;
-    background-color: transparent !important;
-    text-align: unset;
-
-    .button {
+  .block-openideal-idea-go-back-block {
+    a {
       background: 0 0;
       display: inline-block;
       font-size: 15px;
-      color: $dark-gray;
+      color: inherit;
       border: none;
+      margin-bottom: 10px;
 
       &:before {
         content: '';
@@ -17,7 +14,7 @@
         background: url('../misc/icons/back-arrrow.png') no-repeat center center;
         width: 13px;
         height: 13px;
-        margin-right: 6px;
+        margin-right: 12px;
       }
     }
   }

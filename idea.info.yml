@@ -19,7 +19,6 @@ dependencies:
   - better_exposed_filters:better_exposed_filters
   - drupal:big_pipe
   - drupal:block
-  - go_back:go_back
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
