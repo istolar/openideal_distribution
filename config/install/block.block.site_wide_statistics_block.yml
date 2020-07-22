@@ -5,10 +5,10 @@ dependencies:
     - openideal_statistics
   theme:
     - openideal_theme
-id: sitewidestatisticsblock
+id: site_wide_statistics_block
 theme: openideal_theme
-region: navigation_collapsible
-weight: 0
+region: content
+weight: -7
 provider: null
 plugin: site_wide_statistics_block
 settings:

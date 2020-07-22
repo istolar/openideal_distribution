@@ -11,21 +11,14 @@
 {# @Todo: Add images #}
 <div class="site-wide-statistics-block">
     <ul class="site-wide-statistics-block--list">
-        <li class="site-wide-statistics-block--item">
-            <p class="site-wide-statistics-block--count">{{ content.ideas }}</p>
-            <p>Ideas</p>
-        </li>
-        <li class="site-wide-statistics-block--item">
-            <p class="site-wide-statistics-block--count">{{ content.members }}</p>
-            <p>Members</p>
-        </li>
-        <li class="site-wide-statistics-block--item">
-            <p class="site-wide-statistics-block--count">{{ content.comments }}</p>
-            <p>Comments</p>
-        </li>
-        <li class="site-wide-statistics-block--item">
-            <p class="site-wide-statistics-block--count">{{ content.votes }}</p>
-            <p>Votes</p>
-        </li>
+        {% for item in content %}
+            <li class="site-wide-statistics-block--item">
+                {% include item.img %}
+                <div class="site-wide-statistics-block__bottom">
+                    <p class="site-wide-statistics-block--count">{{ item.bottom }}</p>
+                    <p>{{ item.title }}</p>
+                </div>
+            </li>
+        {% endfor %}
     </ul>
 </div>

@@ -8,7 +8,7 @@ use Drupal\Core\Utility\Token;
 /**
  * LazyBuilder object.
  */
-class LazyBuilder {
+class OpenidealStatisticsLazyBuilder {
 
   /**
    * Entity type manager.
@@ -52,7 +52,7 @@ class LazyBuilder {
   /**
    * Build element that return members count.
    */
-  public function getMember() {
+  public function getMembers() {
     return [
       '#markup' => $this->token->replace('[openideal:members-count]'),
       '#cache' => [

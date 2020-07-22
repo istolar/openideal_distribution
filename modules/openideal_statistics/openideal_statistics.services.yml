@@ -1,6 +1,6 @@
 services:
   openideal_statistics.lazy_builder:
-    class: Drupal\openideal_statistics\LazyBuilder
+    class: Drupal\openideal_statistics\OpenidealStatisticsLazyBuilder
     arguments:
       - '@entity_type.manager'
       - '@token'
