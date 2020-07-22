@@ -5,6 +5,25 @@
   padding: 17px;
   background: #3C414F;
 
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &--links {
+    display: flex;
+    &__link {
+      margin-right: 5px;
+    }
+
+    img,
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
   &--powered-by {
     text-align: center;
@@ -94,7 +113,7 @@
     }
 
     .block-addtoany-block,
-    &--powered-by {
+    &--wrapper {
       display: none;
     }
   }

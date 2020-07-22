@@ -13,3 +13,4 @@ menu:
   path: /admin/config/development/openideal_configurations
   weight: 0
   description: ''
+token: null

@@ -27,6 +27,7 @@
   &--bottom {
     padding: 25px 23px;
     display: none;
+    margin-bottom: 10px;
   }
 
   // Comments thread.
@@ -35,76 +36,99 @@
 
     // Single comment
     .single-comment {
-      padding: 24px;
+      padding: 24px 24px 0 24px;
       margin-bottom: 8px;
       &--inner {
-        padding: 19px;
+        padding-bottom: 24px;
         border-bottom: 1px solid #E0E0E0;
       }
-      &.comments--thread__last_child .single-comment--inner {
+
+      &.comments--thread__border-none .single-comment--inner {
         border-bottom: none;
       }
 
-      // Created block.
-      .block-field-blockcommentcommentcreated {
-        .content {
-          display: flex;
-          justify-content: space-between;
-
-          .profile {
-            display: flex;
-            align-items: center;
-            font-weight: $font-weight-bold;
-            font-size: $font-size-sm;
-
-            img {
-              border-radius: 50%;
-              margin: 0;
-            }
-          }
-
-          .field--name-field-first-name {
-            margin-right: 5px;
-          }
-        }
+      .comment-show {
+        cursor: pointer;
       }
 
-      .block-field-blockcommentcommentcomment-body {
-        margin-top: 16px;
-        color: $dark-gray;
-        font-size: $font-size-sm;
-      }
-
-      .block-extra-field-blockcommentcommentlinks {
+      &--open-replies:before {
+        content: '';
         display: inline-block;
-        width: 95%;
-      }
-
-      .block-field-blockcommentcommentfield-like {
-        display: inline-block;
-
-        .votingapi-reaction-item-wrapper {
-          display: flex;
-          align-items: center;
-
-          svg {
-            fill: #1294CA;
-            height: 15px;
-            width: 15px;
-            margin-right: 6.5px;
-          }
-        }
-
-        .form-check {
-          padding-left: 0;
-        }
-
-        input[type='radio'] {
-          display: none;
-        }
+        background: url('../misc/icons/caret-up.png') no-repeat center center;
+        width: 13px;
+        height: 13px;
+        margin-right: 7px;
       }
 
     }
+  }
+}
+
+// Created block.
+.block-field-blockcommentcommentcreated {
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-sm;
+
+      img {
+        border-radius: 50%;
+        margin: 0;
+      }
+    }
+
+    a {
+      color: $dark-gray;
+      font-size: 14px;
+    }
+
+    .field--name-field-first-name {
+      margin-right: 5px;
+    }
+  }
+}
+
+.block-field-blockcommentcommentcomment-body {
+  margin-top: 16px;
+  color: $dark-gray;
+  font-size: $font-size-sm;
+}
+
+.block-extra-field-blockcommentcommentlinks {
+  display: inline-block;
+  width: 95%;
+
+  .nav-link {
+    font-size: 12px;
+  }
+}
+
+.block-field-blockcommentcommentfield-like {
+  display: inline-block;
+
+  .votingapi-reaction-item-wrapper {
+    display: flex;
+    align-items: center;
+
+    svg {
+      fill: #1294CA;
+      height: 15px;
+      width: 15px;
+      margin-right: 6.5px;
+    }
+  }
+
+  .form-check {
+    padding-left: 0;
+  }
+
+  input[type='radio'] {
+    display: none;
   }
 }
 
@@ -134,5 +158,39 @@
 
   .comment-form--cancel-btn {
     font-size: inherit;
+  }
+}
+
+@media (max-width: 1226px) {
+  .block-extra-field-blockcommentcommentlinks {
+    width: 93%;
+  }
+}
+
+@media (max-width: 807px) {
+  .block-extra-field-blockcommentcommentlinks {
+    width: 90%;
+  }
+
+  .block-field-blockcommentcommentcreated .content .profile {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 559px) {
+  .block-field-blockcommentcommentcreated .content .profile {
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (max-width: 434px) {
+  .block-extra-field-blockcommentcommentlinks {
+    width: 85%;
+    .nav-link {
+      padding: 10px;
+      font-size: $font-size-xs;
+    }
   }
 }

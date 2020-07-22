@@ -18,5 +18,11 @@ function openideal_footer_theme() {
         'share' => NULL,
       ],
     ],
+    'openideal_powered_by' => [
+      'variables' => [
+        'links' => NULL,
+        'logo' => NULL,
+      ],
+    ],
   ];
 }

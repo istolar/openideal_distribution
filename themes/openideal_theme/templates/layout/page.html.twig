@@ -66,7 +66,7 @@
     </div>
     <div id="page" class="row">
         {# Main navigation #}
-        <section id="site-navigation" class="site-navigation col-xl-2 col-lg-3">
+        <section id="site-navigation" class="site-navigation col-xl-3 col-lg-3">
             <div class="site-navigation--dismiss d-lg-none">
                 {% include active_theme_path() ~ '/misc/icons/exit.svg' %}
             </div>
@@ -126,7 +126,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xl-4 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

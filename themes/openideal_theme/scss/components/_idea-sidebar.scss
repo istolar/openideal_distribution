@@ -58,6 +58,7 @@
       }
 
       .votingapi-reaction-item {
+        font-size: $font-size-xs;
         margin-bottom: 59px;
         @include btn-theme($btn-dark, #1e7697);
         margin-right: 0;
@@ -69,6 +70,7 @@
 
         a,
         &--body {
+          font-size: $font-size-xs;
           @include btn-theme($btn-light, #5eaed2);
         }
       }

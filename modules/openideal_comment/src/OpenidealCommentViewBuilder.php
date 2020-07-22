@@ -16,26 +16,9 @@ class OpenidealCommentViewBuilder extends CommentViewBuilder {
    */
   public function buildComponents(array &$build, array $entities, array $displays, $view_mode) {
     parent::buildComponents($build, $entities, $displays, $view_mode);
-    $previous_thread = NULL;
-    $previous_key = NULL;
 
-    // Point last child of thread.
-    foreach ($entities as $key => $entity) {
-      $thread = $entity->getThread();
-      if (strpos($thread, '.') === FALSE
-        && isset($previous_thread)
-        && (isset($previous_key) && $entities[$previous_key]->hasParentComment())) {
-        $build[$previous_key]['#attributes']['class'][] = 'comments--thread__last_child';
-      }
-      $previous_thread = $thread;
-      $previous_key = $key;
-    }
-
-    // Point the last item as section end and last child.
-    $build[$key]['#comment_section_end'] = TRUE;
-    if ($entity->hasParentComment()) {
-      $build[$key]['#attributes']['class'][] = 'comments--thread__last_child';
-    }
+    // Point last comment, because it always should have closing div.
+    $build[array_key_last($entities)]['#comment_section_end'] = TRUE;
   }
 
   /**

@@ -133,15 +133,45 @@
    */
   Drupal.behaviors.openidealThemeCommentsReply = {
     attach: function (context, settings) {
-      $('.comments--thread', context).once('openideal_theme_comments_reply').each(function () {
+      $('.comments--thread', context).once('openideal_theme_comments_last_child').each(function () {
         var $this = $(this);
 
-        // If the comment has not children then don't need to show border.
-        if (!$this.has('.indented').length > 0) {
-          $('.single-comment', $this).last().addClass('comments--thread__last_child')
+        var $comments = $this.find('.single-comment').toArray();
+
+        $this.find('.indented').each(function () {
+          $(this).hide()
+        })
+
+        for (var $i = $comments.length - 1; $i >= 0; $i--) {
+          // If the comment has not children then don't need to show border.
+          var $current = $($comments[$i]);
+          if ($current.is(':visible')) {
+            $($current).addClass('comments--thread__border-none')
+            break;
+          }
+          else {
+            $current.addClass('comments--thread__border-none')
+          }
         }
       });
-      $('.single-comment--reply-button').after(settings.openidealTheme.);
+
+      $('.comment-show .single-comment--open-replies', context).once('openideal_theme_comments_reply').each(function () {
+        var $this = $(this);
+        var $currentComment = $this.closest('.single-comment');
+        var main = $currentComment.siblings('.indented');
+        var replies = 0;
+        if (main.length > 0) {
+          replies = main.find('.single-comment').length
+        }
+        $this.after('<span>' + replies + Drupal.t(' replies') + '</span>');
+
+        if (replies > 0) {
+          $this.closest('.comment-show').on('click', function () {
+            main.toggle('slow');
+            $currentComment.toggleClass('comments--thread__border-none');
+          });
+        }
+      })
     }
   }
 
