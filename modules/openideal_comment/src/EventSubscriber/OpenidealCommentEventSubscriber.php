@@ -51,34 +51,37 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
       $build = $event->getBuild();
       $content = $build['content'];
       $comment = $content['#object'];
-      // Change the default permalink of comment title.
-      $commented_entity = $comment->getCommentedEntity();
-      $uri = $commented_entity->toUrl();
+      // If in the layout_builder nothing to do here.
+      if (!$comment->isNew()) {
+        // Change the default permalink of comment title.
+        $commented_entity = $comment->getCommentedEntity();
+        $uri = $commented_entity->toUrl();
 
-      // Set attributes for permalink.
-      $attributes = $uri->getOption('attributes') ?: [];
-      $attributes += ['class' => ['permalink'], 'rel' => 'bookmark'];
-      $uri->setOptions([
-        'attributes' => $attributes,
-        'fragment' => 'comment-' . $comment->id(),
-      ]);
+        // Set attributes for permalink.
+        $attributes = $uri->getOption('attributes') ?: [];
+        $attributes += ['class' => ['permalink'], 'rel' => 'bookmark'];
+        $uri->setOptions([
+          'attributes' => $attributes,
+          'fragment' => 'comment-' . $comment->id(),
+        ]);
 
-      // Don't need to show author in My comments.
-      if ($view_mode_check = $event->getContexts()['view_mode']->getContextValue() != 'my_comments') {
-        // Render author.
-        $author = $this->entityTypeManager->getViewBuilder('user')->view($comment->getOwner(), 'author');
-        $build['content'][0] = $author;
+        // Don't need to show author in My comments.
+        if ($view_mode_check = $event->getContexts()['view_mode']->getContextValue() != 'my_comments') {
+          // Render author.
+          $author = $this->entityTypeManager->getViewBuilder('user')->view($comment->getOwner(), 'author');
+          $build['content'][0] = $author;
 
+        }
+
+        // Render link.
+        $build['content'][$view_mode_check ? 1 : 0] = [
+          '#type' => 'link',
+          '#title' => $content[0]['#markup'],
+          '#url' => $uri,
+        ];
+
+        $event->setBuild($build);
       }
-
-      // Render link.
-      $build['content'][$view_mode_check ? 1 : 0] = [
-        '#type' => 'link',
-        '#title' => $content[0]['#markup'],
-        '#url' => $uri,
-      ];
-
-      $event->setBuild($build);
     }
   }
 
