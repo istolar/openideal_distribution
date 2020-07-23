@@ -3,4 +3,160 @@
   bottom: 0;
   min-height: 6vh;
   padding: 17px;
+  background: #3C414F;
+
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &--links {
+    display: flex;
+    &__link {
+      margin-right: 5px;
+    }
+
+    img,
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &--powered-by {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $white;
+
+    &__drupal {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  // Add to any.
+  .block-addtoany-block {
+    position: absolute;
+    top: 18%;
+    right: 2%;
+  }
+
+  .block-openideal-footer-mobile-footer-block {
+    display: none;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .site-footer {
+  background: $white;
+  border-radius: 8px 8px 0 0;
+
+    .block-openideal-footer-mobile-footer-block {
+      display: block;
+      .site-footer-mobile-block {
+        padding: 14px;
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &--element {
+          color: #676C72;
+          font-size: 20px;
+          text-transform: uppercase;
+          padding-right: 3em;
+
+          &:not(:last-child) {
+            border-right: 1px solid #E0E0E0;
+          }
+
+          .form-group {
+            margin: 0;
+          }
+
+          i {
+            font-size: 34px;
+          }
+          svg {
+            width: 34px;
+            height: 34px;
+          }
+
+          .action-flag {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+
+          &,
+          .flag-follow--body,
+          .flag-follow a,
+          .votingapi-reaction-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .flag-follow a {
+            text-decoration: none;
+            color: $dark-gray;
+          }
+        }
+      }
+    }
+
+    .votingapi-reaction-form input[type="radio"] {
+      display: none;
+    }
+
+    .block-addtoany-block,
+    &--wrapper {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 763px) {
+  .site-footer {
+    padding: 0;
+    .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
+      font-size: 15px;
+      padding-right: 3em;
+    }
+  }
+}
+
+@media (max-width: 572px) {
+  .site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
+    font-size: 14px;
+    padding-right: 1.5em;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-footer {
+    .block-openideal-footer-mobile-footer-block {
+      .site-footer-mobile-block--element {
+        font-size: 12px;
+        padding-right: 10px;
+
+        i {
+          font-size: 24px;
+        }
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        i,
+        svg {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
 }

@@ -3,16 +3,13 @@ status: true
 dependencies:
   module:
     - node
-    - votingapi_widgets
-id: node.field_voting
-field_name: field_voting
+    - votingapi_reaction
+id: node.field_like
+field_name: field_like
 entity_type: node
-type: voting_api_field
-settings:
-  vote_type: vote
-  vote_plugin: openideal_useful
-  status: ''
-module: votingapi_widgets
+type: votingapi_reaction
+settings: {  }
+module: votingapi_reaction
 locked: false
 cardinality: 1
 translatable: true

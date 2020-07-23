@@ -52,12 +52,11 @@
  * @see html.html.twig
  */
 #}
-<div id="page-wrapper container-fluid">
+<div id="page-wrapper">
     {# Mobile header. #}
     <div class="site-navigation-toggle d-lg-none">
-        <button id="sidebar-collapse" class="btn btn-info">
-            {# @Todo: once icons provided add them #}
-            <span>X</span>
+        <button id="sidebar-collapse" class="btn">
+            <span>{% include active_theme_path() ~ '/misc/icons/Menu.svg' %}</span>
         </button>
         {% if page.logo %}
             <div class="site-navigation--logo">
@@ -67,8 +66,10 @@
     </div>
     <div id="page" class="row">
         {# Main navigation #}
-        <section id="site-navigation" class="site-navigation col-xl-2 col-lg-3">
-            <div class="site-navigation--dismiss d-lg-none">x</div>
+        <section id="site-navigation" class="site-navigation col-xl-3 col-lg-3">
+            <div class="site-navigation--dismiss d-lg-none">
+                {% include active_theme_path() ~ '/misc/icons/exit.svg' %}
+            </div>
             <div class="site-navigation--inner">
                 {% block nav %}
                 {% if page.logo %}
@@ -89,11 +90,9 @@
                             {{ page.user }}
                         </div>
                     {% endif %}
-                    {% if page.footer %}
-                        <footer class="site-navigation--footer d-lg-none">
-                            {{ page.footer }}
-                        </footer>
-                    {% endif %}
+                    <footer class="site-navigation--footer d-lg-none">
+                        {{ drupal_block('openidel_footer_powered_by') }}
+                    </footer>
                 </div>
             </div>
 
@@ -101,7 +100,6 @@
         {% endblock %}
         <div id="main-wrapper"
              class="layout-main-wrapper main-content-outer clearfix
-                {# @Todo: once activity stream complete add appropriate styles. #}
                 col-xl-{{ page.sidebar ? 11 : 16 }}
                 col-lg-{{ page.sidebar ? 11 : 15 }}
                 col-md-{{ page.sidebar ? 13 : 14 }}"
@@ -128,7 +126,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xl-5 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xl-4 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>
@@ -142,12 +140,7 @@
 {% if page.footer %}
     <footer class="site-footer">
         {% block footer %}
-            <div class="{{ container }}">
-                <div class="site-footer__bottom">
-                    <div class="text-align-center text-white d-none d-md-block">{{ 'Powered by'|t }} <span class="font-weight-bold">{{ 'OpenideaL'|t }}</span></div>
-                    {{ page.footer }}
-                </div>
-            </div>
+            {{ page.footer }}
         {% endblock %}
     </footer>
 {% endif %}

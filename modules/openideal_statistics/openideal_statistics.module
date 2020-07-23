@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_statistics.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function openideal_statistics_theme() {
+  return [
+    'site_wide_statistics_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+  ];
+}

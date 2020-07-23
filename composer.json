@@ -19,7 +19,6 @@
         "bower-asset/slick-carousel": "^1.8",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "drupal/addtoany": "^1.14",
         "drupal/admin_toolbar": "^2.2",
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/adminimal_theme": "^1.5",
@@ -59,6 +58,7 @@
         "drupal/userpoints": "^1.0@alpha",
         "drupal/user_registrationpassword": "1.x-dev",
         "drupal/votingapi": "3.x-dev",
+        "drupal/votingapi_reaction": "^1.1",
         "drupal/votingapi_widgets": "1.x-dev",
         "npm-asset/dropzone": "^5.7",
         "npm-asset/jquery-bar-rating": "^1.2",
@@ -85,7 +85,8 @@
                 "Ajax not working when using non-default view mode": "https://www.drupal.org/files/issues/2020-02-12/ajax_comments-non-default-view-mode-2896916-24.patch"
             },
             "drupal/rules": {
-                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch"
+                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch",
+                "List of conditions includes Core conditions which do not work with Rules": "https://www.drupal.org/files/issues/2020-07-22/2927132-12-hide-other-conditions.patch"
             }
         }
     }

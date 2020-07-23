@@ -17,23 +17,8 @@ class OpenidealCommentViewBuilder extends CommentViewBuilder {
   public function buildComponents(array &$build, array $entities, array $displays, $view_mode) {
     parent::buildComponents($build, $entities, $displays, $view_mode);
 
-    $prev = FALSE;
-    foreach ($entities as $id => $entity) {
-      $build[$id]['#comment_section_start'] = TRUE;
-      $build[$id]['#comment_section_end'] = TRUE;
-
-      // If this is nested comment, then previous one should not close the
-      // comments section and this one should not start a new one.
-      if ($build[$id]['#comment_threaded'] && $build[$id]['#comment_indent'] > 0 && $prev) {
-        $build[$id]['#comment_section_start'] = FALSE;
-        $build[$prev]['#comment_section_end'] = FALSE;
-      }
-
-      $prev = $id;
-    }
-
-    // Final comment should close the section for sure.
-    $build[$id]['#comment_section_end'] = TRUE;
+    // Point last comment, because it always should have closing div.
+    $build[array_key_last($entities)]['#comment_section_end'] = TRUE;
   }
 
   /**

@@ -90,6 +90,7 @@
 
       img {
         width: 24px;
+        height: 24px;
       }
 
       &__element {
@@ -105,5 +106,11 @@
       margin-bottom: 16px;
       text-transform: uppercase;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .comments--header__add-comment-btn {
+    display: none;
   }
 }

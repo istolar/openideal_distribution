@@ -1,7 +1,7 @@
 .site-navigation {
   background-color: #242A36;
   padding-right: 0;
-  height: 101vh;
+  height: 93vh;
   position: sticky;
   top: 0;
   &--dismiss {
@@ -26,10 +26,12 @@
 
   &--logo {
     .site-branding--link {
+      margin-right: 0;
       display: flex;
       flex-flow: column wrap;
       align-items: center;
       margin-bottom: 10px;
+      margin-top: 36px;
     }
   }
   &--nav {
@@ -103,6 +105,52 @@
     transition: all 0.3s;
     &.active {
       left: 0;
+    }
+
+    &--top {
+      margin-top: 0;
+      border-top: 1px solid rgba(224, 224, 224, 0.1);
+      border-bottom: 1px solid rgba(224, 224, 224, 0.1);
+    }
+
+    &--user-info {
+      .views-row {
+        display: block;
+
+        .views-field-user-picture {
+          float: left;
+          padding: 0 17px;
+
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        .views-field-field-last-name {
+          padding-top: 5px;
+        }
+
+        .views-field-edit-user a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .site-footer {
+      &--wrapper {
+        display: flex;
+      }
+
+      &--powered-by {
+        font-size: 14px;
+      }
+
+      &--wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
     }
   }
 }
