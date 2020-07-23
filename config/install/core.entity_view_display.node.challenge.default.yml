@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
   module:
-    - addtoany
     - comment
     - file
     - image
@@ -142,17 +141,6 @@ third_party_settings:
                 type: comment_default
             additional: {  }
             weight: 8
-          c516b6c0-2756-43cc-8848-fbe6301c390f:
-            uuid: c516b6c0-2756-43cc-8848-fbe6301c390f
-            region: content
-            configuration:
-              id: addtoany_block
-              label: 'AddToAny buttons'
-              provider: addtoany
-              label_display: '0'
-              context_mapping: {  }
-            additional: {  }
-            weight: 9
           3a0f0eaa-1384-4043-836c-acf336dc3678:
             uuid: 3a0f0eaa-1384-4043-836c-acf336dc3678
             region: content

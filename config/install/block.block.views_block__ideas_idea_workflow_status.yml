@@ -10,7 +10,7 @@ dependencies:
 id: views_block__ideas_idea_workflow_status
 theme: openideal_theme
 region: sidebar
-weight: -5
+weight: -6
 provider: null
 plugin: 'views_block:ideas-idea_workflow_status'
 settings:

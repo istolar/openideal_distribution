@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.article.field_tags
     - node.type.article
   module:
-    - addtoany
     - file
     - image
     - layout_builder
@@ -110,17 +109,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 4
-          99e5fb0e-968c-4237-afce-f3e2ffb595a5:
-            uuid: 99e5fb0e-968c-4237-afce-f3e2ffb595a5
-            region: content
-            configuration:
-              id: addtoany_block
-              label: 'AddToAny buttons'
-              provider: addtoany
-              label_display: '0'
-              context_mapping: {  }
-            additional: {  }
-            weight: 5
           73b648d1-12c2-4345-9a6f-03d8d39f71b9:
             uuid: 73b648d1-12c2-4345-9a6f-03d8d39f71b9
             region: content

@@ -7,7 +7,6 @@ core_version_requirement: ^8 || ^9
 # Required modules
 dependencies:
   # Core and contrib modules.
-  - addtoany:addtoany
   - admin_toolbar:admin_toolbar
   - admin_toolbar_search:admin_toolbar_search
   - admin_toolbar_tools:admin_toolbar_tools
@@ -99,6 +98,7 @@ dependencies:
   - drupal:menu_link_content
   - votingapi:votingapi
   - votingapi_widgets:votingapi_widgets
+  - votingapi_reaction:votingapi_reaction
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules
@@ -109,6 +109,7 @@ dependencies:
   - openideal_user:openideal_user
   - openideal_slideshow:openideal_slideshow
   - openideal_comment:openideal_comment
+  - openideal_footer:openideal_footer
   - openideal_statistics:openideal_statistics
 
 themes:

@@ -75,9 +75,15 @@
    */
   Drupal.behaviors.openidealThemeCommentsFormAnimation = {
     attach: function (context, settings) {
-      $('.comments--header__add-comment-btn', context).once('openideal-theme-comments-form-animation').on('click', function () {
+      $('.comments--header__add-comment-btn, .site-footer-open-comments-btn', context).once('openideal-theme-comments-form-animation').on('click', function () {
+        var commentsBottom = $('.comments--bottom');
         // hide sidebar
-        $('.comments--bottom').toggle('slow');
+        commentsBottom.toggle('slow');
+
+        // Scroll to comments body.
+        $([document.documentElement, document.body]).animate({
+          scrollTop: commentsBottom.offset().top
+        }, 1000);
       });
 
       $('.comment-form--cancel-btn', context).once('openideal-theme-comments-form-animation-reply').on('click', function () {
@@ -92,6 +98,80 @@
       });
 
       $('.ajax-comments-form-edit .comment-form--cancel-btn').once('openideal-theme-comments-form-animation-edit').addClass('d-none');
+    }
+  }
+
+  /**
+   * Change votingapi_reaction like label.
+   * @Todo: Do the logic in the backend.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Change label.
+   */
+  Drupal.behaviors.openidealThemeLikeWidgetLabel = {
+    attach: function (context, settings) {
+      var $label = $('.votingapi-reaction-label', context);
+      if ($label.parents('.region-sidebar').length) {
+        $label.text(Drupal.t('Like idea'))
+      }
+      else if ($label.parents('.site-footer').length) {
+        $label.text(Drupal.t('Like'))
+      }
+    }
+  }
+
+  /**
+   * Add the behaviour to comment reply link.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Add the count of replies in from of reply link,
+   *   and logic to hide/show replies.
+   */
+  Drupal.behaviors.openidealThemeCommentsReply = {
+    attach: function (context, settings) {
+      $('.comments--thread', context).once('openideal_theme_comments_last_child').each(function () {
+        var $this = $(this);
+
+        var $comments = $this.find('.single-comment').toArray();
+
+        $this.find('.indented').each(function () {
+          $(this).hide()
+        })
+
+        for (var $i = $comments.length - 1; $i >= 0; $i--) {
+          // If the comment has not children then don't need to show border.
+          var $current = $($comments[$i]);
+          if ($current.is(':visible')) {
+            $($current).addClass('comments--thread__border-none')
+            break;
+          }
+          else {
+            $current.addClass('comments--thread__border-none')
+          }
+        }
+      });
+
+      $('.comment-show .single-comment--open-replies', context).once('openideal_theme_comments_reply').each(function () {
+        var $this = $(this);
+        var $currentComment = $this.closest('.single-comment');
+        var main = $currentComment.siblings('.indented');
+        var replies = 0;
+        if (main.length > 0) {
+          replies = main.find('.single-comment').length
+        }
+        $this.after('<span>' + replies + Drupal.t(' replies') + '</span>');
+
+        if (replies > 0) {
+          $this.closest('.comment-show').on('click', function () {
+            main.toggle('slow');
+            $currentComment.toggleClass('comments--thread__border-none');
+          });
+        }
+      })
     }
   }
 

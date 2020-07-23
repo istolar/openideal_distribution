@@ -18,6 +18,20 @@ use Drupal\openideal_idea\ComputedNumberList;
 use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
 
 /**
+ * Implements hook_theme().
+ */
+function openideal_idea_theme() {
+  return [
+    'openideal_idea_flag_and_like_block' => [
+      'variables' => [
+        'like' => NULL,
+        'follow' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_form_alter().
  */
 function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form_id) {
@@ -97,7 +111,7 @@ function openideal_idea_node_insert(NodeInterface $entity) {
       $group->addMember($group->getOwner(), $values);
 
       // Author follow the node after its creating.
-      /** @var \Drupal\flag\FlagService $flag_service*/
+      /** @var \Drupal\flag\FlagService $flag_service */
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('follow');
       $flag_service->flag($flag, $entity, $entity->getOwner());

@@ -13,7 +13,7 @@ features:
   favicon: 1
   node_user_picture: 1
 logo:
-  path: profiles/contrib/idea/themes/openideal_theme/logo.svg
+  path: profiles/contrib/idea/themes/openideal_theme/logo.png
   url: ''
   use_default: 0
 table_responsive: '-1'
@@ -42,8 +42,8 @@ bootstrap_barrio_region_clean_content: 1
 bootstrap_barrio_region_class_content: ''
 bootstrap_barrio_region_clean_sidebar: 0
 bootstrap_barrio_region_class_sidebar: row
-bootstrap_barrio_region_clean_footer: 0
-bootstrap_barrio_region_class_footer: row
+bootstrap_barrio_region_clean_footer: 1
+bootstrap_barrio_region_class_footer: ''
 bootstrap_barrio_region_clean_page_top: 0
 bootstrap_barrio_region_class_page_top: row
 bootstrap_barrio_region_clean_page_bottom: 0

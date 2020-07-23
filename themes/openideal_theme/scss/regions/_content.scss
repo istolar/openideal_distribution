@@ -15,6 +15,12 @@
       }
     }
 
+}
+
+@media (max-width: 991px) {
+  .main-content-outer {
+    padding: 22px;
+  }
   .block-site-wide-statistics-block {
     position: absolute;
     top: 0;

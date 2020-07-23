@@ -6,6 +6,7 @@
  */
 
 use Drupal\ajax_comments\Controller\AjaxCommentsController;
+use Drupal\comment\CommentInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\openideal_comment\OpenidealCommentViewBuilder;
 
@@ -43,4 +44,13 @@ function openideal_comment_preprocess_comment(&$variables) {
 function openideal_comment_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
   $entity_types['comment']->setHandlerClass('view_builder', OpenidealCommentViewBuilder::class);
+}
+
+/**
+ * Implements hook_comment_links_alter().
+ */
+function openideal_comment_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
+  $links['comment']['#links']['comment-show'] = [
+    'title' => t('<span class="single-comment--open-replies"></span>'),
+  ];
 }

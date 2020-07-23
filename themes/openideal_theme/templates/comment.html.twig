@@ -67,17 +67,18 @@
  */
 #}
 
-<article{{ attributes.addClass('js-comment', 'card', 'single-comment') }}>
+<article{{ attributes.addClass('js-comment', 'single-comment') }}>
+  <div class="single-comment--inner">
 
     {#
       Hide the "new" indicator by default, let a piece of JavaScript ask the
       server which comments are new for the user. Rendering the final "new"
       indicator here would break the render cache.
     #}
-  <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
+    <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
-  <footer>
-    {{ user_picture }}
+    <footer>
+      {{ user_picture }}
 
       {#
         Indicate the semantic relationship between parent and child comments for
@@ -85,13 +86,14 @@
         without this information.
       #}
 
-    {% if parent %}
-      <p class="visually-hidden">{{ parent }}</p>
-    {% endif %}
+      {% if parent %}
+        <p class="visually-hidden">{{ parent }}</p>
+      {% endif %}
 
-  </footer>
+    </footer>
 
-  <div{{ content_attributes }}>
-    {{ content }}
+    <div{{ content_attributes }}>
+      {{ content }}
+    </div>
   </div>
 </article>
