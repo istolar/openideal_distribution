@@ -16,6 +16,7 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\openideal_idea\ComputedNumberList;
 use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
+use Drupal\openideal_idea\Plugin\OpenidealGroupContentAccessControlHandler as GroupContentAccessHandle;
 
 /**
  * Implements hook_form_alter().
@@ -266,4 +267,12 @@ function openideal_idea_entity_type_build(array &$entity_types) {
   // Replace default form for OpenidealLikeWidget widget plugin.
   // To add "un-like" ability to the Idea bundle.
   $entity_types['vote']->setFormClass('votingapi_openideal_useful', OpenidealBaseRatingForm::class);
+}
+
+/**
+ * Implements hook_group_content_info_alter().
+ */
+function openideal_idea_group_content_info_alter(&$info) {
+  // Alter the content enabler plugin definitions to use our class.
+  $info['group_membership']['handlers']['access'] = GroupContentAccessHandle::class;
 }
