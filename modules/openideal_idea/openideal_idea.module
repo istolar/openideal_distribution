@@ -83,10 +83,10 @@ function openideal_idea_node_presave(NodeInterface $node) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert().
+ * Implements hook_entity_insert().
  */
-function openideal_idea_node_insert(NodeInterface $entity) {
-  if ($entity->bundle() == 'idea') {
+function openideal_idea_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'idea') {
     try {
       // Create the group for the node.
       /** @var \Drupal\group\Entity\Group $group */
