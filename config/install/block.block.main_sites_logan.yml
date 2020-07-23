@@ -18,7 +18,7 @@ settings:
   id: 'block_content:3ed7eeba-0dcc-45a5-9ade-c53cacbc3c0e'
   label: 'Main site slogan'
   provider: block_content
-  label_display: visible
+  label_display: '0'
   status: true
   info: ''
   view_mode: full

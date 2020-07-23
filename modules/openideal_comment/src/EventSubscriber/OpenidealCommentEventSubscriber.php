@@ -63,12 +63,16 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
         'fragment' => 'comment-' . $comment->id(),
       ]);
 
-      // Render author.
-      $author = $this->entityTypeManager->getViewBuilder('user')->view($comment->getOwner(), 'author');
-      $build['content'][0] = $author;
+      // Don't need to show author in My comments.
+      if ($view_mode_check = $event->getContexts()['view_mode']->getContextValue() != 'my_comments') {
+        // Render author.
+        $author = $this->entityTypeManager->getViewBuilder('user')->view($comment->getOwner(), 'author');
+        $build['content'][0] = $author;
+
+      }
 
       // Render link.
-      $build['content'][] = [
+      $build['content'][$view_mode_check ? 1 : 0] = [
         '#type' => 'link',
         '#title' => $content[0]['#markup'],
         '#url' => $uri,

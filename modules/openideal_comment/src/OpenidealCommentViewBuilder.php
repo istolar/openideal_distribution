@@ -40,20 +40,25 @@ class OpenidealCommentViewBuilder extends CommentViewBuilder {
    * {@inheritdoc}
    */
   protected function alterBuild(array &$build, EntityInterface $comment, EntityViewDisplayInterface $display, $view_mode) {
-    parent::alterBuild($build, $comment, $display, $view_mode);
+    if ($view_mode == 'default') {
+      parent::alterBuild($build, $comment, $display, $view_mode);
+      // Change default drupal comments behaviour
+      // to wrap thread and "main" comment together.
+      if (empty($comment->in_preview)) {
+        // If comment has parent then nothing to do here.
+        if (!$comment->hasParentComment()) {
+          // Check if it's not the first comment.
+          $closing_div = isset($this->previousIntent) ? '</div>' : '';
+          // Open thread.
+          $build['#prefix'] .= $closing_div . '<div class="comments--thread card">';
+        }
 
-    if (empty($comment->in_preview)) {
+        // Need to keep in memory last intent.
+        $this->previousIntent = $build['#comment_indent'];
 
-      // Add one more div to wrap comment with all replies.
-      if ($build['#comment_section_start']) {
-        $build['#prefix'] .= '<div class="comments-section">';
-      }
-
-      $build['#suffix'] = empty($build['#suffix']) ? '' : $build['#suffix'];
-
-      // Close comment section div.
-      if ($build['#comment_section_end']) {
-        $build['#suffix'] .= '</div>';
+        if (isset($build['#comment_section_end'])) {
+          $build['#suffix'] = isset($build['#suffix']) ? ($build['#suffix'] . '</div>') : '</div>';
+        }
       }
     }
   }
