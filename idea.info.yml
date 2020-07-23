@@ -109,6 +109,7 @@ dependencies:
   - openideal_user:openideal_user
   - openideal_slideshow:openideal_slideshow
   - openideal_comment:openideal_comment
+  - openideal_statistics:openideal_statistics
 
 themes:
   - adminimal_theme
