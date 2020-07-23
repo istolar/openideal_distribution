@@ -1,19 +1,27 @@
 .main-content-outer {
-    // Content site slogan.
-    .main-site-logo {
-      &--heading {
-        color: #1294CA;
-        font-weight: $font-weight-bold;
-      }
-      &--sub-heading {
-        display: block;
-        font-weight: $font-weight-light;
-        color: $main-font-color;
-      }
-      &--subline {
-        color: $dark-gray;
-      }
+  // Content site slogan.
+  .main-site-logo {
+    &--heading {
+      color: #1294CA;
+      font-weight: $font-weight-bold;
     }
+
+    &--sub-heading {
+      display: block;
+      font-weight: $font-weight-light;
+      color: $main-font-color;
+    }
+
+    &--subline {
+      color: $dark-gray;
+    }
+  }
+
+  .block-site-wide-statistics-block {
+    position: absolute;
+    top: 0;
+    right: 3%;
+  }
 
 }
 
@@ -21,10 +29,11 @@
   .main-content-outer {
     padding: 22px;
   }
-  .block-site-wide-statistics-block {
-    position: absolute;
-    top: 0;
-    right: 3%;
-  }
 
+}
+
+@media (max-width: 1110px) {
+  .block-site-wide-statistics-block {
+    display: none;
+  }
 }

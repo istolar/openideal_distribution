@@ -46,7 +46,7 @@
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
         "drupal/rabbit_hole": "^1.0",
-        "drupal/rules": "3.0-alpha5",
+        "drupal/rules": "3.x-dev",
         "drupal/social_auth_facebook": "^2.0",
         "drupal/social_auth_github": "^2.0",
         "drupal/social_auth_google": "^2.0",
@@ -85,7 +85,8 @@
                 "Ajax not working when using non-default view mode": "https://www.drupal.org/files/issues/2020-02-12/ajax_comments-non-default-view-mode-2896916-24.patch"
             },
             "drupal/rules": {
-                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch"
+                "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch",
+                "List of conditions includes Core conditions which do not work with Rules": "https://www.drupal.org/files/issues/2020-07-22/2927132-12-hide-other-conditions.patch"
             }
         }
     }
