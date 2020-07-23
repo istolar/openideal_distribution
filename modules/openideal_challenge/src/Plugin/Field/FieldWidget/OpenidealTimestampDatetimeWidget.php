@@ -3,7 +3,10 @@
 namespace Drupal\openideal_challenge\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Datetime\Element\Datetime;
+use Drupal\Core\Datetime\Entity\DateFormat;
 use Drupal\Core\Datetime\Plugin\Field\FieldWidget\TimestampDatetimeWidget;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -18,6 +21,19 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class OpenidealTimestampDatetimeWidget extends TimestampDatetimeWidget {
+
+  /**
+   * {@inheritDoc}
+   */
+  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $element = parent::formElement($items, $delta, $element, $form, $form_state);
+    $date_format = DateFormat::load('html_date')->getPattern();
+    $time_format = DateFormat::load('html_time')->getPattern();
+    $element['value']['#description'] = $this->t('The server time and format: %format, this time will used for schedule operations. Leave blank to use the time of form submission.', ['%format' => Datetime::formatExample($date_format . ' ' . $time_format)]);
+    $element['#suffix'] = '<div class="challenge-schedule-local-machine-time"></div>';
+    $element['#attached']['library'][] = 'openideal_challenge/openideal_challenge.schedule';
+    return $element;
+  }
 
   /**
    * {@inheritdoc}
