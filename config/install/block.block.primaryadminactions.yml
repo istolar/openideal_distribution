@@ -6,7 +6,7 @@ dependencies:
 id: primaryadminactions
 theme: openideal_theme
 region: content
-weight: -5
+weight: -4
 provider: null
 plugin: local_actions_block
 settings:

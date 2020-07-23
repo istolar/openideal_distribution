@@ -8,7 +8,7 @@ dependencies:
 id: openideal_theme_branding
 theme: openideal_theme
 region: logo
-weight: 0
+weight: -9
 provider: null
 plugin: system_branding_block
 settings:

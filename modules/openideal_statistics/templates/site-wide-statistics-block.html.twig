@@ -1,0 +1,24 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{# @Todo: Add images #}
+<div class="site-wide-statistics-block">
+    <ul class="site-wide-statistics-block--list">
+        {% for item in content %}
+            <li class="site-wide-statistics-block--item">
+                {% include item.img %}
+                <div class="site-wide-statistics-block__bottom">
+                    <p class="site-wide-statistics-block--count">{{ item.bottom }}</p>
+                    <p>{{ item.title }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
