@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.comment.my_comments
   module:
     - comment
     - node
@@ -53,6 +55,9 @@ display:
         type: default
       row:
         type: 'entity:comment'
+        options:
+          relationship: none
+          view_mode: my_comments
       relationships:
         node:
           id: node
