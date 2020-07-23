@@ -88,6 +88,7 @@ function openideal_idea_node_presave(NodeInterface $node) {
 function openideal_idea_node_insert(NodeInterface $entity) {
   if ($entity->bundle() == 'idea') {
     try {
+      $entity->save();
       // Create the group for the node.
       /** @var \Drupal\group\Entity\Group $group */
       $group = \Drupal::entityTypeManager()->getStorage('group')
