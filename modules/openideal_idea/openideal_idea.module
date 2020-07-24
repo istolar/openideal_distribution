@@ -284,3 +284,14 @@ function openideal_idea_entity_type_build(array &$entity_types) {
   // To add "un-like" ability to the Idea bundle.
   $entity_types['vote']->setFormClass('votingapi_openideal_useful', OpenidealBaseRatingForm::class);
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function openideal_idea_group_content_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity->getOwnerId() === $account->id()
+    && $operation == 'delete'
+    && $entity->getContentPlugin()->getPluginId() == 'group_membership') {
+    return AccessResult::forbidden();
+  }
+}
