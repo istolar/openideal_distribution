@@ -70,6 +70,7 @@ dependencies:
   - drupal:path_alias
   - drupal:quickedit
   - rabbit_hole:rabbit_hole
+  - rrssb:rrssb
   - rh_node:rh_node
   - rh_taxonomy:rh_taxonomy
   - rules:rules

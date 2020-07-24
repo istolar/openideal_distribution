@@ -1,0 +1,28 @@
+.share-buttons {
+  &--buttons {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-right: 5px;
+
+    li {
+      margin-right: 5px;
+    }
+
+    &__copy_url {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #D0D6DC;
+      border-radius: 20px;
+      cursor: pointer;
+
+      svg {
+        fill: $white;
+      }
+    }
+  }
+}

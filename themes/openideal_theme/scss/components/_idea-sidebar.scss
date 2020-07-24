@@ -105,6 +105,7 @@
     }
 
     .field-content {
+      font-size: $font-size-sm;
       color: $dark-gray;
     }
   }
@@ -115,7 +116,6 @@
   .field-content {
     margin-bottom: 15px;
     font-size: $font-size-base;
-    font-weight: $font-weight-bold;
 
     img {
       margin-right: 10px;

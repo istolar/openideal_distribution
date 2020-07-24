@@ -6,4 +6,4 @@ core_version_requirement: ^8 || ^9
 package: 'OpenideaL'
 
 dependencies:
-  - votingapi_widgets:votingapi_widgets
+  - rrssb:rrssb

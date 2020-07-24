@@ -123,6 +123,37 @@
   }
 
   /**
+   * Add logic to copy url button.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Implement ability to copy current url into clipboard.
+   */
+  Drupal.behaviors.openidealThemeCopyUrlButton = {
+    attach: function (context, settings) {
+      $('.share-buttons--buttons__copy_url', context).once('openideal_theme_copy_url_button').each(function () {
+        var $this = $(this);
+        // Enable tooltip for element.
+        $this.tooltip();
+
+        $this.on('click', function () {
+          $(this).tooltip()
+          var $temp = $('<input>'),
+          url = window.location.href;
+          $('body').append($temp);
+          $temp.val(url).select();
+          document.execCommand('copy');
+          $temp.remove();
+          $this.tooltip('hide')
+          .attr('data-original-title', 'Copied!')
+          .tooltip('show');
+        });
+      })
+    }
+  }
+
+  /**
    * Add the behaviour to comment reply link.
    *
    * @type {Drupal~behavior}
