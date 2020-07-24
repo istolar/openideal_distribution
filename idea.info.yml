@@ -7,12 +7,13 @@ core_version_requirement: ^8 || ^9
 # Required modules
 dependencies:
   # Core and contrib modules.
-  - addtoany:addtoany
   - admin_toolbar:admin_toolbar
   - admin_toolbar_search:admin_toolbar_search
   - admin_toolbar_tools:admin_toolbar_tools
   - adminimal_admin_toolbar:adminimal_admin_toolbar
+  - ajax_comments:ajax_comments
   - allowed_formats:allowed_formats
+  - avatars:avatars_gravatar
   - drupal:automated_cron
   - better_exposed_filters:better_exposed_filters
   - drupal:big_pipe
@@ -21,8 +22,10 @@ dependencies:
   - drupal:breakpoint
   - drupal:ckeditor
   - ckeditor_mentions:ckeditor_mentions
+  - ckeditor_media_embed:ckeditor_media_embed
   - drupal:comment
   - drupal:config
+  - comments_order:comments_order
   - config_pages:config_pages
   - drupal:contact
   - drupal:content_moderation
@@ -31,6 +34,7 @@ dependencies:
   - drupal:datetime
   - default_content:default_content
   - drupal:dblog
+  - layout_builder_styles:layout_builder_styles
   - dropzonejs:dropzonejs
   - dropzonejs_eb_widget:dropzonejs_eb_widget
   - drupal:dynamic_page_cache
@@ -43,6 +47,7 @@ dependencies:
   - drupal:field_ui
   - drupal:file
   - drupal:filter
+  - eu_cookie_compliance:eu_cookie_compliance
   - flag:flag
   - gnode:gnode
   - group:group
@@ -93,13 +98,19 @@ dependencies:
   - drupal:menu_link_content
   - votingapi:votingapi
   - votingapi_widgets:votingapi_widgets
+  - votingapi_reaction:votingapi_reaction
   - drupal:views
   - paragraphs:paragraphs
   # Custom modules
   - openideal_challenge:openideal_challenge
   - openideal_faq:openideal_faq
+  - openideal_toolbar:openideal_toolbar
   - openideal_idea:openideal_idea
   - openideal_user:openideal_user
+  - openideal_slideshow:openideal_slideshow
+  - openideal_comment:openideal_comment
+  - openideal_footer:openideal_footer
+  - openideal_statistics:openideal_statistics
 
 themes:
   - adminimal_theme

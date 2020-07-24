@@ -12,11 +12,11 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
-    - field.field.node.idea.field_voting
     - node.type.idea
+    - views.view.followers
   module:
-    - addtoany
     - comment
     - file
     - image
@@ -25,7 +25,8 @@ dependencies:
     - metatag
     - text
     - user
-    - votingapi_widgets
+    - views
+    - votingapi_reaction
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -160,6 +161,41 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
+          cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
+            uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:idea:content_moderation_control'
+            additional: {  }
+            weight: 12
+          68d787e8-ea54-450d-8e7f-6f70e40f3ed6:
+            uuid: 68d787e8-ea54-450d-8e7f-6f70e40f3ed6
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:idea:flag_follow'
+            additional: {  }
+            weight: 13
+          b4ea69c6-55c2-450c-a55e-c166e46d48f8:
+            uuid: b4ea69c6-55c2-450c-a55e-c166e46d48f8
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:idea:field_meta_tags'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: metatag_empty_formatter
+            additional: {  }
+            weight: 12
           664a5bb5-dce6-4c0e-b6ab-eefec74a3128:
             uuid: 664a5bb5-dce6-4c0e-b6ab-eefec74a3128
             region: content
@@ -176,93 +212,43 @@ third_party_settings:
                 third_party_settings: {  }
                 type: comment_default
             additional: {  }
-            weight: 11
-          cf9c2b1b-7095-4eb1-ad42-98945c67b96d:
-            uuid: cf9c2b1b-7095-4eb1-ad42-98945c67b96d
+            weight: 17
+          544ed4a5-8443-41dc-b4ab-4b51515aa56f:
+            uuid: 544ed4a5-8443-41dc-b4ab-4b51515aa56f
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:idea:content_moderation_control'
-            additional: {  }
-            weight: 12
-          ed7b737e-ebf4-4185-aa48-5efba7e14607:
-            uuid: ed7b737e-ebf4-4185-aa48-5efba7e14607
-            region: content
-            configuration:
-              id: 'field_block:node:idea:field_voting'
-              label: Voting
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: voting_api_formatter
-                settings:
-                  style: default
-                  readonly: 0
-                  show_results: 1
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 10
-          68d787e8-ea54-450d-8e7f-6f70e40f3ed6:
-            uuid: 68d787e8-ea54-450d-8e7f-6f70e40f3ed6
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:idea:flag_follow'
-            additional: {  }
-            weight: 13
-          2078e8be-7d3e-42c1-a6d2-c3efd5a94de5:
-            uuid: 2078e8be-7d3e-42c1-a6d2-c3efd5a94de5
-            region: content
-            configuration:
-              id: addtoany_block
-              label: 'AddToAny buttons'
-              provider: addtoany
-              label_display: '0'
+              id: 'views_block:followers-followers'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 11
-          b4ea69c6-55c2-450c-a55e-c166e46d48f8:
-            uuid: b4ea69c6-55c2-450c-a55e-c166e46d48f8
+            weight: 16
+          52ddfd3f-a23b-45f8-a19c-31f9d0c97291:
+            uuid: 52ddfd3f-a23b-45f8-a19c-31f9d0c97291
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_meta_tags'
-              formatter:
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-                type: metatag_empty_formatter
-            additional: {  }
-            weight: 12
-          41567fc4-aa06-4041-bd5e-a39b6e50d3fc:
-            uuid: 41567fc4-aa06-4041-bd5e-a39b6e50d3fc
-            region: content
-            configuration:
-              id: 'field_block:node:idea:overall_score'
-              label: 'Overall score'
+              id: 'field_block:node:idea:field_like'
+              label: Like
               provider: layout_builder
               label_display: '0'
               formatter:
                 label: above
-                type: string
+                type: votingapi_reaction_default
                 settings:
-                  link_to_entity: false
+                  show_summary: false
+                  show_icon: true
+                  show_label: false
+                  show_count: true
+                  sort_reactions: desc
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 14
+            weight: 18
         third_party_settings: {  }
 id: node.idea.default
 targetEntityType: node
@@ -347,23 +333,24 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_like:
+    weight: 111
+    label: above
+    settings:
+      show_summary: true
+      show_icon: true
+      show_label: true
+      show_count: true
+      sort_reactions: desc
+    third_party_settings: {  }
+    type: votingapi_reaction_default
+    region: content
   field_meta_tags:
     weight: 110
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
-    region: content
-  field_voting:
-    weight: 110
-    label: above
-    settings:
-      readonly: false
-      style: default
-      show_results: false
-      values: {  }
-    third_party_settings: {  }
-    type: voting_api_formatter
     region: content
   flag_follow:
     weight: 10

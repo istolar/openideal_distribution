@@ -9,6 +9,6 @@ features:
   favicon: true
   node_user_picture: true
 logo:
-  path: ''
+  path: profiles/contrib/idea/themes/openideal_theme/logo.png
   url: ''
-  use_default: true
+  use_default: false

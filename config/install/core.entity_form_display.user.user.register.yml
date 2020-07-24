@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.user.register
+    - field.field.user.user.avatars_avatar_generator
+    - field.field.user.user.avatars_user_picture
     - field.field.user.user.field_age_group
     - field.field.user.user.field_first_name
     - field.field.user.user.field_gender
@@ -38,6 +40,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  avatars_avatar_generator: true
+  avatars_user_picture: true
   contact: true
   field_age_group: true
   field_gender: true

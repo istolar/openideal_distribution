@@ -1,6 +1,6 @@
-openideal_idea.openideal_idea_score_config_form:
-  title: 'Score configuration'
+openideal_toolbar.configuration.formula:
+  title: 'Overall score weights'
   route_name: openideal_idea.openideal_idea_score_config_form
-  description: 'Idea score configuration'
-  parent: system.admin_config_system
-  weight: 99
+  parent: openideal_toolbar.configuration
+  description: '"Overall score" formula configuration'
+  weight: 1

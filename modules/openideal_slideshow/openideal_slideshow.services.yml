@@ -1,0 +1,6 @@
+services:
+  openideal_slideshow.subscriber:
+    class: Drupal\openideal_slideshow\EventSubscriber\OpenidealSlideshowEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }

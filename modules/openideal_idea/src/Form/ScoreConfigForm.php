@@ -32,9 +32,15 @@ class ScoreConfigForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('openideal_idea.scoreconfig');
 
+    $form['description'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'h5',
+      '#value' => $this->t("These values control how each parameter is considered when calculating the overall score of ideas. The formula is simple: each parameter is multiplied by it's weight and then the values are summed up to give the overall score."),
+    ];
+
     $form['comments_value'] = [
       '#type' => 'number',
-      '#title' => $this->t('Comments score value'),
+      '#title' => $this->t('Comments score weight'),
       '#min' => 0,
       '#step' => 0.1,
       '#default_value' => $config->get('comments_value') ?? 10,
@@ -42,7 +48,7 @@ class ScoreConfigForm extends ConfigFormBase {
 
     $form['votes_value'] = [
       '#type' => 'number',
-      '#title' => $this->t('Votes score value'),
+      '#title' => $this->t('Votes score weight'),
       '#min' => 0,
       '#step' => 0.1,
       '#default_value' => $config->get('votes_value') ?? 5,
@@ -50,7 +56,7 @@ class ScoreConfigForm extends ConfigFormBase {
 
     $form['node'] = [
       '#type' => 'number',
-      '#title' => $this->t('Views score value'),
+      '#title' => $this->t('Views weight'),
       '#min' => 0.1,
       '#step' => 0.1,
       '#default_value' => $config->get('node') ?? 0.2,

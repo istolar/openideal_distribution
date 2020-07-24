@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - openideal_footer
+  theme:
+    - openideal_theme
+id: mobile_footer_block
+theme: openideal_theme
+region: footer
+weight: 0
+provider: null
+plugin: openideal_footer_mobile_footer_block
+settings:
+  id: openideal_footer_mobile_footer_block
+  label: 'Mobile footer block'
+  provider: openideal_footer
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

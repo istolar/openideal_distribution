@@ -12,8 +12,8 @@ dependencies:
     - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
+    - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
-    - field.field.node.idea.field_voting
     - node.type.idea
   module:
     - text
@@ -26,35 +26,38 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    weight: 1
     settings:
       trim_length: 600
     third_party_settings: {  }
     region: content
-  content_moderation_control:
-    weight: -20
-    settings: {  }
-    third_party_settings: {  }
+  field_idea_phase:
+    type: entity_reference_label
+    weight: 2
     region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
   flag_follow:
-    weight: 10
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   addtoany: true
+  content_moderation_control: true
   field_attached_docs: true
   field_category: true
   field_challenge: true
   field_comments: true
   field_duplicate_of: true
-  field_idea_phase: true
   field_idea_tags: true
   field_images: true
+  field_like: true
   field_meta_tags: true
-  field_voting: true

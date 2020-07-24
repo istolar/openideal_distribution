@@ -32,7 +32,10 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
    *   The dispatched event.
    */
   public function onContentStateChange(ContentModerationStateChangedEvent $event) {
-    if ($event->getOriginalState() === 'draft' && $event->getNewState() === 'draft_approval') {
+    // Need to compare original state with FALSE,
+    // because most initial transition is unset.
+    if (($event->getOriginalState() === 'draft' || $event->getOriginalState() === FALSE)
+      && $event->getNewState() === 'draft_approval') {
       $openideal_config = config_pages_config('openideal_configurations');
       $message = $openideal_config->field_idea_approval_message->view('default');
       if (!empty($message)) {
@@ -48,7 +51,6 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
    *   Event.
    */
   public function onComponentBuild(SectionComponentBuildRenderArrayEvent $event) {
-    /** @var \Drupal\layout_builder\Plugin\Block\FieldBlock $kek */
     if ($event->getPlugin()->getPLuginId() == 'field_block:node:idea:overall_score') {
       $build = $event->getBuild();
       $build['content']['#cache']['max-age'] = 3600;

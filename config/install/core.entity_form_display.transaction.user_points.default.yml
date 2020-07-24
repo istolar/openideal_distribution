@@ -13,7 +13,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -24,14 +24,6 @@ content:
     third_party_settings: {  }
     type: number
     region: content
-  field_log_message:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   operation:
     type: options_select
     weight: 0
@@ -40,7 +32,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -50,3 +42,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_balance: true
+  field_log_message: true

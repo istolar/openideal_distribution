@@ -17,7 +17,7 @@ flag_message: ''
 unflag_short: Unfollow
 unflag_long: ''
 unflag_message: ''
-unflag_denied_text: ''
+unflag_denied_text: Followed
 flag_type: 'entity:node'
 link_type: ajax_link
 flagTypeConfig:
@@ -26,5 +26,5 @@ flagTypeConfig:
   show_on_form: false
   show_contextual_link: false
   extra_permissions:
-    owner: '0'
+    owner: owner
 linkTypeConfig: {  }

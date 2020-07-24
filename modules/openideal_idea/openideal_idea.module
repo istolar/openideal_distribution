@@ -19,6 +19,20 @@ use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
 use Drupal\openideal_idea\Plugin\OpenidealGroupContentAccessControlHandler as GroupContentAccessHandle;
 
 /**
+ * Implements hook_theme().
+ */
+function openideal_idea_theme() {
+  return [
+    'openideal_idea_flag_and_like_block' => [
+      'variables' => [
+        'like' => NULL,
+        'follow' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_form_alter().
  */
 function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form_id) {
@@ -48,9 +62,11 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
     unset($form['group_roles']['widget']['#options']['idea-expert']);
   }
 
-  // Unset useless group roles for group idea membership edit form.
+  // Unset unneeded group roles for group idea membership edit form.
   if ($form_id == 'group_content_idea-group_membership_edit_form') {
-    unset($form['group_roles']['widget']['#options']['idea-author']);
+    // We need to have this options "idea-author" option in the widget,
+    // so hide it through front-end.
+    $form['#attached']['library'][] = 'openideal_idea/openideal_idea.group_widget';
   }
 
 }
@@ -68,10 +84,10 @@ function openideal_idea_node_presave(NodeInterface $node) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert().
+ * Implements hook_entity_insert().
  */
-function openideal_idea_node_insert(NodeInterface $entity) {
-  if ($entity->bundle() == 'idea') {
+function openideal_idea_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'idea') {
     try {
       // Create the group for the node.
       /** @var \Drupal\group\Entity\Group $group */
@@ -96,7 +112,7 @@ function openideal_idea_node_insert(NodeInterface $entity) {
       $group->addMember($group->getOwner(), $values);
 
       // Author follow the node after its creating.
-      /** @var \Drupal\flag\FlagService $flag_service*/
+      /** @var \Drupal\flag\FlagService $flag_service */
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('follow');
       $flag_service->flag($flag, $entity, $entity->getOwner());
@@ -157,6 +173,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
       '#link' => [
         'title' => t('Group Members'),
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
+        'localized_options' => [],
       ],
       '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
     ];

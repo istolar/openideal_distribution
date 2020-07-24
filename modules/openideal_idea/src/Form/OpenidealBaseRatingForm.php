@@ -49,9 +49,10 @@ class OpenidealBaseRatingForm extends BaseRatingForm {
         ],
       ],
     ];
+    $entity = $this->getEntity();
     $form['submit']['#attributes']['class'][] = 'openideal-votes-like-submit';
-    $form['#attached']['drupalSettings']['openidealUser']['voted'] = !$this->getEntity()->isNew();
-
+    $form['#attached']['drupalSettings']['openidealUser']['voted'] = !$entity->isNew();
+    $form['#attached']['drupalSettings']['openidealUser']['comment'] = $entity->entity_type->value == 'comment';
     return $form;
   }
 
