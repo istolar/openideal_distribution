@@ -16,7 +16,6 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\openideal_idea\ComputedNumberList;
 use Drupal\openideal_idea\Form\OpenidealBaseRatingForm;
-use Drupal\openideal_idea\Plugin\OpenidealGroupContentAccessControlHandler as GroupContentAccessHandle;
 
 /**
  * Implements hook_theme().
@@ -287,9 +286,12 @@ function openideal_idea_entity_type_build(array &$entity_types) {
 }
 
 /**
- * Implements hook_group_content_info_alter().
+ * Implements hook_ENTITY_TYPE_access().
  */
-function openideal_idea_group_content_info_alter(&$info) {
-  // Alter the content enabler plugin definitions to use our class.
-  $info['group_membership']['handlers']['access'] = GroupContentAccessHandle::class;
+function openideal_idea_group_content_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity->getOwnerId() === $account->id()
+    && $operation == 'delete'
+    && $entity->getContentPlugin()->getPluginId() == 'group_membership') {
+    return AccessResult::forbidden();
+  }
 }
