@@ -291,10 +291,10 @@ function openideal_idea_group_content_access(EntityInterface $entity, $operation
  */
 function openideal_idea_rrssb_buttons_alter(&$buttons) {
   $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
-  $buttons['facebook']['svg'] = file_get_contents($theme_path . '/misc/icons/facebook.svg');
-  $buttons['copy_url']['svg'] = file_get_contents($theme_path . '/misc/icons/share.svg');
-  $buttons['twitter']['svg'] = file_get_contents($theme_path . '/misc/icons/twitter.svg');
-  $buttons['linkedin']['svg'] = file_get_contents($theme_path . '/misc/icons/linkedin.svg');
+  $buttons['facebook']['svg'] = $theme_path . '/misc/icons/facebook.svg';
+  $buttons['copy_url']['svg'] = $theme_path . '/misc/icons/clipboard.svg';
+  $buttons['twitter']['svg'] = $theme_path . '/misc/icons/twitter.svg';
+  $buttons['linkedin']['svg'] = $theme_path . '/misc/icons/linkedin.svg';
 }
 
 /**
@@ -304,6 +304,8 @@ function openideal_idea_rrssb_buttons() {
   return [
     'copy_url' => [
       'share_url' => '',
+      'color' => '',
+      'color_hover' => '',
     ],
   ];
 }

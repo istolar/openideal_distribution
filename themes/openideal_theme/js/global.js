@@ -154,6 +154,22 @@
   }
 
   /**
+   * Attach behaviours on mobile share block.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Implement ability to show/hide mobile share block.
+   */
+  Drupal.behaviors.openidealThemeMobileShareBlock = {
+    attach: function (context, settings) {
+      $('.site-footer-open-share-btn', context).once('openideal_theme_mobile_share_block').on('click', function () {
+        $('.mobile-share-footer').toggle(400);
+      })
+    }
+  }
+
+  /**
    * Add the behaviour to comment reply link.
    *
    * @type {Drupal~behavior}

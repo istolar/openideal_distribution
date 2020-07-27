@@ -86,3 +86,5 @@ bootstrap_barrio_system_messages: ''
 bootstrap_barrio_table_style: ''
 bootstrap_barrio_table_hover: 0
 bootstrap_barrio_table_head: ''
+bootstrap_barrio_region_clean_mobile_share: 1
+bootstrap_barrio_region_class_mobile_share: ''

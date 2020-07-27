@@ -8,9 +8,6 @@
 
     li {
       margin-right: 5px;
-    }
-
-    &__copy_url {
       width: 36px;
       height: 36px;
       display: flex;
@@ -19,6 +16,10 @@
       background-color: #D0D6DC;
       border-radius: 20px;
       cursor: pointer;
+
+      a {
+        display: flex;
+      }
 
       svg {
         fill: $white;

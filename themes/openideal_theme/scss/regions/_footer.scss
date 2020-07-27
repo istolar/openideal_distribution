@@ -64,9 +64,9 @@
 
         &--element {
           color: #676C72;
-          font-size: 20px;
+          font-size: 13px;
           text-transform: uppercase;
-          padding-right: 3em;
+          padding-right: 5em;
 
           &:not(:last-child) {
             border-right: 1px solid #E0E0E0;
@@ -141,7 +141,7 @@
     .block-openideal-footer-mobile-footer-block {
       .site-footer-mobile-block--element {
         font-size: 12px;
-        padding-right: 10px;
+        padding-right: 25px;
 
         i {
           font-size: 24px;
@@ -158,5 +158,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
+    padding-right: 1.3em;
   }
 }

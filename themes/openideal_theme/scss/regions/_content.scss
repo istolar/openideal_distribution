@@ -26,8 +26,11 @@
 }
 
 @media (max-width: 991px) {
-  .main-content-outer {
-    padding: 22px;
+  .main-content-inner {
+    padding-right: 0;
+  }
+  section.main-content {
+    padding: 0 20px;
   }
 
 }
