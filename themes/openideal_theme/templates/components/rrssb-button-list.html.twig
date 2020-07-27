@@ -7,14 +7,14 @@
             {% if button.name != 'copy_url' %}
             <li class="share-buttons--buttons__{{ button.name }}">
                     <a href="{{ button.link }}" {{ button.class | raw }}>
-                        {{ button.svg|raw }}
+                        {% include button.svg %}
                         <span class="share-buttons--buttons__text visually-hidden">{{ button.text }}</span>
                     </a>
             </li>
             {% else %}
             <li data-toggle="tooltip" data-placement="top" title="Copy link to clipboard" class="share-buttons--buttons__{{ button.name }}">
                     <span class="share-buttons--buttons__icon">
-                  {{ button.svg|raw }}
+                  {% include button.svg %}
               </span>
                     <span class="share-buttons--buttons__text visually-hidden">{{ button.text }}</span>
             </li>
