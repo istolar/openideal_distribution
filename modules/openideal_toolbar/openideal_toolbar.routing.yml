@@ -13,3 +13,11 @@ openideal_toolbar.configuration:
     _title: 'Configuration'
   requirements:
     _permission: 'administer site configuration'
+
+openideal_toolbar.activity:
+  path: '/admin/openideal/activity'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'OpenideaL activity'
+  requirements:
+    _permission: 'access activity pages openideal'

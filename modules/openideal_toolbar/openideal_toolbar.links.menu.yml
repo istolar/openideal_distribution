@@ -17,3 +17,10 @@ openideal_toolbar.configuration:
   route_name: openideal_toolbar.configuration
   parent: openideal_toolbar.help
   weight: 2
+
+openideal_toolbar.activity:
+  title: 'Activity'
+  route_name: openideal_toolbar.activity
+  description: 'Data export pages.'
+  parent: openideal_toolbar.help
+  weight: 3

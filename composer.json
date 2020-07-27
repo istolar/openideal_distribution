@@ -58,6 +58,7 @@
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/userpoints": "^1.0@alpha",
         "drupal/user_registrationpassword": "1.x-dev",
+        "drupal/views_data_export": "^1.0",
         "drupal/votingapi": "3.x-dev",
         "drupal/votingapi_reaction": "^1.1",
         "drupal/votingapi_widgets": "1.x-dev",
