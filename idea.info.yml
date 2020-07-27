@@ -97,6 +97,7 @@ dependencies:
   - drupal:views_ui
   - drupal:workflows
   - drupal:menu_link_content
+  - views_data_export:views_data_export
   - votingapi:votingapi
   - votingapi_widgets:votingapi_widgets
   - votingapi_reaction:votingapi_reaction
