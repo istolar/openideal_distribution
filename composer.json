@@ -46,6 +46,7 @@
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
         "drupal/rabbit_hole": "^1.0",
+        "drupal/rrssb": "^2.2",
         "drupal/rules": "3.x-dev",
         "drupal/social_auth_facebook": "^2.0",
         "drupal/social_auth_github": "^2.0",

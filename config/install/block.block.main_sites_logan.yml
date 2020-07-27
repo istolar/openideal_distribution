@@ -1,7 +1,10 @@
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'block_content:basic:3ed7eeba-0dcc-45a5-9ade-c53cacbc3c0e'
   module:
+    - block_content
     - system
   theme:
     - openideal_theme

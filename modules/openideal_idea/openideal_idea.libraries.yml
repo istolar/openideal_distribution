@@ -1,15 +1,3 @@
-useful:
-  version: VERSION
-  js:
-    js/openideal_idea_useful.js : {}
-  css:
-    theme:
-      css/openideal_idea_useful.css: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    - votingapi_widgets/fontawesome
-
 openideal_idea.group_widget:
   js:
     js/group_widget.js : {}
