@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_mode.comment.my_comments
     - field.field.comment.comment.comment_body
     - field.field.comment.comment.field_like
+    - views.view.comment
   module:
     - layout_builder
     - layout_discovery
     - text
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -34,7 +36,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 1
+            weight: 2
           ce734f7b-401c-4fa0-921e-fea307f8ef82:
             uuid: ce734f7b-401c-4fa0-921e-fea307f8ef82
             region: content
@@ -54,6 +56,19 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 1
+          1ff0bc1f-4e0b-45ce-9aee-40a1ca5e1d9e:
+            uuid: 1ff0bc1f-4e0b-45ce-9aee-40a1ca5e1d9e
+            region: content
+            configuration:
+              id: 'views_block:comment-my_comments_commented_entity_title_block'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
             weight: 0
         third_party_settings: {  }
