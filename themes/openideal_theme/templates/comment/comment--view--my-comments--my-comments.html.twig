@@ -94,7 +94,7 @@
 
         <div{{ content_attributes }}>
             {# Add the idea title into my-comments view. #}
-            <h5>{{ commented_entity.type.target_id|capitalize }} {{ 'title:'|t }} {{ commented_entity.title.value }}</h5>
+            <h5>{{ commented_entity.type.entity.label }} {{ 'title:'|t }} {{ commented_entity.label }}</h5>
             {{ content }}
         </div>
     </div>
