@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+template: node_created
+label: 'New node'
+description: ''
+text:
+  -
+    value: "<p><a href=\"node-url]\">[message:node-title]</a>&nbsp;has been created.</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+template: idea_life_cycle_change
+label: 'Idea life-cycle change'
+description: ''
+text:
+  -
+    value: "<p><a href=\"node-url]\">[message:node-title]</a>&nbsp;has changed the life cycle to [message:idea-life-cycle]</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

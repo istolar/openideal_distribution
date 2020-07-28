@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.create_like_on_node.field_vote_reference
+    - message.template.create_like_on_node
+id: message.create_like_on_node.default
+targetEntityType: message
+bundle: create_like_on_node
+mode: default
+content:
+  field_vote_reference:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

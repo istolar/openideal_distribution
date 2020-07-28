@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+template: create_like_on_node
+label: 'Create like on node'
+description: ''
+text:
+  -
+    value: "<p><a href=\"absolute]\">[message:author:display-name]</a>&nbsp;vote on the Idea&nbsp;<a href=\"vote-voted-entity-url]\">[message:vote-voted-entity-title]</a></p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

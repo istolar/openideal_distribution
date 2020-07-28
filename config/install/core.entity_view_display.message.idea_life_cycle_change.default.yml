@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.idea_life_cycle_change.field_node_reference
+    - message.template.idea_life_cycle_change
+id: message.idea_life_cycle_change.default
+targetEntityType: message
+bundle: idea_life_cycle_change
+mode: default
+content:
+  field_node_reference:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+template: challenge_schedule
+label: 'Challenge schedule'
+description: ''
+text:
+  -
+    value: "<p>Challenge&nbsp;<a href=\"node-url]\">[message:node-title]</a>&nbsp;is [message:field_node_reference:entity:field_is_open].</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

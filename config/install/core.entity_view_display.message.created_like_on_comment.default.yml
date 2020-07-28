@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.created_like_on_comment.field_comment_reference
+    - message.template.created_like_on_comment
+id: message.created_like_on_comment.default
+targetEntityType: message
+bundle: created_like_on_comment
+mode: default
+content:
+  field_comment_reference:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

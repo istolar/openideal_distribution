@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: create_a_message_after_adding_new_content
+label: 'Create a message after adding new content'
+events:
+  -
+    event_name: 'rules_entity_insert:node'
+description: ''
+tags: {  }
+config_version: '3'
+expression:
+  id: rules_rule
