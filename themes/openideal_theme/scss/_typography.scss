@@ -1,13 +1,8 @@
 /* TYPOGRAPHY */
 
-/* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Roboto&display=swap");
-
-// Fonts
-
 // Font
-$font-family-assistant:       'Assistant', Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-assistant: 'Assistant', Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-serif: Georgia, "Times New Roman", Times, serif !default;
 $font-family-base: $font-family-assistant;
 

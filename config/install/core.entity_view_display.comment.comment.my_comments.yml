@@ -34,7 +34,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 1
+            weight: 2
           ce734f7b-401c-4fa0-921e-fea307f8ef82:
             uuid: ce734f7b-401c-4fa0-921e-fea307f8ef82
             region: content
@@ -55,7 +55,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: 1
         third_party_settings: {  }
 id: comment.comment.my_comments
 targetEntityType: comment

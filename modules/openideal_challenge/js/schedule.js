@@ -16,7 +16,7 @@
   Drupal.behaviors.openidealChallengeSchedule = {
     attach: function (context, settings) {
       $('.challenge-schedule-local-machine-time').once('openideal_challenge_schedule').each(function () {
-        $(this).text(Drupal.t('Time in your local machine: @time',
+        $(this).html(Drupal.t('Your time is: @time. <br/> Leave blank to use the time of submission ("Now").',
           {'@time': new Date().toLocaleTimeString()})
         )
       })

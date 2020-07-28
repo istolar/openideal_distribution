@@ -1,3 +1,7 @@
 openideal_idea.group_widget:
   js:
     js/group_widget.js : {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

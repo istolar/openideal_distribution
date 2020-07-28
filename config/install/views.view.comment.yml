@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - comment
+    - node
     - user
 id: comment
 label: Comments
