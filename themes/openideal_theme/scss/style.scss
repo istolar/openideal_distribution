@@ -10,7 +10,6 @@ Description: Bootstrap 4 with Sass
 -------------------------------------------------*/
 html {
   font-size: 16px;
-  overflow: hidden;
 }
 
 body {
@@ -18,7 +17,6 @@ body {
   color: $primary-color;
   margin: 0;
   height: 100vh;
-  overflow-x: hidden;
   background-color: $body-bg;
 }
 
