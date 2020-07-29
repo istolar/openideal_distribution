@@ -6,3 +6,5 @@ openideal_challenge.schedule:
       css/style.css: {}
   dependencies:
     - core/jquery
+    - core/jquery.once
+    - core/drupal
