@@ -4,3 +4,10 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@token'
+      - '@statistics.storage.node'
+
+  openideal_statistics.subscriber:
+    class: Drupal\openideal_statistics\EventSubscriber\OpenidealStatisticsEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }

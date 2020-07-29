@@ -31,7 +31,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
    *
    * @var \Drupal\Core\Config\ConfigFactory
    */
-  private $configFactory;
+  protected $configFactory;
 
   /**
    * {@inheritDoc}

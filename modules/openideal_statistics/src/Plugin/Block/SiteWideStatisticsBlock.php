@@ -77,6 +77,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
   public function build() {
     $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
     $build['#theme'] = 'site_wide_statistics_block';
+    $build['#main_class'] = 'site-wide-statistics-block';
     $build['#content'] = [
       'ideas' => [
         'bottom' => [

@@ -27,6 +27,7 @@ dependencies:
     - metatag
     - openideal_idea
     - openideal_slideshow
+    - openideal_statistics
     - text
     - user
     - views
@@ -108,7 +109,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 7
           f5ab1c7e-4514-42dc-a03a-84228d04e6ba:
             uuid: f5ab1c7e-4514-42dc-a03a-84228d04e6ba
             region: second
@@ -227,7 +228,7 @@ third_party_settings:
               context_mapping: {  }
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
-            weight: 20
+            weight: 19
           9b268c06-2068-45ad-9fae-eed8766df86f:
             uuid: 9b268c06-2068-45ad-9fae-eed8766df86f
             region: second
@@ -260,20 +261,6 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 9
-          07408077-c987-49a4-88c0-4f973942e782:
-            uuid: 07408077-c987-49a4-88c0-4f973942e782
-            region: second
-            configuration:
-              id: 'views_block:ideas-idea_statistics_and_statusblock'
-              label: ''
-              provider: views
-              label_display: '0'
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional:
-              layout_builder_styles_style: mobile_status_and_statistics
-            weight: 11
           2421e4ac-d4c3-429b-b635-a1546c5a8a12:
             uuid: 2421e4ac-d4c3-429b-b635-a1546c5a8a12
             region: second
@@ -287,7 +274,19 @@ third_party_settings:
               context_mapping: {  }
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
-            weight: 21
+            weight: 20
+          937d7aa1-fc76-4d3f-abee-c4b3935524d4:
+            uuid: 937d7aa1-fc76-4d3f-abee-c4b3935524d4
+            region: second
+            configuration:
+              id: openideal_statistics_workflow_and_statistics_block
+              label: 'Statistics and workflow block.'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping: {  }
+            additional:
+              layout_builder_styles_style: mobile_status_and_statistics
+            weight: 10
         third_party_settings: {  }
       -
         layout_id: layout_onecol

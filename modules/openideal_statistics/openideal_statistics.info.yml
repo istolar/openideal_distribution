@@ -4,3 +4,8 @@ description: 'Provides main slideshow functionality for OpenideaL statistics mod
 core: 8.x
 core_version_requirement: ^8 || ^9
 package: 'OpenideaL'
+
+dependencies:
+  - drupal:statistics
+  - votingapi_tokens:votingapi_tokens
+  - drupal:layout_builder
