@@ -66,7 +66,7 @@
 <div id="page-wrapper" class="container-fluid">
     <div id="page" class="row">
         {# Main navigation #}
-        <section id="site-navigation" class="site-navigation col-xl-3 col-lg-3">
+        <section id="site-navigation" class="site-navigation col-lg-4 col-xl-3">
             <div class="site-navigation--dismiss d-lg-none">
                 {% include active_theme_path() ~ '/misc/icons/exit.svg' %}
             </div>
@@ -99,9 +99,9 @@
         </section>
         {% endblock %}
         <div class="main-content-outer
-                col-xl-{{ page.sidebar ? 11 : 15 }}
-                col-lg-{{ page.sidebar ? 11 : 15 }}
-                col-md-{{ page.sidebar ? 13 : 14 }}"
+                col-xl-{{ page.sidebar ? 13 : 19 }}
+                col-lg-{{ page.sidebar ? 12 : 18 }}
+                col-md-{{ page.sidebar ? 15 : 22 }}"
         >
         {% block content %}
             {% if page.highlighted %}
@@ -125,7 +125,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xl-4 col-lg-4 col-md-5 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-lg-6 col-md-7 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

@@ -35,6 +35,23 @@ expression:
         provides_mapping: {  }
         condition_id: rules_data_comparison
         negate: false
+      -
+        id: rules_condition
+        uuid: 2c96fd61-eb21-4fb8-a985-f073b11f647c
+        weight: 0
+        context_values:
+          operation: '=='
+          value: '1'
+        context_mapping:
+          data: vote.entity_id.entity.status.value
+        context_processors:
+          operation:
+            rules_tokens: {  }
+          value:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        condition_id: rules_data_comparison
+        negate: false
   actions:
     id: rules_action_set
     uuid: d508aa16-cd12-421a-b7ea-0ec972c33771

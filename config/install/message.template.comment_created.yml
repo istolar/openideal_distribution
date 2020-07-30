@@ -6,7 +6,7 @@ label: 'New comment created'
 description: ''
 text:
   -
-    value: "<p><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;posted comment in the&nbsp;<a href=\"[message:node-url]\">[message:node-title]</a></p>\r\n"
+    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;posted comment</p>\r\n"
     format: full_html
 settings:
   'token options':

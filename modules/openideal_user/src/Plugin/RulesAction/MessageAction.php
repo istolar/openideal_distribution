@@ -2,14 +2,15 @@
 
 namespace Drupal\openideal_user\Plugin\RulesAction;
 
-use Drupal\comment\CommentInterface;
+use Drupal\content_moderation\ModerationInformation;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\message\Entity\Message;
-use Drupal\node\NodeInterface;
+use Drupal\message\MessageInterface;
 use Drupal\rules\Core\RulesActionBase;
+use Drupal\user\UserInterface;
 use Drupal\votingapi\VoteInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -53,16 +54,25 @@ class MessageAction extends RulesActionBase implements ContainerFactoryPluginInt
   protected $entityTypeManager;
 
   /**
+   * Moderation information service.
+   *
+   * @var \Drupal\content_moderation\ModerationInformation
+   */
+  protected $moderationInformation;
+
+  /**
    * {@inheritDoc}
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    EntityTypeManager $entityTypeManager
+    EntityTypeManager $entityTypeManager,
+    ModerationInformation $moderation_information
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
+    $this->moderationInformation = $moderation_information;
   }
 
   /**
@@ -73,7 +83,8 @@ class MessageAction extends RulesActionBase implements ContainerFactoryPluginInt
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('content_moderation.moderation_information')
     );
   }
 
@@ -86,49 +97,27 @@ class MessageAction extends RulesActionBase implements ContainerFactoryPluginInt
    *   The referenced entity.
    */
   protected function doExecute($template, EntityInterface $entity) {
-    if ($this->isValid($entity, $template)) {
-      $message = Message::create(['template' => $template, 'uid' => $entity->getOwnerId()]);
-      $entity_type = $entity->getEntityTypeId();
-
-      if ($entity instanceof VoteInterface) {
-        $entity_type = $this->votedEntity->getEntityTypeId();
-        $entity = $this->votedEntity;
-      }
-
-      $message->set('field_' . $entity_type . '_reference', $entity);
-      $message->save();
+    // If user already voted nothing to do here.
+    if ($entity instanceof VoteInterface && $this->isUserVoted($entity, $template)) {
+      return;
     }
-  }
 
-  /**
-   * Check if entity is valid.
-   *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   Entity to check.
-   * @param string $template
-   *   Template.
-   *
-   * @return bool
-   *   Check if node is published.
-   */
-  private function isValid(EntityInterface $entity, $template) {
-    // @Todo: If if if ?:)
+    $owner_id = $entity instanceof UserInterface ? $entity->id() : $entity->getOwnerId();
+    $message = Message::create(['template' => $template, 'uid' => $owner_id]);
+    $entity_type = $entity->getEntityTypeId();
+
     if ($entity instanceof VoteInterface) {
-      if ($this->isUserVoted($entity, $template)) {
-        return FALSE;
-      }
-      $this->votedEntity = $this->entityTypeManager->getStorage($entity->getVotedEntityType())->load($entity->getVotedEntityId());
-      if ($this->votedEntity instanceof NodeInterface) {
-        return $this->votedEntity->isPublished();
-      }
-      elseif ($this->votedEntity instanceof CommentInterface) {
-        return $this->votedEntity->getCommentedEntity()->isPublished();
-      }
+      $entity = $this->entityTypeManager->getStorage($entity->getVotedEntityType())->load($entity->getVotedEntityId());
+      $entity_type = $entity->getEntityTypeId();
     }
-    elseif ($entity instanceof CommentInterface) {
-      return $entity->getCommentedEntity()->isPublished();
-    }
-    return TRUE;
+
+    // Set arguments in cases if we can't just take data from current entity,
+    // e.g. workflow state is changed,
+    // and need to save previous one as msg argument.
+    $this->setMessageArguments($message, $entity);
+
+    $message->set('field_' . $entity_type . '_reference', $entity);
+    $message->save();
   }
 
   /**
@@ -150,6 +139,31 @@ class MessageAction extends RulesActionBase implements ContainerFactoryPluginInt
       ->condition('uid', $entity->getOwnerId())
       ->execute();
     return !empty($result);
+  }
+
+  /**
+   * Set arguments to message if need.
+   *
+   * @param \Drupal\message\MessageInterface $message
+   *   Message to set arguments.
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   Entity to get additional info from.
+   */
+  private function setMessageArguments(MessageInterface $message, EntityInterface $entity) {
+    switch ($message->getTemplate()->id()) {
+      case 'idea_life_cycle_change':
+        $state = $this->moderationInformation->getOriginalState($entity);
+        $message->setArguments([
+          '@idea_life_cycle' => $state->label(),
+        ]);
+        break;
+
+      case 'challenge_schedule':
+        $message->setArguments([
+          '@challenge_status' => $entity->field_is_open->value ? 'Open' : 'Closed',
+        ]);
+        break;
+    }
   }
 
 }

@@ -4,6 +4,7 @@ dependencies:
   config:
     - views.view.ideas
   module:
+    - node
     - views
   theme:
     - openideal_theme
@@ -21,4 +22,11 @@ settings:
   views_label: ''
   items_per_page: none
   context_mapping: {  }
-visibility: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

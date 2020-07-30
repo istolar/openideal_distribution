@@ -26,7 +26,6 @@
 }
 
 .field--type-entity-reference ul.links li {
-    float: left;
     /* LTR */
     padding: 0 $spacer 0 0;
     /* LTR */
@@ -35,18 +34,15 @@
 
 [dir="rtl"] .field--type-entity-reference ul.links li {
     padding: 0 0 0 $spacer;
-    float: right;
 }
 
 @media all and (min-width: 560px) {
     .node .field--type-image {
-        float: left;
         /* LTR */
         margin: 0 $spacer 0 0;
         /* LTR */
     }
     [dir="rtl"] .node .field--type-image {
-        float: right;
         margin: 0 0 0 $spacer;
     }
     .node .field--type-image+.field--type-image {
@@ -95,7 +91,6 @@
 }
 
 .field--name-field-tags ul.links li {
-    float: left;
     /* LTR */
     padding: 0 $spacer 0 0;
     /* LTR */
@@ -104,7 +99,6 @@
 
 [dir="rtl"] .field--name-field-tags ul.links li {
     padding: 0 0 0 $spacer;
-    float: right;
 }
 
 .field--label-inline .field__label,

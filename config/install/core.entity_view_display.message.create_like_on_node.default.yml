@@ -4,22 +4,29 @@ dependencies:
   config:
     - field.field.message.create_like_on_node.field_node_reference
     - message.template.create_like_on_node
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
 id: message.create_like_on_node.default
 targetEntityType: message
 bundle: create_like_on_node
 mode: default
 content:
   field_node_reference:
+    type: entity_reference_entity_view
     weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
+    label: hidden
+    settings:
+      view_mode: message
+      link: false
+    third_party_settings: {  }
   partial_0:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }
