@@ -6,8 +6,8 @@ label: 'Created like on comment'
 description: ''
 text:
   -
-    value: "<p><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;vote on the comment &nbsp;<a href=\"[message:vote-voted-entity-url]\">[message:vote-voted-entity-title]</a></p>\r\n"
-    format: basic_html
+    value: "<p><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;vote on the comment &nbsp;<a href=\"[message:field_comment_reference:entity:url]\">[message:field_comment_reference:entity:title]</a></p>\r\n"
+    format: full_html
 settings:
   'token options':
     clear: false

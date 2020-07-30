@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: create_message_after_idea_life_cycle_is_changed
+label: 'Create a message after idea life cycle is changed'
+events:
+  -
+    event_name: openideal_user.content_moderation.state_changed
+description: ''
+tags: {  }
+config_version: '3'
+expression:
+  id: rules_rule

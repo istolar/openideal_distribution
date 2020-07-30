@@ -6,8 +6,8 @@ label: 'Create like on node'
 description: ''
 text:
   -
-    value: "<p><a href=\"absolute]\">[message:author:display-name]</a>&nbsp;vote on the Idea&nbsp;<a href=\"vote-voted-entity-url]\">[message:vote-voted-entity-title]</a></p>\r\n"
-    format: basic_html
+    value: "<p><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;vote on the Idea&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n"
+    format: full_html
 settings:
   'token options':
     clear: false

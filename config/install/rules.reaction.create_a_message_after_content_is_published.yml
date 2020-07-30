@@ -1,26 +1,37 @@
 langcode: en
 status: true
 dependencies: {  }
-id: create_a_message_after_adding_new_content
-label: 'Create a message after adding new content'
+id: create_a_message_after_content_is_published
+label: 'Create a message after content is published'
 events:
   -
-    event_name: 'rules_entity_insert:node'
+    event_name: 'rules_entity_update:node'
 description: ''
 tags: {  }
 config_version: '3'
 expression:
   id: rules_rule
-  uuid: 9af19448-de7d-4e2d-a531-6cec59111e20
+  uuid: 757f2756-217e-4c7b-85f9-ecfccbef8b06
   weight: 0
   conditions:
     id: rules_and
-    uuid: 2fd8589d-9d68-4a25-9620-13a1fbe345a8
+    uuid: 6311eba1-7f4e-49b1-900c-165b66041718
     weight: 0
     conditions:
       -
         id: rules_condition
-        uuid: 216fa1fd-7ec3-4c05-8961-efcbe341ed3d
+        uuid: 7372ef2f-4177-4a33-b15c-358aab4db1b7
+        weight: 0
+        context_values: {  }
+        context_mapping:
+          node: node
+        context_processors: {  }
+        provides_mapping: {  }
+        condition_id: rules_node_is_published
+        negate: false
+      -
+        id: rules_condition
+        uuid: d764805a-19db-445b-892a-b8fcc8e3567b
         weight: 0
         context_values:
           type: node
@@ -35,25 +46,14 @@ expression:
         provides_mapping: {  }
         condition_id: rules_entity_is_of_bundle
         negate: true
-      -
-        id: rules_condition
-        uuid: 1e9a9fab-a15e-4de2-b16e-e023fa234235
-        weight: 0
-        context_values: {  }
-        context_mapping:
-          node: node
-        context_processors: {  }
-        provides_mapping: {  }
-        condition_id: rules_node_is_published
-        negate: false
   actions:
     id: rules_action_set
-    uuid: ab78db4f-0e1f-40b5-a921-5a4500342127
+    uuid: 2e665d22-dd48-4e5a-8939-0adecc98dc27
     weight: 0
     actions:
       -
         id: rules_action
-        uuid: 2ed6b64a-a1ce-46e0-99bb-30a9d1e0f241
+        uuid: a8689a2a-bfda-47d2-a4ba-cab05e5c8776
         weight: 0
         context_values:
           template: node_created

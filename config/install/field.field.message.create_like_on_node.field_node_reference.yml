@@ -2,24 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.message.field_vote_reference
+    - field.storage.message.field_node_reference
     - message.template.create_like_on_node
-    - votingapi.vote_type.reaction_like
-id: message.create_like_on_node.field_vote_reference
-field_name: field_vote_reference
+    - node.type.idea
+id: message.create_like_on_node.field_node_reference
+field_name: field_node_reference
 entity_type: message
 bundle: create_like_on_node
-label: Like
+label: Node
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:vote'
+  handler: 'default:node'
   handler_settings:
     target_bundles:
-      reaction_like: reaction_like
+      idea: idea
     sort:
       field: _none
     auto_create: false
