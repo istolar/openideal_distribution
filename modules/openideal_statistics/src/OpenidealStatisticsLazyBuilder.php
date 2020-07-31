@@ -109,11 +109,13 @@ class OpenidealStatisticsLazyBuilder {
    * @return array
    *   Renderable array.
    */
-  public function getViews($id = NULL) {
-    $node = $id ? $this->entityTypeManager->getStorage('node')->load($id) : NULL;
+  public function getViews($id) {
+    $node = $this->entityTypeManager->getStorage('node')->load($id);
     $statistics_result = $this->nodeStatistics->fetchView($node->id());
     return [
-      '#markup' => $statistics_result->getTotalCount(),
+      // In case the node created for the first time result will be false,
+      // so need to check it.
+      '#markup' => $statistics_result ? $statistics_result->getTotalCount() : 0,
       '#cache' => ['max-age' => 3600],
     ];
   }
@@ -130,7 +132,7 @@ class OpenidealStatisticsLazyBuilder {
   public function getVotes($id = NULL) {
     $node = $id ? $this->entityTypeManager->getStorage('node')->load($id) : NULL;
     $markup = $node
-      ? $this->token->replace('[votingapi_node_token:vote_count:reaction_like]', ['node' => $node])
+      ? $this->token->replace('[openideal:idea-votes-count]', ['node' => $node])
       : $this->token->replace('[openideal:votes-count]');
     return [
       '#markup' => $markup,

@@ -12,7 +12,9 @@
     attach: function (context, settings) {
       $('.openideal-slideshow', context).once('openideal_slideshow_slick_configuration').slick({
         arrows: false,
-        lazyLoad: 'progressive'
+        lazyLoad: 'progressive',
+        autoplay: true,
+        autoplaySpeed: 5000,
       });
 
     }

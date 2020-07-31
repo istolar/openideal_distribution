@@ -33,7 +33,7 @@ class OpenidealStatisticsEventSubscriber implements EventSubscriberInterface {
   public function onBuildRender(SectionComponentBuildRenderArrayEvent $event) {
     $context = $event->getContexts();
     $plugin = $event->getPlugin();
-    if ($plugin->getPLuginId() == 'openideal_statistics_workflow_and_statistics_block' && isset($context['entity'])) {
+    if ($plugin->getPLuginId() == 'openideal_statistics_and_status' && isset($context['entity'])) {
       $plugin->setConfigurationValue('node', $context['entity']->getContextValue());
     }
   }

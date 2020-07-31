@@ -14,6 +14,8 @@
 
   &--links {
     display: flex;
+    position: absolute;
+    right: 1%;
     &__link {
       margin-right: 5px;
     }
@@ -84,7 +86,8 @@
             height: 34px;
           }
 
-          .action-flag {
+          .action-flag,
+          .flag-follow--body {
             svg {
               transform: rotate(180deg);
             }
@@ -104,13 +107,22 @@
             text-decoration: none;
             color: $dark-gray;
           }
+
+          .votingapi-reaction-form svg,
+          .flag-follow--body svg {
+            fill: $btn-dark;
+          }
+
+          .votingapi-reaction-form input[type="radio"] {
+            display: none;
+          }
+        }
+        .site-footer-open-comments-btn svg {
+          fill: $dark-gray;
         }
       }
     }
 
-    .votingapi-reaction-form input[type="radio"] {
-      display: none;
-    }
 
     .block-addtoany-block,
     &--wrapper {

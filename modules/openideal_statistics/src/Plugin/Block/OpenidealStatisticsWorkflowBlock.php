@@ -11,14 +11,14 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'OpenidealStatisticsWorkflowAndStatisticsBlock' block.
+ * Provides a 'OpenidealStatisticsWorkflowBlock' block.
  *
  * @Block(
- *  id = "openideal_statistics_workflow_and_statistics_block",
- *  admin_label = @Translation("Statistics and workflow block."),
+ *  id = "openideal_statistics_status",
+ *  admin_label = @Translation("Workflow status."),
  * )
  */
-class OpenidealStatisticsWorkflowAndStatisticsBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * Entity type manager.
@@ -42,7 +42,7 @@ class OpenidealStatisticsWorkflowAndStatisticsBlock extends BlockBase implements
   protected $blockManager;
 
   /**
-   * Constructs a new OpenidealStatisticsWorkflowAndStatisticsBlock object.
+   * Constructs a new OpenidealStatisticsWorkflowBlock object.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -89,14 +89,11 @@ class OpenidealStatisticsWorkflowAndStatisticsBlock extends BlockBase implements
    * {@inheritdoc}
    */
   public function build() {
-    $node = $this->getConfiguration()['node'];
+    $configuration = $this->getConfiguration();
     $build = [];
-    if ($node instanceof NodeInterface) {
-      $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics', ['node_id', $node->id()]);
+    if (isset($configuration['node']) && $configuration['node'] instanceof NodeInterface) {
+      $node = $configuration['node'];
       $build = [
-        '#type' => 'container',
-        '#attributes' => ['class' => ['idea-statistics-and-status-block']],
-        'statistics' => $statistics_block->build(),
         'status' => [
           '#type' => 'html_tag',
           '#tag' => 'div',

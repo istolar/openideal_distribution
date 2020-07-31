@@ -8,3 +8,4 @@ services:
     class: Drupal\openideal_idea\OpenidealHelper
     arguments:
       - '@entity_type.manager'
+      - '@group.membership_loader'

@@ -34,19 +34,22 @@ third_party_settings:
             uuid: 3220f5f9-c180-425f-ae78-4f4399690f01
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:user:user:field_points'
+              label: Points
+              provider: layout_builder
+              label_display: '0'
               formatter:
                 label: above
+                type: number_decimal
                 settings:
                   thousand_separator: ''
-                  decimal_separator: .
-                  scale: 2
                   prefix_suffix: true
+                  decimal_separator: .
+                  scale: 0
                 third_party_settings: {  }
-                type: number_decimal
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 0
           a8ca0c2d-1d81-4c53-a15e-6c69d426160a:

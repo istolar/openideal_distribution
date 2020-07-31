@@ -7,5 +7,4 @@ package: 'OpenideaL'
 
 dependencies:
   - drupal:statistics
-  - votingapi_tokens:votingapi_tokens
   - drupal:layout_builder

@@ -100,13 +100,17 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
    */
   public function socialAuthUserFields(UserFieldsEvent $event) {
     $plugin_id = $event->getPluginId();
-
+    $user_fields = $event->getUserFields();
+    if ($event->getSocialAuthUser()->getPicture() !== NULL) {
+      $user_fields += [
+        'avatars_user_picture' => $event->getSocialAuthUser()->getPicture(),
+      ];
+    }
     // Get data from socials and set it in user fields.
     if (array_key_exists($plugin_id, $this->socialsPlugins)) {
       /** @var \Drupal\social_api\AuthManager\OAuth2ManagerInterface $social_manager */
       $social_manager = $this->{$this->socialsPlugins[$plugin_id]};
       $resource_owner = $social_manager->getUserInfo();
-      $user_fields = $event->getUserFields();
       $user_fields += [
         'field_first_name' => $resource_owner->getFirstName() ?? '',
         'field_last_name' => $resource_owner->getLastName() ?? '',
@@ -117,14 +121,8 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
           'field_gender' => $resource_owner->getGender() ?? '',
         ];
       }
-
-      if ($plugin_id == self::GOOGLE_PLUGIN_ID) {
-        $user_fields += [
-          'avatars_user_picture' => $event->getSocialAuthUser()->getPicture(),
-        ];
-      }
-      $event->setUserFields($user_fields);
     }
+    $event->setUserFields($user_fields);
   }
 
 }
