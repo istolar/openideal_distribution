@@ -14,6 +14,8 @@
 
   &--links {
     display: flex;
+    position: absolute;
+    right: 1%;
     &__link {
       margin-right: 5px;
     }
@@ -49,7 +51,7 @@
 
 
 @media (max-width: 991px) {
-  .site-footer {
+  .mobile-idea-site-footer {
   background: $white;
   border-radius: 8px 8px 0 0;
 
@@ -84,7 +86,8 @@
             height: 34px;
           }
 
-          .action-flag {
+          .action-flag,
+          .flag-follow--body {
             svg {
               transform: rotate(180deg);
             }
@@ -104,23 +107,38 @@
             text-decoration: none;
             color: $dark-gray;
           }
+
+          .votingapi-reaction-form svg,
+          .flag-follow--body svg {
+            fill: $btn-dark;
+          }
+
+          .votingapi-reaction-form input[type="radio"] {
+            display: none;
+          }
+        }
+        .site-footer-open-comments-btn svg {
+          fill: $dark-gray;
         }
       }
     }
+  }
 
-    .votingapi-reaction-form input[type="radio"] {
-      display: none;
-    }
+  .site-footer {
+    display: none;
+  }
 
+  .mobile-idea-site-footer.site-footer {
+    display: block;
     .block-addtoany-block,
-    &--wrapper {
+    .site-footer--wrapper {
       display: none;
     }
   }
 }
 
 @media (max-width: 763px) {
-  .site-footer {
+  .mobile-idea-site-footer {
     padding: 0;
     .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
       font-size: 15px;
@@ -130,14 +148,14 @@
 }
 
 @media (max-width: 572px) {
-  .site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
+  .mobile-idea-site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
     font-size: 14px;
     padding-right: 1.5em;
   }
 }
 
 @media (max-width: 420px) {
-  .site-footer {
+  .mobile-idea-site-footer {
     .block-openideal-footer-mobile-footer-block {
       .site-footer-mobile-block--element {
         font-size: 12px;
@@ -162,7 +180,7 @@
 }
 
 @media (max-width: 400px) {
-  .site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
+  .mobile-idea-site-footer .block-openideal-footer-mobile-footer-block .site-footer-mobile-block--element {
     padding-right: 1.3em;
   }
 }

@@ -1,8 +1,11 @@
 .main-content-outer {
+  section.main-content {
+    padding: 30px 17px;
+  }
   // Content site slogan.
   .main-site-logo {
     &--heading {
-      color: #1294CA;
+      color: $btn-dark;
       font-weight: $font-weight-bold;
     }
 
@@ -29,10 +32,11 @@
   .main-content-inner {
     padding-right: 0;
   }
-  section.main-content {
-    padding: 0 20px;
+  .main-content-outer {
+    section.main-content {
+      padding: 14px 5px;
+    }
   }
-
 }
 
 @media (max-width: 1110px) {

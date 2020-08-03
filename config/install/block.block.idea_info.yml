@@ -6,15 +6,15 @@ dependencies:
     - openideal_idea
   theme:
     - openideal_theme
-id: flagandlikeblock
+id: idea_info
 theme: openideal_theme
 region: sidebar
-weight: -9
+weight: -8
 provider: null
-plugin: openideal_idea_flag_and_like_block
+plugin: openideal_idea_info_block
 settings:
-  id: openideal_idea_flag_and_like_block
-  label: 'Flag and Like block'
+  id: openideal_idea_info_block
+  label: 'Idea info'
   provider: openideal_idea
   label_display: '0'
 visibility:

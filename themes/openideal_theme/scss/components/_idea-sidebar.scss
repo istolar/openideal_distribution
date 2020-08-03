@@ -30,7 +30,8 @@
           height: 18px;
         }
 
-        .flag-follow {
+        .flag-follow,
+        .flag-follow--body {
           svg {
             transform: rotate(180deg);
           }
@@ -91,48 +92,105 @@
   }
 }
 
-// Dates block
-.idea-dates-block {
-  .views-field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
+// Info block
+.idea-information {
+  &--list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-    .views-label {
-      font-weight: $font-weight-bold;
-      font-size: $font-size-sm;
+    &__item {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 16px;
-    }
 
-    .field-content {
+      &--title {
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+        margin-bottom: 16px;
+      }
+
+      &--value {
+        font-size: $font-size-sm;
+        color: $dark-gray;
+
+        a {
+          transition: color 0.4s;
+          color: #5a5656;
+
+          &:hover {
+            color: $dark-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Tags block.
+.block-openideal-idea-tags-block {
+  h3 {
+    text-transform: uppercase;
+    font-size: 1.00001rem;
+    font-weight: bold;
+  }
+
+  .list-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    &-item {
+      @include btn-theme($white, $white);
+      border: 1px $primary-color solid;
+      padding: .2em 1em;
+      font-weight: $font-weight-base;
+      margin-right: 3px;
       font-size: $font-size-sm;
-      color: $dark-gray;
+      color: $primary-color;
+      text-decoration: none;
     }
   }
 }
 
 // Statistics block
 .idea-statistics-block {
-  .field-content {
-    margin-bottom: 15px;
-    font-size: $font-size-base;
+  margin-bottom: 15px;
+  font-size: $font-size-base;
 
-    img {
-      margin-right: 10px;
+  &--list {
+    list-style: none;
+    padding: 0;
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      &--bottom {
+        display: flex;
+        align-items: baseline;
+      }
+      &--count {
+        font-weight: $font-weight-bold;
+        padding: 0;
+        margin: 0 5px 0 0;
+      }
+
+      &--title {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+        color: $dark-gray;
+        font-weight: $font-weight-normal;
+      }
+      svg {
+        margin-right: 10px;
+      }
     }
-  }
 
-  &--type__wrapper {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 15px;
-  }
-
-  &--type {
-    margin-left: 5px;
-    font-size: 13px;
-    color: $dark-gray;
-    font-weight: $font-weight-normal;
   }
 }
 

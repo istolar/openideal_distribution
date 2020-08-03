@@ -7,3 +7,7 @@ package: 'OpenideaL'
 
 dependencies:
   - rrssb:rrssb
+  - drupal:content_moderation
+  - drupal:workflows
+  - group:group
+  - drupal:node

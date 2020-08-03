@@ -36,6 +36,10 @@ function openideal_statistics_token_info() {
       'description' => t('The count of all votes in the site'),
       'type' => 'openideal',
     ],
+    'idea-votes-count' => [
+      'name' => t('Idea votes count'),
+      'type' => 'openideal',
+    ],
   ];
 
   return [
@@ -98,6 +102,17 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
           $replacements[$original] = $result;
           $bubbleable_metadata->addCacheTags(['vote_list']);
           break;
+
+        case 'idea-votes-count':
+          if (!empty($data['node'])) {
+            $count = \Drupal::service('plugin.manager.votingapi.resultfunction')
+              ->getResults('node', $data['node']->id());
+
+            // If there are not votes on node, then the array is empty.
+            $result = empty($count) ? 0 : $count['reaction_like']['vote_count'];
+
+            $replacements[$original] = $result;
+          }
       }
     }
   }

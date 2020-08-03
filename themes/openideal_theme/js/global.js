@@ -185,10 +185,6 @@
 
         var $comments = $this.find('.single-comment').toArray();
 
-        $this.find('.indented').each(function () {
-          $(this).hide()
-        })
-
         for (var $i = $comments.length - 1; $i >= 0; $i--) {
           // If the comment has not children then don't need to show border.
           var $current = $($comments[$i]);
