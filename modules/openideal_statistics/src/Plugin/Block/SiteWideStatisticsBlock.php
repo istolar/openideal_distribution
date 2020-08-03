@@ -93,7 +93,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Members'),
-        'img' => $theme_path . '/misc/icons/members_teg.svg',
+        'img' => $theme_path . '/misc/icons/members_tag.svg',
       ],
       'comments' => [
         'bottom' => [
@@ -101,7 +101,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img' => $theme_path . '/misc/icons/comment_teg.svg',
+        'img' => $theme_path . '/misc/icons/comment_tag.svg',
       ],
       'votes' => [
         'bottom' => [

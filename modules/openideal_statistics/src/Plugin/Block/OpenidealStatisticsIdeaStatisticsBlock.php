@@ -47,39 +47,40 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
     elseif ($node instanceof NodeInterface && $node->bundle() == 'idea') {
       $id = $node->id();
     }
-
-    if ($id) {
-      $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
-      $build['#theme'] = 'site_wide_statistics_block';
-      $build['#main_class'] = 'idea-statistics-block';
-      $build['#content'] = [
-        'votes' => [
-          'bottom' => [
-            '#lazy_builder' => ['openideal_statistics.lazy_builder:getVotes', [$id]],
-            '#create_placeholder' => TRUE,
-          ],
-          'title' => $this->t('Votes'),
-          'img' => $theme_path . '/misc/icons/like_tag.svg',
-        ],
-        'comments' => [
-          'bottom' => [
-            '#lazy_builder' => ['openideal_statistics.lazy_builder:getComments', [$id]],
-            '#create_placeholder' => TRUE,
-          ],
-          'title' => $this->t('Comments'),
-          'img' => $theme_path . '/misc/icons/comment_teg.svg',
-        ],
-        'views' => [
-          'bottom' => [
-            '#lazy_builder' => ['openideal_statistics.lazy_builder:getViews', [$id]],
-            '#create_placeholder' => TRUE,
-          ],
-          'title' => $this->t('Views'),
-          'img' => $theme_path . '/misc/icons/view_tag.svg',
-        ],
-      ];
-      $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
+    else {
+      return [];
     }
+
+    $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
+    $build['#theme'] = 'site_wide_statistics_block';
+    $build['#main_class'] = 'idea-statistics-block';
+    $build['#content'] = [
+      'votes' => [
+        'bottom' => [
+          '#lazy_builder' => ['openideal_statistics.lazy_builder:getVotes', [$id]],
+          '#create_placeholder' => TRUE,
+        ],
+        'title' => $this->t('Votes'),
+        'img' => $theme_path . '/misc/icons/like_tag.svg',
+      ],
+      'comments' => [
+        'bottom' => [
+          '#lazy_builder' => ['openideal_statistics.lazy_builder:getComments', [$id]],
+          '#create_placeholder' => TRUE,
+        ],
+        'title' => $this->t('Comments'),
+        'img' => $theme_path . '/misc/icons/comment_tag.svg',
+      ],
+      'views' => [
+        'bottom' => [
+          '#lazy_builder' => ['openideal_statistics.lazy_builder:getViews', [$id]],
+          '#create_placeholder' => TRUE,
+        ],
+        'title' => $this->t('Views'),
+        'img' => $theme_path . '/misc/icons/view_tag.svg',
+      ],
+    ];
+    $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
     return $build;
   }
 
