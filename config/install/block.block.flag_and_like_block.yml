@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - openideal_idea
+  theme:
+    - openideal_theme
+id: flag_and_like_block
+theme: openideal_theme
+region: sidebar
+weight: -9
+provider: null
+plugin: openideal_idea_flag_and_like_block
+settings:
+  id: openideal_idea_flag_and_like_block
+  label: 'Flag and Like block'
+  provider: openideal_idea
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -77,6 +77,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
   public function build() {
     $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
     $build['#theme'] = 'site_wide_statistics_block';
+    $build['#main_class'] = 'site-wide-statistics-block';
     $build['#content'] = [
       'ideas' => [
         'bottom' => [
@@ -92,7 +93,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Members'),
-        'img' => $theme_path . '/misc/icons/members_teg.svg',
+        'img' => $theme_path . '/misc/icons/members_tag.svg',
       ],
       'comments' => [
         'bottom' => [
@@ -100,7 +101,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img' => $theme_path . '/misc/icons/comment_teg.svg',
+        'img' => $theme_path . '/misc/icons/comment_tag.svg',
       ],
       'votes' => [
         'bottom' => [

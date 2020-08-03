@@ -13,6 +13,7 @@ function openideal_statistics_theme() {
     'site_wide_statistics_block' => [
       'variables' => [
         'content' => NULL,
+        'main_class' => NULL,
       ],
     ],
   ];

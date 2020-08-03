@@ -1,6 +1,7 @@
 .site-navigation {
   background-color: #242A36;
-  padding-right: 0;
+  overflow: hidden;
+  padding: 0;
   height: 93vh;
   position: sticky;
   top: 0;
@@ -71,6 +72,7 @@
       transition: border-left 0.3s ease-in-out, background-color 0.7s;
       border-left: 0 solid #fff;
       a {
+        flex-wrap: nowrap;
         display: flex;
         flex-direction: row;
         padding: 18.59px 15px !important;
@@ -89,6 +91,31 @@
         background-color: #393F4A;
         transition: border-left 0.3s ease-in-out;
       }
+    }
+  }
+}
+
+@media (max-width: 1688px) {
+  .site-navigation__menu-list--item {
+    a {
+      padding: 18.59px 10px !important;
+    }
+    img {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 1147px) {
+  .site-navigation__menu-list--item {
+    a {
+      padding: 18.59px 8px !important;
+      font-size: 14px;
+    }
+    img {
+      margin-right: 4px;
+      width: 24px;
+      height: 24px;
     }
   }
 }
