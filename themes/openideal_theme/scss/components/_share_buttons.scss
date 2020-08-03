@@ -6,6 +6,23 @@
     align-items: center;
     margin-right: 5px;
 
+    &__linkedin svg {
+      width: 23px;
+      height: 20px;
+    }
+
+    &__twitter svg {
+      width: 23px;
+      height: 23px;
+      padding-top: 2px;
+    }
+
+    &__icon svg {
+      width: 20px;
+      height: 27px;
+      padding-bottom: 2px;
+    }
+
     li {
       margin-right: 5px;
       width: 36px;

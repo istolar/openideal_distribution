@@ -45,7 +45,7 @@
  * - content_attributes: Items for the header region.
  * - sidebar_first_attributes: Items for the highlighted region.
  * - sidebar_second_attributes: Items for the primary menu region.
- * - idea_sidebar: If the current page is Idea node.
+ * - is_idea: If the current page is Idea node.
  *
  * @see template_preprocess_page()
  * @see bootstrap_barrio_preprocess_page()
@@ -99,9 +99,9 @@
         </section>
         {% endblock %}
         <div class="main-content-outer
-                col-xxl-{{ page.sidebar ? 17 : 19 }}
-                col-lg-{{ page.sidebar ? 15 : 18 }}
-                col-md-{{ page.sidebar ? 17 : 22 }}"
+                col-xxl-{{ page.sidebar ? 17 : 22 }}
+                col-lg-{{ page.sidebar ? 15 : 21 }}
+                col-md-{{ page.sidebar ? 17 : 24 }}"
         >
         {% block content %}
             {% if page.highlighted %}
@@ -125,7 +125,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ idea_sidebar ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ is_idea ? 'site-sidebar-idea' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>
@@ -145,7 +145,7 @@
 
 {# Footer. #}
 {% if page.footer %}
-    <footer class="site-footer">
+    <footer class="site-footer {{ is_idea ? 'mobile-idea-site-footer' : '' }}">
         {% block footer %}
             {{ page.footer }}
         {% endblock %}
