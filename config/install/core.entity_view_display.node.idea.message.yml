@@ -16,16 +16,15 @@ dependencies:
     - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
     - node.type.idea
-    - views.view.ideas
   module:
     - comment
     - file
     - image
     - layout_builder
     - metatag
+    - openideal_statistics
     - text
     - user
-    - views
     - votingapi_reaction
   theme:
     - openideal_theme
@@ -98,16 +97,14 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          07c5b6df-ed39-456b-b83d-fc14ca6e47f7:
-            uuid: 07c5b6df-ed39-456b-b83d-fc14ca6e47f7
+          a1890ece-96af-4844-95ea-86728b51cca1:
+            uuid: a1890ece-96af-4844-95ea-86728b51cca1
             region: footer
             configuration:
-              id: 'views_block:ideas-idea_statistics_block'
-              label: ''
-              provider: views
+              id: openideal_statistics_idea_statistics
+              label: 'Idea statistics block'
+              provider: openideal_statistics
               label_display: '0'
-              views_label: ''
-              items_per_page: none
               context_mapping: {  }
             additional: {  }
             weight: 1

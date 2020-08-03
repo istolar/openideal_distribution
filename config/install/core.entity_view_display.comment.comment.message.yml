@@ -22,8 +22,8 @@ third_party_settings:
         layout_settings:
           label: Content
         components:
-          189d7d99-7289-4e0f-9388-5f5cf0de3419:
-            uuid: 189d7d99-7289-4e0f-9388-5f5cf0de3419
+          775c9ab9-793c-46e2-b58e-4a9d02e83dce:
+            uuid: 775c9ab9-793c-46e2-b58e-4a9d02e83dce
             region: first
             configuration:
               id: 'field_block:comment:comment:comment_body'
@@ -41,8 +41,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          8986c4a6-c61f-4cb5-b248-1b5af326d4c6:
-            uuid: 8986c4a6-c61f-4cb5-b248-1b5af326d4c6
+          d7d54887-cec6-4d5b-9754-b41526c83406:
+            uuid: d7d54887-cec6-4d5b-9754-b41526c83406
+            region: footer
+            configuration:
+              id: 'field_block:comment:comment:created'
+              label: Created
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: timestamp
+                settings:
+                  date_format: custom
+                  custom_date_format: 'd \ m \ Y'
+                  timezone: ''
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          5a5d3a0d-5452-465c-867e-7ab73e2d1683:
+            uuid: 5a5d3a0d-5452-465c-867e-7ab73e2d1683
             region: first
             configuration:
               id: 'field_block:comment:comment:uid'
@@ -60,27 +81,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          08d2d996-ff53-4e3c-86cc-04c0a16d609a:
-            uuid: 08d2d996-ff53-4e3c-86cc-04c0a16d609a
-            region: footer
-            configuration:
-              id: 'field_block:comment:comment:created'
-              label: Created
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: visually_hidden
-                type: timestamp_ago
-                settings:
-                  future_format: '@interval hence'
-                  past_format: '@interval ago'
-                  granularity: 2
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
         third_party_settings: {  }
 id: comment.comment.message
 targetEntityType: comment

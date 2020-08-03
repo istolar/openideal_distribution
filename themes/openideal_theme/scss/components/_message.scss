@@ -71,6 +71,20 @@
       opacity: 0.49;
       border-top: 1px solid rgba(255, 255, 255, 0.25);
       font-size: 14px;
+      display: flex;
+      font-weight: $font-weight-bold;
+      justify-content: space-between;
+
+      .idea-statistics-block--list {
+        display: flex;
+        font-size: 14px;
+        margin: 0;
+
+        &__item {
+          flex-direction: row-reverse;
+          margin: 0;
+        }
+      }
 
       .block-field-blockcommentcommentcreated .content a {
         color: #BDBDBD;
@@ -89,4 +103,8 @@
     margin-bottom: 18px;
     font-weight: $font-weight-bold;
   }
+}
+
+.block-field-blockcommentcommentcomment-body {
+  color: $white;
 }
