@@ -1,0 +1,19 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+<div class="activity-stream">
+    <ul class="activity-stream--list">
+        {% for item in list %}
+            <li class="activity-stream--list__item">
+                {{ item }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
