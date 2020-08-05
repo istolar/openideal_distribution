@@ -26,7 +26,7 @@ class Slideshow extends BlockBase {
         '#theme' => 'openideal_slideshow',
         '#items' => $configuration['images'],
         '#attached' => [
-          'library' => ['openideal_slideshow/openideal_slideshow.slick'],
+          'library' => ['openideal_slideshow/openideal_slideshow.carousel'],
         ],
       ];
   }
