@@ -6,7 +6,10 @@ label: 'Challenge schedule'
 description: ''
 text:
   -
-    value: '<p class="message--text">A&nbsp;Challenge&nbsp;<a href="[message:field_node_reference:entity:url]" title="Insert this token into your form">[message:field_node_reference:entity:title]</a>&nbsp;is @challenge_status.</p>'
+    value: "<p>[site:name]: Challenge is&nbsp;@challenge_status.</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: basic_html
+  -
+    value: "<p class=\"message--text\">A&nbsp;Challenge&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a>&nbsp;is @challenge_status.</p>\r\n"
     format: full_html
 settings:
   'token options':

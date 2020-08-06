@@ -8,6 +8,9 @@ text:
   -
     value: "<p class=\"message--text\"><a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a>&nbsp;has changed the life cycle to @idea_life_cycle</p>\r\n"
     format: full_html
+  -
+    value: "<p>[site:name]: Idea life cycle changed!</p>\r\n"
+    format: basic_html
 settings:
   'token options':
     clear: false

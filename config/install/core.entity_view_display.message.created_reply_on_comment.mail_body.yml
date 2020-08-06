@@ -2,12 +2,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.message.mail_body
     - field.field.message.created_reply_on_comment.field_comment_reference
     - message.template.created_reply_on_comment
-id: message.created_reply_on_comment.default
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: message.created_reply_on_comment.mail_body
 targetEntityType: message
 bundle: created_reply_on_comment
-mode: default
+mode: mail_body
 content:
   field_comment_reference:
     weight: 1

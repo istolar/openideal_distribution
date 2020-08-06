@@ -40,6 +40,7 @@ dependencies:
   - drupal:dynamic_page_cache
   - drupal:editor
   - message:message
+  - message_notify:message_notify
   - email_registration:email_registration
   - entity_browser:entity_browser
   - entity_reference_revisions:entity_reference_revisions

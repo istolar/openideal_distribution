@@ -2,19 +2,20 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.message.created_like_on_comment.field_comment_reference
-    - field.field.message.created_like_on_comment.field_node_reference
-    - message.template.created_like_on_comment
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.comment_created.field_comment_reference
+    - field.field.message.comment_created.field_node_reference
+    - message.template.comment_created
   module:
     - layout_builder
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: false
-id: message.created_like_on_comment.default
+id: message.comment_created.mail_body
 targetEntityType: message
-bundle: created_like_on_comment
-mode: default
+bundle: comment_created
+mode: mail_body
 content:
   field_comment_reference:
     type: entity_reference_entity_view

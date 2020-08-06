@@ -92,7 +92,7 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
     $items = [];
     /** @var \Drupal\message\Entity\Message $entity */
     foreach ($entities as $entity) {
-      $items[] = $view_builder->view($entity);
+      $items[] = $view_builder->view($entity, 'default');
     }
 
     $build['#list'] = $items;
