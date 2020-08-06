@@ -61,7 +61,6 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->database = $database;
     $this->entityTypeManager = $entityTypeManager;
-
     $this->currentUser = $currentUser;
   }
 
@@ -86,7 +85,7 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
     $build['#theme'] = 'openideal_user_activity_list';
     $entities = $this->getContent();
     if (empty($entities)) {
-      return [];
+      return $build;
     }
     $view_builder = $this->entityTypeManager->getViewBuilder('message');
     $items = [];
