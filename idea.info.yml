@@ -39,6 +39,7 @@ dependencies:
   - dropzonejs_eb_widget:dropzonejs_eb_widget
   - drupal:dynamic_page_cache
   - drupal:editor
+  - message:message
   - email_registration:email_registration
   - entity_browser:entity_browser
   - entity_reference_revisions:entity_reference_revisions

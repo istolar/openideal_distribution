@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+template: challenge_schedule
+label: 'Challenge schedule'
+description: ''
+text:
+  -
+    value: '<p class="message--text">A&nbsp;Challenge&nbsp;<a href="[message:field_node_reference:entity:url]" title="Insert this token into your form">[message:field_node_reference:entity:title]</a>&nbsp;is @challenge_status.</p>'
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

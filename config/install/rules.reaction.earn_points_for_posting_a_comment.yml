@@ -48,6 +48,17 @@ expression:
         provides_mapping: {  }
         condition_id: 'openideal_idea_state:draft'
         negate: true
+      -
+        id: rules_condition
+        uuid: f8e4db7a-0451-4ef1-89fd-4b7b598695f6
+        weight: 0
+        context_values: {  }
+        context_mapping:
+          idea_id: comment.entity_id.entity.nid.value
+        context_processors: {  }
+        provides_mapping: {  }
+        condition_id: 'openideal_idea_state:draft_approval'
+        negate: true
   actions:
     id: rules_action_set
     uuid: 0d1c4458-da3b-4b14-8fd1-3a154b308b7f

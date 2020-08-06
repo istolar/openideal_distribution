@@ -1,0 +1,129 @@
+.message {
+  position: relative;
+  background: #485363;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 12px 30px 12px 12px;
+  color: $white;
+  margin-bottom: 14px;
+  font-size: $font-size-base;
+
+  a {
+    transition: color 0.3s;
+    color: #BDBDBD;
+    &:hover {
+      color: #d2caca;
+    }
+  }
+
+  mark {
+    display: none;
+  }
+
+  &--referenced-label {
+    position: absolute;
+    font-weight: $font-weight-bold;
+    top: 5%;
+    left: 0;
+    background: #F2994A;
+    padding: 1px 21px 2px 12px;
+    border-top-right-radius: 37px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  &--text {
+    margin: 26px 0 4px 0;
+    font-weight: $font-weight-bold;
+    padding: 0;
+  }
+
+  .field--name-field-user-reference {
+    .profile {
+      display: flex;
+      align-items: center;
+      font-weight: $font-weight-bold;
+      font-size: 12px;
+
+      & > div {
+        margin-right: 4px;
+      }
+
+    }
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  &--section {
+
+    &__content {
+      margin-bottom: 23px;
+    }
+
+    &__footer {
+      color: #BDBDBD;
+      padding-top: 10px;
+      opacity: 0.49;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 14px;
+      display: flex;
+      font-weight: $font-weight-bold;
+      justify-content: space-between;
+
+      .idea-statistics-block--list {
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 14px;
+        margin: 0;
+
+        &__item {
+          flex-direction: row-reverse;
+          margin: 0;
+
+          .item-svg {
+            background-size: 18px 18px;
+            width: 18px;
+            height: 18px;
+          }
+
+          &--public_stream_view {
+            background: url('../misc/icons/public_stream_view.svg') no-repeat center center;
+          }
+
+          &--public_stream_comment {
+            background: url('../misc/icons/public_stream_comment.svg') no-repeat center center;
+          }
+
+          &--public_stream_like {
+            background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
+          }
+        }
+      }
+
+      .block-field-blockcommentcommentcreated .content a {
+        color: #BDBDBD;
+      }
+    }
+  }
+
+}
+
+.block-views-blockpublic-activity-public-activity-block {
+  padding: 0 27px;
+  margin-top: 52px;
+  h2 {
+    color: $white;
+    font-size: 25px;
+    margin-bottom: 18px;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.block-field-blockcommentcommentcomment-body {
+  color: $white;
+}

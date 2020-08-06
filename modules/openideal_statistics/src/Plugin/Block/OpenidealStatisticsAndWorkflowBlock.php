@@ -58,7 +58,7 @@ class OpenidealStatisticsAndWorkflowBlock extends BlockBase implements Container
     $build = [];
     if (isset($configuration['node']) && $configuration['node'] instanceof NodeInterface) {
       $node = $configuration['node'];
-      $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics', ['node_id' => $node->id()]);
+      $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics', ['node' => $node]);
       $status = $this->blockManager->createInstance('openideal_statistics_status', ['node' => $node]);
       $build = [
         '#type' => 'container',

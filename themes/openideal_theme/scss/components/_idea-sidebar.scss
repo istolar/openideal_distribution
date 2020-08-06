@@ -186,8 +186,26 @@
         color: $dark-gray;
         font-weight: $font-weight-normal;
       }
-      svg {
+
+      .item-svg {
+        width: 32px;
+        height: 32px;
         margin-right: 10px;
+      }
+
+      &--view_tag {
+        background: url('../misc/icons/view_tag.svg') no-repeat center center;
+      }
+
+      &--comment_tag {
+        background: url('../misc/icons/comment_tag.svg') no-repeat center center;
+      }
+
+      &--like_tag {
+        background: url('../misc/icons/like_tag.svg') no-repeat center center;
+      }
+
+      svg {
       }
     }
 

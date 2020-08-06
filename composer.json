@@ -43,6 +43,7 @@
         "drupal/group": "^1.0",
         "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/metatag": "^1.13",
+        "drupal/message": "^1.0",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
         "drupal/rabbit_hole": "^1.0",
