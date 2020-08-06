@@ -5,7 +5,6 @@ namespace Drupal\openideal_statistics\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Theme\ThemeManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -26,13 +25,6 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
   protected $entityManager;
 
   /**
-   * Theme manager.
-   *
-   * @var \Drupal\Core\Theme\ThemeManager
-   */
-  protected $themeManager;
-
-  /**
    * Constructs a new SiteWideStatisticsBlock object.
    *
    * @param array $configuration
@@ -43,19 +35,15 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
    *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   The entity type manager.
-   * @param \Drupal\Core\Theme\ThemeManager $theme_manager
-   *   The theme manager.
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    EntityTypeManagerInterface $entity_manager,
-    ThemeManager $theme_manager
+    EntityTypeManagerInterface $entity_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityManager = $entity_manager;
-    $this->themeManager = $theme_manager;
   }
 
   /**
@@ -66,8 +54,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity_type.manager'),
-      $container->get('theme.manager')
+      $container->get('entity_type.manager')
     );
   }
 
@@ -75,9 +62,9 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
    * {@inheritdoc}
    */
   public function build() {
-    $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
     $build['#theme'] = 'site_wide_statistics_block';
     $build['#main_class'] = 'site-wide-statistics-block';
+    $build['#show_title'] = TRUE;
     $build['#content'] = [
       'ideas' => [
         'bottom' => [
@@ -85,7 +72,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Ideas'),
-        'img' => $theme_path . '/misc/icons/ideas_statistics.svg',
+        'img_class' => 'statistics_tag',
       ],
       'members' => [
         'bottom' => [
@@ -93,7 +80,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Members'),
-        'img' => $theme_path . '/misc/icons/members_tag.svg',
+        'img_class' => 'members_tag',
       ],
       'comments' => [
         'bottom' => [
@@ -101,7 +88,7 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img' => $theme_path . '/misc/icons/comment_tag.svg',
+        'img_class' => 'comment_tag',
       ],
       'votes' => [
         'bottom' => [
@@ -109,10 +96,9 @@ class SiteWideStatisticsBlock extends BlockBase implements ContainerFactoryPlugi
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Votes'),
-        'img' => $theme_path . '/misc/icons/like_tag.svg',
+        'img_class' => 'like_tag',
       ],
     ];
-    $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
     return $build;
   }
 

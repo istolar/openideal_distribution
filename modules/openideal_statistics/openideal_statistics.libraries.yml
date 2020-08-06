@@ -1,4 +1,0 @@
-openideal_statistics.block:
-  css:
-    theme:
-      css/statistics.css: {}

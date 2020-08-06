@@ -77,12 +77,31 @@
 
       .idea-statistics-block--list {
         display: flex;
+        flex-direction: row-reverse;
         font-size: 14px;
         margin: 0;
 
         &__item {
           flex-direction: row-reverse;
           margin: 0;
+
+          .item-svg {
+            background-size: 18px 18px;
+            width: 18px;
+            height: 18px;
+          }
+
+          &--public_stream_view {
+            background: url('../misc/icons/public_stream_view.svg') no-repeat center center;
+          }
+
+          &--public_stream_comment {
+            background: url('../misc/icons/public_stream_comment.svg') no-repeat center center;
+          }
+
+          &--public_stream_like {
+            background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
+          }
         }
       }
 
