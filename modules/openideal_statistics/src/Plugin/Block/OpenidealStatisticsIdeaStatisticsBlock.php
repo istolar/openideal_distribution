@@ -52,7 +52,6 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
       return [];
     }
 
-    $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
     $build['#theme'] = 'site_wide_statistics_block';
     $build['#main_class'] = 'idea-statistics-block';
     $build['#show_title'] = !$public_stream;
@@ -63,7 +62,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Votes'),
-        'img' => $theme_path . '/misc/icons/' . ($public_stream ? 'public_stream_like' : 'like_tag') . '.svg',
+        'img_class' => $public_stream ? 'public_stream_like' : 'like_tag',
       ],
       'comments' => [
         'bottom' => [
@@ -71,7 +70,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img' => $theme_path . '/misc/icons/' . ($public_stream ? 'public_stream_comment' : 'comment_tag') . '.svg',
+        'img_class' => $public_stream ? 'public_stream_comment' : 'comment_tag',
       ],
       'views' => [
         'bottom' => [
@@ -79,7 +78,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Views'),
-        'img' => $theme_path . '/misc/icons/' . ($public_stream ? 'public_stream_view' : 'view_tag') . '.svg',
+        'img_class' => $public_stream ? 'public_stream_view' : 'view_tag',
       ],
     ];
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
