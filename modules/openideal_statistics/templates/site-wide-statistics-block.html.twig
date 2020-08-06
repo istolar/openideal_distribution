@@ -12,10 +12,12 @@
     <ul class="{{ main_class ~ '--list' }}">
         {% for item in content %}
             <li class="{{ main_class ~ '--list__item' }}">
-                {% include item.img %}
+                <div class="{{ main_class ~ '--list__item--' ~ item.img_class }} item-svg"></div>
                 <div class="{{ main_class ~ '--list__item--bottom' }}">
                     <p class="{{ main_class ~ '--list__item--count' }}">{{ item.bottom }}</p>
-                    <p class="{{ main_class ~ '--list__item--title' }}">{{ item.title }}</p>
+                    {% if show_title %}
+                        <p class="{{ main_class ~ '--list__item--title' }}">{{ item.title }}</p>
+                    {% endif %}
                 </div>
             </li>
         {% endfor %}

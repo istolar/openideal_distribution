@@ -35,7 +35,7 @@ class OpenidealChallengeEvent extends Event {
    *
    * @var \Drupal\Core\Entity\EntityInterface
    */
-  protected $node;
+  public $entity;
 
   /**
    * OpenidealChallengeEvent constructor.
@@ -44,7 +44,7 @@ class OpenidealChallengeEvent extends Event {
    *   The node object that caused the event to fire.
    */
   public function __construct(EntityInterface $node) {
-    $this->node = $node;
+    $this->entity = $node;
   }
 
   /**
@@ -53,8 +53,8 @@ class OpenidealChallengeEvent extends Event {
    * @return \Drupal\Core\Entity\EntityInterface
    *   The node object that caused the event to fire.
    */
-  public function getNode() {
-    return $this->node;
+  public function getEntity() {
+    return $this->entity;
   }
 
 }

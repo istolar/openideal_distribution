@@ -39,10 +39,11 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
     $build = [];
     $configurations = $this->getConfiguration();
     $node = $this->routeMatch->getParameter('node');
+    $public_stream = isset($configurations['view_mode']) && $configurations['view_mode'] == 'message';
     $id = NULL;
 
-    if (isset($configurations['node_id'])) {
-      $id = $configurations['node_id'];
+    if (isset($configurations['node'])) {
+      $id = $configurations['node']->id();
     }
     elseif ($node instanceof NodeInterface && $node->bundle() == 'idea') {
       $id = $node->id();
@@ -51,9 +52,9 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
       return [];
     }
 
-    $theme_path = base_path() . $this->themeManager->getActiveTheme()->getPath();
     $build['#theme'] = 'site_wide_statistics_block';
     $build['#main_class'] = 'idea-statistics-block';
+    $build['#show_title'] = !$public_stream;
     $build['#content'] = [
       'votes' => [
         'bottom' => [
@@ -61,7 +62,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Votes'),
-        'img' => $theme_path . '/misc/icons/like_tag.svg',
+        'img_class' => $public_stream ? 'public_stream_like' : 'like_tag',
       ],
       'comments' => [
         'bottom' => [
@@ -69,7 +70,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img' => $theme_path . '/misc/icons/comment_tag.svg',
+        'img_class' => $public_stream ? 'public_stream_comment' : 'comment_tag',
       ],
       'views' => [
         'bottom' => [
@@ -77,7 +78,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Views'),
-        'img' => $theme_path . '/misc/icons/view_tag.svg',
+        'img_class' => $public_stream ? 'public_stream_view' : 'view_tag',
       ],
     ];
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';

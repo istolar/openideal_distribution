@@ -1,0 +1,14 @@
+openideal_card_with_footer:
+  label: Two section
+  category: Barrio Cards
+  path: layouts
+  template: two-section
+  default_region: first
+  icon_map:
+    - [first]
+    - [footer]
+  regions:
+    first:
+      label: Content
+    footer:
+      label: Footer

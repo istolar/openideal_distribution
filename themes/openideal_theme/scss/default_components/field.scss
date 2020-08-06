@@ -26,7 +26,6 @@
 }
 
 .field--type-entity-reference ul.links li {
-    float: left;
     /* LTR */
     padding: 0 $spacer 0 0;
     /* LTR */
@@ -35,7 +34,20 @@
 
 [dir="rtl"] .field--type-entity-reference ul.links li {
     padding: 0 0 0 $spacer;
-    float: right;
+}
+
+@media all and (min-width: 560px) {
+    .node .field--type-image {
+        /* LTR */
+        margin: 0 $spacer 0 0;
+        /* LTR */
+    }
+    [dir="rtl"] .node .field--type-image {
+        margin: 0 0 0 $spacer;
+    }
+    .node .field--type-image+.field--type-image {
+        clear: both;
+    }
 }
 
 .field--type-image img,
@@ -79,7 +91,6 @@
 }
 
 .field--name-field-tags ul.links li {
-    float: left;
     /* LTR */
     padding: 0 $spacer 0 0;
     /* LTR */
@@ -88,7 +99,6 @@
 
 [dir="rtl"] .field--name-field-tags ul.links li {
     padding: 0 0 0 $spacer;
-    float: right;
 }
 
 .field--label-inline .field__label,
