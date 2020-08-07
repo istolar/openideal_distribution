@@ -22,6 +22,7 @@ function openideal_footer_theme() {
       'variables' => [
         'links' => NULL,
         'logo' => NULL,
+        'site_url' => NULL,
       ],
     ],
   ];

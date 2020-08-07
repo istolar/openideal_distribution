@@ -5,10 +5,10 @@ dependencies:
     - openideal_footer
   theme:
     - openideal_theme
-id: poweredby
+id: powered_by_navigation_footer
 theme: openideal_theme
-region: footer
-weight: -9
+region: navigation_footer
+weight: 0
 provider: null
 plugin: openidel_footer_powered_by
 settings:
@@ -16,6 +16,5 @@ settings:
   label: 'Powered by'
   provider: openideal_footer
   label_display: '0'
-  button_set: null
   openideal_official_site: 'https://www.openidealapp.com/'
 visibility: {  }
