@@ -191,7 +191,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
         'localized_options' => [],
       ],
-      '#access' => $group->hasPermission('administer members', \Drupal::currentUser()),
+      '#access' => $group->hasPermission('view group_membership content', \Drupal::currentUser()),
     ];
 
     // The tab we're adding is dependent on a user's access to add content.
