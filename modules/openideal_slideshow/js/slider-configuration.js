@@ -1,5 +1,40 @@
 (function ($, Drupal) {
 
+
+  /**
+   * Slideshow behaviour.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attach Photoswipe and Swiper carousels to Slideshow block.
+   */
+  Drupal.behaviors.OpenidealSlideshowConfiguration = {
+    attach: function (context, settings) {
+      $('.openideal-slideshow').once('openideal_slideshow_configuration', context).each(function () {
+        // Swiper configuration.
+        var mySwiper = new Swiper($(this).get(0), {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 10,
+          centeredSlides: true,
+          slideToClickedSlide: false,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+          },
+          // keyboard control
+          keyboard: {
+            enabled: true,
+          }
+        });
+
+        initPhotoSwipeFromDOM('.my-gallery', mySwiper);
+      })
+
+    }
+  };
+
   /**
    * Init the photoswipe slider.
    *
@@ -7,6 +42,8 @@
    *   The index of the current element.
    * @param {object} mySwiper
    *   The slick HTML element.
+   *
+   * @see https://photoswipe.com/documentation/getting-started.html
    */
   var initPhotoSwipeFromDOM = function (gallerySelector, mySwiper) {
 
@@ -254,40 +291,6 @@
     var hashData = photoswipeParseHash();
     if (hashData.pid && hashData.gid) {
       openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
-    }
-  };
-
-  /**
-   * Slideshow behaviour.
-   *
-   * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attach slick carousel to Slideshow block.
-   */
-  Drupal.behaviors.OpenidealSlideshowSlickConfig = {
-    attach: function (context, settings) {
-      $('.openideal-slideshow').once('kekw').each(function () {
-        // Swiper configuration.
-        var mySwiper = new Swiper($(this).get(0), {
-          loop: true,
-          slidesPerView: 1,
-          spaceBetween: 10,
-          centeredSlides: true,
-          slideToClickedSlide: false,
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false
-          },
-          // keyboard control
-          keyboard: {
-            enabled: true,
-          }
-        });
-
-        initPhotoSwipeFromDOM(".my-gallery", mySwiper);
-      })
-
     }
   };
 }

@@ -50,6 +50,7 @@ class OpenidealSlideshowEventSubscriber implements EventSubscriberInterface {
       }
 
       $plugin->setConfigurationValue('images', $result);
+      $plugin->setConfigurationValue('node', $node);
     }
   }
 

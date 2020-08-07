@@ -20,6 +20,7 @@ class Slideshow extends BlockBase {
    */
   public function build() {
     $configuration = $this->getConfiguration();
+    $tags = isset($configuration['node']) ? $configuration['node']->getCacheTags() : [];
     return empty($configuration['images'])
       ? []
       : [
@@ -27,6 +28,9 @@ class Slideshow extends BlockBase {
         '#items' => $configuration['images'],
         '#attached' => [
           'library' => ['openideal_slideshow/openideal_slideshow.carousel'],
+        ],
+        '#cache' => [
+          'tags' => $tags,
         ],
       ];
   }
