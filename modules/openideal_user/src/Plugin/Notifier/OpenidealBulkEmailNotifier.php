@@ -4,6 +4,7 @@ namespace Drupal\openideal_user\Plugin\Notifier;
 
 use Drupal\message\MessageInterface;
 use Drupal\message_notify\Plugin\Notifier\MessageNotifierBase;
+use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -95,14 +96,14 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
    */
   protected function getRecipients() {
     $template = $this->message->getTemplate()->id();
-    $result = [];
+    $recipients = [];
 
     if ($template === 'node_created' || $template == 'user_joined') {
-      return $result;
+      return $recipients;
     }
 
+    // If it's a reply to comment only need to notify the parent comment owner.
     if ($template === 'created_reply_on_comment') {
-      /** @var \Drupal\comment\CommentInterface $comment */
       $comment = $this->message->field_comment_reference->entity;
       $owner = $comment->getParentComment()->getOwner();
       return [$owner->id() => $owner->getEmail()];
@@ -113,21 +114,38 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
     $node = $this->message->field_node_reference->entity;
     $bundle = $node->bundle();
 
+    // If it's an Idea then need to notify all group members.
     if ($bundle == 'idea') {
       $group = $this->helper->getGroupByNode($node);
       $members = $group->getMembers();
       foreach ($members as $member) {
         $user = $member->getUser();
-        $result[$user->id()] = $user->getEmail();
+        $recipients[$user->id()] = $user->getEmail();
       }
     }
+
+    // Get all flaggings and notify users subscribed to the entity.
     /** @var \Drupal\flag\FlagService $flag */
     $flagging_users = $this->flag->getFlaggingUsers($node);
     foreach ($flagging_users as $user) {
-      $result[$user->id()] = $user->getEmail();
+      $recipients[$user->id()] = $user->getEmail();
     }
 
-    return array_unique($result);
+    // Do not notify message owner.
+    // @Todo: should?
+    $this->removeOwner($this->message->getOwner(), $recipients);
+
+    // If the comment owner at the same time is follower of commented entity,
+    // remove notification of new comment so we don't notify the user two times.
+    if ($template == 'comment_created') {
+      $comment = $this->message->field_comment_reference->entity;
+      if ($comment->hasParentComment()) {
+        $owner = $comment->getParentComment()->getOwner();
+        $this->removeOwner($owner, $recipients);
+      }
+    }
+
+    return array_unique($recipients);
   }
 
   /**
@@ -135,6 +153,21 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
    */
   public function postSend($result, array $output = []) {
     // Nothing to do here.
+  }
+
+  /**
+   * Remove the owner from recipients.
+   *
+   * @param \Drupal\user\UserInterface $owner
+   *   The owner.
+   * @param array $recipients
+   *   The array from which remove the owner.
+   */
+  private function removeOwner(UserInterface $owner, array &$recipients) {
+    $id = $owner->id();
+    if (array_key_exists($id, $recipients)) {
+      unset($recipients[$id]);
+    }
   }
 
 }

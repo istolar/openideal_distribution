@@ -1,26 +1,24 @@
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.message.mail_body
-    - field.field.message.idea_life_cycle_change.field_node_reference
-    - message.template.idea_life_cycle_change
+    - field.field.message.node_created.field_node_reference
+    - message.template.node_created
   module:
     - layout_builder
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: false
-id: message.idea_life_cycle_change.mail_body
+id: message.node_created.mail_body
 targetEntityType: message
-bundle: idea_life_cycle_change
+bundle: node_created
 mode: mail_body
 content:
-  partial_0:
+  partial_1:
     weight: 0
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   field_node_reference: true
-  partial_1: true
+  partial_0: true

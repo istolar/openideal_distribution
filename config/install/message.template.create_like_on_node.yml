@@ -1,15 +1,18 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
 template: create_like_on_node
 label: 'Create like on node'
 description: ''
 text:
   -
-    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;voted on the&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n\r\n<div id=\"gtx-trans\" style=\"position: absolute; left: 309px; top: 33px;\">\r\n<div class=\"gtx-trans-icon\">&nbsp;</div>\r\n</div>\r\n"
+    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;voted on the&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n"
     format: full_html
   -
-    value: "<p>[site:name]: New \"like\" in the <a href=\"javascript:void(0);\">[message:field_node_reference:entity:content-type]</a></p>\r\n\r\n<div id=\"gtx-trans\" style=\"position: absolute; left: 233px; top: 33px;\">\r\n<div class=\"gtx-trans-icon\">&nbsp;</div>\r\n</div>\r\n"
+    value: "<p>[site:name]: New \"like\" in the [message:field_node_reference:entity:content-type]</p>\r\n"
     format: basic_html
 settings:
   'token options':
