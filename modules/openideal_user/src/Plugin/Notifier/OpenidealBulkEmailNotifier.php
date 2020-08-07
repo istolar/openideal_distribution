@@ -2,6 +2,7 @@
 
 namespace Drupal\openideal_user\Plugin\Notifier;
 
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\message\MessageInterface;
 use Drupal\message_notify\Plugin\Notifier\MessageNotifierBase;
 use Drupal\user\UserInterface;
@@ -21,6 +22,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class OpenidealBulkEmailNotifier extends MessageNotifierBase {
+
+  use StringTranslationTrait;
 
   /**
    * The mail manager service.
@@ -79,13 +82,22 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
         $this->message->getTemplate()->id(),
         $mail,
         $language,
-        $output,
-        NULL
+        $output
       );
+
+      if ($result['result'] != TRUE) {
+        $this->logger->error($this->t('Could not send message using @title to user ID @uid.',
+          [
+            '@title' => $this->pluginDefinition['title'],
+            '@uid' => $this->message->getOwnerId(),
+          ]
+        ));
+      }
 
     }
 
-    return $result['result'];
+    // Doesn't matter what we will return.
+    return TRUE;
   }
 
   /**
