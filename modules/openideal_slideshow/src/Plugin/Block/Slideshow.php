@@ -10,7 +10,14 @@ use Drupal\Core\Block\BlockBase;
  * @Block(
  *   id = "openidel_slideshow_block",
  *   admin_label = @Translation("Slideshow"),
- *   category = @Translation("Openideal")
+ *   category = @Translation("Openideal"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class Slideshow extends BlockBase {

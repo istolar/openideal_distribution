@@ -7,7 +7,6 @@ use Drupal\Core\Block\BlockManager;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Theme\ThemeManager;
-use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,6 +15,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *  id = "openideal_statistics_status",
  *  admin_label = @Translation("Workflow status."),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFactoryPluginInterface {
@@ -89,10 +95,10 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
    * {@inheritdoc}
    */
   public function build() {
-    $configuration = $this->getConfiguration();
+    $contexts = $this->getContexts();
     $build = [];
-    if (isset($configuration['node']) && $configuration['node'] instanceof NodeInterface) {
-      $node = $configuration['node'];
+    if (isset($contexts['node'])) {
+      $node = $contexts['node']->getContextValue();
       $build = [
         'status' => [
           '#type' => 'html_tag',

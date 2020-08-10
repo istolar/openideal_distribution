@@ -68,7 +68,8 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
-              context_mapping: {  }
+              context_mapping:
+                node: layout_builder.entity
             additional: {  }
             weight: 1
           6f6bbc35-927a-4c57-b10f-b5c0b4f5edc2:
@@ -219,7 +220,8 @@ third_party_settings:
               label: 'Statistics and status block'
               provider: openideal_statistics
               label_display: '0'
-              context_mapping: {  }
+              context_mapping:
+                node: layout_builder.entity
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
             weight: 13

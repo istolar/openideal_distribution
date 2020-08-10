@@ -129,7 +129,8 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: visible
-              context_mapping: {  }
+              context_mapping:
+                node: layout_builder.entity
             additional: {  }
             weight: 4
           92cc127c-acca-4271-8303-6648766cf18a:
