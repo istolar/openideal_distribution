@@ -6,7 +6,6 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\BlockManager;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Theme\ThemeManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -34,13 +33,6 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
   protected $entityManager;
 
   /**
-   * Theme manager.
-   *
-   * @var \Drupal\Core\Theme\ThemeManager
-   */
-  protected $themeManager;
-
-  /**
    * Block manager.
    *
    * @var \Drupal\Core\Block\BlockManager
@@ -58,8 +50,6 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
    *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   The entity type manager.
-   * @param \Drupal\Core\Theme\ThemeManager $theme_manager
-   *   The theme manager.
    * @param \Drupal\Core\Block\BlockManager $block_manager
    *   Block plugin manager.
    */
@@ -68,12 +58,10 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
     $plugin_id,
     $plugin_definition,
     EntityTypeManagerInterface $entity_manager,
-    ThemeManager $theme_manager,
     BlockManager $block_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityManager = $entity_manager;
-    $this->themeManager = $theme_manager;
     $this->blockManager = $block_manager;
   }
 
@@ -86,7 +74,6 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
       $plugin_id,
       $plugin_definition,
       $container->get('entity_type.manager'),
-      $container->get('theme.manager'),
       $container->get('plugin.manager.block'),
     );
   }

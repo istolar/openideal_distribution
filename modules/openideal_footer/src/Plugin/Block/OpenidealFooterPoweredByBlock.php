@@ -4,8 +4,8 @@ namespace Drupal\openideal_footer\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Extension\ThemeHandler;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Theme\ThemeManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -24,7 +24,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
    *
    * @var \Drupal\Core\Theme\ThemeManager
    */
-  protected $themeManager;
+  protected $themeHandler;
 
   /**
    * Config factory.
@@ -39,11 +39,11 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
   public function __construct(array $configuration,
                               $plugin_id,
                               $plugin_definition,
-                              ThemeManager $themeManager,
+                              ThemeHandler $theme_handler,
                               ConfigFactory $config_factory
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->themeManager = $themeManager;
+    $this->themeHandler = $theme_handler;
     $this->configFactory = $config_factory;
   }
 
@@ -52,7 +52,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($configuration, $plugin_id, $plugin_definition,
-      $container->get('theme.manager'),
+      $container->get('theme_handler'),
       $container->get('config.factory'),
     );
   }
@@ -62,7 +62,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
    */
   public function build() {
     $config = $this->configFactory->get('openideal_footer.openideal_footer_links_config');
-    $path = $this->themeManager->getActiveTheme()->getPath();
+    $path = $this->themeHandler->getTheme('openideal_theme')->getPath();
     $base_theme_path = base_path() . $path;
     return [
       '#theme' => 'openideal_powered_by',
