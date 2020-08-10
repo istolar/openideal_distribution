@@ -82,7 +82,7 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
    * {@inheritdoc}
    */
   public function build() {
-    $build['#theme'] = 'openideal_user_activity_list';
+    $build['#theme'] = 'item_list';
     $entities = $this->getContent();
     if (empty($entities)) {
       return $build;
@@ -91,10 +91,10 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
     $items = [];
     /** @var \Drupal\message\Entity\Message $entity */
     foreach ($entities as $entity) {
-      $items[] = $view_builder->view($entity);
+      $items['value'] = $view_builder->view($entity);
     }
 
-    $build['#list'] = $items;
+    $build['#items'] = $items;
     $build['#cache']['tags'][] = 'message_list';
     return $build;
   }
@@ -112,44 +112,44 @@ class OpenidealUserPersonalActivityStream extends BlockBase implements Container
     $user_id = $this->currentUser->id();
 
     // Activity in content followed by user.
-    $query = $this->database->select('message_field_data', 'mfd');
-    $query->join('message__field_node_reference', 'nr', "nr.entity_id = mfd.mid AND nr.deleted = '0'");
-    $query->fields('mfd', ['created', 'mid']);
+    $activity_in_content_i_follow_query = $this->database->select('message_field_data', 'mfd');
+    $activity_in_content_i_follow_query->join('message__field_node_reference', 'nr', "nr.entity_id = mfd.mid AND nr.deleted = '0'");
+    $activity_in_content_i_follow_query->fields('mfd', ['created', 'mid']);
 
-    $query->join('node_field_data', 'nfd', "nr.field_node_reference_target_id = nfd.nid");
-    $query->innerJoin('flagging', 'flag', "nfd.nid = flag.entity_id AND flag.flag_id = 'follow' AND flag.uid = :id", [':id' => $user_id]);
+    $activity_in_content_i_follow_query->join('node_field_data', 'nfd', "nr.field_node_reference_target_id = nfd.nid");
+    $activity_in_content_i_follow_query->innerJoin('flagging', 'flag', "nfd.nid = flag.entity_id AND flag.flag_id = 'follow' AND flag.uid = :id", [':id' => $user_id]);
 
     // Activity in "My ideas".
-    $second_query = $this->database->select('message_field_data', 'mfd');
-    $second_query->join('message__field_node_reference', 'nr', "nr.entity_id = mfd.mid AND nr.deleted = '0'");
-    $second_query->fields('mfd', ['created', 'mid']);
+    $my_ideas_query = $this->database->select('message_field_data', 'mfd');
+    $my_ideas_query->join('message__field_node_reference', 'nr', "nr.entity_id = mfd.mid AND nr.deleted = '0'");
+    $my_ideas_query->fields('mfd', ['created', 'mid']);
 
-    $second_query->join('node_field_data', 'nfd', "nr.field_node_reference_target_id = nfd.nid");
-    $second_query->innerJoin('group_content_field_data', 'gnode', "gnode.entity_id = nfd.nid AND gnode.type = 'idea-group_node-idea'");
-    $second_query->innerJoin('group_content_field_data', 'gmember', "gmember.gid = gnode.gid AND gmember.type = 'idea-group_membership' AND gmember.entity_id = :id", [':id' => $user_id]);
+    $my_ideas_query->join('node_field_data', 'nfd', "nr.field_node_reference_target_id = nfd.nid");
+    $my_ideas_query->innerJoin('group_content_field_data', 'gnode', "gnode.entity_id = nfd.nid AND gnode.type = 'idea-group_node-idea'");
+    $my_ideas_query->innerJoin('group_content_field_data', 'gmember', "gmember.gid = gnode.gid AND gmember.type = 'idea-group_membership' AND gmember.entity_id = :id", [':id' => $user_id]);
 
     // My comments queries.
     //
     // Like in my comment.
-    $third_query = $this->database->select('message_field_data', 'mfd');
-    $third_query->fields('mfd', ['created', 'mid']);
+    $my_comments_query = $this->database->select('message_field_data', 'mfd');
+    $my_comments_query->fields('mfd', ['created', 'mid']);
 
-    $third_query->join('message__field_comment_reference', 'cr', "cr.entity_id = mfd.mid AND cr.deleted = '0' AND cr.bundle = 'created_like_on_comment'");
-    $third_query->innerJoin('comment_field_data', 'cfd', "cfd.cid = cr.field_comment_reference_target_id AND mfd.uid <> cfd.uid AND cfd.uid = :id", [':id' => $user_id]);
+    $my_comments_query->join('message__field_comment_reference', 'cr', "cr.entity_id = mfd.mid AND cr.deleted = '0' AND cr.bundle = 'created_like_on_comment'");
+    $my_comments_query->innerJoin('comment_field_data', 'cfd', "cfd.cid = cr.field_comment_reference_target_id AND mfd.uid <> cfd.uid AND cfd.uid = :id", [':id' => $user_id]);
 
     // Replies to my comments.
-    $forth_query = $this->database->select('message_field_data', 'mfd');
-    $forth_query->fields('mfd', ['created', 'mid']);
+    $replies_to_my_comments_query = $this->database->select('message_field_data', 'mfd');
+    $replies_to_my_comments_query->fields('mfd', ['created', 'mid']);
 
-    $forth_query->join('message__field_comment_reference', 'cr', "cr.entity_id = mfd.mid AND cr.deleted = '0' AND cr.bundle = 'created_reply_on_comment'");
+    $replies_to_my_comments_query->join('message__field_comment_reference', 'cr', "cr.entity_id = mfd.mid AND cr.deleted = '0' AND cr.bundle = 'created_reply_on_comment'");
 
-    $forth_query->join('comment_field_data', 'cfd', 'cfd.cid = cr.field_comment_reference_target_id');
+    $replies_to_my_comments_query->join('comment_field_data', 'cfd', 'cfd.cid = cr.field_comment_reference_target_id');
 
-    $forth_query->innerJoin('comment_field_data', 'cp', 'cfd.pid = cp.cid AND cp.uid = :id', [':id' => $user_id]);
+    $replies_to_my_comments_query->innerJoin('comment_field_data', 'cp', 'cfd.pid = cp.cid AND cp.uid = :id', [':id' => $user_id]);
 
-    $query->union($third_query);
-    $query->union($forth_query);
-    $result = $this->database->select($query->union($second_query))
+    $activity_in_content_i_follow_query->union($my_comments_query);
+    $activity_in_content_i_follow_query->union($replies_to_my_comments_query);
+    $result = $this->database->select($activity_in_content_i_follow_query->union($my_ideas_query))
       ->fields(NULL, ['created', 'mid'])
       ->orderBy('created', 'DESC')
       ->range(0, self::LIMIT);

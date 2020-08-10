@@ -32,11 +32,6 @@ function openideal_idea_theme() {
         'content' => NULL,
       ],
     ],
-    'openideal_user_activity_list' => [
-      'variables' => [
-        'list' => NULL,
-      ],
-    ],
   ];
 }
 
