@@ -2127,7 +2127,7 @@ display:
           exposed: true
           expose:
             operator_id: created_op
-            label: 'Authored on'
+            label: 'From date'
             description: ''
             use_operator: false
             operator: created_op
