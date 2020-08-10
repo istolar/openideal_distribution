@@ -11,6 +11,8 @@ dependencies:
     - node.type.idea
     - system.menu.admin
   module:
+    - better_exposed_filters
+    - content_moderation
     - csv_serialization
     - node
     - rest
@@ -38,15 +40,57 @@ display:
       query:
         type: views_query
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Filter
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              title:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+              langcode:
+                plugin_id: default
+                advanced:
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              moderation_state:
+                plugin_id: default
+                advanced:
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              created:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+              created_1:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
       pager:
         type: full
         options:
@@ -615,54 +659,6 @@ display:
           plugin_id: bundle
           entity_type: node
           entity_field: type
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: Status
-            description: ''
-            use_operator: false
-            operator: status_op
-            identifier: status
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: true
-          group_info:
-            label: 'Published status'
-            description: ''
-            identifier: status
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: Published
-                operator: '='
-                value: '1'
-              2:
-                title: Unpublished
-                operator: '='
-                value: '0'
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
         langcode:
           id: langcode
           table: node_field_data
@@ -706,18 +702,104 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
-        status_extra:
-          id: status_extra
+        created:
+          id: created
           table: node_field_data
-          field: status_extra
-          operator: '='
-          value: false
-          plugin_id: node_status
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: date
+            type: date
           group: 1
-          entity_type: node
+          exposed: true
           expose:
+            operator_id: created_op
+            label: 'From date'
+            description: ''
+            use_operator: false
+            operator: created_op
             operator_limit_selection: false
             operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        created_1:
+          id: created_1
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: date
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_1_op
+            label: 'Until date'
+            description: ''
+            use_operator: false
+            operator: created_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       sorts: {  }
       title: 'Challenge exports'
       empty:
@@ -753,7 +835,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
@@ -857,18 +938,6 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
-        status_extra:
-          id: status_extra
-          table: node_field_data
-          field: status_extra
-          operator: '='
-          value: false
-          plugin_id: node_status
-          group: 1
-          entity_type: node
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: node_field_data
@@ -911,6 +980,104 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'From date'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        created_1:
+          id: created_1
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_1_op
+            label: 'Until date'
+            description: ''
+            use_operator: false
+            operator: created_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       defaults:
         filters: false
         filter_groups: false
@@ -1174,7 +1341,7 @@ display:
         challenges_export_page: challenges_export_page
         default: '0'
         idea_exports_page: '0'
-      filename: '[date:html_month].challenges.cvs'
+      filename: '[date:html_month].challenges.csv'
       automatic_download: false
       store_in_public_file_directory: null
       redirect_to_display: none
@@ -1186,7 +1353,6 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
@@ -1288,18 +1454,6 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
-        status_extra:
-          id: status_extra
-          table: node_field_data
-          field: status_extra
-          operator: '='
-          value: false
-          plugin_id: node_status
-          group: 1
-          entity_type: node
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: node_field_data
@@ -1342,11 +1496,110 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'From date'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        created_1:
+          id: created_1
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_1_op
+            label: 'Until date'
+            description: ''
+            use_operator: false
+            operator: created_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       defaults:
         filters: false
         filter_groups: false
         fields: false
         title: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
@@ -1610,13 +1863,57 @@ display:
         weight: 2
         context: '0'
         menu_name: admin
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Filter
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              title:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+              langcode:
+                plugin_id: default
+                advanced:
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              created:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+              created_1:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
     cache_metadata:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
@@ -1729,18 +2026,6 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
-        status_extra:
-          id: status_extra
-          table: node_field_data
-          field: status_extra
-          operator: '='
-          value: false
-          plugin_id: node_status
-          group: 1
-          entity_type: node
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: node_field_data
@@ -1825,11 +2110,110 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: moderation_state_filter
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Authored on'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        created_1:
+          id: created_1
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_1_op
+            label: 'Until date'
+            description: ''
+            use_operator: false
+            operator: created_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       defaults:
         filters: false
         filter_groups: false
         fields: false
         title: false
+        access: false
       filter_groups:
         operator: AND
         groups:
@@ -2193,6 +2577,9 @@ display:
           entity_type: node
           plugin_id: moderation_state_field
       title: 'Ideas export'
+      access:
+        type: none
+        options: {  }
     display_plugin: page
     display_title: 'Idea exports (page)'
     id: idea_export_page
@@ -2203,9 +2590,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
-        - user.permissions
       max-age: -1
       tags:
         - 'config:field.storage.node.body'
@@ -2307,18 +2692,6 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
-        status_extra:
-          id: status_extra
-          table: node_field_data
-          field: status_extra
-          operator: '='
-          value: false
-          plugin_id: node_status
-          group: 1
-          entity_type: node
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: node_field_data
@@ -2403,6 +2776,104 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: moderation_state_filter
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'From date'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        created_1:
+          id: created_1
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_1_op
+            label: 'Until date'
+            description: ''
+            use_operator: false
+            operator: created_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       defaults:
         filters: false
         filter_groups: false
@@ -2788,7 +3259,7 @@ display:
         idea_export_page: idea_export_page
         default: '0'
         challenges_export_page: '0'
-      filename: '[date:html_month].ideas.cvs'
+      filename: '[date:html_month].ideas.csv'
       automatic_download: false
       store_in_public_file_directory: null
       redirect_to_display: none
@@ -2801,7 +3272,6 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
