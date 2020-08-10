@@ -17,6 +17,8 @@ settings:
   label: 'Rating and statistics'
   provider: openideal_statistics
   label_display: visible
+  context_mapping:
+    node: '@node.node_route_context:node'
 visibility:
   node_type:
     id: node_type

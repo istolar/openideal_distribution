@@ -308,7 +308,8 @@ function openideal_idea_group_content_access(EntityInterface $entity, $operation
  * Implements hook_rrssb_buttons_alter().
  */
 function openideal_idea_rrssb_buttons_alter(&$buttons) {
-  $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+  $theme = \Drupal::service('theme_handler')->getTheme('openideal_theme');
+  $theme_path = $theme->getPath();
   $buttons['facebook']['svg'] = $theme_path . '/misc/icons/facebook.svg';
   $buttons['copy_url']['svg'] = $theme_path . '/misc/icons/clipboard.svg';
   $buttons['twitter']['svg'] = $theme_path . '/misc/icons/twitter.svg';

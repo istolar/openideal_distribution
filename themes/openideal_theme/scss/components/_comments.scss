@@ -145,6 +145,7 @@
     position: relative;
 
     .form-submit {
+      text-transform: uppercase;
       font-size: inherit;
       @include btn-theme($btn-dark, #1e7697);
       padding-left: 25px;
