@@ -6,9 +6,9 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class OpenidealFooterLinksConfigForm.
+ * Class OpenidealFooterConfigForm.
  */
-class OpenidealFooterLinksConfigForm extends ConfigFormBase {
+class OpenidealFooterConfigForm extends ConfigFormBase {
 
   /**
    * Default social links.
@@ -17,6 +17,11 @@ class OpenidealFooterLinksConfigForm extends ConfigFormBase {
    */
   const TWITTER = '';
   const GITHUB = 'https://github.com/istolar/openideal_distribution';
+
+  /**
+   * The openideal official site.
+   */
+  const OPENIDEAL_OFFICIAL_SITE = 'https://www.openidealapp.com/';
 
   /**
    * {@inheritdoc}
@@ -54,6 +59,12 @@ class OpenidealFooterLinksConfigForm extends ConfigFormBase {
       '#default_value' => $config->get('github') ?? self::GITHUB,
     ];
 
+    $form['openideal_official_site'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Openideal official site'),
+      '#default_value' => $config->get('openideal_official_site') ?? self::OPENIDEAL_OFFICIAL_SITE,
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -66,6 +77,7 @@ class OpenidealFooterLinksConfigForm extends ConfigFormBase {
     $this->config('openideal_footer.openideal_footer_links_config')
       ->set('twitter', $form_state->getValue('twitter'))
       ->set('github', $form_state->getValue('github'))
+      ->set('openideal_official_site', $form_state->getValue('openideal_official_site'))
       ->save();
   }
 

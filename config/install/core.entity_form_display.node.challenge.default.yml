@@ -16,6 +16,7 @@ dependencies:
     - node.type.challenge
   module:
     - allowed_formats
+    - content_moderation
     - entity_browser
     - metatag
     - openideal_challenge
@@ -49,7 +50,7 @@ content:
     weight: 9
     settings: {  }
     third_party_settings: {  }
-    type: options_select
+    type: options_buttons
     region: content
   field_images:
     weight: 7
