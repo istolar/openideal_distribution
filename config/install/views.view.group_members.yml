@@ -23,7 +23,7 @@ display:
       access:
         type: group_permission
         options:
-          group_permission: 'administer members'
+          group_permission: 'view group'
       cache:
         type: tag
         options: {  }

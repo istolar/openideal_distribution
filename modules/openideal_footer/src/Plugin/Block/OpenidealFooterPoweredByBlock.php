@@ -53,7 +53,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($configuration, $plugin_id, $plugin_definition,
       $container->get('theme_handler'),
-      $container->get('config.factory'),
+      $container->get('config.factory')
     );
   }
 
@@ -66,6 +66,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
     $base_theme_path = base_path() . $path;
     return [
       '#theme' => 'openideal_powered_by',
+      '#site_url' => $config->get('openideal_official_site'),
       '#logo' => $base_theme_path . '/misc/icons/logo_openideal.png',
       '#links' => [
         'github' => [
