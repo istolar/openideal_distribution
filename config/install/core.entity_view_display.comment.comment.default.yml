@@ -20,21 +20,6 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          5e5f6f5e-1a41-43b9-8d91-eac5268073c5:
-            uuid: 5e5f6f5e-1a41-43b9-8d91-eac5268073c5
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:comment:comment:comment_body'
-              formatter:
-                label: hidden
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
-            additional: {  }
-            weight: 1
           f0946b35-1cb9-42af-baac-10df8b49f6fc:
             uuid: f0946b35-1cb9-42af-baac-10df8b49f6fc
             region: content
@@ -44,7 +29,7 @@ third_party_settings:
                 entity: layout_builder.entity
               id: 'extra_field_block:comment:comment:links'
             additional: {  }
-            weight: 2
+            weight: 6
           68436313-ad30-4361-8454-b9448b100777:
             uuid: 68436313-ad30-4361-8454-b9448b100777
             region: content
@@ -65,7 +50,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: 1
           b944681b-c2dd-4077-a9ea-4bfbe1266eec:
             uuid: b944681b-c2dd-4077-a9ea-4bfbe1266eec
             region: content
@@ -88,7 +73,22 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 7
+          5e5f6f5e-1a41-43b9-8d91-eac5268073c5:
+            uuid: 5e5f6f5e-1a41-43b9-8d91-eac5268073c5
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:comment:comment:comment_body'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 5
         third_party_settings: {  }
 id: comment.comment.default
 targetEntityType: comment
