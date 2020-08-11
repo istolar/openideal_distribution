@@ -2,6 +2,7 @@
 
 namespace Drupal\openideal_user\EventSubscriber;
 
+use Drupal\social_api\AuthManager\OAuth2ManagerInterface;
 use Drupal\social_auth_facebook\FacebookAuthManager;
 use Drupal\social_auth_linkedin\LinkedInAuthManager;
 use Drupal\Core\Messenger\MessengerTrait;
@@ -20,6 +21,11 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
   use StringTranslationTrait;
   use MessengerTrait;
 
+  const GOOGLE_PEOPLE_API_DOMAIN = 'https://people.googleapis.com';
+
+  /**
+   * Social plugins.
+   */
   const GOOGLE_PLUGIN_ID = 'social_auth_google';
   const LINKEDIN_PLUGIN_ID = 'social_auth_linkedin';
   const FB_PLUGIN_ID = 'social_auth_facebook';
@@ -110,19 +116,49 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
     if (array_key_exists($plugin_id, $this->socialsPlugins)) {
       /** @var \Drupal\social_api\AuthManager\OAuth2ManagerInterface $social_manager */
       $social_manager = $this->{$this->socialsPlugins[$plugin_id]};
+      $this->setUserGender($social_manager, $plugin_id, $user_fields);
       $resource_owner = $social_manager->getUserInfo();
       $user_fields += [
         'field_first_name' => $resource_owner->getFirstName() ?? '',
         'field_last_name' => $resource_owner->getLastName() ?? '',
       ];
-      if ($plugin_id == self::FB_PLUGIN_ID) {
-        // @Todo: check in what format FB give gender.
-        $user_fields += [
-          'field_gender' => $resource_owner->getGender() ?? '',
-        ];
-      }
     }
     $event->setUserFields($user_fields);
+  }
+
+  /**
+   * Set the user fields.
+   *
+   * @param \Drupal\social_api\AuthManager\OAuth2ManagerInterface $social_manager
+   *   Social manager.
+   * @param string $plugin_id
+   *   Plugin id.
+   * @param array $user_fields
+   *   User fields.
+   */
+  private function setUserGender(OAuth2ManagerInterface $social_manager, string $plugin_id, array &$user_fields) {
+    $resource_owner = $social_manager->getUserInfo();
+
+    if ($plugin_id == self::FB_PLUGIN_ID && $resource_owner->getGender()) {
+      $resource_owner_gender = $resource_owner->getGender();
+      $gender = ($resource_owner_gender === 'female' || $resource_owner_gender === 'male') ? $resource_owner_gender : 'other';
+      $user_fields += ['field_gender' => $gender];
+    }
+
+    if ($plugin_id == self::GOOGLE_PLUGIN_ID
+      // Don't need to handle exceptions during request,
+      // the social manager does. Request cannot be done
+      // with end point because domain not the same as default.
+      && ($genders = $social_manager->requestEndPoint('GET', '/v1/people/me?personFields=genders', self::GOOGLE_PEOPLE_API_DOMAIN))
+      && isset($genders['genders'][0]['value'])) {
+      $gender = $genders['genders'][0]['value'];
+      if ($gender === 'unspecified') {
+        $user_fields += ['field_gender' => 'other'];
+      }
+      else {
+        $user_fields += ['field_gender' => $gender];
+      }
+    }
   }
 
 }
