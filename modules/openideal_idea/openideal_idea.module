@@ -51,16 +51,18 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
         $form['field_challenge']['widget'][0]['target_id']['#default_value'] = $predefined_challenge;
       }
     }
-
-    // Rename draft_approval state as Publish.
-    if (isset($form['moderation_state']['widget'][0]['state']['#options']['draft_approval'])) {
-      $form['moderation_state']['widget'][0]['state']['#options']['draft_approval'] = t('Publish');
-    }
   }
 
   // Unset useless group roles for group idea membership add form.
   if ($form_id == 'group_content_idea-group_membership_add_form') {
     // @TODO: add condition by user role.
+    unset($form['group_roles']['widget']['#options']['idea-author']);
+    unset($form['group_roles']['widget']['#options']['idea-expert']);
+  }
+
+  // Disable ability to add experts to non permitted users.
+  // @Todo: Create manager role.
+  if ($form_id == 'group_content_idea-group_membership_edit_form' && !in_array('manager', \Drupal::currentUser()->getRoles())) {
     unset($form['group_roles']['widget']['#options']['idea-author']);
     unset($form['group_roles']['widget']['#options']['idea-expert']);
   }
@@ -156,7 +158,7 @@ function openideal_idea_entity_access(EntityInterface $entity, $operation, Accou
     // Get the group member.
     $helper = \Drupal::service('openideal_idea.helper');
     $member = $helper->getGroupMember($account, $entity);
-    if ($member && $member->hasPermission('update any group_node:idea entity')) {
+    if ($member && $member->hasPermission('update own group_node:idea entity')) {
       return AccessResult::neutral();
     }
     return content_moderation_entity_access($entity, $operation, $account);
