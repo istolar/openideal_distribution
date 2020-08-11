@@ -78,6 +78,9 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
           'logo' => $base_theme_path . '/misc/icons/twitter_logo.png',
         ],
       ],
+      '#cache' => [
+        'tags' => ['config:openideal_footer.openideal_footer_links_config'],
+      ],
     ];
   }
 

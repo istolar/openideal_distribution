@@ -81,6 +81,7 @@ class OpenidealIdeaGoBack extends BlockBase implements ContainerFactoryPluginInt
         '#title' => $this->t('Back to @page', ['@page' => $bundle . 's']),
         '#url' => $url,
       ];
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

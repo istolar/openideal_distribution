@@ -47,7 +47,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
     $public_stream = isset($contexts['view_mode']) && $contexts['view_mode']->getContextValue() == 'message';
     $id = NULL;
 
-    if (isset($contexts['node'])) {
+    if (isset($contexts['node']) && !$contexts['node']->getContextValue()->isNew()) {
       $id = $contexts['node']->getContextValue()->id();
     }
     else {

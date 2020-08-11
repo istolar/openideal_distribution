@@ -3,7 +3,6 @@
 namespace Drupal\openideal_statistics\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Block\BlockManager;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -33,13 +32,6 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
   protected $entityManager;
 
   /**
-   * Block manager.
-   *
-   * @var \Drupal\Core\Block\BlockManager
-   */
-  protected $blockManager;
-
-  /**
    * Constructs a new OpenidealStatisticsWorkflowBlock object.
    *
    * @param array $configuration
@@ -49,20 +41,16 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
    * @param string $plugin_definition
    *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
-   *   The entity type manager.
-   * @param \Drupal\Core\Block\BlockManager $block_manager
    *   Block plugin manager.
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    EntityTypeManagerInterface $entity_manager,
-    BlockManager $block_manager
+    EntityTypeManagerInterface $entity_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityManager = $entity_manager;
-    $this->blockManager = $block_manager;
   }
 
   /**
@@ -73,8 +61,7 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity_type.manager'),
-      $container->get('plugin.manager.block'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -84,7 +71,7 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
   public function build() {
     $contexts = $this->getContexts();
     $build = [];
-    if (isset($contexts['node'])) {
+    if (isset($contexts['node']) && !$contexts['node']->getContextValue()->isNew()) {
       $node = $contexts['node']->getContextValue();
       $build = [
         'status' => [
@@ -92,6 +79,9 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
           '#tag' => 'div',
           '#attributes' => ['class' => ['idea-statistics-and-status-block--status']],
           '#value' => $node->moderation_state->value,
+        ],
+        '#cache' => [
+          'tags' => $node->getCacheTags(),
         ],
       ];
     }

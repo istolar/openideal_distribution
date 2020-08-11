@@ -66,6 +66,7 @@ class OpenidealIdeaTags extends BlockBase implements ContainerFactoryPluginInter
         $items[] = $tag->entity->label();
       }
       $build['#items'] = $items;
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;
