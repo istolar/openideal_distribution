@@ -4,6 +4,7 @@ dependencies:
   module:
     - node
     - rrssb
+    - system
   theme:
     - openideal_theme
 id: ridiculously_responsive_social_share_buttons
@@ -14,7 +15,7 @@ provider: null
 plugin: rrssb_block
 settings:
   id: rrssb_block
-  label: 'Share idea'
+  label: 'Share this content'
   provider: rrssb
   label_display: visible
   button_set: default
@@ -26,3 +27,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: "/node/add/*\r\n/node/*/edit"
+    negate: true
+    context_mapping: {  }
