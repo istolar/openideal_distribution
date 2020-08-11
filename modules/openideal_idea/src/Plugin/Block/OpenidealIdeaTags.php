@@ -55,12 +55,13 @@ class OpenidealIdeaTags extends BlockBase implements ContainerFactoryPluginInter
    */
   public function build() {
     $node = $this->currentRouteMatch->getParameter('node');
-    $build = [
-      '#theme' => 'item_list',
-      '#title' => $this->t('Tags'),
-      '#attributes' => ['class' => ['idea-tags']],
-    ];
+    $build = [];
     if ($node instanceof NodeInterface) {
+      $build = [
+        '#theme' => 'item_list',
+        '#title' => $this->t('Tags'),
+        '#attributes' => ['class' => ['idea-tags']],
+      ];
       $items = [];
       foreach ($node->field_idea_tags as $tag) {
         $items[] = $tag->entity->label();

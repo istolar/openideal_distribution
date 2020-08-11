@@ -15,7 +15,7 @@ provider: null
 plugin: openideal_idea_tags_block
 settings:
   id: openideal_idea_tags_block
-  label: 'Node tags'
+  label: Tags
   provider: openideal_idea
   label_display: '0'
 visibility:
