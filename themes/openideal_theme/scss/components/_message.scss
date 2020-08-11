@@ -121,6 +121,9 @@
     }
   }
 
+  .block-field-blockcommentcommentcomment-body {
+    color: $white;
+  }
 }
 
 .block-views-blockpublic-activity-public-activity-block {
@@ -132,8 +135,4 @@
     margin-bottom: 18px;
     font-weight: $font-weight-bold;
   }
-}
-
-.block-field-blockcommentcommentcomment-body {
-  color: $white;
 }

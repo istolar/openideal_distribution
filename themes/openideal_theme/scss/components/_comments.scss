@@ -70,25 +70,25 @@
     display: flex;
     justify-content: space-between;
 
-    .profile {
-      display: flex;
-      align-items: center;
+    .profile .profile-author-view-mode .layout__region--content {
       font-weight: $font-weight-bold;
       font-size: $font-size-sm;
 
       img {
         border-radius: 50%;
-        margin: 0;
+        margin: 0 12px 0 0;
+        width: 42px;
+        height: 42px;
+      }
+
+      a {
+        font-size: unset;
       }
     }
 
     a {
       color: $dark-gray;
       font-size: 14px;
-    }
-
-    .field--name-field-first-name {
-      margin-right: 5px;
     }
   }
 }
