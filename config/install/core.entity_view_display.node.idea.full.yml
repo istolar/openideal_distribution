@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.idea.field_meta_tags
     - node.type.idea
     - views.view.followers
-    - views.view.ideas
   module:
     - comment
     - file
@@ -89,7 +88,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 14
+            weight: 16
           16b8cf05-6a81-4506-bec7-0b0bc23bc83a:
             uuid: 16b8cf05-6a81-4506-bec7-0b0bc23bc83a
             region: second
@@ -108,7 +107,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 17
+            weight: 18
           32db3918-6764-4ede-b25a-7312d603cd96:
             uuid: 32db3918-6764-4ede-b25a-7312d603cd96
             region: second
@@ -124,7 +123,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 15
+            weight: 17
           f52d2f40-7a18-4f94-abbd-d40c97eafa5d:
             uuid: f52d2f40-7a18-4f94-abbd-d40c97eafa5d
             region: second
@@ -134,7 +133,7 @@ third_party_settings:
                 entity: layout_builder.entity
               id: 'extra_field_block:node:idea:content_moderation_control'
             additional: {  }
-            weight: 19
+            weight: 20
           e0f3f3a6-f560-4aab-a034-b536ae91e16d:
             uuid: e0f3f3a6-f560-4aab-a034-b536ae91e16d
             region: second
@@ -150,7 +149,7 @@ third_party_settings:
                 third_party_settings: {  }
                 type: entity_reference_label
             additional: {  }
-            weight: 18
+            weight: 19
           cb4e02ad-316f-4475-8d59-c7f98254805f:
             uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
             region: second
@@ -184,20 +183,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 11
-          a2b066ac-d6fe-41d2-a40d-2d3d01595218:
-            uuid: a2b066ac-d6fe-41d2-a40d-2d3d01595218
-            region: second
-            configuration:
-              id: 'views_block:ideas-idea_creator_block'
-              label: ''
-              provider: views
-              label_display: '0'
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 12
+            weight: 13
           2421e4ac-d4c3-429b-b635-a1546c5a8a12:
             uuid: 2421e4ac-d4c3-429b-b635-a1546c5a8a12
             region: second
@@ -211,7 +197,7 @@ third_party_settings:
               context_mapping: {  }
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
-            weight: 21
+            weight: 22
           d9e1c40c-14ca-4eea-8206-eb2b2ce98ee4:
             uuid: d9e1c40c-14ca-4eea-8206-eb2b2ce98ee4
             region: second
@@ -224,7 +210,7 @@ third_party_settings:
                 node: layout_builder.entity
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
-            weight: 13
+            weight: 15
           d0696236-b510-4530-a57b-35a28a74c22f:
             uuid: d0696236-b510-4530-a57b-35a28a74c22f
             region: second
@@ -236,7 +222,7 @@ third_party_settings:
               context_mapping: {  }
             additional:
               layout_builder_styles_style: mobile_status_and_statistics
-            weight: 20
+            weight: 21
           b02d9754-3844-4aae-879e-508e844cd5fa:
             uuid: b02d9754-3844-4aae-879e-508e844cd5fa
             region: second
@@ -256,6 +242,25 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 10
+          d48ad0db-828a-4634-a9e7-426aa9b1a9f8:
+            uuid: d48ad0db-828a-4634-a9e7-426aa9b1a9f8
+            region: second
+            configuration:
+              id: 'field_block:node:idea:uid'
+              label: 'Authored by'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_entity_view
+                settings:
+                  view_mode: author
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 14
         third_party_settings: {  }
       -
         layout_id: layout_onecol

@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.user.compact
     - field.storage.user.field_first_name
     - field.storage.user.field_last_name
     - field.storage.user.field_points
@@ -1510,11 +1511,11 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Member for'
+          label: 'Member since'
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: 'Mebmer for{{ created }}'
             make_link: false
             path: ''
             absolute: false
@@ -1551,11 +1552,22 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          type: timestamp_ago
+          click_sort_column: value
+          type: timestamp
           settings:
-            future_format: '@interval'
-            past_format: '@interval'
-            granularity: 2
+            date_format: custom
+            custom_date_format: d/m/Y
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
           plugin_id: field
           entity_type: user
           entity_field: created
@@ -1613,7 +1625,7 @@ display:
             thousand_separator: ''
             prefix_suffix: true
             decimal_separator: .
-            scale: 2
+            scale: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1633,6 +1645,7 @@ display:
         style: false
         row: false
         exposed_form: false
+        css_class: false
       display_description: ''
       path: community
       menu:
@@ -1774,8 +1787,10 @@ display:
           row_class: ''
           default_row_class: true
       row:
-        type: fields
-        options: {  }
+        type: 'entity:user'
+        options:
+          relationship: none
+          view_mode: compact
       exposed_form:
         type: bef
         options:
@@ -1808,6 +1823,7 @@ display:
                 collapsible: false
                 collapsible_label: 'Sort options'
                 is_secondary: false
+      css_class: community-page
     cache_metadata:
       max-age: -1
       contexts:
