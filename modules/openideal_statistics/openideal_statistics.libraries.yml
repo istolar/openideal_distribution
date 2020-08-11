@@ -1,0 +1,4 @@
+export_icons:
+  css:
+    base:
+      css/export_icons.css: {}
