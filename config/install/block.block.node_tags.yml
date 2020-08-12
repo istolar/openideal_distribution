@@ -4,6 +4,7 @@ dependencies:
   module:
     - node
     - openideal_idea
+    - route_condition
   theme:
     - openideal_theme
 id: node_tags
@@ -14,7 +15,7 @@ provider: null
 plugin: openideal_idea_tags_block
 settings:
   id: openideal_idea_tags_block
-  label: 'Node tags'
+  label: Tags
   provider: openideal_idea
   label_display: '0'
 visibility:
@@ -25,3 +26,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
+    context_mapping: {  }

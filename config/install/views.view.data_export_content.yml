@@ -12,7 +12,6 @@ dependencies:
     - system.menu.admin
   module:
     - better_exposed_filters
-    - content_moderation
     - csv_serialization
     - node
     - rest

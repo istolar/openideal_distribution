@@ -62,7 +62,9 @@ class OpenidealStatisticsAndWorkflowBlock extends BlockBase implements Container
   public function build() {
     $contexts = $this->getContexts();
     $build = [];
-    if (isset($contexts['node']) && isset($contexts['view_mode'])) {
+    if (isset($contexts['node'])
+      && !$contexts['node']->getContextValue()->isNew()
+      && isset($contexts['view_mode'])) {
       $node = $contexts['node'];
       $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics');
       $statistics_block->setContext('node', $node);
@@ -74,6 +76,9 @@ class OpenidealStatisticsAndWorkflowBlock extends BlockBase implements Container
         '#attributes' => ['class' => ['idea-statistics-and-status-block']],
         'statistics' => $statistics_block->build(),
         'status' => $status->build(),
+        '#cache' => [
+          'tags' => $node->getContextValue()->getCacheTags(),
+        ],
       ];
     }
 

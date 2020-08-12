@@ -4,6 +4,7 @@ dependencies:
   module:
     - node
     - openideal_statistics
+    - route_condition
   theme:
     - openideal_theme
 id: idea_statistics_sidebar_block
@@ -27,3 +28,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
+    context_mapping: {  }

@@ -16,8 +16,158 @@ dependencies:
     - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
+    - layout_builder
+    - openideal_slideshow
+    - openideal_statistics
     - text
     - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: Top
+          column_widths: 33-67
+          layout_builder_styles_style: ''
+        components:
+          e6b6a0c4-de5b-48d7-8024-1323fd23bd91:
+            uuid: e6b6a0c4-de5b-48d7-8024-1323fd23bd91
+            region: first
+            configuration:
+              id: openidel_slideshow_block
+              label: Slideshow
+              provider: openideal_slideshow
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 0
+          f9e51ce5-dee8-46ad-b216-bd6f6e756135:
+            uuid: f9e51ce5-dee8-46ad-b216-bd6f6e756135
+            region: second
+            configuration:
+              id: 'field_block:node:idea:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          686c9055-5841-42dd-89b7-a21083fba778:
+            uuid: 686c9055-5841-42dd-89b7-a21083fba778
+            region: second
+            configuration:
+              id: 'field_block:node:idea:body'
+              label: Body
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_trimmed
+                settings:
+                  trim_length: 600
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          layout_builder_styles_style: ''
+        components:
+          9bc23d1a-cc2a-460d-83aa-3855a217492e:
+            uuid: 9bc23d1a-cc2a-460d-83aa-3855a217492e
+            region: first
+            configuration:
+              id: 'field_block:node:idea:uid'
+              label: 'Authored by'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_entity_view
+                settings:
+                  view_mode: author
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          3c63eee1-62e0-4bd7-a38d-6b503d88ec82:
+            uuid: 3c63eee1-62e0-4bd7-a38d-6b503d88ec82
+            region: second
+            configuration:
+              id: openideal_statistics_status
+              label: 'Workflow status.'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 0
+          5c8cc165-0af8-4cab-ab01-01f4f7e27c9a:
+            uuid: 5c8cc165-0af8-4cab-ab01-01f4f7e27c9a
+            region: second
+            configuration:
+              id: openideal_statistics_idea_statistics
+              label: 'Idea statistics block'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 1
+          774fba92-5419-4699-95d4-c4b3f4f2a036:
+            uuid: 774fba92-5419-4699-95d4-c4b3f4f2a036
+            region: second
+            configuration:
+              id: 'field_block:node:idea:created'
+              label: 'Authored on'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: timestamp
+                settings:
+                  date_format: custom
+                  custom_date_format: 'd \ m \ Y'
+                  timezone: ''
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          e8ab8663-7eea-4f32-ac0e-46a6468e25de:
+            uuid: e8ab8663-7eea-4f32-ac0e-46a6468e25de
+            region: second
+            configuration:
+              id: 'extra_field_block:node:idea:flag_follow'
+              label: 'Flag: <em class="placeholder">Follow</em>'
+              provider: layout_builder
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 3
+        third_party_settings: {  }
 id: node.idea.teaser
 targetEntityType: node
 bundle: idea

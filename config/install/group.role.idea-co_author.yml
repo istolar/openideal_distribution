@@ -11,7 +11,7 @@ audience: member
 group_type: idea
 permissions_ui: true
 permissions:
-  - 'update any group_node:idea entity'
   - 'update own group_node:idea entity'
   - 'view group'
   - 'view group_node:idea entity'
+  - 'view unpublished group_node:idea entity'

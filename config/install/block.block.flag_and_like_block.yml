@@ -4,6 +4,7 @@ dependencies:
   module:
     - node
     - openideal_idea
+    - route_condition
   theme:
     - openideal_theme
 id: flag_and_like_block
@@ -25,3 +26,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
+    context_mapping: {  }

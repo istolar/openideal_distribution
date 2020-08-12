@@ -102,7 +102,7 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
         $link = Link::createFromRoute($this->t('Edit'), 'entity.node.edit_form', ['node' => $node->id()])->toString();
         $build['#content']['edit'] = $link;
       }
-
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

@@ -52,11 +52,21 @@
     }
   }
 
-  img {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    margin: 0;
+  .profile-author-view-mode .layout__region--content {
+    img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+    a {
+      font-size: 12px;
+      transition: color 0.3s;
+      color: #BDBDBD;
+      &:hover {
+        color: #d2caca;
+      }
+    }
   }
 
   &--section {
@@ -111,6 +121,9 @@
     }
   }
 
+  .block-field-blockcommentcommentcomment-body {
+    color: $white;
+  }
 }
 
 .block-views-blockpublic-activity-public-activity-block {
@@ -122,8 +135,4 @@
     margin-bottom: 18px;
     font-weight: $font-weight-bold;
   }
-}
-
-.block-field-blockcommentcommentcomment-body {
-  color: $white;
 }

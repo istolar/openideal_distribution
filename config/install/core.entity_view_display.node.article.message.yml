@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.article.field_meta_tags
     - field.field.node.article.field_tags
     - node.type.article
-    - views.view.ideas
   module:
     - file
     - image
@@ -17,7 +16,6 @@ dependencies:
     - metatag
     - text
     - user
-    - views
   theme:
     - openideal_theme
 third_party_settings:
