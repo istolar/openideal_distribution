@@ -5,10 +5,7 @@
  * Install, update and uninstall functions for the idea install profile.
  */
 
-use Drupal\Core\Link;
-use Drupal\Core\Url;
 use Drupal\user\Entity\User;
-use Symfony\Component\Process\Process;
 
 /**
  * Implements hook_install().
@@ -26,13 +23,4 @@ function idea_install() {
 
   // Install 'openideal_content' module.
   \Drupal::service('module_installer')->install(['openideal_content']);
-  // Install plugins needed to ckeditor_media_embed module.
-  $process = new Process('../vendor/bin/drupal ckeditor_media_embed:install');
-  $process->run();
-
-  if (!$process->isSuccessful()) {
-    \Drupal::logger('system')->error(t('An error occurred during CKEditor plugins installation. Please follow the instructions for installing the CKEditor plugins from the module @page.', [
-      '@page' => Link::fromTextAndUrl('page', Url::fromUri('https://www.drupal.org/project/ckeditor_media_embed#ckeditor-media-embed--install'))->toString(),
-    ]));
-  }
 }
