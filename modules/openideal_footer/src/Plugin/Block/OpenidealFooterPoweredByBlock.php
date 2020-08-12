@@ -64,6 +64,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
     $config = $this->configFactory->get('openideal_footer.openideal_footer_links_config');
     $path = $this->themeHandler->getTheme('openideal_theme')->getPath();
     $base_theme_path = base_path() . $path;
+
     return [
       '#theme' => 'openideal_powered_by',
       '#site_url' => $config->get('openideal_official_site'),
@@ -79,7 +80,7 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
         ],
       ],
       '#cache' => [
-        'tags' => ['config:openideal_footer.openideal_footer_links_config'],
+        'tags' => $config->getCacheTags(),
       ],
     ];
   }

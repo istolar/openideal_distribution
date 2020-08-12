@@ -62,7 +62,7 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
 
   // Disable ability to add experts to non permitted users.
   // @Todo: Create manager role.
-  if ($form_id == 'group_content_idea-group_membership_edit_form' && !in_array('manager', \Drupal::currentUser()->getRoles())) {
+  if ($form_id == 'group_content_idea-group_membership_edit_form' && !\Drupal::currentUser()->hasPermission('access to add expert')) {
     unset($form['group_roles']['widget']['#options']['idea-author']);
     unset($form['group_roles']['widget']['#options']['idea-expert']);
   }

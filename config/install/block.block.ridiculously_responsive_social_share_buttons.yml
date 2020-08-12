@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
+    - route_condition
     - rrssb
-    - system
   theme:
     - openideal_theme
 id: ridiculously_responsive_social_share_buttons
@@ -27,8 +27,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-  request_path:
-    id: request_path
-    pages: "/node/add/*\r\n/node/*/edit"
-    negate: true
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
     context_mapping: {  }

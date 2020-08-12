@@ -14,7 +14,6 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - better_exposed_filters
-    - content_moderation
     - node
     - taxonomy
     - text

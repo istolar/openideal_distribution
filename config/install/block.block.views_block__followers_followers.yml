@@ -5,7 +5,7 @@ dependencies:
     - views.view.followers
   module:
     - node
-    - system
+    - route_condition
     - views
   theme:
     - openideal_theme
@@ -31,8 +31,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-  request_path:
-    id: request_path
-    pages: "/node/add/*\r\n/node/*/edit"
-    negate: true
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
     context_mapping: {  }

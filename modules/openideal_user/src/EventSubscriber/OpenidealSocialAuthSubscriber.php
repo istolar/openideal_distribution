@@ -139,8 +139,7 @@ class OpenidealSocialAuthSubscriber implements EventSubscriberInterface {
   private function setUserGender(OAuth2ManagerInterface $social_manager, string $plugin_id, array &$user_fields) {
     $resource_owner = $social_manager->getUserInfo();
 
-    if ($plugin_id == self::FB_PLUGIN_ID && $resource_owner->getGender()) {
-      $resource_owner_gender = $resource_owner->getGender();
+    if ($plugin_id == self::FB_PLUGIN_ID && ($resource_owner_gender = $resource_owner->getGender())) {
       $gender = ($resource_owner_gender === 'female' || $resource_owner_gender === 'male') ? $resource_owner_gender : 'other';
       $user_fields += ['field_gender' => $gender];
     }
