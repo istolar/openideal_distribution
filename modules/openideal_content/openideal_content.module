@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Contains openideal_content.module.
+ */
+
+/**
+ * Implements hook_link_alter().
+ */
+function openideal_content_link_alter(&$variables) {
+  // All external links should open in a new tab.
+  if ($variables['url']->isExternal()) {
+    $variables['options']['attributes']['target'] = '_blank';
+  }
+}

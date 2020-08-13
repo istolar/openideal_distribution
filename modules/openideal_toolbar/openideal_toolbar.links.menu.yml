@@ -3,7 +3,7 @@ openideal_toolbar.help:
   route_name: openideal_toolbar.system
   menu_name: admin
   parent: system.admin
-  weight: 4
+  weight: -50
 
 openideal_toolbar.user_points:
   title: 'Points'
