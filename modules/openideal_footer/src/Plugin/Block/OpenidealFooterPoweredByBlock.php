@@ -73,10 +73,12 @@ class OpenidealFooterPoweredByBlock extends BlockBase implements ContainerFactor
         'github' => [
           'path' => $config->get('github'),
           'logo' => $base_theme_path . '/misc/icons/github_logo.png',
+          'alt' => $this->t('GitHub'),
         ],
         'twitter' => [
           'path' => $config->get('twitter'),
           'logo' => $base_theme_path . '/misc/icons/twitter_logo.png',
+          'alt' => $this->t('Twitter'),
         ],
       ],
       '#cache' => [
