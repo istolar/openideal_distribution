@@ -48,7 +48,8 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
     $id = NULL;
 
     if (isset($contexts['node']) && !$contexts['node']->getContextValue()->isNew()) {
-      $id = $contexts['node']->getContextValue()->id();
+      $node = $contexts['node']->getContextValue();
+      $id = $node->id();
     }
     else {
       return [];
@@ -81,6 +82,14 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
         ],
         'title' => $this->t('Views'),
         'img_class' => $public_stream ? 'public_stream_view' : 'view_tag',
+      ],
+      'overall_score' => [
+        'bottom' => [
+          $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
+        ],
+        'title' => $this->t('Overall score'),
+        // @Todo: ask for appropriate icon.
+        'img_class' => '',
       ],
     ];
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';

@@ -1049,6 +1049,7 @@ display:
         filter_groups: false
         fields: false
         relationships: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -1307,6 +1308,34 @@ display:
           required: true
           entity_type: node
           entity_field: uid
+          plugin_id: standard
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: Date
+          granularity: hour
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        field_overall_score_value:
+          id: field_overall_score_value
+          table: node__field_overall_score
+          field: field_overall_score_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: 'Overall score'
           plugin_id: standard
     cache_metadata:
       max-age: -1

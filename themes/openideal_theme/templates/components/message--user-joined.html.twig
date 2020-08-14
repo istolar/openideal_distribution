@@ -28,10 +28,14 @@
  */
 #}
 <div{{ attributes.addClass('message') }}>
-  <div>
-    <p class="{{ label_class }} message--referenced-label">{{ entity_label }}</p>
+    <div>
+        <p class="{{ label_class }} message--referenced-label">{{ entity_label }}</p>
 
-    {{ content }}
+        {{ content }}
 
-  </div>
+        <div class="message--section__footer message-user-section__footer">
+            {{ created }}
+        </div>
+
+    </div>
 </div>

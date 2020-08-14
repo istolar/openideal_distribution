@@ -264,6 +264,9 @@
             },
             "drupal/ckeditor_mentions": {
                 "Use the official CKEditor mention plugin": "https://www.drupal.org/files/issues/2020-08-12/ckeditorplugin-3009308-21.patch"
+            },
+            "drupal/group": {
+                "Don't deny access to update/delete unpublished entities if we don't support it yrt": "https://www.drupal.org/files/issues/2020-08-06/group-3163727-2.patch"
             }
         }
     }

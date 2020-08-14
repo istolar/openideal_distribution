@@ -62,10 +62,19 @@ function openideal_theme_preprocess_message(&$variables) {
       try {
         $label = $message->{$name}->entity->bundle();
         $variables['entity_label'] = $label;
+        $variables['label_class'] = 'message--referenced-label--' . $label;
       }
       catch (\Throwable $e) {
         \Drupal::logger('openideal')->error(t('Could not get the message bundle, probably the referenced entity was deleted. Error message: @message', ['@message' => $e->getMessage()]));
       }
+    }
+    elseif ($message->getTemplate()->id() == 'user_joined') {
+      $variables['entity_label'] = t('User');
+      $variables['label_class'] = 'message--referenced-label--user';
+      $create = $message->getOwner()->getCreatedTime();
+      /** @var \Drupal\Core\Field\Plugin\Field\FieldType\CreatedItem $kek */
+      $time = \Drupal::service('date.formatter')->format($create, 'custom', 'd/m/Y');
+      $variables['created'] = $time;
     }
   }
 }

@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.idea.field_images
     - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
+    - field.field.node.idea.field_overall_score
     - node.type.idea
     - views.view.followers
   module:
@@ -388,3 +389,4 @@ content:
 hidden:
   addtoany: true
   field_like: true
+  field_overall_score: true

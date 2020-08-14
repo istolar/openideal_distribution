@@ -32,6 +32,34 @@
     font-size: 12px;
   }
 
+  &--referenced-label--article {
+    background: #F2994A;
+  }
+
+  &--referenced-label--news {
+    background: #F85B85;
+  }
+
+  &--referenced-label--idea {
+    background: #64C45C;
+  }
+
+  &--referenced-label--challenge {
+    background: #1294CA;
+  }
+
+  &--referenced-label--comment {
+    background: #F2994A;
+  }
+
+  &--referenced-label--user {
+    background: #E1B83B;
+  }
+
+  &--referenced-label--page {
+    background: #3bcee1;
+  }
+
   &--text {
     margin: 26px 0 4px 0;
     font-weight: $font-weight-bold;
@@ -135,4 +163,8 @@
     margin-bottom: 18px;
     font-weight: $font-weight-bold;
   }
+}
+
+.message-user-section__footer {
+  margin-top: 20px;
 }
