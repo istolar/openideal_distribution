@@ -15,18 +15,10 @@ targetEntityType: message
 bundle: user_joined
 mode: default
 content:
-  field_user_reference:
-    type: entity_reference_entity_view
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      view_mode: author
-      link: false
-    third_party_settings: {  }
   partial_0:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_user_reference: true

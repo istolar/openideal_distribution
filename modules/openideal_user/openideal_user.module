@@ -177,14 +177,3 @@ function openideal_user_views_query_alter(ViewExecutable $view, QueryPluginBase 
     $query->addHavingExpression(0, 'GROUP_CONCAT(group_content_field_data_groups_field_data__group_content__group_roles.group_roles_target_id) IS NULL');
   }
 }
-
-/**
- * Implements hook_ENTITY_TYPE_insert().
- */
-function openideal_user_user_insert(UserInterface $user) {
-  // Need to set at least 0, to make the points field be visible.
-  if ($user->hasField('field_points') && $user->field_points->isEmpty()) {
-    $user->set('field_points', (float) 0);
-    $user->save();
-  }
-}
