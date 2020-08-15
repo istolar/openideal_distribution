@@ -62,7 +62,9 @@ class Slideshow extends BlockBase {
     /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList  $images */
     $images = $node->field_images;
     foreach ($images as $image) {
-      $result[] = $image->entity;
+      $entity = $image->entity;
+      $entity->_referringItem = $image;
+      $result[] = $entity;
     }
 
     return $result;

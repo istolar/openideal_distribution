@@ -17,6 +17,10 @@
     justify-content: center;
     align-items: center;
 
+    label {
+      cursor: pointer;
+    }
+
     .votingapi-reaction-form input[type="radio"] {
       display: none;
     }

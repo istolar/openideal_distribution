@@ -10,7 +10,7 @@ dependencies:
 id: node_tags
 theme: openideal_theme
 region: sidebar
-weight: 0
+weight: -4
 provider: null
 plugin: openideal_idea_tags_block
 settings:

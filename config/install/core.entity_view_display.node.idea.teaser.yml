@@ -22,20 +22,22 @@ dependencies:
     - openideal_statistics
     - text
     - user
+  theme:
+    - openideal_theme
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: true
     sections:
       -
-        layout_id: layout_twocol_section
+        layout_id: openideal_two_columns_teaser
         layout_settings:
           label: Top
-          column_widths: 33-67
+          main_class: teaser-top-section
           layout_builder_styles_style: ''
         components:
-          e6b6a0c4-de5b-48d7-8024-1323fd23bd91:
-            uuid: e6b6a0c4-de5b-48d7-8024-1323fd23bd91
+          8b503cd1-a9f6-4a78-8578-2156d4a3448e:
+            uuid: 8b503cd1-a9f6-4a78-8578-2156d4a3448e
             region: first
             configuration:
               id: openidel_slideshow_block
@@ -46,8 +48,8 @@ third_party_settings:
                 node: layout_builder.entity
             additional: {  }
             weight: 0
-          f9e51ce5-dee8-46ad-b216-bd6f6e756135:
-            uuid: f9e51ce5-dee8-46ad-b216-bd6f6e756135
+          6e8f5147-8e1a-46da-984e-ff7d35c8df9d:
+            uuid: 6e8f5147-8e1a-46da-984e-ff7d35c8df9d
             region: second
             configuration:
               id: 'field_block:node:idea:title'
@@ -65,8 +67,8 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          686c9055-5841-42dd-89b7-a21083fba778:
-            uuid: 686c9055-5841-42dd-89b7-a21083fba778
+          3cf7e231-295b-4399-91bf-f453a2ffd80f:
+            uuid: 3cf7e231-295b-4399-91bf-f453a2ffd80f
             region: second
             configuration:
               id: 'field_block:node:idea:body'
@@ -75,7 +77,7 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: text_trimmed
+                type: text_summary_or_trimmed
                 settings:
                   trim_length: 600
                 third_party_settings: {  }
@@ -86,10 +88,10 @@ third_party_settings:
             weight: 1
         third_party_settings: {  }
       -
-        layout_id: layout_twocol_section
+        layout_id: openideal_two_columns_teaser
         layout_settings:
-          label: ''
-          column_widths: 50-50
+          label: Bottom
+          main_class: teaser-bottom-section
           layout_builder_styles_style: ''
         components:
           9bc23d1a-cc2a-460d-83aa-3855a217492e:
@@ -111,30 +113,18 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          3c63eee1-62e0-4bd7-a38d-6b503d88ec82:
-            uuid: 3c63eee1-62e0-4bd7-a38d-6b503d88ec82
+          e8ab8663-7eea-4f32-ac0e-46a6468e25de:
+            uuid: e8ab8663-7eea-4f32-ac0e-46a6468e25de
             region: second
             configuration:
-              id: openideal_statistics_status
-              label: 'Workflow status.'
-              provider: openideal_statistics
+              id: 'extra_field_block:node:idea:flag_follow'
+              label: 'Flag: <em class="placeholder">Follow</em>'
+              provider: layout_builder
               label_display: '0'
               context_mapping:
-                node: layout_builder.entity
+                entity: layout_builder.entity
             additional: {  }
-            weight: 0
-          5c8cc165-0af8-4cab-ab01-01f4f7e27c9a:
-            uuid: 5c8cc165-0af8-4cab-ab01-01f4f7e27c9a
-            region: second
-            configuration:
-              id: openideal_statistics_idea_statistics
-              label: 'Idea statistics block'
-              provider: openideal_statistics
-              label_display: '0'
-              context_mapping:
-                node: layout_builder.entity
-            additional: {  }
-            weight: 1
+            weight: 8
           774fba92-5419-4699-95d4-c4b3f4f2a036:
             uuid: 774fba92-5419-4699-95d4-c4b3f4f2a036
             region: second
@@ -155,19 +145,31 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
-          e8ab8663-7eea-4f32-ac0e-46a6468e25de:
-            uuid: e8ab8663-7eea-4f32-ac0e-46a6468e25de
+            weight: 7
+          5c8cc165-0af8-4cab-ab01-01f4f7e27c9a:
+            uuid: 5c8cc165-0af8-4cab-ab01-01f4f7e27c9a
             region: second
             configuration:
-              id: 'extra_field_block:node:idea:flag_follow'
-              label: 'Flag: <em class="placeholder">Follow</em>'
-              provider: layout_builder
+              id: openideal_statistics_idea_statistics
+              label: 'Idea statistics block'
+              provider: openideal_statistics
               label_display: '0'
               context_mapping:
-                entity: layout_builder.entity
+                node: layout_builder.entity
             additional: {  }
-            weight: 3
+            weight: 6
+          3c63eee1-62e0-4bd7-a38d-6b503d88ec82:
+            uuid: 3c63eee1-62e0-4bd7-a38d-6b503d88ec82
+            region: second
+            configuration:
+              id: openideal_statistics_status
+              label: 'Workflow status.'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
 id: node.idea.teaser
 targetEntityType: node

@@ -14,6 +14,7 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - better_exposed_filters
+    - content_moderation
     - node
     - taxonomy
     - text
@@ -1050,6 +1051,7 @@ display:
         fields: false
         relationships: false
         sorts: false
+        css_class: false
       filter_groups:
         operator: AND
         groups:
@@ -1337,6 +1339,7 @@ display:
           expose:
             label: 'Overall score'
           plugin_id: standard
+      css_class: ideas-teaser-view-page
     cache_metadata:
       max-age: -1
       contexts:
