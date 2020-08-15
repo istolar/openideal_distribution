@@ -37,20 +37,14 @@ expression:
         negate: false
       -
         id: rules_condition
-        uuid: 52c4464f-b5d7-48ce-8cfc-6e5074fe150d
+        uuid: 0ccd3f67-6273-4c56-86db-734bd5ee4439
         weight: 0
-        context_values:
-          operation: '=='
-          value: '1'
+        context_values: {  }
         context_mapping:
-          data: vote.entity_id.entity.status.value
-        context_processors:
-          operation:
-            rules_tokens: {  }
-          value:
-            rules_tokens: {  }
+          entity: vote
+        context_processors: {  }
         provides_mapping: {  }
-        condition_id: rules_data_comparison
+        condition_id: openideal_voted_entity_is_published
         negate: false
   actions:
     id: rules_action_set

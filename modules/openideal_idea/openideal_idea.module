@@ -8,13 +8,11 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use Drupal\openideal_idea\ComputedNumberList;
+use Drupal\openideal_idea\Plugin\Validation\Constraint\OpenidealModerationStateConstraint;
 
 /**
  * Implements hook_theme().
@@ -33,6 +31,26 @@ function openideal_idea_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_cron().
+ */
+function openideal_idea_cron() {
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  // Node id.
+  $entity_query = $storage->getQuery();
+
+  $entities = $entity_query->condition('type', 'idea')
+    ->sort('changed', 'DESC')
+    ->range(0, 50)
+    ->execute();
+
+  $ideas = $storage->loadMultiple($entities);
+  /** @var \Drupal\node\NodeInterface $idea */
+  foreach ($ideas as $idea) {
+    $idea->save();
+  }
 }
 
 /**
@@ -85,6 +103,10 @@ function openideal_idea_node_presave(NodeInterface $node) {
     // Set 'merged' value for idea_phase field of the entity.
     // Todo: Should we remove this in favour of Workflow states?
     $node->set('field_idea_phase', 5);
+  }
+  elseif ($node->bundle() == 'idea') {
+    $overall_score = \Drupal::service('openideal_idea.helper')->computeOverallScore($node->id());
+    $node->set('field_overall_score', $overall_score);
   }
 }
 
@@ -268,34 +290,6 @@ function openideal_idea_form_views_exposed_form_alter(&$form, FormStateInterface
 }
 
 /**
- * Implements hook_entity_bundle_field_info().
- */
-function openideal_idea_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
-  if (isset($base_field_definitions['overall_score'])) {
-    // Add the target bundle to the overall_score field.
-    $base_field_definitions['overall_score']->setTargetBundle($bundle);
-    return [
-      'overall_score' => $base_field_definitions['overall_score'],
-    ];
-  }
-}
-
-/**
- * Implements hook_entity_base_field_info().
- */
-function openideal_idea_entity_base_field_info(EntityTypeInterface $entity_type) {
-  $fields = [];
-  if ($entity_type->id() == 'node') {
-    $fields['overall_score'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Overall score'))
-      ->setDescription(t('The moderation state of this piece of content.'))
-      ->setComputed(TRUE)
-      ->setClass(ComputedNumberList::class);
-  }
-  return $fields;
-}
-
-/**
  * Implements hook_ENTITY_TYPE_access().
  */
 function openideal_idea_group_content_access(EntityInterface $entity, $operation, AccountInterface $account) {
@@ -344,4 +338,11 @@ function openideal_idea_module_implements_alter(&$implementations, $hook) {
   if ($hook == 'entity_access' && isset($implementations['content_moderation'])) {
     unset($implementations['content_moderation']);
   }
+}
+
+/**
+ * Implements hook_validation_constraint_alter().
+ */
+function openideal_idea_validation_constraint_alter(array &$definitions) {
+  $definitions['ModerationState']['class'] = OpenidealModerationStateConstraint::class;
 }

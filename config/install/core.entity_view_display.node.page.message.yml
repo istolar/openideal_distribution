@@ -76,7 +76,7 @@ third_party_settings:
                 type: timestamp
                 settings:
                   date_format: custom
-                  custom_date_format: 'd \ m \ Y'
+                  custom_date_format: d/m/Y
                   timezone: ''
                 third_party_settings: {  }
               context_mapping:
@@ -84,19 +84,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 2
-          7cdab600-1a80-43ff-a5ba-58781cb33f5f:
-            uuid: 7cdab600-1a80-43ff-a5ba-58781cb33f5f
-            region: footer
-            configuration:
-              id: 'views_block:ideas-idea_statistics_block'
-              label: ''
-              provider: views
-              label_display: '0'
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 3
         third_party_settings: {  }
 id: node.page.message
 targetEntityType: node

@@ -2,17 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_points
-  module:
-    - user
-id: user.user.field_points
-field_name: field_points
-entity_type: user
-bundle: user
-label: Points
+    - field.storage.node.field_overall_score
+    - node.type.idea
+id: node.idea.field_overall_score
+field_name: field_overall_score
+entity_type: node
+bundle: idea
+label: 'Overall score'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: !!float 0
