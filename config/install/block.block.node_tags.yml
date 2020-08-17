@@ -18,6 +18,8 @@ settings:
   label: Tags
   provider: openideal_idea
   label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
 visibility:
   node_type:
     id: node_type
