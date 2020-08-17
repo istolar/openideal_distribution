@@ -23,6 +23,7 @@ visibility:
   node_type:
     id: node_type
     bundles:
+      challenge: challenge
       idea: idea
     negate: false
     context_mapping:
