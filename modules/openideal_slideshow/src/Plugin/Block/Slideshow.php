@@ -28,7 +28,7 @@ class Slideshow extends BlockBase {
   public function build() {
     $contexts = $this->getContexts();
     $images = $this->getImages();
-    $tags = isset($contexts['node']) ? $contexts['node']->getCacheTags() : [];
+    $tags = isset($contexts['node']) ? $contexts['node']->getContextValue()->getCacheTags() : [];
     return empty($images)
       ? []
       : [

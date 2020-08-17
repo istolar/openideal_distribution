@@ -19,9 +19,9 @@ dependencies:
     - workflows.workflow.life_cycle_phases
   module:
     - allowed_formats
-    - content_moderation
     - entity_browser
     - metatag
+    - moderation_state_buttons_widget
     - path
     - text
     - votingapi_reaction
@@ -127,9 +127,10 @@ content:
     type: metatag_firehose
     region: content
   moderation_state:
-    type: moderation_state_default
+    type: moderation_state_buttons
     weight: 12
-    settings: {  }
+    settings:
+      show_forbidden_transitions: false
     region: content
     third_party_settings: {  }
   path:

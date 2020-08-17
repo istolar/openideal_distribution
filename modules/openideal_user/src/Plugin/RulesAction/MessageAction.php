@@ -2,6 +2,7 @@
 
 namespace Drupal\openideal_user\Plugin\RulesAction;
 
+use Drupal\comment\CommentInterface;
 use Drupal\content_moderation\ModerationInformation;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManager;
@@ -15,7 +16,7 @@ use Drupal\votingapi\VoteInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a Flag action.
+ * Provides a Message action.
  *
  * @RulesAction(
  *   id = "openideal_message_action",
@@ -38,13 +39,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class MessageAction extends RulesActionBase implements ContainerFactoryPluginInterface {
 
   use StringTranslationTrait;
-
-  /**
-   * VotedEntity.
-   *
-   * @var \Drupal\Core\Entity\EntityInterface
-   */
-  protected $votedEntity;
 
   /**
    * Entity type manager.
@@ -115,6 +109,11 @@ class MessageAction extends RulesActionBase implements ContainerFactoryPluginInt
     // e.g. workflow state is changed,
     // and need to save previous one as msg argument.
     $this->setMessageArguments($message, $entity);
+
+    // Set additional node reference to simplify the queries.
+    if ($entity instanceof CommentInterface && $template != 'created_reply_on_comment') {
+      $message->set('field_node_reference', $entity->getCommentedEntity());
+    }
 
     $message->set('field_' . $entity_type . '_reference', $entity);
     $message->save();

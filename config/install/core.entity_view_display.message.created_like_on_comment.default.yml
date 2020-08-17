@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.message.created_like_on_comment.field_comment_reference
+    - field.field.message.created_like_on_comment.field_node_reference
     - message.template.created_like_on_comment
   module:
     - layout_builder
@@ -29,4 +30,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_node_reference: true
