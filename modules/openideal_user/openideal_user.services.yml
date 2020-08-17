@@ -5,6 +5,7 @@ services:
       - '@social_auth_google.manager'
       - '@social_auth_linkedin.manager'
       - '@social_auth_facebook.manager'
+      - '@social_auth_github.manager'
     tags:
       - { name: event_subscriber }
 
