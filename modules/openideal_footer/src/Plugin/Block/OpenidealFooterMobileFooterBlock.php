@@ -10,6 +10,13 @@ use Drupal\openideal_idea\Plugin\Block\OpenidealIdeaFlagAndLikeBlock;
  * @Block(
  *  id = "openideal_footer_mobile_footer_block",
  *  admin_label = @Translation("Mobile footer block"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class OpenidealFooterMobileFooterBlock extends OpenidealIdeaFlagAndLikeBlock {

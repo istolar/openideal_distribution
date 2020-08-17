@@ -1,3 +1,79 @@
+.teaser-view-mode {
+
+  /**  Exposed filters   */
+  .form-row {
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  fieldset {
+
+    label {
+      display: none;
+    }
+
+    select {
+      height: 100%;
+      background-color: $white;
+      border: 0;
+      font-size: 16px;
+    }
+
+    .select-prepend {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .form-item-search {
+    border: unset;
+    padding: 0;
+    position: relative;
+    border: 0.8px solid #D0D6DC;
+    border-radius: 30px;
+    background: #E8E8E9;
+    margin-top: 0;
+
+    label {
+      display: none;
+    }
+
+    .form-text {
+      padding: 18px 3rem 18px 18px;
+      background: transparent;
+      border: none;
+      margin: 0;
+
+      &:focus {
+        outline: unset;
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: #828282;
+        font-style: $font-weight-base;
+      }
+    }
+
+    .search-submit-button {
+      position: absolute;
+      background: url('../misc/icons/search.svg') no-repeat center center;
+      width: 20px;
+      height: 20px;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 30;
+    }
+  }
+
+}
+
+/** The teaser mod itself */
 .node--view-mode-teaser {
   background: $white;
   border-radius: 8px;
@@ -6,6 +82,7 @@
 
   .teaser-top-section {
     display: flex;
+
     &--section__first {
       max-width: 400px;
       height: 190px;
@@ -16,6 +93,7 @@
       }
 
       img {
+        border-radius: unset;
         height: 100%;
       }
     }
@@ -34,9 +112,11 @@
     align-items: center;
 
     &--section__first {
+      width: auto;
     }
 
     &--section__second {
+      width: auto;
       font-weight: bold;
       font-size: 14px;
       margin-left: auto;
@@ -70,11 +150,12 @@
   // Statistics
   .idea-statistics-block {
     margin: 0;
+
     &--list {
       display: flex;
       flex-direction: row-reverse;
       font-size: 14px;
-      margin: 0 27px;
+      margin: 0 17px 0 27px;
       color: #676C72;
 
       &__item {
@@ -87,8 +168,9 @@
           height: 18px;
         }
 
-        &--public_stream_view {
+        &--public_stream_view.item-svg {
           background: url('../misc/icons/public_stream_view.svg') no-repeat center center;
+          background-size: 20px 20px;
         }
 
         &--public_stream_comment {
@@ -108,13 +190,16 @@
       font-size: $font-size-sm;
     }
   }
+
   .profile-author-view-mode .layout__region--content {
     margin-bottom: 0;
   }
 
   // Created
-  .block-field-blocknodeideacreated {
+  .block-field-blocknodeideacreated,
+  .block-field-blocknodechallengecreated {
     margin-right: 4px;
+
     span {
       color: #676C72;
       font-size: inherit;
@@ -122,18 +207,24 @@
   }
 
   // Follow
-  .block-extra-field-blocknodeideaflag-follow {
-    a {
-      color: #1294CA;
-      padding: 0.5em;
-      border: 1.5px solid #1294CA;
-      text-align: center;
-      font-size: 13px;
-      text-transform: uppercase;
-      border-radius: 30px;
-      svg {
-        display: none;
-      }
+  .flag-follow a,
+  .teaser-flag--element__text {
+    cursor: pointer;
+    color: #1294CA;
+    padding: 0.5em 0.7em;
+    border: 1.5px solid #1294CA;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 30px;
+
+    svg {
+      display: none;
     }
   }
+
+  .layout--onecol .layout__region {
+    width: auto;
+  }
+
 }

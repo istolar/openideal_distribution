@@ -2,9 +2,6 @@
 
 namespace Drupal\openideal_statistics\Plugin\Block;
 
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * Provides a 'OpenidealStatisticsIdeaStatisticsBlock' block.
  *
@@ -20,28 +17,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock implements ContainerFactoryPluginInterface {
-
-  /**
-   * Current route match.
-   *
-   * @var \Drupal\Core\Routing\CurrentRouteMatch
-   */
-  protected $routeMatch;
+class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock {
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->routeMatch = $container->get('current_route_match');
-    return $instance;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function build() {
+  public function build($challenge = NULL) {
     $build = [];
     $contexts = $this->getContexts();
     $is_not_full = isset($contexts['view_mode']) && $contexts['view_mode']->getContextValue() != 'full';
@@ -85,14 +66,12 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
       ],
       'overall_score' => [
         'bottom' => [
-          $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
+          $challenge ? '' : $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
         ],
         'title' => $this->t('Overall score'),
-        // @Todo: ask for appropriate icon.
-        'img_class' => '',
+        'img_class' => 'score_tag',
       ],
     ];
-    $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
     return $build;
   }
 

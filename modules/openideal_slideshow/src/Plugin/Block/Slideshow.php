@@ -50,13 +50,16 @@ class Slideshow extends BlockBase {
     $contexts = $this->getContexts();
     $result = [];
 
-    if (!isset($contexts['node'])) {
+    if (!empty($contexts['node']) && $contexts['node']->getContextValue()->isNew()) {
       return $result;
     }
 
     $node = $contexts['node']->getContextValue();
     if ($node->bundle() == 'challenge' && !$node->field_main_image->isEmpty()) {
-      $result[] = $node->field_main_image->first()->entity;
+      $file = $node->field_main_image->first();
+      $entity = $file->entity;
+      $entity->_referringItem = $file;
+      $result[] = $entity;
     }
 
     /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList  $images */

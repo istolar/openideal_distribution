@@ -55,7 +55,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 3
         third_party_settings: {  }
 id: comment.comment.my_comments
 targetEntityType: comment

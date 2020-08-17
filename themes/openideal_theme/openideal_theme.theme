@@ -37,8 +37,8 @@ function openideal_theme_form_system_theme_settings_alter(&$form, FormStateInter
  */
 function openideal_theme_preprocess_page(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node instanceof NodeInterface && $node->bundle() == 'idea') {
-    $variables['is_idea'] = TRUE;
+  if ($node instanceof NodeInterface) {
+    $variables['is_node'] = TRUE;
   }
 }
 
@@ -105,4 +105,13 @@ function openideal_theme_preprocess_field__created(&$variables) {
  */
 function openideal_theme_preprocess_field__field_points(&$variables) {
   $variables['label'] = t('User points:');
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function openideal_theme_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-ideas-all-ideas-page') {
+    $form['search']['#placeholder'] = t('Search');
+  }
 }
