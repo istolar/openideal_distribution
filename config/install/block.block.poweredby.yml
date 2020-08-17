@@ -16,4 +16,6 @@ settings:
   label: 'Powered by'
   provider: openideal_footer
   label_display: '0'
+  button_set: null
+  openideal_official_site: 'https://www.openidealapp.com/'
 visibility: {  }

@@ -5,7 +5,6 @@ namespace Drupal\openideal_statistics\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\BlockManager;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -14,6 +13,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *  id = "openideal_statistics_and_status",
  *  admin_label = @Translation("Statistics and status block"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class OpenidealStatisticsAndWorkflowBlock extends BlockBase implements ContainerFactoryPluginInterface {
@@ -54,17 +60,25 @@ class OpenidealStatisticsAndWorkflowBlock extends BlockBase implements Container
    * {@inheritdoc}
    */
   public function build() {
-    $configuration = $this->getConfiguration();
+    $contexts = $this->getContexts();
     $build = [];
-    if (isset($configuration['node']) && $configuration['node'] instanceof NodeInterface) {
-      $node = $configuration['node'];
-      $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics', ['node' => $node]);
-      $status = $this->blockManager->createInstance('openideal_statistics_status', ['node' => $node]);
+    if (isset($contexts['node'])
+      && !$contexts['node']->getContextValue()->isNew()
+      && isset($contexts['view_mode'])) {
+      $node = $contexts['node'];
+      $statistics_block = $this->blockManager->createInstance('openideal_statistics_idea_statistics');
+      $statistics_block->setContext('node', $node);
+      $statistics_block->setContext('view_mode', $contexts['view_mode']);
+      $status = $this->blockManager->createInstance('openideal_statistics_status');
+      $status->setContext('node', $node);
       $build = [
         '#type' => 'container',
         '#attributes' => ['class' => ['idea-statistics-and-status-block']],
         'statistics' => $statistics_block->build(),
         'status' => $status->build(),
+        '#cache' => [
+          'tags' => $node->getContextValue()->getCacheTags(),
+        ],
       ];
     }
 

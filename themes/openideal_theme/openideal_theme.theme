@@ -59,8 +59,22 @@ function openideal_theme_preprocess_message(&$variables) {
   $message = $variables['message'];
   foreach ($variables['content'] as $name => $item) {
     if (strpos($name, 'field') !== FALSE) {
-      $label = $message->{$name}->entity->bundle();
-      $variables['entity_label'] = $label;
+      try {
+        $label = $message->{$name}->entity->bundle();
+        $variables['entity_label'] = $label;
+        $variables['label_class'] = 'message--referenced-label--' . $label;
+      }
+      catch (\Throwable $e) {
+        \Drupal::logger('openideal')->error(t('Could not get the message bundle, probably the referenced entity was deleted. Error message: @message', ['@message' => $e->getMessage()]));
+      }
+    }
+    elseif ($message->getTemplate()->id() == 'user_joined') {
+      $variables['entity_label'] = t('User');
+      $variables['label_class'] = 'message--referenced-label--user';
+      $create = $message->getOwner()->getCreatedTime();
+      /** @var \Drupal\Core\Field\Plugin\Field\FieldType\CreatedItem $kek */
+      $time = \Drupal::service('date.formatter')->format($create, 'custom', 'd/m/Y');
+      $variables['created'] = $time;
     }
   }
 }
@@ -73,4 +87,22 @@ function openideal_theme_theme_suggestions_comment_alter(array &$suggestions, ar
   if (isset($elements['#view_mode'])) {
     $suggestions[] = 'comment__view_mode__' . $elements['#view_mode'];
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_field__created(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#third_party_settings']['layout_builder']['view_mode'])
+    && $element['#third_party_settings']['layout_builder']['view_mode'] == 'compact') {
+    $variables['label'] = t('Member since:');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_field__field_points(&$variables) {
+  $variables['label'] = t('User points:');
 }

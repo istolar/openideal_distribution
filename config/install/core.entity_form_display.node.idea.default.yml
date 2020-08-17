@@ -14,13 +14,14 @@ dependencies:
     - field.field.node.idea.field_images
     - field.field.node.idea.field_like
     - field.field.node.idea.field_meta_tags
+    - field.field.node.idea.field_overall_score
     - node.type.idea
     - workflows.workflow.life_cycle_phases
   module:
     - allowed_formats
-    - content_moderation
     - entity_browser
     - metatag
+    - moderation_state_buttons_widget
     - path
     - text
     - votingapi_reaction
@@ -64,13 +65,9 @@ content:
     region: content
   field_category:
     weight: 10
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_buttons
     region: content
   field_challenge:
     weight: 8
@@ -90,7 +87,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_reference_autocomplete_tags
     region: content
   field_idea_tags:
     weight: 9
@@ -100,7 +97,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_reference_autocomplete_tags
     region: content
   field_images:
     weight: 6
@@ -117,22 +114,23 @@ content:
     type: entity_browser_file
     region: content
   field_like:
-    weight: 27
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: votingapi_reaction_default
     region: content
   field_meta_tags:
-    weight: 26
+    weight: 13
     settings:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   moderation_state:
-    type: moderation_state_default
+    type: moderation_state_buttons
     weight: 12
-    settings: {  }
+    settings:
+      show_forbidden_transitions: false
     region: content
     third_party_settings: {  }
   path:
@@ -169,5 +167,6 @@ content:
 hidden:
   field_comments: true
   field_idea_phase: true
+  field_overall_score: true
   promote: true
   sticky: true

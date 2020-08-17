@@ -88,6 +88,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
           $query = $entity_type_manager->getStorage('node')->getQuery();
           $result = $query
             ->condition('status', '1')
+            ->condition('type', 'idea')
             ->count()
             ->execute();
           $replacements[$original] = $result;

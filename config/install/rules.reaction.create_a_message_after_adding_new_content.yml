@@ -21,7 +21,7 @@ expression:
       -
         id: rules_condition
         uuid: 216fa1fd-7ec3-4c05-8961-efcbe341ed3d
-        weight: 0
+        weight: -50
         context_values:
           type: node
           bundle: idea
@@ -37,8 +37,25 @@ expression:
         negate: true
       -
         id: rules_condition
+        uuid: 1985e0ff-a9fc-40b7-b0e7-79b9e561445a
+        weight: -49
+        context_values:
+          type: node
+          bundle: faq
+        context_mapping:
+          entity: node
+        context_processors:
+          type:
+            rules_tokens: {  }
+          bundle:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        condition_id: rules_entity_is_of_bundle
+        negate: true
+      -
+        id: rules_condition
         uuid: 1e9a9fab-a15e-4de2-b16e-e023fa234235
-        weight: 0
+        weight: -48
         context_values: {  }
         context_mapping:
           node: node

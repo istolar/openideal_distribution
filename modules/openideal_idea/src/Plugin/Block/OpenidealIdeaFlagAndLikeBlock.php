@@ -91,6 +91,7 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
       ];
       $like = $node->field_like[0]->view($settings);
       $build['#like'] = $like;
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

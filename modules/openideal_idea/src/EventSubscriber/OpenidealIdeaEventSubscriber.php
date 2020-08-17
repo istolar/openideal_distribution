@@ -5,8 +5,6 @@ namespace Drupal\openideal_idea\EventSubscriber;
 use Drupal\content_moderation\Event\ContentModerationEvents;
 use Drupal\content_moderation\Event\ContentModerationStateChangedEvent;
 use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\layout_builder\Event\SectionComponentBuildRenderArrayEvent;
-use Drupal\layout_builder\LayoutBuilderEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -21,7 +19,6 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events[ContentModerationEvents::STATE_CHANGED] = ['onContentStateChange'];
-    $events[LayoutBuilderEvents::SECTION_COMPONENT_BUILD_RENDER_ARRAY] = ['onComponentBuild'];
     return $events;
   }
 
@@ -41,20 +38,6 @@ class OpenidealIdeaEventSubscriber implements EventSubscriberInterface {
       if (!empty($message)) {
         $this->messenger()->addMessage($message);
       }
-    }
-  }
-
-  /**
-   * Add max-age to overall_score field.
-   *
-   * @param \Drupal\layout_builder\Event\SectionComponentBuildRenderArrayEvent $event
-   *   Event.
-   */
-  public function onComponentBuild(SectionComponentBuildRenderArrayEvent $event) {
-    if ($event->getPlugin()->getPLuginId() == 'field_block:node:idea:overall_score') {
-      $build = $event->getBuild();
-      $build['content']['#cache']['max-age'] = 3600;
-      $event->setBuild($build);
     }
   }
 

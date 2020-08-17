@@ -5,12 +5,14 @@
   height: 93vh;
   position: sticky;
   top: 0;
+
   &--dismiss {
     position: absolute;
     left: 90%;
     color: #27C0FF;
     font-size: 1.5rem;
   }
+
   &--inner {
     top: 0;
     z-index: 500;
@@ -18,6 +20,7 @@
     display: flex;
     flex-direction: column;
   }
+
   &--elements {
     display: flex;
     flex-direction: column;
@@ -35,26 +38,33 @@
       margin-top: 36px;
     }
   }
+
   &--nav {
   }
+
   &--user-info {
     .views-row {
       display: flex;
       flex-flow: column;
       align-items: center;
       color: $white;
+
       img {
         border-radius: 50%;
       }
+
       .views-field-field-last-name {
         margin-top: 6px;
+
         .field-content {
           font-size: 0.7778rem;
           font-weight: $font-weight-bold;
         }
       }
+
       .views-field-edit-user {
         line-height: 0.3;
+
         a {
           color: $white;
           font-size: $font-size-xs;
@@ -63,14 +73,17 @@
       }
     }
   }
+
   &--top {
     margin-top: 47px;
   }
+
   &__menu-list {
     &--item {
       margin-bottom: 15px;
       transition: border-left 0.3s ease-in-out, background-color 0.7s;
       border-left: 0 solid #fff;
+
       a {
         flex-wrap: nowrap;
         display: flex;
@@ -85,6 +98,7 @@
           height: 26px;
         }
       }
+
       .is-active,
       &:hover {
         border-left: 7px solid #3AC0F7;
@@ -93,6 +107,10 @@
       }
     }
   }
+
+  .site-footer--links {
+    position: relative;
+  }
 }
 
 @media (max-width: 1688px) {
@@ -100,6 +118,7 @@
     a {
       padding: 18.59px 10px !important;
     }
+
     img {
       margin-right: 5px;
     }
@@ -112,6 +131,7 @@
       padding: 18.59px 8px !important;
       font-size: 14px;
     }
+
     img {
       margin-right: 4px;
       width: 24px;
@@ -130,6 +150,7 @@
     height: 100vh;
     z-index: 999;
     transition: all 0.3s;
+
     &.active {
       left: 0;
     }

@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.article.field_meta_tags
     - field.field.node.article.field_tags
     - node.type.article
-    - views.view.ideas
   module:
     - file
     - image
@@ -17,7 +16,6 @@ dependencies:
     - metatag
     - text
     - user
-    - views
   theme:
     - openideal_theme
 third_party_settings:
@@ -81,7 +79,7 @@ third_party_settings:
                 type: timestamp
                 settings:
                   date_format: custom
-                  custom_date_format: 'd \ m \ Y'
+                  custom_date_format: d/m/Y
                   timezone: ''
                 third_party_settings: {  }
               context_mapping:
@@ -89,19 +87,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          a4557e74-5431-4b92-808b-8d71547e9ea6:
-            uuid: a4557e74-5431-4b92-808b-8d71547e9ea6
-            region: footer
-            configuration:
-              id: 'views_block:ideas-idea_statistics_block'
-              label: ''
-              provider: views
-              label_display: '0'
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 1
         third_party_settings: {  }
 id: node.article.message
 targetEntityType: node

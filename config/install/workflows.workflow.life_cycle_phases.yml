@@ -23,7 +23,7 @@ type_settings:
     draft_approval:
       published: false
       default_revision: true
-      label: 'Draft Approval'
+      label: 'Send to Approval'
       weight: -3
     ex:
       published: true
@@ -111,7 +111,7 @@ type_settings:
       to: postponed
       weight: 2
     publish:
-      label: Publish
+      label: 'Send to Approval'
       from:
         - draft
         - draft_approval

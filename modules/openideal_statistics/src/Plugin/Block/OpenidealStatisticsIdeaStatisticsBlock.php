@@ -3,7 +3,6 @@
 namespace Drupal\openideal_statistics\Plugin\Block;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -12,6 +11,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *  id = "openideal_statistics_idea_statistics",
  *  admin_label = @Translation("Idea statistics block"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock implements ContainerFactoryPluginInterface {
@@ -37,15 +43,12 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
    */
   public function build() {
     $build = [];
-    $configurations = $this->getConfiguration();
-    $node = $this->routeMatch->getParameter('node');
-    $public_stream = isset($configurations['view_mode']) && $configurations['view_mode'] == 'message';
+    $contexts = $this->getContexts();
+    $public_stream = isset($contexts['view_mode']) && $contexts['view_mode']->getContextValue() == 'message';
     $id = NULL;
 
-    if (isset($configurations['node'])) {
-      $id = $configurations['node']->id();
-    }
-    elseif ($node instanceof NodeInterface && $node->bundle() == 'idea') {
+    if (isset($contexts['node']) && !$contexts['node']->getContextValue()->isNew()) {
+      $node = $contexts['node']->getContextValue();
       $id = $node->id();
     }
     else {
@@ -79,6 +82,14 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
         ],
         'title' => $this->t('Views'),
         'img_class' => $public_stream ? 'public_stream_view' : 'view_tag',
+      ],
+      'overall_score' => [
+        'bottom' => [
+          $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
+        ],
+        'title' => $this->t('Overall score'),
+        // @Todo: ask for appropriate icon.
+        'img_class' => '',
       ],
     ];
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
