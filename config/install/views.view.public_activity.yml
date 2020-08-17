@@ -5,9 +5,8 @@ dependencies:
     - field.storage.message.field_comment_reference
     - field.storage.message.field_node_reference
     - field.storage.message.field_user_reference
-    - message.template.created_reply_on_comment
     - flag.flag.follow
-    - message.template.comment_created
+    - message.template.created_reply_on_comment
   module:
     - comment
     - flag
@@ -686,7 +685,7 @@ display:
           admin_label: ''
           operator: in
           value:
-            comment_created: comment_created
+            created_reply_on_comment: created_reply_on_comment
           group: 2
           exposed: false
           expose:
