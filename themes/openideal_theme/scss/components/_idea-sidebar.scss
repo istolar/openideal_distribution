@@ -1,28 +1,30 @@
 /* ------------------ Sidebar ----------------- */
 
-.region-sidebar {
-  flex-direction: column;
-
-  & > div:not(:first-child) {
-    margin: 0 25px;
-    padding: 40px 0;
-    border-bottom: 1px solid #E0E0E0;
-  }
-
-  // Votes block.
-  &--flag-and-follow {
-    background-color: #F6F7F8;
-    display: flex;
+.site-sidebar-idea {
+  .region-sidebar {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    .votingapi-reaction-form input[type="radio"] {
-      display: none;
+    & > div:not(:first-child) {
+      margin: 0 25px;
+      padding: 40px 0;
+      border-bottom: 1px solid #E0E0E0;
     }
 
-    &--element {
-      width: 50%;
+    // Votes block.
+    &--flag-and-follow {
+      background-color: #F6F7F8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .votingapi-reaction-form input[type="radio"] {
+        display: none;
+      }
+
+      &--element {
+        width: 50%;
+
         svg {
           fill: white;
           margin-right: 8px;
@@ -37,49 +39,52 @@
           }
         }
 
-      .votingapi-reaction-form {
-        .form-check {
-          padding-left: 0;
+        .votingapi-reaction-form {
+          .form-check {
+            padding-left: 0;
+          }
+
+          .form-check-label {
+            width: 100%;
+          }
         }
-
-        .form-check-label {
-          width: 100%;
-        }
-      }
-
-      a,
-      .votingapi-reaction-item,
-      .flag-follow--body {
-        display: flex;
-        text-transform: uppercase;
-        padding: $font-size-xs 0;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-      }
-
-      .votingapi-reaction-item {
-        font-size: $font-size-xs;
-        margin-bottom: 59px;
-        @include btn-theme($btn-dark, #1e7697);
-        margin-right: 0;
-      }
-
-      .flag-follow {
-        display: block;
-        margin: 70px 0 11px 0;
 
         a,
-        &--body {
-          font-size: $font-size-xs;
-          @include btn-theme($btn-light, #5eaed2);
+        .votingapi-reaction-item,
+        .flag-follow--body {
+          display: flex;
+          text-transform: uppercase;
+          padding: $font-size-xs 0;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
         }
-      }
-      .flag-follow--body {
-        margin: 70px 0 11px 0;
+
+        .votingapi-reaction-item {
+          font-size: $font-size-xs;
+          margin-bottom: 59px;
+          @include btn-theme($btn-dark, #1e7697);
+          margin-right: 0;
+        }
+
+        .flag-follow {
+          display: block;
+          margin: 70px 0 11px 0;
+
+          a,
+          &--body {
+            font-size: $font-size-xs;
+            @include btn-theme($btn-light, #5eaed2);
+          }
+        }
+
+        .flag-follow--body {
+          margin: 70px 0 11px 0;
+        }
       }
     }
   }
+
 }
 
 .site-sidebar-idea.site-sidebar {
@@ -163,6 +168,7 @@
   &--list {
     list-style: none;
     padding: 0;
+
     &__item {
       display: flex;
       align-items: center;
@@ -172,6 +178,7 @@
         display: flex;
         align-items: baseline;
       }
+
       &--count {
         font-weight: $font-weight-bold;
         padding: 0;

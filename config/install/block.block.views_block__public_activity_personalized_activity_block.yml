@@ -4,7 +4,7 @@ dependencies:
   config:
     - views.view.public_activity
   module:
-    - system
+    - route_condition
     - views
   theme:
     - openideal_theme
@@ -22,8 +22,8 @@ settings:
   views_label: 'Latest Updates'
   items_per_page: none
 visibility:
-  request_path:
-    id: request_path
-    pages: '/user/*'
+  route:
+    id: route
+    routes: entity.user.canonical
     negate: false
     context_mapping: {  }
