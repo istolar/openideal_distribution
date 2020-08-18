@@ -130,6 +130,10 @@
   input[type='radio'] {
     display: none;
   }
+
+  label {
+    cursor: pointer;
+  }
 }
 
 .my-comments-single-comment {

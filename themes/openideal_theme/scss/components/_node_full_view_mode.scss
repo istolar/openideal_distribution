@@ -1,7 +1,9 @@
-.node--type-idea {
+.node--view-mode-full {
   .card-body {
     padding: 26px 101px 50px 19px;
     // Block created.
+    .block-field-blocknodechallengecreated,
+    .block-field-blocknodearticlecreated,
     .block-field-blocknodeideacreated {
       font-size: $font-size-xs;
       color: $dark-gray;
@@ -9,14 +11,18 @@
     }
 
     // Block title
-    .block-field-blocknodeideatitle {
+    .block-field-blocknodeideatitle,
+    .block-field-blocknodearticletitle,
+    .block-field-blocknodechallengetitle {
       font-size: 1.6rem;
       line-height: 30px;
       margin-bottom: 26px;
     }
 
     // Block body.
-    .block-field-blocknodeideabody {
+    .block-field-blocknodeideabody,
+    .block-field-blocknodearticlebody,
+    .block-field-blocknodechallengebody {
       color: $dark-gray;
       line-height: 24px;
     }
@@ -61,7 +67,9 @@
   .node--type-idea .card-body {
     padding: 26px 19px;
 
-    .block-field-blocknodeideatitle {
+    .block-field-blocknodeideatitle,
+    .block-field-blocknodearticletitle,
+    .block-field-blocknodechallengetitle {
       font-size: 24px;
     }
     .mobile_idea_blocks  {

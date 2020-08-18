@@ -10,7 +10,7 @@ dependencies:
 id: ridiculously_responsive_social_share_buttons
 theme: openideal_theme
 region: sidebar
-weight: -5
+weight: -4
 provider: null
 plugin: rrssb_block
 settings:
@@ -23,6 +23,7 @@ visibility:
   node_type:
     id: node_type
     bundles:
+      challenge: challenge
       idea: idea
     negate: false
     context_mapping:

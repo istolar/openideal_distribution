@@ -109,19 +109,6 @@ display:
           entity_type: user
           plugin_id: rendered_entity
       filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
         entity_type:
           id: entity_type
           table: flagging
@@ -280,6 +267,22 @@ display:
     display_options:
       display_extenders: {  }
       block_description: Followers
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<h5>Content has no followers</h5>'
+            format: basic_html
+          plugin_id: text
+      defaults:
+        empty: false
     cache_metadata:
       max-age: -1
       contexts:

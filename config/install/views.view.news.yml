@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.full
+    - core.entity_view_mode.node.teaser
     - node.type.article
     - system.menu.main
   module:
@@ -70,7 +70,8 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: full
+          relationship: none
+          view_mode: teaser
       fields:
         title:
           id: title
@@ -190,10 +191,10 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  page_1:
+  all_news_page:
     display_plugin: page
-    id: page_1
-    display_title: Page
+    id: all_news_page
+    display_title: 'All News (page)'
     position: 1
     display_options:
       display_extenders: {  }
@@ -207,6 +208,10 @@ display:
         weight: 0
         context: '0'
         menu_name: main
+      display_description: ''
+      css_class: 'news-teaser-view-mode teaser-view-mode'
+      defaults:
+        css_class: false
     cache_metadata:
       max-age: -1
       contexts:

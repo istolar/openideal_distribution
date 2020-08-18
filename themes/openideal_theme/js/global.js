@@ -91,8 +91,7 @@
         var $form = $(this).closest('form');
         if ($form.hasClass('ajax-comments-form-reply')) {
           $form.toggle('slow');
-        }
-        else {
+        } else {
           $('.comments--bottom').toggle('slow');
         }
       });
@@ -115,8 +114,7 @@
       var $label = $('.votingapi-reaction-label', context);
       if ($label.parents('.region-sidebar').length) {
         $label.text(Drupal.t('Like idea'))
-      }
-      else if ($label.parents('.site-footer').length) {
+      } else if ($label.parents('.site-footer').length) {
         $label.text(Drupal.t('Like'))
       }
     }
@@ -170,6 +168,52 @@
   }
 
   /**
+   * Attach behaviours on exposed filter in ideas page.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Add the label before active option in every select.
+   */
+  Drupal.behaviors.openidealThemeExposedIdeasFilter = {
+    attach: function (context, settings) {
+      $('.teaser-view-mode .views-exposed-form fieldset', context).once('openideal_theme_exposed_ideas_filter').each(function () {
+        var $this = $(this);
+        var text = $('label', $this).text();
+
+        if ($this.hasClass('form-item-search')) {
+          $this.prepend('<div class="search-submit-button"></div>');
+          $('.search-submit-button', $this).on('click', function () {
+            $('.views-exposed-form input.form-submit', context).trigger('click');
+          });
+        } else {
+          $('select option:selected', $this).prepend('<span class="select-prepend">' + text + ': ' + '</span>')
+        }
+      });
+    }
+  }
+
+  /**
+   * Attach behaviours on user profile page.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Add colon aftet a label.
+   */
+  Drupal.behaviors.openidealThemeUserProfile = {
+    attach: function (context, settings) {
+      $('.user-profile-section-top .user-profile-section-top--section__second .field__label').once('openideal_theme_user_profile').each(function () {
+        var $this = $(this);
+        var text = $this.text();
+        if (text.charAt(text.length - 1) !== ':') {
+          $this.text(text + ':');
+        }
+      });
+    }
+  }
+
+  /**
    * Add the behaviour to comment reply link.
    *
    * @type {Drupal~behavior}
@@ -191,8 +235,7 @@
           if ($current.is(':visible')) {
             $($current).addClass('comments--thread__border-none')
             break;
-          }
-          else {
+          } else {
             $current.addClass('comments--thread__border-none')
           }
         }
