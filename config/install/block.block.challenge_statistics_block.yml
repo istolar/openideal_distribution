@@ -10,7 +10,7 @@ dependencies:
 id: challenge_statistics_block
 theme: openideal_theme
 region: sidebar
-weight: -8
+weight: -7
 provider: null
 plugin: openideal_statistics_challenge_statistics
 settings:

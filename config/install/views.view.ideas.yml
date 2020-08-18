@@ -14,6 +14,7 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - better_exposed_filters
+    - content_moderation
     - node
     - taxonomy
     - text
@@ -1386,6 +1387,7 @@ display:
         - user.permissions
       tags:
         - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.full'
         - 'config:core.entity_view_display.node.article.message'
         - 'config:core.entity_view_display.node.article.rss'
         - 'config:core.entity_view_display.node.article.teaser'
@@ -1435,6 +1437,7 @@ display:
         arguments: false
         filters: false
         filter_groups: false
+        title: false
       style:
         type: default
         options: {  }
@@ -1510,6 +1513,7 @@ display:
         operator: AND
         groups:
           1: AND
+      title: 'Challenge ideas'
     cache_metadata:
       max-age: -1
       contexts:

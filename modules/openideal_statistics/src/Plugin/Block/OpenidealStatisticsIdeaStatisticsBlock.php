@@ -2,6 +2,8 @@
 
 namespace Drupal\openideal_statistics\Plugin\Block;
 
+use Drupal\Core\Block\BlockBase;
+
 /**
  * Provides a 'OpenidealStatisticsIdeaStatisticsBlock' block.
  *
@@ -17,7 +19,7 @@ namespace Drupal\openideal_statistics\Plugin\Block;
  *   }
  * )
  */
-class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock {
+class OpenidealStatisticsIdeaStatisticsBlock extends BlockBase {
 
   /**
    * {@inheritdoc}
