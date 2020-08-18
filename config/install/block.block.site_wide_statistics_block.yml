@@ -9,7 +9,7 @@ dependencies:
 id: site_wide_statistics_block
 theme: openideal_theme
 region: content
-weight: -7
+weight: -10
 provider: null
 plugin: site_wide_statistics_block
 settings:
