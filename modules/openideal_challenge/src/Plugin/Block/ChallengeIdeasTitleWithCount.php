@@ -28,14 +28,28 @@ class ChallengeIdeasTitleWithCount extends BlockBase {
   public function build() {
     $contexts = $this->getContexts();
     $build = [];
-    $build['#theme'] = 'challenge_title_with_count';
     if (isset($contexts['node'])
       && !$contexts['node']->getContextValue()->isNew()) {
       $node = $contexts['node']->getContextValue();
 
-      $build['#count'] = [
-        '#lazy_builder' => ['openideal_statistics.lazy_builder:getChallengeIdeas', [$node->id()]],
-        '#create_placeholder' => TRUE,
+      $build['content'] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['challenges-ideas-title']],
+        'title' => [
+          '#markup' => $this->t('Challenge ideas'),
+        ],
+        // The lazy builder element do not supports the prefix and suffix,
+        // so add them like this.
+        'prefix' => [
+          '#markup' => ' (',
+        ],
+        'count' => [
+          '#lazy_builder' => ['openideal_statistics.lazy_builder:getChallengeIdeas', [$node->id()]],
+          '#create_placeholder' => TRUE,
+        ],
+        'suffix' => [
+          '#markup' => ')',
+        ],
       ];
       $build['#cache']['tags'] = ['node_list:idea'];
     }
