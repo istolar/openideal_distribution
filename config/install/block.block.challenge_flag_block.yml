@@ -15,11 +15,11 @@ provider: null
 plugin: openideal_idea_flag_and_like_block
 settings:
   id: openideal_idea_flag_and_like_block
-  label: Flag
+  label: 'Flag and Like block'
   provider: openideal_idea
   label_display: '0'
-  hide_like: 1
-  main_class: region-sidebar--flag
+  hide_like: 0
+  main_class: 'challenge-voting region-sidebar--flag-and-follow'
   context_mapping:
     node: '@node.node_route_context:node'
 visibility:

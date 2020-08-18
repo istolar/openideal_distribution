@@ -132,12 +132,32 @@ class OpenidealStatisticsLazyBuilder {
   public function getVotes($id = NULL) {
     $node = $id ? $this->entityTypeManager->getStorage('node')->load($id) : NULL;
     $markup = $node
-      ? $this->token->replace('[openideal:idea-votes-count]', ['node' => $node])
+      ? $this->token->replace('[openideal:node-votes-count]', ['node' => $node])
       : $this->token->replace('[openideal:votes-count]');
     return [
       '#markup' => $markup,
       '#cache' => [
         'tags' => $node ? $node->getCacheTags() : ['vote_list'],
+      ],
+    ];
+  }
+
+  /**
+   * Build element that return Challenge ideas count.
+   *
+   * @param int $id
+   *   Node id.
+   *
+   * @return array
+   *   Renderable array.
+   */
+  public function getChallengeIdeas($id) {
+    $markup = $this->token->replace('[openideal:challenge-ideas-count]', ['node_id' => $id]);
+
+    return [
+      '#markup' => $markup,
+      '#cache' => [
+        'tags' => ['node_list:idea'],
       ],
     ];
   }

@@ -112,10 +112,14 @@
   Drupal.behaviors.openidealThemeLikeWidgetLabel = {
     attach: function (context, settings) {
       var $label = $('.votingapi-reaction-label', context);
-      if ($label.parents('.region-sidebar').length) {
-        $label.text(Drupal.t('Like idea'))
-      } else if ($label.parents('.site-footer').length) {
-        $label.text(Drupal.t('Like'))
+      if ($label.parents('.challenge-voting').length) {
+        $label.text(Drupal.t('Like challenge'));
+      }
+      else if ($label.parents('.region-sidebar').length) {
+        $label.text(Drupal.t('Like idea'));
+      }
+      else if ($label.parents('.site-footer').length) {
+        $label.text(Drupal.t('Like'));
       }
     }
   }

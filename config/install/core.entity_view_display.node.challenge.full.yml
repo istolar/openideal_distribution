@@ -9,24 +9,29 @@ dependencies:
     - field.field.node.challenge.field_comments
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_like
     - field.field.node.challenge.field_main_image
     - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
+    - views.view.ideas
   module:
     - comment
     - file
     - image
     - layout_builder
     - layout_discovery
+    - openideal_challenge
     - openideal_idea
     - openideal_slideshow
     - text
     - user
+    - views
   theme:
     - bootstrap_barrio
+    - openideal_theme
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -211,6 +216,65 @@ third_party_settings:
             weight: 1
         third_party_settings: {  }
       -
+        layout_id: openideal_two_columns_teaser
+        layout_settings:
+          label: ''
+          main_class: two-columns-challenge-ideas
+          layout_builder_styles_style:
+            author: 0
+            user_compact: 0
+            user_profile: 0
+            user_profile_top: 0
+        components:
+          7f56423c-7fa6-4b7c-a99c-7b8d5abb0c3c:
+            uuid: 7f56423c-7fa6-4b7c-a99c-7b8d5abb0c3c
+            region: first
+            configuration:
+              id: openidel_challenge_challenge_ideas_title
+              label: 'Challenge ideas title with ideas count'
+              provider: openideal_challenge
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 0
+          5152eeac-fc24-46d6-8695-5feea500e1a0:
+            uuid: 5152eeac-fc24-46d6-8695-5feea500e1a0
+            region: second
+            configuration:
+              id: openidel_challenge_add_idea
+              label: 'Add idea button'
+              provider: openideal_challenge
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Challenge ideas'
+          layout_builder_styles_style:
+            author: 0
+            user_compact: 0
+            user_profile: 0
+            user_profile_top: 0
+        components:
+          99f0975d-f911-4b12-a83c-b7c8047218b3:
+            uuid: 99f0975d-f911-4b12-a83c-b7c8047218b3
+            region: content
+            configuration:
+              id: 'views_block:ideas-challenge_ideas_block'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
         layout_id: layout_onecol
         layout_settings:
           label: Comments
@@ -340,4 +404,5 @@ content:
     region: content
 hidden:
   addtoany: true
+  field_like: true
   field_meta_tags: true

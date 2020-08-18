@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.challenge.field_comments
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_like
     - field.field.node.challenge.field_main_image
     - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
@@ -16,11 +17,13 @@ dependencies:
     - node.type.challenge
   module:
     - allowed_formats
+    - content_moderation
     - entity_browser
     - metatag
     - openideal_challenge
     - path
     - text
+    - votingapi_reaction
 id: node.challenge.default
 targetEntityType: node
 bundle: challenge
@@ -71,6 +74,12 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_like:
+    weight: 104
+    settings: {  }
+    third_party_settings: {  }
+    type: votingapi_reaction_default
     region: content
   field_main_image:
     weight: 6
