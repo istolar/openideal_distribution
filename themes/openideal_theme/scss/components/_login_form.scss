@@ -1,0 +1,22 @@
+.user-login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-actions {
+    input {
+      width: 588px;
+      @include btn-theme($btn-dark, #1e7697);
+    }
+  }
+  .social-login-buttons {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

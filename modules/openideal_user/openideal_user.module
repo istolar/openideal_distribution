@@ -40,9 +40,13 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
     }
   }
   $form['actions']['social_buttons'] = [
-    '#theme' => 'login_with',
-    '#social_networks' => $social_plugins,
-    '#weight' => '1',
+    '#type' => 'container',
+    '#attributes' => ['class' => ['social-login-buttons']],
+    'buttons' => [
+      '#theme' => 'login_with',
+      '#social_networks' => $social_plugins,
+      '#weight' => '1',
+    ],
   ];
 }
 
