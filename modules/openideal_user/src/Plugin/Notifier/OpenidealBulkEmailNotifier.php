@@ -121,20 +121,8 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
       return [$owner->id() => $owner->getEmail()];
     }
 
-    // @Todo: Optimize.
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->message->field_node_reference->entity;
-    $bundle = $node->bundle();
-
-    // If it's an Idea then need to notify all group members.
-    if ($bundle == 'idea') {
-      $group = $this->helper->getGroupByNode($node);
-      $members = $group->getMembers();
-      foreach ($members as $member) {
-        $user = $member->getUser();
-        $recipients[$user->id()] = $user->getEmail();
-      }
-    }
 
     // Get all flaggings and notify users subscribed to the entity.
     /** @var \Drupal\flag\FlagService $flag */
@@ -142,10 +130,6 @@ class OpenidealBulkEmailNotifier extends MessageNotifierBase {
     foreach ($flagging_users as $user) {
       $recipients[$user->id()] = $user->getEmail();
     }
-
-    // Do not notify message owner.
-    // @Todo: should?
-    $this->removeOwner($this->message->getOwner(), $recipients);
 
     // If the comment owner at the same time is follower of commented entity,
     // remove notification of new comment so we don't notify the user two times.
