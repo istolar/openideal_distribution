@@ -64,7 +64,7 @@ class Charts extends BlockBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function build() {
-    $users = $this->entityTypeManager->getStorage('user')->loadMultiple();
+    $users = $this->entityTypeManager->getStorage('user')->loadByProperties(['status' => 1]);
     $data = [];
     foreach ($users as $user) {
       $data[] = [

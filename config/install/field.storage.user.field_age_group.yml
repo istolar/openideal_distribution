@@ -11,7 +11,7 @@ type: list_integer
 settings:
   allowed_values:
     -
-      value: 1929
+      value: 1939
       label: 'Before 1940'
     -
       value: 1940

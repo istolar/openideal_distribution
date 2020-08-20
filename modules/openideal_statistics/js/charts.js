@@ -65,8 +65,8 @@
 
         // To add new dimensions into the charts, please add new array key to $data
         // @see Drupal\openideal_statistics\Plugin\Block\Charts
-        // add it into the dimensions array bellow, there are three types of data see
-        // var "types" above.
+        // add into the dimensions array bellow, there are three types of data see
+        // object "types" above.
         var dimensions = [
           {
             key: 'gender',
@@ -87,11 +87,11 @@
               var date = new Date(d).getFullYear();
               switch (date) {
                 case 1930:
-                  date = 'Before 1940';
+                  date = Drupal.t('Before 1940');
                   break;
 
                 case 2000:
-                  date = 'After 2000';
+                  date = Drupal.t('After 2000');
                   break;
 
                 default:
@@ -151,17 +151,25 @@
             // In case if user didn't set one of field, and to not add unneeded empty "tick",
             // set default values.
             var getDefaultKey = function () {
+              // Todo: check how it works with translation.
               switch (p.key) {
                 case 'gender':
                   return 'other';
 
                 case 'age':
-                  return new Date('1960');
+                  return new Date("1960");
 
                 default:
                   return null;
               }
             };
+
+            // Change the actual data for 1939 year to 1930 because it's a
+            // before 1940, and tics are every 10 years.
+            if (p.key == 'age' && d[p.key] && d[p.key] == '1939') {
+              return d[p.key] = p.type.coerce("1930");
+            }
+
             d[p.key] = !d[p.key] ? getDefaultKey() : p.type.coerce(d[p.key]);
           });
         });
@@ -177,6 +185,11 @@
           if (!('scale' in dim)) {
             // Use type's default scale for dimension.
             dim.scale = dim.type.defaultScale.copy();
+          }
+
+          // Change domain range from 1929 to 2000.
+          if (dim.key === 'age') {
+            dim.domain[0] = new Date("1929");
           }
           dim.scale.domain(dim.domain);
         });
