@@ -7,5 +7,5 @@ openideal_statistics.charts:
     base:
       css/export_icons.css: {}
   js:
-    /libraries/d3/d3.js: {}
+    /libraries/d3/build/d3.js: {}
     js/charts.js: {}
