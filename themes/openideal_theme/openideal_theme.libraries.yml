@@ -7,7 +7,7 @@ global-styling:
   css:
     component:
       '//fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Roboto&display=swap': { type: external, minified: true }
-      css/style.min.css: {}
+      css/style.min.css: { minified: true }
   dependencies:
     - core/jquery
     - core/drupal

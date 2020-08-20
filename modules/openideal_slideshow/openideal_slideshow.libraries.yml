@@ -1,17 +1,15 @@
-openideal_slideshow.slick:
-  remote: http://kenwheeler.github.io/slick/
-  version: 1.x
-  license:
-    name: MIT
-    url: https://github.com/kenwheeler/slick/blob/master/LICENSE
-    gpl-compatible: true
+openideal_slideshow.carousel:
   js:
-    /libraries/slick-carousel/slick/slick.js: {}
-    js/slick-configuration.js: {}
+    /libraries/photoswipe/dist/photoswipe.min.js: { minified: true }
+    /libraries/photoswipe/dist/photoswipe-ui-default.min.js: { minified: true }
+    /libraries/swiper/swiper-bundle.min.js: { minified: true }
+    js/slider-configuration.js: {}
   css:
     base:
-      /libraries/slick-carousel/slick/slick.css: {}
-      /libraries/slick-carousel/slick/slick-theme.css: {}
+      /libraries/photoswipe/dist/photoswipe.css: {}
+      /libraries/photoswipe/dist/default-skin/default-skin.css: {}
+      /libraries/swiper/swiper-bundle.min.css: { minified: true }
+      css/slideshow.css: {}
   dependencies:
     - core/jquery
     - core/jquery.once

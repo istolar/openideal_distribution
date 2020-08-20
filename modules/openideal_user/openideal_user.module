@@ -41,9 +41,13 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
     }
   }
   $form['actions']['social_buttons'] = [
-    '#theme' => 'login_with',
-    '#social_networks' => $social_plugins,
-    '#weight' => '1',
+    '#type' => 'container',
+    '#attributes' => ['class' => ['social-login-buttons']],
+    'buttons' => [
+      '#theme' => 'login_with',
+      '#social_networks' => $social_plugins,
+      '#weight' => '1',
+    ],
   ];
 }
 
@@ -195,4 +199,14 @@ function openideal_user_mail($key, &$message, $params) {
   $message['from'] = Drupal::config('system.site')->get('mail');
   $message['subject'] = $params['mail_subject'];
   $message['body'][] = $params['mail_body'];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function openideal_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['node_idea_edit_form', 'node_idea_form'])
+  && !\Drupal::currentUser()->hasPermission('administer site configuration')) {
+    $form['field_duplicate_of']['#access'] = FALSE;
+  }
 }

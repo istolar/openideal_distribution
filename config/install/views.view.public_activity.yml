@@ -5,9 +5,13 @@ dependencies:
     - field.storage.message.field_comment_reference
     - field.storage.message.field_node_reference
     - field.storage.message.field_user_reference
+    - flag.flag.follow
     - message.template.created_reply_on_comment
   module:
+    - comment
+    - flag
     - message
+    - node
     - user
 id: public_activity
 label: 'Public activity'
@@ -556,6 +560,219 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.permissions
+      tags:
+        - 'config:field.storage.message.field_comment_reference'
+        - 'config:field.storage.message.field_node_reference'
+        - 'config:field.storage.message.field_user_reference'
+  personalized_activity_block:
+    display_plugin: block
+    id: personalized_activity_block
+    display_title: 'Personalized activity (block)'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'Personalized activity'
+      display_description: ''
+      title: 'Personalized activity'
+      defaults:
+        title: false
+        relationships: false
+        filters: false
+        filter_groups: false
+        arguments: false
+        cache: false
+      relationships:
+        field_node_reference:
+          id: field_node_reference
+          table: message__field_node_reference
+          field: field_node_reference
+          relationship: none
+          group_type: group
+          admin_label: 'field_node_reference: Content'
+          required: false
+          plugin_id: standard
+        flag_relationship:
+          id: flag_relationship
+          table: node_field_data
+          field: flag_relationship
+          relationship: field_node_reference
+          group_type: group
+          admin_label: Flags
+          required: false
+          flag: follow
+          user_scope: any
+          entity_type: node
+          plugin_id: flag_relationship
+        field_comment_reference:
+          id: field_comment_reference
+          table: message__field_comment_reference
+          field: field_comment_reference
+          relationship: none
+          group_type: group
+          admin_label: 'field_comment_reference: Comment'
+          required: false
+          plugin_id: standard
+        pid:
+          id: pid
+          table: comment_field_data
+          field: pid
+          relationship: field_comment_reference
+          group_type: group
+          admin_label: 'Parent Comment'
+          required: false
+          entity_type: comment
+          entity_field: pid
+          plugin_id: standard
+      filters:
+        uid:
+          id: uid
+          table: flagging
+          field: uid
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '[user-page-id]'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: flagging
+          entity_field: uid
+          plugin_id: numeric
+        template:
+          id: template
+          table: message_field_data
+          field: template
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            created_reply_on_comment: created_reply_on_comment
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: message
+          entity_field: template
+          plugin_id: bundle
+        uid_1:
+          id: uid_1
+          table: comment_field_data
+          field: uid
+          relationship: pid
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '[user-page-id]'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: comment
+          entity_field: uid
+          plugin_id: numeric
+      filter_groups:
+        operator: OR
+        groups:
+          1: OR
+          2: AND
+      arguments: {  }
+      cache:
+        type: none
+        options: {  }
     cache_metadata:
       max-age: -1
       contexts:

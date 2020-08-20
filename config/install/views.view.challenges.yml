@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.storage.node.body
     - field.storage.node.field_is_open
     - field.storage.user.user_picture
@@ -608,7 +609,7 @@ display:
           type: image
           settings:
             image_style: thumbnail
-            image_link: ''
+            image_link: content
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -671,7 +672,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: false
+            link: true
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -867,6 +868,9 @@ display:
         exposed_form: false
         pager: false
         relationships: false
+        css_class: false
+        style: false
+        row: false
       filters:
         status:
           value: '1'
@@ -1024,10 +1028,10 @@ display:
           text_input_required_format: basic_html
           bef:
             general:
-              autosubmit: false
+              autosubmit: true
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
@@ -1046,7 +1050,6 @@ display:
               field_is_open_value:
                 plugin_id: default
                 advanced:
-                  sort_options: true
                   rewrite:
                     filter_rewrite_values: "True|Opened\r\nFalse|Closed"
                   collapsible: false
@@ -1054,7 +1057,6 @@ display:
               field_category_target_id:
                 plugin_id: default
                 advanced:
-                  sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
@@ -1118,6 +1120,15 @@ display:
           entity_type: node
           entity_field: uid
           plugin_id: standard
+      css_class: 'challenge-teaser-view-mode teaser-view-mode'
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
     cache_metadata:
       max-age: 0
       contexts:

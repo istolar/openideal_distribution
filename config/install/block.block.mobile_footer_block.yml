@@ -4,6 +4,7 @@ dependencies:
   module:
     - node
     - openideal_footer
+    - route_condition
   theme:
     - openideal_theme
 id: mobile_footer_block
@@ -17,6 +18,10 @@ settings:
   label: 'Mobile footer block'
   provider: openideal_footer
   label_display: '0'
+  hide_like: 0
+  main_class: ''
+  context_mapping:
+    node: '@node.node_route_context:node'
 visibility:
   node_type:
     id: node_type
@@ -25,3 +30,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  route:
+    id: route
+    routes: entity.node.canonical
+    negate: false
+    context_mapping: {  }

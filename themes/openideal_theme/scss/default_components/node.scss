@@ -4,42 +4,41 @@
  */
 
 .node__content {
-    font-size: $font-size-base;
-    margin-top: $spacer;
+    margin-top: unset;
+    font-size: 18px;
 }
 
 
 /* View mode teaser styles. */
 
 .node--view-mode-teaser {
-    border-bottom: $border-width solid $border-color;
-    margin-bottom: $spacer;
-    padding-bottom: $spacer;
+    border-bottom: unset;
+    margin-bottom: unset;
+    padding-bottom: unset;
 }
 
 .node--view-mode-teaser h2 {
     margin-top: 0;
-    padding-top: 0.5em;
+    padding-top: unset;
 }
 
 .node--view-mode-teaser.node--sticky {
     background: #f9f9f9;
-    background: rgba(0, 0, 0, 0.024);
-    border: $border-width solid $border-color;
-    padding: 0 $spacer $spacer;
+    border: unset;
+    padding: unset;
 }
 
 .node--view-mode-teaser .node__content {
     clear: none;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: unset;
+    line-height: unset;
 }
 
 
 /* Node metadata styles. */
 
 .node__meta {
-    font-size: $font-size-sm;
+    font-size: unset;
     margin-bottom: -5px;
 }
 
@@ -60,23 +59,23 @@
 /* Node links styles. */
 
 .node__links {
-    text-align: right;
+    text-align: unset;
     /* LTR */
-    font-size: $font-size-base;
+    font-size: unset;
 }
 
 [dir="rtl"] .node__links {
-    text-align: left;
+    text-align: unset;
 }
 
 
 /* Unpublished node styles. */
 
 .node--unpublished {
-    padding: $spacer $spacer 0;
+    padding: unset;
 }
 
 .node--unpublished .comment-text .comment-arrow {
-    border-left: $border-width solid #fff4f4;
-    border-right: $border-width solid #fff4f4;
+    border-left: unset;
+    border-right: unset;
 }

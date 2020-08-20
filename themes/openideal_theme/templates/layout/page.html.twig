@@ -45,7 +45,7 @@
  * - content_attributes: Items for the header region.
  * - sidebar_first_attributes: Items for the highlighted region.
  * - sidebar_second_attributes: Items for the primary menu region.
- * - is_idea: If the current page is Idea node.
+ * - is_node: If the current page is node.
  *
  * @see template_preprocess_page()
  * @see bootstrap_barrio_preprocess_page()
@@ -91,7 +91,7 @@
                         </div>
                     {% endif %}
                     <footer class="site-navigation--footer d-lg-none">
-                        {{ drupal_block('openidel_footer_powered_by') }}
+                        {{ page.navigation_footer }}
                     </footer>
                 </div>
             </div>
@@ -125,7 +125,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ is_idea ? 'site-sidebar-idea' : '' }}">
+            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ is_node ? 'site-sidebar-node' : '' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>
@@ -134,7 +134,7 @@
     </div>
 </div>
 {# Dark Overlay element #}
-<div class="overlay"></div>
+<div class="navigation-overlay"></div>
 
 {# Mobile share footer. #}
 {% if page.mobile_share %}
@@ -145,7 +145,7 @@
 
 {# Footer. #}
 {% if page.footer %}
-    <footer class="site-footer {{ is_idea ? 'mobile-idea-site-footer' : '' }}">
+    <footer class="site-footer {{ is_node ? 'mobile-idea-site-footer' : '' }}">
         {% block footer %}
             {{ page.footer }}
         {% endblock %}

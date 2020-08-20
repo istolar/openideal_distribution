@@ -11,6 +11,7 @@
   a {
     transition: color 0.3s;
     color: #BDBDBD;
+
     &:hover {
       color: #d2caca;
     }
@@ -32,29 +33,69 @@
     font-size: 12px;
   }
 
+  &--referenced-label--article {
+    background: #F2994A;
+  }
+
+  &--referenced-label--news {
+    background: #F85B85;
+  }
+
+  &--referenced-label--idea {
+    background: #64C45C;
+  }
+
+  &--referenced-label--challenge {
+    background: #1294CA;
+  }
+
+  &--referenced-label--comment {
+    background: #F2994A;
+  }
+
+  &--referenced-label--user {
+    background: #E1B83B;
+  }
+
+  &--referenced-label--page {
+    background: #3bcee1;
+  }
+
   &--text {
     margin: 26px 0 4px 0;
     font-weight: $font-weight-bold;
     padding: 0;
   }
 
-    .profile {
-      display: flex;
-      align-items: center;
-      font-weight: $font-weight-bold;
-      font-size: 12px;
+  .profile {
+    display: flex;
+    align-items: center;
+    font-weight: $font-weight-bold;
+    font-size: 12px;
 
-      & > div {
-        margin-right: 4px;
-      }
+    & > div {
+      margin-right: 4px;
+    }
 
   }
 
-  img {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    margin: 0;
+  .profile-author-view-mode .layout__region--content {
+    img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    a {
+      font-size: 12px;
+      transition: color 0.3s;
+      color: #BDBDBD;
+
+      &:hover {
+        color: #d2caca;
+      }
+    }
   }
 
   &--section {
@@ -100,6 +141,10 @@
           &--public_stream_like {
             background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
           }
+
+          &--public_stream_idea {
+            background: url('../misc/icons/public_stream_idea.svg') no-repeat center center;
+          }
         }
       }
 
@@ -115,10 +160,11 @@
 }
 
 .block-views-blockpublic-activity-public-activity-block,
-.block-openideal-personal-activity-stream-block {
+.block-views-blockpublic-activity-personalized-activity-block {
   padding: 0 27px;
   width: 100%;
   margin-top: 52px;
+
   h2 {
     color: $white;
     font-size: 25px;
@@ -127,10 +173,26 @@
   }
 }
 
+.block-openideal-personal-activity-stream-block {
+  .list-group {
+    list-style: none;
+
+    &-item {
+      padding: 0;
+      background-color: unset;
+      border: none;
+    }
+  }
+}
+
 .activity-stream {
   &--list {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .message-user-section__footer {
+    margin-top: 20px;
   }
 }

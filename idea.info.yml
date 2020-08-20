@@ -21,6 +21,7 @@ dependencies:
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - route_condition:route_condition
   - ckeditor_mentions:ckeditor_mentions
   - ckeditor_media_embed:ckeditor_media_embed
   - drupal:comment
@@ -64,6 +65,7 @@ dependencies:
   - metatag:metatag
   - metatag:metatag_open_graph
   - metatag:metatag_twitter_cards
+  - moderation_state_buttons_widget:moderation_state_buttons_widget
   - multiple_fields_remove_button:multiple_fields_remove_button
   - drupal:node
   - drupal:options

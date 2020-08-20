@@ -1,0 +1,11 @@
+export_icons:
+  css:
+    base:
+      css/export_icons.css: {}
+openideal_statistics.charts:
+  css:
+    base:
+      css/export_icons.css: {}
+  js:
+    /libraries/d3/build/d3.js: {}
+    js/charts.js: {}

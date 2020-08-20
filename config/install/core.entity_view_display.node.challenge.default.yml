@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.challenge.field_comments
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_like
     - field.field.node.challenge.field_main_image
     - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
@@ -24,6 +25,7 @@ dependencies:
     - openideal_challenge
     - text
     - user
+    - votingapi_reaction
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -187,6 +189,26 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 12
+          99aa5235-3542-4d78-ac10-5a1cbf768c6f:
+            uuid: 99aa5235-3542-4d78-ac10-5a1cbf768c6f
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:challenge:field_like'
+              formatter:
+                label: above
+                settings:
+                  show_summary: true
+                  show_icon: true
+                  show_label: true
+                  show_count: true
+                  sort_reactions: desc
+                third_party_settings: {  }
+                type: votingapi_reaction_default
+            additional: {  }
+            weight: 13
         third_party_settings: {  }
 id: node.challenge.default
 targetEntityType: node
@@ -235,6 +257,18 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_like:
+    weight: 113
+    label: above
+    settings:
+      show_summary: true
+      show_icon: true
+      show_label: true
+      show_count: true
+      sort_reactions: desc
+    third_party_settings: {  }
+    type: votingapi_reaction_default
     region: content
   field_main_image:
     weight: 102

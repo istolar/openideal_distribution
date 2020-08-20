@@ -3,10 +3,6 @@
 namespace Drupal\openideal_idea\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Routing\CurrentRouteMatch;
-use Drupal\node\NodeInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'Node tags' block.
@@ -14,58 +10,36 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *  id = "openideal_idea_tags_block",
  *  admin_label = @Translation("Node tags"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
-class OpenidealIdeaTags extends BlockBase implements ContainerFactoryPluginInterface {
-
-  /**
-   * Current route match service.
-   *
-   * @var \Drupal\Core\Routing\CurrentRouteMatch
-   */
-  protected $currentRouteMatch;
-
-  /**
-   * {@inheritDoc}
-   */
-  public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    CurrentRouteMatch $current_route_match
-  ) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->currentRouteMatch = $current_route_match;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('current_route_match')
-    );
-  }
+class OpenidealIdeaTags extends BlockBase {
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    $node = $this->currentRouteMatch->getParameter('node');
-    $build = [
-      '#theme' => 'item_list',
-      '#title' => $this->t('Tags'),
-      '#attributes' => ['class' => ['idea-tags']],
-    ];
-    if ($node instanceof NodeInterface) {
+    $build = [];
+    $contexts = $this->getContexts();
+    if (isset($contexts['node'])) {
+      $node = $contexts['node']->getContextValue();
+      $build = [
+        '#theme' => 'item_list',
+        '#title' => $this->t('Tags'),
+        '#attributes' => ['class' => ['idea-tags']],
+      ];
       $items = [];
       foreach ($node->field_idea_tags as $tag) {
         $items[] = $tag->entity->label();
       }
       $build['#items'] = $items;
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

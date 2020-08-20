@@ -13,6 +13,162 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/mentions",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/mentions/releases/mentions_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/autocomplete",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/autocomplete/releases/autocomplete_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/textmatch",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/textmatch/releases/textmatch_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/textwatcher",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/textwatcher/releases/textwatcher_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/ajax",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/ajax/releases/ajax_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/xml",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/xml/releases/xml_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/embed",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/embed/releases/embed_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/embedsemantic",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/embedsemantic/releases/embedsemantic_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/embedbase",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/embedbase/releases/embedbase_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/autoembed",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/autoembed/releases/autoembed_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/autolink",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/autolink/releases/autolink_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/notification",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/notification/releases/notification_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/notificationaggregator",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -31,6 +187,19 @@
         "drupal/ckeditor_mentions": "2.x-dev",
         "drupal/comments_order": "^1.1",
         "drupal/config_pages": "^2.6",
+        "ckeditor/ajax": "4.14.1",
+        "ckeditor/autocomplete": "4.14.1",
+        "ckeditor/mentions": "4.14.1",
+        "ckeditor/textmatch": "4.14.1",
+        "ckeditor/textwatcher": "4.14.1",
+        "ckeditor/xml": "4.14.1",
+        "ckeditor/notificationaggregator": "4.14.1",
+        "ckeditor/notification": "4.14.1",
+        "ckeditor/autolink": "4.14.1",
+        "ckeditor/autoembed": "4.14.1",
+        "ckeditor/embedbase": "4.14.1",
+        "ckeditor/embedsemantic": "4.14.1",
+        "ckeditor/embed": "4.14.1",
         "drupal/ctools": "^3.4",
         "drupal/default_content": "^1.0",
         "drupal/dropzonejs": "^2.1",
@@ -45,9 +214,11 @@
         "drupal/metatag": "^1.13",
         "drupal/message": "^1.0",
         "drupal/message_notify": "^1.1",
+        "drupal/moderation_state_buttons_widget": "^1.0@alpha",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
         "drupal/rabbit_hole": "^1.0",
+        "drupal/route_condition": "^1.1",
         "drupal/rrssb": "^2.2",
         "drupal/rules": "3.x-dev",
         "drupal/social_auth_facebook": "^2.0",
@@ -64,8 +235,11 @@
         "drupal/votingapi": "3.x-dev",
         "drupal/votingapi_reaction": "^1.1",
         "drupal/votingapi_widgets": "1.x-dev",
+        "npm-asset/d3": "^4.13",
         "npm-asset/dropzone": "^5.7",
         "npm-asset/jquery-bar-rating": "^1.2",
+        "npm-asset/swiper": "^6.1",
+        "npm-asset/photoswipe": "^4.1",
         "oomphinc/composer-installers-extender": "^1.1"
     },
     "provide": {
@@ -93,6 +267,12 @@
             },
             "drupal/message": {
                 "Message template should depend on text(s) filter formats": "https://www.drupal.org/files/issues/2020-08-03/3163049-2.patch"
+            },
+            "drupal/ckeditor_mentions": {
+                "Use the official CKEditor mention plugin": "https://www.drupal.org/files/issues/2020-08-12/ckeditorplugin-3009308-21.patch"
+            },
+            "drupal/group": {
+                "Don't deny access to update/delete unpublished entities if we don't support it yrt": "https://www.drupal.org/files/issues/2020-08-06/group-3163727-2.patch"
             }
         }
     }

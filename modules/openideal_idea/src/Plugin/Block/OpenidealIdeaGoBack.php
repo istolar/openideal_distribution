@@ -72,8 +72,17 @@ class OpenidealIdeaGoBack extends BlockBase implements ContainerFactoryPluginInt
 
       switch ($bundle) {
         case 'idea':
-        default:
           $url = Url::fromRoute('view.ideas.all_ideas_page');
+          break;
+
+        case 'challenge':
+          $url = Url::fromRoute('view.challenges.all_challenges_page');
+          break;
+
+        case 'article':
+          $url = Url::fromRoute('view.news.all_news_page');
+          break;
+
       }
 
       $build['link'] = [
@@ -81,6 +90,7 @@ class OpenidealIdeaGoBack extends BlockBase implements ContainerFactoryPluginInt
         '#title' => $this->t('Back to @page', ['@page' => $bundle . 's']),
         '#url' => $url,
       ];
+      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

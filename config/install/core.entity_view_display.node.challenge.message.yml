@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.challenge.field_comments
     - field.field.node.challenge.field_images
     - field.field.node.challenge.field_is_open
+    - field.field.node.challenge.field_like
     - field.field.node.challenge.field_main_image
     - field.field.node.challenge.field_meta_tags
     - field.field.node.challenge.field_schedule_close
@@ -101,6 +102,7 @@ hidden:
   field_comments: true
   field_images: true
   field_is_open: true
+  field_like: true
   field_main_image: true
   field_meta_tags: true
   field_schedule_close: true

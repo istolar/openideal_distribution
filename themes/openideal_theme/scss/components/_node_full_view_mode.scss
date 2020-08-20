@@ -1,7 +1,9 @@
-.node--type-idea {
+.node--view-mode-full {
   .card-body {
     padding: 26px 101px 50px 19px;
     // Block created.
+    .block-field-blocknodechallengecreated,
+    .block-field-blocknodearticlecreated,
     .block-field-blocknodeideacreated {
       font-size: $font-size-xs;
       color: $dark-gray;
@@ -9,28 +11,18 @@
     }
 
     // Block title
-    .block-field-blocknodeideatitle {
+    .block-field-blocknodeideatitle,
+    .block-field-blocknodearticletitle,
+    .block-field-blocknodechallengetitle {
       font-size: 1.6rem;
       line-height: 30px;
       margin-bottom: 26px;
     }
 
-    // Block creator.
-    .block-views-blockideas-idea-creator-block {
-      margin-bottom: 26px;
-      .views-row {
-        display: flex;
-        align-items: center;
-
-        img {
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-      }
-    }
-
     // Block body.
-    .block-field-blocknodeideabody {
+    .block-field-blocknodeideabody,
+    .block-field-blocknodearticlebody,
+    .block-field-blocknodechallengebody {
       color: $dark-gray;
       line-height: 24px;
     }
@@ -69,13 +61,32 @@
       }
     }
   }
+
+  .two-columns-challenge-ideas {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .challenges-ideas-title {
+      font-size: 28px;
+      font-weight: $font-weight-bold;
+    }
+
+    a {
+      padding: 15px 70px;
+      @include btn-theme($btn-light, #5eaed2);
+      font-size: 15px;
+    }
+  }
 }
 
 @media (max-width: 767px) {
   .node--type-idea .card-body {
     padding: 26px 19px;
 
-    .block-field-blocknodeideatitle {
+    .block-field-blocknodeideatitle,
+    .block-field-blocknodearticletitle,
+    .block-field-blocknodechallengetitle {
       font-size: 24px;
     }
     .mobile_idea_blocks  {
