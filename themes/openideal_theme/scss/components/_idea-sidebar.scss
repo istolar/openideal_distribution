@@ -10,12 +10,17 @@
   }
 
   // Votes block.
-  &--flag-and-follow {
+  &--flag-and-follow,
+  &--flag {
     background-color: #F6F7F8;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    label {
+      cursor: pointer;
+    }
 
     .votingapi-reaction-form input[type="radio"] {
       display: none;
@@ -82,7 +87,7 @@
   }
 }
 
-.site-sidebar-idea.site-sidebar {
+.site-sidebar-node.site-sidebar {
   background-color: $white;
 
   h2 {
@@ -201,11 +206,17 @@
         background: url('../misc/icons/comment_tag.svg') no-repeat center center;
       }
 
+      &--statistics_tag {
+        background: url('../misc/icons/statistics_tag.svg') no-repeat center center;
+      }
+
       &--like_tag {
         background: url('../misc/icons/like_tag.svg') no-repeat center center;
       }
 
-      svg {
+      &--score_tag {
+        background: url('../misc/icons/score_tag.svg') no-repeat center center;
+        background-size: 32px;
       }
     }
 

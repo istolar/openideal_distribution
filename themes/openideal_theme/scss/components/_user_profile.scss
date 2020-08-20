@@ -1,0 +1,26 @@
+.profile-user-profile-view-mode {
+  h2 {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+
+  h5 {
+    font-size: $font-size-base;
+  }
+}
+
+.user-profile-section-top {
+  display: flex;
+
+  &--section__first {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &--section__second {
+    .field__label {
+      font-weight: $font-weight-bold;
+    }
+  }
+}

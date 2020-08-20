@@ -10,7 +10,7 @@ dependencies:
 id: idea_info
 theme: openideal_theme
 region: sidebar
-weight: -8
+weight: -9
 provider: null
 plugin: openideal_idea_info_block
 settings:
@@ -22,6 +22,7 @@ visibility:
   node_type:
     id: node_type
     bundles:
+      challenge: challenge
       idea: idea
     negate: false
     context_mapping:

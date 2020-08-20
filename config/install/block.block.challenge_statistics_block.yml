@@ -1,33 +1,30 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - views.view.ideas
   module:
     - node
+    - openideal_statistics
     - route_condition
-    - views
   theme:
     - openideal_theme
-id: views_block__ideas_idea_workflow_status
+id: challenge_statistics_block
 theme: openideal_theme
 region: sidebar
-weight: -6
+weight: -7
 provider: null
-plugin: 'views_block:ideas-idea_workflow_status'
+plugin: openideal_statistics_challenge_statistics
 settings:
-  id: 'views_block:ideas-idea_workflow_status'
-  label: ''
-  provider: views
+  id: openideal_statistics_challenge_statistics
+  label: 'Rating and statistics'
+  provider: openideal_statistics
   label_display: visible
-  views_label: ''
-  items_per_page: none
-  context_mapping: {  }
+  context_mapping:
+    node: '@node.node_route_context:node'
 visibility:
   node_type:
     id: node_type
     bundles:
-      idea: idea
+      challenge: challenge
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

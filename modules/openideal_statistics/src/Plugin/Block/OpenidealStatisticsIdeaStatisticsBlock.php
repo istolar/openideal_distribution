@@ -2,8 +2,7 @@
 
 namespace Drupal\openideal_statistics\Plugin\Block;
 
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Block\BlockBase;
 
 /**
  * Provides a 'OpenidealStatisticsIdeaStatisticsBlock' block.
@@ -20,31 +19,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock implements ContainerFactoryPluginInterface {
-
-  /**
-   * Current route match.
-   *
-   * @var \Drupal\Core\Routing\CurrentRouteMatch
-   */
-  protected $routeMatch;
+class OpenidealStatisticsIdeaStatisticsBlock extends BlockBase {
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->routeMatch = $container->get('current_route_match');
-    return $instance;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function build() {
+  public function build($challenge = NULL) {
     $build = [];
     $contexts = $this->getContexts();
-    $public_stream = isset($contexts['view_mode']) && $contexts['view_mode']->getContextValue() == 'message';
+    $is_not_full = isset($contexts['view_mode']) && $contexts['view_mode']->getContextValue() != 'full';
     $id = NULL;
 
     if (isset($contexts['node']) && !$contexts['node']->getContextValue()->isNew()) {
@@ -57,7 +40,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
 
     $build['#theme'] = 'site_wide_statistics_block';
     $build['#main_class'] = 'idea-statistics-block';
-    $build['#show_title'] = !$public_stream;
+    $build['#show_title'] = !$is_not_full;
     $build['#content'] = [
       'votes' => [
         'bottom' => [
@@ -65,7 +48,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Votes'),
-        'img_class' => $public_stream ? 'public_stream_like' : 'like_tag',
+        'img_class' => $is_not_full ? 'public_stream_like' : 'like_tag',
       ],
       'comments' => [
         'bottom' => [
@@ -73,7 +56,7 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Comments'),
-        'img_class' => $public_stream ? 'public_stream_comment' : 'comment_tag',
+        'img_class' => $is_not_full ? 'public_stream_comment' : 'comment_tag',
       ],
       'views' => [
         'bottom' => [
@@ -81,18 +64,16 @@ class OpenidealStatisticsIdeaStatisticsBlock extends SiteWideStatisticsBlock imp
           '#create_placeholder' => TRUE,
         ],
         'title' => $this->t('Views'),
-        'img_class' => $public_stream ? 'public_stream_view' : 'view_tag',
+        'img_class' => $is_not_full ? 'public_stream_view' : 'view_tag',
       ],
       'overall_score' => [
         'bottom' => [
-          $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
+          $challenge ? '' : $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
         ],
         'title' => $this->t('Overall score'),
-        // @Todo: ask for appropriate icon.
-        'img_class' => '',
+        'img_class' => 'score_tag',
       ],
     ];
-    $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.block';
     return $build;
   }
 

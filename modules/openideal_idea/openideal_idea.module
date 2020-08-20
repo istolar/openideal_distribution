@@ -23,6 +23,7 @@ function openideal_idea_theme() {
       'variables' => [
         'like' => NULL,
         'follow' => NULL,
+        'main_class' => NULL,
       ],
     ],
     'openideal_idea_info_block' => [

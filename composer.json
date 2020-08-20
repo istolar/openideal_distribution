@@ -234,6 +234,7 @@
         "drupal/votingapi": "3.x-dev",
         "drupal/votingapi_reaction": "^1.1",
         "drupal/votingapi_widgets": "1.x-dev",
+        "npm-asset/d3": "^4.13",
         "npm-asset/dropzone": "^5.7",
         "npm-asset/jquery-bar-rating": "^1.2",
         "npm-asset/swiper": "^6.1",

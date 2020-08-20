@@ -40,9 +40,13 @@ function openideal_user_form_user_login_form_alter(&$form, FormStateInterface $f
     }
   }
   $form['actions']['social_buttons'] = [
-    '#theme' => 'login_with',
-    '#social_networks' => $social_plugins,
-    '#weight' => '1',
+    '#type' => 'container',
+    '#attributes' => ['class' => ['social-login-buttons']],
+    'buttons' => [
+      '#theme' => 'login_with',
+      '#social_networks' => $social_plugins,
+      '#weight' => '1',
+    ],
   ];
 }
 
@@ -175,5 +179,15 @@ function openideal_user_views_query_alter(ViewExecutable $view, QueryPluginBase 
     $query->setWhereGroup('OR', 0, 'having');
     $query->addHavingExpression(0, "GROUP_CONCAT(group_content_field_data_groups_field_data__group_content__group_roles.group_roles_target_id) NOT LIKE '%author%'");
     $query->addHavingExpression(0, 'GROUP_CONCAT(group_content_field_data_groups_field_data__group_content__group_roles.group_roles_target_id) IS NULL');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function openideal_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['node_idea_edit_form', 'node_idea_form'])
+  && !\Drupal::currentUser()->hasPermission('administer site configuration')) {
+    $form['field_duplicate_of']['#access'] = FALSE;
   }
 }

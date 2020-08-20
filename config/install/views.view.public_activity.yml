@@ -6,7 +6,7 @@ dependencies:
     - field.storage.message.field_node_reference
     - field.storage.message.field_user_reference
     - flag.flag.follow
-    - message.template.comment_created
+    - message.template.created_reply_on_comment
   module:
     - comment
     - flag
@@ -494,7 +494,49 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-      filters: {  }
+      filters:
+        template:
+          id: template
+          table: message_field_data
+          field: template
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not in'
+          value:
+            created_reply_on_comment: created_reply_on_comment
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: message
+          entity_field: template
+          plugin_id: bundle
       sorts:
         created:
           id: created
@@ -643,7 +685,7 @@ display:
           admin_label: ''
           operator: in
           value:
-            comment_created: comment_created
+            created_reply_on_comment: created_reply_on_comment
           group: 2
           exposed: false
           expose:
