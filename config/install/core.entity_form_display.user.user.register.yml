@@ -39,6 +39,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden:
   avatars_avatar_generator: true
   avatars_user_picture: true
@@ -46,6 +51,7 @@ hidden:
   field_age_group: true
   field_gender: true
   field_points: true
+  langcode: true
   language: true
   timezone: true
   user_picture: true

@@ -4,8 +4,15 @@ dependencies:
   config:
     - field.storage.user.avatars_user_picture
   module:
+    - content_translation
     - image
     - user
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: user.user.avatars_user_picture
 field_name: avatars_user_picture
 entity_type: user

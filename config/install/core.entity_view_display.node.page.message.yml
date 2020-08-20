@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.page.created
+    - core.base_field_override.node.page.uid
     - core.entity_view_mode.node.message
     - field.field.node.page.field_attached_docs
     - field.field.node.page.field_body
@@ -130,4 +132,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

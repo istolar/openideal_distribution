@@ -42,5 +42,6 @@ hidden:
   field_gender: true
   field_last_name: true
   field_points: true
+  langcode: true
   member_for: true
   realname: true

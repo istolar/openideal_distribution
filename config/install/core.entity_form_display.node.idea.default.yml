@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.idea.field_challenge
     - field.field.node.idea.field_comments
     - field.field.node.idea.field_duplicate_of
-    - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
     - field.field.node.idea.field_like
@@ -126,6 +125,13 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_buttons
     weight: 12
@@ -154,6 +160,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 1
@@ -166,7 +177,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_comments: true
-  field_idea_phase: true
   field_overall_score: true
   promote: true
   sticky: true

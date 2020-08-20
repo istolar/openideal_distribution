@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.article.uid
     - core.entity_view_mode.node.full
     - field.field.node.article.body
     - field.field.node.article.field_attached_docs
@@ -218,4 +219,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

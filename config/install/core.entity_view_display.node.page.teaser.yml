@@ -26,3 +26,4 @@ hidden:
   field_attached_docs: true
   field_body: true
   field_images: true
+  langcode: true

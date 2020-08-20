@@ -1,0 +1,4 @@
+text:
+  -
+    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;voted on the comment&nbsp;<a href=\"[message:field_comment_reference:entity:url]\">[message:field_comment_reference:entity:title]</a></p>\r\n"
+    format: full_html

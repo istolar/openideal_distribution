@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.idea.uid
     - core.entity_view_display.comment.comment.default
     - core.entity_view_mode.node.full
     - field.field.node.idea.body
@@ -10,7 +11,6 @@ dependencies:
     - field.field.node.idea.field_challenge
     - field.field.node.idea.field_comments
     - field.field.node.idea.field_duplicate_of
-    - field.field.node.idea.field_idea_phase
     - field.field.node.idea.field_idea_tags
     - field.field.node.idea.field_images
     - field.field.node.idea.field_like
@@ -135,22 +135,6 @@ third_party_settings:
               id: 'extra_field_block:node:idea:content_moderation_control'
             additional: {  }
             weight: 20
-          e0f3f3a6-f560-4aab-a034-b536ae91e16d:
-            uuid: e0f3f3a6-f560-4aab-a034-b536ae91e16d
-            region: second
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:idea:field_idea_phase'
-              formatter:
-                label: hidden
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 19
           cb4e02ad-316f-4475-8d59-c7f98254805f:
             uuid: cb4e02ad-316f-4475-8d59-c7f98254805f
             region: second
@@ -366,14 +350,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_idea_phase:
-    weight: 105
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_idea_tags:
     weight: 104
     label: hidden
@@ -412,4 +388,5 @@ hidden:
   addtoany: true
   field_like: true
   field_overall_score: true
+  langcode: true
   moderation_state_buttons_widget: true

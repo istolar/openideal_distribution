@@ -21,6 +21,7 @@ dependencies:
   - block_content:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - drupal:content_translation
   - route_condition:route_condition
   - ckeditor_mentions:ckeditor_mentions
   - ckeditor_media_embed:ckeditor_media_embed

@@ -5,12 +5,10 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.storage.node.body
     - field.storage.node.field_challenge
-    - field.storage.node.field_idea_phase
     - field.storage.node.field_idea_tags
     - node.type.idea
     - system.menu.main
     - taxonomy.vocabulary.categories
-    - taxonomy.vocabulary.idea_lifecycle_phase
     - taxonomy.vocabulary.tags
   module:
     - better_exposed_filters

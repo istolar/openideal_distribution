@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - comment.type.comment
+    - core.base_field_override.comment.comment.created
+    - core.base_field_override.comment.comment.uid
     - core.entity_view_mode.comment.message
     - field.field.comment.comment.comment_body
     - field.field.comment.comment.field_like
@@ -111,4 +113,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

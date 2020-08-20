@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.challenge.created
+    - core.base_field_override.node.challenge.uid
     - core.entity_view_mode.node.message
     - field.field.node.challenge.body
     - field.field.node.challenge.field_category
@@ -109,4 +111,5 @@ hidden:
   field_schedule_open: true
   field_supporting_data: true
   flag_follow: true
+  langcode: true
   links: true

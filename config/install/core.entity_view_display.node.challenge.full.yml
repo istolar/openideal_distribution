@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.challenge.uid
     - core.entity_view_display.comment.comment.default
     - core.entity_view_mode.node.full
     - field.field.node.challenge.body
@@ -16,7 +17,6 @@ dependencies:
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
-    - views.view.ideas
   module:
     - comment
     - file
@@ -28,7 +28,6 @@ dependencies:
     - openideal_slideshow
     - text
     - user
-    - views
   theme:
     - bootstrap_barrio
     - openideal_theme
@@ -259,20 +258,7 @@ third_party_settings:
             user_compact: 0
             user_profile: 0
             user_profile_top: 0
-        components:
-          99f0975d-f911-4b12-a83c-b7c8047218b3:
-            uuid: 99f0975d-f911-4b12-a83c-b7c8047218b3
-            region: content
-            configuration:
-              id: 'views_block:ideas-challenge_ideas_block'
-              label: ''
-              provider: views
-              label_display: '0'
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 0
+        components: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -406,3 +392,4 @@ hidden:
   addtoany: true
   field_like: true
   field_meta_tags: true
+  langcode: true
