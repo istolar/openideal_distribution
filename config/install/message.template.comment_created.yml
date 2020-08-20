@@ -1,6 +1,9 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
 template: comment_created
 label: 'New comment created'
 description: ''
@@ -8,6 +11,9 @@ text:
   -
     value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;posted comment</p>\r\n"
     format: full_html
+  -
+    value: "<p>[site:name] New comment!</p>\r\n"
+    format: basic_html
 settings:
   'token options':
     clear: false

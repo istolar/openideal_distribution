@@ -76,6 +76,7 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
             '#title' => $content[0]['#markup'],
             '#url' => $uri,
           ];
+          return $event->setBuild($build);
         }
 
         // Render link.

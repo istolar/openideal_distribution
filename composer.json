@@ -213,6 +213,7 @@
         "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/metatag": "^1.13",
         "drupal/message": "^1.0",
+        "drupal/message_notify": "^1.1",
         "drupal/moderation_state_buttons_widget": "^1.0@alpha",
         "drupal/multiple_fields_remove_button": "^1.0@alpha",
         "drupal/paragraphs": "^1.11",
@@ -263,6 +264,9 @@
             },
             "drupal/rules": {
                 "ServiceNotFoundException when installing a rule via configuration": "https://www.drupal.org/files/issues/2020-07-10/ServiceNotFoundException-when-installing-a-rule-via-configuration.2870851-10_0.patch"
+            },
+            "drupal/message": {
+                "Message template should depend on text(s) filter formats": "https://www.drupal.org/files/issues/2020-08-03/3163049-2.patch"
             },
             "drupal/ckeditor_mentions": {
                 "Use the official CKEditor mention plugin": "https://www.drupal.org/files/issues/2020-08-12/ckeditorplugin-3009308-21.patch"

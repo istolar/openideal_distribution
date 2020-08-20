@@ -2,26 +2,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.message.mail_subject
     - field.field.message.created_reply_on_comment.field_comment_reference
     - message.template.created_reply_on_comment
-id: message.created_reply_on_comment.default
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: message.created_reply_on_comment.mail_subject
 targetEntityType: message
 bundle: created_reply_on_comment
-mode: default
+mode: mail_subject
 content:
-  field_comment_reference:
-    weight: 1
-    label: hidden
-    settings:
-      view_mode: message
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-  partial_0:
+  partial_1:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  partial_1: true
+  field_comment_reference: true
+  partial_0: true

@@ -97,9 +97,10 @@ function openideal_challenge_entity_update(EntityInterface $entity) {
     $event_dispatcher = \Drupal::service('event_dispatcher');
     // If challenge was unpublished then don't
     // need to check schedule status.
-    if ($entity->isPublished() || $entity->original->get('field_is_open')->value != ($action = $entity->get('field_is_open')->value)) {
+    if (($entity->isPublished() && ($entity->original->isPublished() != $entity->isPublished()))
+      || ($entity->original->get('field_is_open')->value != $entity->get('field_is_open')->value)) {
       $event = new OpenidealChallengeEvent($entity);
-      $event_dispatcher->dispatch($action ? OpenidealChallengeEvent::CHALLENGE_OPEN : OpenidealChallengeEvent::CHALLENGE_CLOSE, $event);
+      $event_dispatcher->dispatch($entity->get('field_is_open')->value ? OpenidealChallengeEvent::CHALLENGE_OPEN : OpenidealChallengeEvent::CHALLENGE_CLOSE, $event);
     }
   }
 }

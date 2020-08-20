@@ -5,6 +5,7 @@
  * Contains openideal_idea.module.
  */
 
+use Drupal\message\MessageInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -180,6 +181,24 @@ function openideal_user_views_query_alter(ViewExecutable $view, QueryPluginBase 
     $query->addHavingExpression(0, "GROUP_CONCAT(group_content_field_data_groups_field_data__group_content__group_roles.group_roles_target_id) NOT LIKE '%author%'");
     $query->addHavingExpression(0, 'GROUP_CONCAT(group_content_field_data_groups_field_data__group_content__group_roles.group_roles_target_id) IS NULL');
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function openideal_user_message_insert(MessageInterface $message) {
+  /** @var \Drupal\message_notify\MessageNotifier $sender */
+  $sender = \Drupal::service('message_notify.sender');
+  $sender->send($message, [], 'openideal_user_bulk_email');
+}
+
+/**
+ * Implements hook_mail().
+ */
+function openideal_user_mail($key, &$message, $params) {
+  $message['from'] = Drupal::config('system.site')->get('mail');
+  $message['subject'] = $params['mail_subject'];
+  $message['body'][] = $params['mail_body'];
 }
 
 /**
