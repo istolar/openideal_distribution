@@ -11,6 +11,7 @@ dependencies:
   - admin_toolbar_search:admin_toolbar_search
   - admin_toolbar_tools:admin_toolbar_tools
   - adminimal_admin_toolbar:adminimal_admin_toolbar
+  - administerusersbyrole:administerusersbyrole
   - ajax_comments:ajax_comments
   - allowed_formats:allowed_formats
   - avatars:avatars_gravatar

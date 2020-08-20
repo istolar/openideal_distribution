@@ -4,7 +4,7 @@ openideal_toolbar.system:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
     _title: 'OpenideaL system'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'access openideal toolbar'
 
 openideal_toolbar.configuration:
   path: '/admin/openideal/configuration'
@@ -12,7 +12,7 @@ openideal_toolbar.configuration:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
     _title: 'Configuration'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'access openideal toolbar'
 
 openideal_toolbar.activity:
   path: '/admin/openideal/activity'
