@@ -12,6 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
+use Drupal\openideal_idea\Plugin\EntityReferenceSelection\GroupTypeRoleSelection;
 use Drupal\openideal_idea\Plugin\Validation\Constraint\OpenidealModerationStateConstraint;
 
 /**
@@ -71,25 +72,6 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
       }
     }
   }
-
-  // Unset useless group roles for group idea membership add form.
-  if ($form_id == 'group_content_idea-group_membership_add_form') {
-    // @TODO: add condition by user role.
-    unset($form['group_roles']['widget']['#options']['idea-author']);
-    unset($form['group_roles']['widget']['#options']['idea-expert']);
-  }
-
-  // Hide restricted group roles for group idea membership edit form.
-  if ($form_id == 'group_content_idea-group_membership_edit_form') {
-    // We need to have this options "idea-author" option in the widget,
-    // so hide it through front-end.
-    $form['#attached']['library'][] = 'openideal_idea/openideal_idea.group_widget';
-
-    if (!\Drupal::currentUser()->hasPermission('access to add expert')) {
-      $form['#attached']['drupalSettings']['openidealIdea']['hideExperts'] = TRUE;
-    }
-  }
-
 }
 
 /**
@@ -296,6 +278,8 @@ function openideal_idea_group_content_access(EntityInterface $entity, $operation
     && $entity->getContentPlugin()->getPluginId() == 'group_membership') {
     return AccessResult::forbidden();
   }
+
+  return AccessResult::neutral();
 }
 
 /**
@@ -343,4 +327,13 @@ function openideal_idea_module_implements_alter(&$implementations, $hook) {
  */
 function openideal_idea_validation_constraint_alter(array &$definitions) {
   $definitions['ModerationState']['class'] = OpenidealModerationStateConstraint::class;
+}
+
+/**
+ * Implements hook_entity_reference_selection_alter().
+ */
+function openideal_idea_entity_reference_selection_alter(array &$definitions) {
+  if (isset($definitions['group_type:group_role'])) {
+    $definitions['group_type:group_role']['class'] = GroupTypeRoleSelection::class;
+  }
 }

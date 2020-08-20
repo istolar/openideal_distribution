@@ -12,6 +12,7 @@ group_type: idea
 permissions_ui: true
 permissions:
   - 'administer members'
+  - 'manage members with role idea-co_author'
   - 'update any group_node:idea content'
   - 'update own group_node:idea content'
   - 'update own group_node:idea entity'
