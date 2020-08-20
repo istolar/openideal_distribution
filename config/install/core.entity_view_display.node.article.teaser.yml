@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.article.created
+    - core.base_field_override.node.article.uid
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
     - field.field.node.article.field_attached_docs
@@ -170,3 +172,4 @@ hidden:
   field_attached_docs: true
   field_images: true
   field_meta_tags: true
+  langcode: true

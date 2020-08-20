@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - comment.type.comment
+    - core.base_field_override.comment.comment.created
     - field.field.comment.comment.comment_body
     - field.field.comment.comment.field_like
   module:
@@ -119,4 +120,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

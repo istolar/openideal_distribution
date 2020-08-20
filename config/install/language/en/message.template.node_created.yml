@@ -1,0 +1,4 @@
+text:
+  -
+    value: "<p class=\"message--text\"><a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a>&nbsp;has been created.</p>\r\n"
+    format: full_html

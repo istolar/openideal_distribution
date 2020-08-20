@@ -1,0 +1,4 @@
+text:
+  -
+    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;voted on the&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n\r\n<div id=\"gtx-trans\" style=\"position: absolute; left: 309px; top: 33px;\">\r\n<div class=\"gtx-trans-icon\">&nbsp;</div>\r\n</div>\r\n"
+    format: full_html

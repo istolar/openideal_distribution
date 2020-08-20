@@ -13,7 +13,7 @@ bundle: challenge
 label: Like
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     status: '2'
