@@ -1,0 +1,5 @@
+openideal_statistics.charts:
+  title: 'Reports'
+  route_name: openideal_statistics.charts_and_statistics_controller_charts
+  menu_name: main
+  weight: 10
