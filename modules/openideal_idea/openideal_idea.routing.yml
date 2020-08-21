@@ -4,6 +4,6 @@ openideal_idea.openideal_idea_score_config_form:
     _form: '\Drupal\openideal_idea\Form\ScoreConfigForm'
     _title: 'Overall Score Weights'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'access to configuration forms'
   options:
     _admin_route: TRUE

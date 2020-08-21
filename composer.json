@@ -178,6 +178,7 @@
         "drupal/admin_toolbar": "^2.2",
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/adminimal_theme": "^1.5",
+        "drupal/administerusersbyrole": "^3.0",
         "drupal/ajax_comments": "1.x-dev",
         "drupal/allowed_formats": "^1.2",
         "drupal/avatars": "^1.1",
