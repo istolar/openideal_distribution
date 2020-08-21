@@ -172,7 +172,6 @@
         }
     ],
     "require": {
-        "bower-asset/slick-carousel": "^1.8",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/admin_toolbar": "^2.2",
@@ -236,6 +235,7 @@
         "drupal/votingapi_reaction": "^1.1",
         "drupal/votingapi_widgets": "1.x-dev",
         "npm-asset/d3": "^4.13",
+        "npm-asset/masonry-layout": "^4.2",
         "npm-asset/dropzone": "^5.7",
         "npm-asset/jquery-bar-rating": "^1.2",
         "npm-asset/swiper": "^6.1",

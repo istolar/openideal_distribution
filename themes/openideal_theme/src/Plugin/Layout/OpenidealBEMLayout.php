@@ -6,9 +6,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Layout\LayoutDefault;
 
 /**
- * OpenidealTwoColumnsLayout class of layouts with two columns.
+ * OpenidealBEMLayout class of layouts with two columns.
  */
-class OpenidealTwoColumnsLayout extends LayoutDefault {
+class OpenidealBEMLayout extends LayoutDefault {
 
   /**
    * {@inheritdoc}

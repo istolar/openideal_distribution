@@ -69,8 +69,8 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          3cf7e231-295b-4399-91bf-f453a2ffd80f:
-            uuid: 3cf7e231-295b-4399-91bf-f453a2ffd80f
+          c3a67bab-353c-4cb7-b124-f79cffca07c3:
+            uuid: c3a67bab-353c-4cb7-b124-f79cffca07c3
             region: second
             configuration:
               id: 'field_block:node:idea:body'
