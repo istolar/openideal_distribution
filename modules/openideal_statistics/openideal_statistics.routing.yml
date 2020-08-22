@@ -1,4 +1,4 @@
-openideal_statistics.charts_and_statistics_controller_charts:
+openideal_statistics.graphs_reports:
   path: '/graphs-and-charts'
   defaults:
     _controller: '\Drupal\openideal_statistics\Controller\ChartsAndStatisticsController::charts'

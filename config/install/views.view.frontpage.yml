@@ -291,7 +291,7 @@ display:
       tags: {  }
   front_page:
     display_options:
-      path: homepage
+      path: home
       display_extenders: {  }
       style:
         type: default
@@ -308,6 +308,7 @@ display:
         sorts: false
         css_class: false
         show_admin_links: false
+        empty: false
       row:
         type: fields
         options:
@@ -750,6 +751,19 @@ display:
         menu_name: main
       css_class: ' teaser-view-mode'
       show_admin_links: false
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'No front page content has been created yet.'
+          label: ''
+          plugin_id: text_custom
     display_plugin: page
     display_title: 'Front page (page)'
     id: front_page
