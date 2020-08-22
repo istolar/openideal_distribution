@@ -11,7 +11,8 @@
    */
   Drupal.behaviors.OpenidealSlideshowConfiguration = {
     attach: function (context, settings) {
-      $('.openideal-slideshow').once('openideal_slideshow_configuration', context).each(function () {
+      $('.pswp').once('openideal_slideshow_remove_class').removeClass('pswp-hidden');
+      $('.openideal-slideshow', context).once('openideal_slideshow_configuration').each(function () {
         // Swiper configuration.
         var mySwiper = new Swiper($(this).get(0), {
           loop: true,

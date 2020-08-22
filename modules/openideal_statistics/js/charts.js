@@ -16,9 +16,9 @@
     attach: function (context, settings) {
       $('.charts').once('openideal_statistics_charts', context).each(function (name) {
         var devicePixelRatio = window.devicePixelRatio || 1;
-        var margin = {top: 66, right: 110, bottom: 20, left: 188},
+        var margin = {top: 40, right: 70, bottom: 20, left: 50},
         width = $(this).width() - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom,
+        height = 520 - margin.top - margin.bottom,
         innerHeight = height - 2;
 
         // The colors are taken and applied for the first "column" of the chart.
@@ -82,7 +82,7 @@
             description: 'Age group',
             type: types['Date'],
             axis: d3.axisRight()
-            .ticks(8)
+            .ticks(7)
             .tickFormat(function (d) {
               var date = new Date(d).getFullYear();
               switch (date) {
@@ -190,6 +190,7 @@
           // Change domain range from 1929 to 2000.
           if (dim.key === 'age') {
             dim.domain[0] = new Date("1929");
+            dim.domain[1] = new Date("2000");
           }
           dim.scale.domain(dim.domain);
         });

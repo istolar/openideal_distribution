@@ -42,46 +42,52 @@
   &--nav {
   }
 
-  &--user-info {
-    .views-row {
+  &--user-account {
+
+    .content > div {
       display: flex;
       flex-flow: column;
       align-items: center;
       color: $white;
 
+
+      a {
+        color: $white;
+        text-decoration: underline;
+        font-size: $font-size-xs;
+      }
+      .login-link {
+        font-size: 18px;
+      }
+    }
+
+
+    .profile-author-view-mode .layout__region--content {
+      flex-direction: column;
+      margin-bottom: 0;
+
       img {
+        width: 91px;
+        height: 91px;
         border-radius: 50%;
+        margin-right: 0;
       }
-
-      .views-field-field-last-name {
+      a {
         margin-top: 6px;
-
-        .field-content {
-          font-size: 0.7778rem;
-          font-weight: $font-weight-bold;
-        }
-      }
-
-      .views-field-edit-user {
-        line-height: 0.3;
-
-        a {
-          color: $white;
-          font-size: $font-size-xs;
-          text-decoration: underline;
+        font-size: 16px;
+        font-weight: $font-weight-bold;
+        text-decoration: none;
+        color: white;
+        &:hover {
+          color: white;
         }
       }
     }
-    .user-logout-link {
-      color: inherit;
-      margin-top: 6px;
-      display: block;
-      text-decoration: underline;
-    }
+
   }
 
   &--top {
-    margin-top: 47px;
+    margin-top: 22px;
   }
 
   &__menu-list {

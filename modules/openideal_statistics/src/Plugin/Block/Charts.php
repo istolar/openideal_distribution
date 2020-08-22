@@ -64,7 +64,15 @@ class Charts extends BlockBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function build() {
-    $users = $this->entityTypeManager->getStorage('user')->loadByProperties(['status' => 1]);
+    $storage = $this->entityTypeManager->getStorage('user');
+    $user_query = $storage->getQuery();
+    $ids = $user_query->exists('field_gender')
+      ->exists('field_age_group')
+      ->condition('status', '1')
+      ->execute();
+
+    $users = $storage->loadMultiple($ids);
+
     $data = [];
     foreach ($users as $user) {
       $data[] = [
@@ -81,6 +89,11 @@ class Charts extends BlockBase implements ContainerFactoryPluginInterface {
     $build[] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['charts']],
+      'title' => [
+        '#type' => 'html_tag',
+        '#tag' => 'h1',
+        '#value' => $this->t('Demographic chart'),
+      ],
     ];
 
     return $build;

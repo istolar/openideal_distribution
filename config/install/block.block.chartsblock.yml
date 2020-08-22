@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - openideal_statistics
+    - system
+  theme:
+    - openideal_theme
+id: chartsblock
+theme: openideal_theme
+region: content
+weight: 0
+provider: null
+plugin: openideal_statistics_charts_block
+settings:
+  id: openideal_statistics_charts_block
+  label: 'Charts block'
+  provider: openideal_statistics
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /graphs-and-charts
+    negate: false
+    context_mapping: {  }

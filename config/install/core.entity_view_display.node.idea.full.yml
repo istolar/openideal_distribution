@@ -270,28 +270,6 @@ third_party_settings:
             additional: {  }
             weight: 0
         third_party_settings: {  }
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: Charts
-          layout_builder_styles_style:
-            author: 0
-            user_compact: 0
-            user_profile: 0
-            user_profile_top: 0
-        components:
-          613a57ce-e468-4226-b7cd-1e5d69406c7c:
-            uuid: 613a57ce-e468-4226-b7cd-1e5d69406c7c
-            region: content
-            configuration:
-              id: openideal_statistics_charts_block
-              label: 'Demographic chart'
-              provider: openideal_statistics
-              label_display: visible
-              context_mapping: {  }
-            additional: {  }
-            weight: 0
-        third_party_settings: {  }
 id: node.idea.full
 targetEntityType: node
 bundle: idea

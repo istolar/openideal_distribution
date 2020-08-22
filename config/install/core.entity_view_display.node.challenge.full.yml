@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.challenge.field_schedule_open
     - field.field.node.challenge.field_supporting_data
     - node.type.challenge
+    - views.view.ideas
   module:
     - comment
     - file
@@ -28,6 +29,7 @@ dependencies:
     - openideal_slideshow
     - text
     - user
+    - views
   theme:
     - bootstrap_barrio
     - openideal_theme
@@ -258,7 +260,20 @@ third_party_settings:
             user_compact: 0
             user_profile: 0
             user_profile_top: 0
-        components: {  }
+        components:
+          34ef1eed-3876-4fdc-aa91-cec765ef35bc:
+            uuid: 34ef1eed-3876-4fdc-aa91-cec765ef35bc
+            region: content
+            configuration:
+              id: 'views_block:ideas-challenge_ideas_block'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
         third_party_settings: {  }
       -
         layout_id: layout_onecol

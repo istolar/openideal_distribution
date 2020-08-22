@@ -1,0 +1,156 @@
+.node--view-mode-front-page-teaser {
+  position: unset;
+}
+
+.front-page-teaser {
+  background: $white;
+  border-radius: 8px;
+  overflow: hidden;
+  filter: drop-shadow(0px 1px 14px rgba(0, 0, 0, 0.09));
+  margin-bottom: 20px;
+
+  &--section__first {
+    width: auto;
+    img {
+      height: 192px;
+    }
+  }
+
+  &--section__second {
+    padding: 15px 12px;
+  }
+
+  &--section__third {
+    padding: 19px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.05), 0px -1px 8px rgba(0, 0, 0, 0.09);
+  }
+
+  .block-field-blocknodechallengetitle,
+  .block-field-blocknodearticletitle,
+  .block-field-blocknodeideatitle {
+    display: flex;
+    align-items: center;
+    a {
+      display: inline-block;
+      font-size: 25px;
+      color: $main-font-color;
+      line-height: 30px;
+      margin-bottom: 12px;
+    }
+  }
+
+  // Body
+  .block-field-blocknodechallengebody,
+  .block-field-blocknodearticlebody,
+  .block-field-blocknodeideabody {
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 18px;
+      line-height: 24px;
+      color: $dark-gray;
+    }
+  }
+
+  .block-openideal-statistics-challenge-statistics,
+  .block-openideal-statistics-idea-statistics {
+    display: flex;
+    align-items: center;
+  }
+
+  // Statistics
+  .idea-statistics-block {
+    margin: 0;
+
+    &--list {
+      display: flex;
+      flex-direction: row-reverse;
+      font-size: 14px;
+      color: #676C72;
+      margin-bottom: 0;
+
+      &__item {
+        flex-direction: row-reverse;
+        margin: 0;
+
+        .item-svg {
+          background-size: 18px 18px;
+          width: 18px;
+          height: 18px;
+        }
+
+        &--public_stream_view.item-svg {
+          background: url('../misc/icons/public_stream_view.svg') no-repeat center center;
+          background-size: 20px 20px;
+        }
+
+        &--public_stream_comment {
+          background: url('../misc/icons/public_stream_comment.svg') no-repeat center center;
+        }
+
+        &--public_stream_like {
+          background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
+        }
+      }
+    }
+  }
+
+  // Created
+  .block-field-blocknodeideacreated,
+  .block-field-blocknodearticlecreated,
+  .block-field-blocknodechallengecreated {
+    display: flex;
+    align-items: center;
+
+    span {
+      color: #676C72;
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  // Follow
+  .flag-follow a,
+  .homepage-teaser--flag--element__text {
+    cursor: pointer;
+    color: #1294CA;
+    display: block;
+    padding: 0.5em 0.7em;
+    border: 1.5px solid #1294CA;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    font-weight: $font-weight-bold;
+
+    svg {
+      display: none;
+    }
+  }
+}
+
+.view-frontpage {
+  .view-filters .form-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    .frontpage-add-idea-button {
+      margin-left: auto;
+      @include btn-theme($btn-light, #5eaed2);
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 0.6em 2.5em;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        background: url('../misc/icons/plus.png') no-repeat center center;
+        width: 11px;
+        height: 11px;
+        margin-right: 7px;
+      }
+    }
+  }
+}
