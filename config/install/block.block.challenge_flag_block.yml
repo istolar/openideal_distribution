@@ -10,7 +10,7 @@ dependencies:
 id: challenge_flag_block
 theme: openideal_theme
 region: sidebar
-weight: -10
+weight: -11
 provider: null
 plugin: openideal_idea_flag_and_like_block
 settings:

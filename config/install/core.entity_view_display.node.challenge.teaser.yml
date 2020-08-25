@@ -21,6 +21,7 @@ dependencies:
     - layout_builder
     - openideal_idea
     - openideal_slideshow
+    - openideal_statistics
     - text
     - user
   theme:
@@ -78,13 +79,25 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: text_summary_or_trimmed
+                type: text_trimmed
                 settings:
                   trim_length: 200
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 1
+          93527806-93a6-406f-b4db-19d80427635c:
+            uuid: 93527806-93a6-406f-b4db-19d80427635c
+            region: first
+            configuration:
+              id: openidel_idea_node_bundle
+              label: 'Node bundle'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
             additional: {  }
             weight: 1
         third_party_settings: {  }
@@ -134,7 +147,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: -9
           95d4b25b-b666-4927-804f-fa9d32f55493:
             uuid: 95d4b25b-b666-4927-804f-fa9d32f55493
             region: second
@@ -148,7 +161,19 @@ third_party_settings:
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
-            weight: 1
+            weight: -8
+          70d5ee21-4bf9-4524-9819-ec92f82dc68c:
+            uuid: 70d5ee21-4bf9-4524-9819-ec92f82dc68c
+            region: second
+            configuration:
+              id: openideal_statistics_challenge_statistics
+              label: 'Challenge statistics block'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: -10
         third_party_settings: {  }
 id: node.challenge.teaser
 targetEntityType: node

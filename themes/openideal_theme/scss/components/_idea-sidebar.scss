@@ -7,6 +7,10 @@
     margin: 0 25px;
     padding: 40px 0;
     border-bottom: 1px solid #E0E0E0;
+
+    h5 {
+      font-size: 16px;
+    }
   }
 
   // Votes block.
@@ -63,6 +67,7 @@
         line-height: 1;
       }
 
+
       .votingapi-reaction-item {
         font-size: $font-size-xs;
         margin-bottom: 59px;
@@ -70,6 +75,9 @@
         margin-right: 0;
       }
 
+      .votingapi-reaction-item.active {
+        background-color: #1e7697;
+      }
       .flag-follow {
         display: block;
         margin: 70px 0 11px 0;
@@ -84,6 +92,14 @@
         margin: 70px 0 11px 0;
       }
     }
+  }
+}
+
+.site-sidebar-node--article .region-sidebar {
+  & > div {
+    margin: 0 25px;
+    padding: 40px 0;
+    border-bottom: 1px solid #E0E0E0;
   }
 }
 
@@ -148,6 +164,7 @@
     flex-direction: row;
 
     &-item {
+      margin-bottom: 5px;
       @include btn-theme($white, $white);
       border: 1px $primary-color solid;
       padding: .2em 1em;

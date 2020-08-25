@@ -19,6 +19,7 @@ dependencies:
     - node.type.challenge
   module:
     - layout_builder
+    - openideal_statistics
     - user
   theme:
     - openideal_theme
@@ -83,7 +84,7 @@ third_party_settings:
                 type: timestamp
                 settings:
                   date_format: custom
-                  custom_date_format: 'd \ m \ Y'
+                  custom_date_format: d/m/Y
                   timezone: ''
                 third_party_settings: {  }
               context_mapping:
@@ -91,6 +92,18 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+          0755f53c-8517-492d-9f25-cb0a2b3e919c:
+            uuid: 0755f53c-8517-492d-9f25-cb0a2b3e919c
+            region: footer
+            configuration:
+              id: openideal_statistics_challenge_statistics
+              label: 'Challenge statistics block'
+              provider: openideal_statistics
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: node.challenge.message
 targetEntityType: node

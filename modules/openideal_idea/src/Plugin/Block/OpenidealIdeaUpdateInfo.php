@@ -8,6 +8,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
 use Drupal\Core\Session\AccountProxy;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
 use Drupal\node\NodeInterface;
 use Drupal\openideal_idea\OpenidealHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -93,6 +94,11 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
     if ($node instanceof NodeInterface) {
       $created = $this->dateFormatter->format($node->getCreatedTime(), 'html_date');
       $changed = $this->dateFormatter->format($node->getChangedTime(), 'html_date');
+      // @Todo: style, finish logic.
+      if ($node->bundle() == 'challenge') {
+        $status = $this->getChallengeStatus($node);
+        $build['#content']['challenge_status'] = $status;
+      }
 
       $build['#content']['created'] = $created;
       $build['#content']['changed'] = $changed;
@@ -106,6 +112,66 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
     }
 
     return $build;
+  }
+
+  /**
+   * Get Challenge status.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   Challenge.
+   *
+   * @return array|array[]
+   *   Randarable array.
+   */
+  protected function getChallengeStatus(NodeInterface $node) {
+    $settings = [
+      'label' => 'hidden',
+      'settings' => [
+        'datetime_type' => DateTimeItem::DATETIME_TYPE_DATETIME,
+        'date_format' => 'custom',
+        'custom_date_format' => 'd/m/Y h:i',
+      ],
+    ];
+    if ($node->field_is_open->value && $node->field_schedule_close->value) {
+      $view = $node->field_schedule_close->view($settings);
+
+      return [
+        'title' => [
+          '#type' => 'html_tag',
+          '#tag' => 'h2',
+          '#value' => $this->t('Challenge deadline'),
+        ],
+        'date' => $view,
+      ];
+    }
+    elseif ($node->field_is_open->value && $node->field_schedule_open->value) {
+      $view = $node->field_schedule_close->view($settings);
+
+      return [
+        'title' => [
+          '#type' => 'html_tag',
+          '#tag' => 'h2',
+          '#value' => $this->t('Challenge will open on'),
+        ],
+        'date' => $view,
+      ];
+    }
+    else {
+      $value = $node->field_is_open->value ? 'Open' : 'Close';
+      return [
+        'title' => [
+          '#type' => 'html_tag',
+          '#tag' => 'h2',
+          '#value' => $this->t('Challenge status'),
+        ],
+        'status' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => $this->t('@status', ['@status' => $value]),
+        ],
+      ];
+
+    }
   }
 
 }

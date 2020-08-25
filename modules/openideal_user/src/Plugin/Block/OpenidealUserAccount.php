@@ -76,11 +76,6 @@ class OpenidealUserAccount extends BlockBase implements ContainerFactoryPluginIn
           '#title' => $this->t('personal settings'),
           '#url' => Url::fromRoute('entity.user.edit_form', ['user' => $user->id()]),
         ],
-        'logout' => [
-          '#type' => 'link',
-          '#title' => $this->t('Log out'),
-          '#url' => Url::fromRoute('user.logout'),
-        ],
       ];
 
       $build['#cache']['tags'] = $user->getCacheTags();

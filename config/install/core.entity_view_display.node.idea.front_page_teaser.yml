@@ -164,6 +164,18 @@ third_party_settings:
                 node: layout_builder.entity
             additional: {  }
             weight: -8
+          c6095adf-087f-4edb-883b-36c3e97238bf:
+            uuid: c6095adf-087f-4edb-883b-36c3e97238bf
+            region: first
+            configuration:
+              id: openidel_idea_node_bundle
+              label: 'Node bundle'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: node.idea.front_page_teaser
 targetEntityType: node

@@ -24,3 +24,16 @@
     }
   }
 }
+
+.logout-link-title-wrapper {
+  display: flex;
+  align-items: center;
+  h1 {
+    margin-right: 5px;
+    text-transform: capitalize;
+  }
+
+  a {
+    font-size: 18px;
+  }
+}

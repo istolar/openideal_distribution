@@ -297,7 +297,7 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: col-12
+          row_class: 'col-xl-12 col-xxl-12 col-lg-12 col-md-24'
           default_row_class: true
       defaults:
         style: false
@@ -750,7 +750,7 @@ display:
         context: '0'
         menu_name: main
       css_class: ' teaser-view-mode'
-      show_admin_links: false
+      show_admin_links: true
       empty:
         area_text_custom:
           id: area_text_custom
