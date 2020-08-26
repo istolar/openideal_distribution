@@ -80,9 +80,7 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
 function openideal_idea_node_presave(NodeInterface $node) {
   // Check entity type and duplicate_of field of the entity.
   if ($node->bundle() == 'idea' && !$node->get('field_duplicate_of')->isEmpty()) {
-    // Set 'merged' value for idea_phase field of the entity.
-    // Todo: Should we remove this in favour of Workflow states?
-    $node->set('field_idea_phase', 5);
+    // Todo: Change the workflow state.
   }
   elseif ($node->bundle() == 'idea') {
     $overall_score = \Drupal::service('openideal_idea.helper')->computeOverallScore($node->id());
@@ -191,7 +189,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
     $data['tabs'][0]['group.members'] = [
       '#theme' => 'menu_local_task',
       '#link' => [
-        'title' => t('Group Members'),
+        'title' => t('Members'),
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
         'localized_options' => [],
       ],
