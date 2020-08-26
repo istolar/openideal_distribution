@@ -30,19 +30,21 @@ third_party_settings:
         layout_settings:
           label: Content
         components:
-          5f9e3ce3-82c0-43da-a8f4-539a08433d9a:
-            uuid: 5f9e3ce3-82c0-43da-a8f4-539a08433d9a
-            region: first
+          7bdb9514-01a2-402b-a5b5-4ddcdb4f1c33:
+            uuid: 7bdb9514-01a2-402b-a5b5-4ddcdb4f1c33
+            region: footer
             configuration:
-              id: 'field_block:node:article:body'
-              label: Body
+              id: 'field_block:node:article:created'
+              label: 'Authored on'
               provider: layout_builder
               label_display: '0'
               formatter:
                 label: hidden
-                type: text_trimmed
+                type: timestamp
                 settings:
-                  trim_length: 100
+                  date_format: custom
+                  custom_date_format: d/m/Y
+                  timezone: ''
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
@@ -67,28 +69,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
-          7bdb9514-01a2-402b-a5b5-4ddcdb4f1c33:
-            uuid: 7bdb9514-01a2-402b-a5b5-4ddcdb4f1c33
-            region: footer
-            configuration:
-              id: 'field_block:node:article:created'
-              label: 'Authored on'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: timestamp
-                settings:
-                  date_format: custom
-                  custom_date_format: d/m/Y
-                  timezone: ''
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
+            weight: -9
         third_party_settings: {  }
 id: node.article.message
 targetEntityType: node

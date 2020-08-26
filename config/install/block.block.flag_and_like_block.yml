@@ -5,12 +5,13 @@ dependencies:
     - node
     - openideal_idea
     - route_condition
+    - user
   theme:
     - openideal_theme
 id: flag_and_like_block
 theme: openideal_theme
 region: sidebar
-weight: -11
+weight: -12
 provider: null
 plugin: openideal_idea_flag_and_like_block
 settings:
@@ -35,3 +36,10 @@ visibility:
     routes: entity.node.canonical
     negate: false
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

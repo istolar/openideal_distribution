@@ -24,10 +24,11 @@ content:
       view_mode: message
       link: false
     third_party_settings: {  }
-  partial_1:
+  partial_0:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  partial_0: true
+  partial_1: true
+  partial_2: true

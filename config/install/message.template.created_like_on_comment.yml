@@ -2,17 +2,21 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.basic_html
     - filter.format.full_html
 template: created_like_on_comment
 label: 'Created like on comment'
 description: ''
 text:
   -
-    value: "<p class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;voted on the comment&nbsp;<a href=\"[message:field_comment_reference:entity:url]\">[message:field_comment_reference:entity:title]</a></p>\r\n"
+    value: "<p class=\"message--text\">[message:author:display-name] voted on a comment in [message:field_comment_reference:entity:title]</p>\r\n"
     format: full_html
   -
-    value: "<p>[site:name]: User voted on the comment.</p>\r\n"
+    value: "<p>[message:author:display-name] voted on a comment in [message:field_comment_reference:entity:title]</p>\r\n"
     format: full_html
+  -
+    value: "<p>[message:author:display-name] voted on a comment in [message:field_comment_reference:entity:title]</p>\r\n"
+    format: basic_html
 settings:
   'token options':
     clear: false

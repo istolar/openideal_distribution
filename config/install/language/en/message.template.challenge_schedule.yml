@@ -1,4 +1,10 @@
 text:
   -
-    value: '<p class="message--text">A&nbsp;Challenge&nbsp;<a href="[message:field_node_reference:entity:url]" title="Insert this token into your form">[message:field_node_reference:entity:title]</a>&nbsp;is @challenge_status.</p>'
+    value: "<p class=\"message--text\">Challenge <a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a> is now @challenge_status.</p>\r\n"
     format: full_html
+  -
+    value: "<p>Challenge [message:field_node_reference:entity:title] is now @challenge_status.</p>\r\n\r\n<div id=\"gtx-trans\" style=\"position: absolute; left: 856px; top: 33px;\">\r\n<div class=\"gtx-trans-icon\">&nbsp;</div>\r\n</div>\r\n"
+    format: full_html
+  -
+    value: "<p>Challenge [message:field_node_reference:entity:title] is now @challenge_status.</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: basic_html

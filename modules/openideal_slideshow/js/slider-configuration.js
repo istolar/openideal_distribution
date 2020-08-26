@@ -13,12 +13,15 @@
     attach: function (context, settings) {
       $('.pswp').once('openideal_slideshow_remove_class').removeClass('pswp-hidden');
       $('.openideal-slideshow', context).once('openideal_slideshow_configuration').each(function () {
+        var isOneSlide = $('.swiper-slide', $(this)).length !== 1;
         // Swiper configuration.
         var mySwiper = new Swiper($(this).get(0), {
           loop: true,
           slidesPerView: 1,
           spaceBetween: 10,
           centeredSlides: true,
+          allowSlidePrev: isOneSlide,
+          allowSlideNext: isOneSlide,
           slideToClickedSlide: false,
           autoplay: {
             delay: 5000,

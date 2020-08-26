@@ -46,6 +46,7 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
+              image_style: teaser
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
@@ -79,13 +80,25 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: text_summary_or_trimmed
+                type: text_trimmed
                 settings:
                   trim_length: 300
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 1
+          e6fbf796-ef1f-49f6-943a-7539d1a9e648:
+            uuid: e6fbf796-ef1f-49f6-943a-7539d1a9e648
+            region: first
+            configuration:
+              id: openidel_idea_node_bundle
+              label: 'Entity bundle'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
             additional: {  }
             weight: 1
         third_party_settings: {  }
@@ -128,7 +141,7 @@ third_party_settings:
                 type: timestamp
                 settings:
                   date_format: custom
-                  custom_date_format: 'd \ m \ Y'
+                  custom_date_format: d/m/Y
                   timezone: ''
                 third_party_settings: {  }
               context_mapping:

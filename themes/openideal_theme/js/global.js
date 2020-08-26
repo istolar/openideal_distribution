@@ -111,16 +111,24 @@
    */
   Drupal.behaviors.openidealThemeLikeWidgetLabel = {
     attach: function (context, settings) {
-      var $label = $('.votingapi-reaction-label', context);
-      if ($label.parents('.challenge-voting').length) {
-        $label.text(Drupal.t('Like challenge'));
-      }
-      else if ($label.parents('.region-sidebar').length) {
-        $label.text(Drupal.t('Like idea'));
-      }
-      else if ($label.parents('.site-footer').length) {
-        $label.text(Drupal.t('Like'));
-      }
+      $('.votingapi-reaction-form').once('openideal_theme_like_widget_label').each(function () {
+        var $this = $(this);
+        var $item = $('.votingapi-reaction-item', $this);
+        var $label = $('.votingapi-reaction-label', $this);
+        if ($('.radio input', $this).is(':checked')) {
+          $item.addClass('active');
+          $label.text(Drupal.t('Liked'));
+        }
+        else {
+          if ($label.parents('.challenge-voting').length) {
+            $label.text(Drupal.t('Like challenge'));
+          } else if ($label.parents('.region-sidebar').length) {
+            $label.text(Drupal.t('Like idea'));
+          } else if ($label.parents('.site-footer').length) {
+            $label.text(Drupal.t('Like'));
+          }
+        }
+      });
     }
   }
 

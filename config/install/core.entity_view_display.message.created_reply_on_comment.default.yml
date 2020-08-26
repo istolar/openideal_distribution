@@ -10,14 +10,14 @@ bundle: created_reply_on_comment
 mode: default
 content:
   field_comment_reference:
+    type: entity_reference_entity_view
     weight: 1
+    region: content
     label: hidden
     settings:
       view_mode: message
       link: false
     third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   partial_0:
     weight: 0
     region: content

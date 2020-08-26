@@ -16,6 +16,7 @@ dependencies:
     - image
     - layout_builder
     - metatag
+    - openideal_idea
     - openideal_slideshow
     - text
     - user
@@ -45,6 +46,7 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
+              image_style: front_page_teaser
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
@@ -127,6 +129,18 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+          c3f0384d-5481-4ecd-aa10-586fe59b9a6e:
+            uuid: c3f0384d-5481-4ecd-aa10-586fe59b9a6e
+            region: first
+            configuration:
+              id: openidel_idea_node_bundle
+              label: 'Entity bundle'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: node.article.front_page_teaser
 targetEntityType: node

@@ -10,7 +10,7 @@ dependencies:
 id: workflow_status
 theme: openideal_theme
 region: sidebar
-weight: -5
+weight: -6
 provider: null
 plugin: openideal_statistics_status
 settings:

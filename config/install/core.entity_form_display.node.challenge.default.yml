@@ -22,7 +22,6 @@ dependencies:
     - openideal_challenge
     - path
     - text
-    - votingapi_reaction
 id: node.challenge.default
 targetEntityType: node
 bundle: challenge
@@ -30,7 +29,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 6
     settings:
       rows: 9
       placeholder: ''
@@ -43,18 +42,18 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   field_category:
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_images:
-    weight: 7
+    weight: 8
     settings:
       entity_browser: openideal_images_browser
       field_widget_remove: true
@@ -68,20 +67,14 @@ content:
     type: entity_browser_file
     region: content
   field_is_open:
-    weight: 10
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_like:
-    weight: 104
-    settings: {  }
-    third_party_settings: {  }
-    type: votingapi_reaction_default
-    region: content
   field_main_image:
-    weight: 6
+    weight: 7
     settings:
       entity_browser: openideal_image_browser
       field_widget_remove: true
@@ -95,26 +88,26 @@ content:
     type: entity_browser_file
     region: content
   field_meta_tags:
-    weight: 103
+    weight: 16
     settings:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
     region: content
   field_schedule_close:
-    weight: 102
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: openideal_datetime_timestamp
     region: content
   field_schedule_open:
-    weight: 101
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: openideal_datetime_timestamp
     region: content
   field_supporting_data:
-    weight: 8
+    weight: 9
     settings:
       entity_browser: openideal_file_browser
       field_widget_remove: true
@@ -136,13 +129,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 100
+    weight: 13
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -150,7 +143,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   title:
@@ -162,10 +155,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 12
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 1
@@ -178,5 +171,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_comments: true
+  field_like: true
   promote: true
   sticky: true

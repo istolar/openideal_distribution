@@ -78,6 +78,7 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
+              image_style: slideshow_large
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
@@ -194,27 +195,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 7
-          d9b870fa-5689-47b0-b527-4a108c957678:
-            uuid: d9b870fa-5689-47b0-b527-4a108c957678
-            region: second
-            configuration:
-              id: 'field_block:node:challenge:field_is_open'
-              label: 'Status:'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: boolean
-                settings:
-                  format: custom
-                  format_custom_true: 'The challenge is open'
-                  format_custom_false: 'The challenge is closed'
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
         third_party_settings: {  }
       -
         layout_id: openideal_two_columns_teaser

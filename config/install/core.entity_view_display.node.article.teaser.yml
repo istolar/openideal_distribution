@@ -13,6 +13,7 @@ dependencies:
     - node.type.article
   module:
     - layout_builder
+    - openideal_idea
     - openideal_slideshow
     - text
     - user
@@ -63,7 +64,7 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: text_summary_or_trimmed
+                type: text_trimmed
                 settings:
                   trim_length: 200
                 third_party_settings: {  }
@@ -80,10 +81,23 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
+              image_style: teaser
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
             weight: 0
+          503de3f4-c5ea-4327-94fd-938ecef1211c:
+            uuid: 503de3f4-c5ea-4327-94fd-938ecef1211c
+            region: first
+            configuration:
+              id: openidel_idea_node_bundle
+              label: 'Entity bundle'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
       -
         layout_id: openideal_two_columns_teaser

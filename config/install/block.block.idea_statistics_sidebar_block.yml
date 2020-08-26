@@ -10,7 +10,7 @@ dependencies:
 id: idea_statistics_sidebar_block
 theme: openideal_theme
 region: sidebar
-weight: -6
+weight: -7
 provider: null
 plugin: openideal_statistics_idea_statistics
 settings:

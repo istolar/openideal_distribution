@@ -50,12 +50,15 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
     if ($event->getPlugin()->getPLuginId() == 'field_block:comment:comment:created') {
       $build = $event->getBuild();
       $content = $build['content'];
+      /** @var \Drupal\comment\Entity\Comment $comment */
       $comment = $content['#object'];
       // If in the layout_builder nothing to do here.
       if (!$comment->isNew()) {
         // Change the default permalink of comment title.
         $commented_entity = $comment->getCommentedEntity();
         $uri = $commented_entity->toUrl();
+
+        $view_mode = $event->getContexts()['view_mode']->getContextValue();
 
         // Set attributes for permalink.
         $attributes = $uri->getOption('attributes') ?: [];
@@ -66,7 +69,7 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
         ]);
 
         // Don't need to show author in My comments.
-        if ($event->getContexts()['view_mode']->getContextValue() === 'default') {
+        if ($view_mode === 'default') {
           // Render author.
           $author = $this->entityTypeManager->getViewBuilder('user')->view($comment->getOwner(), 'author');
           $build['content'][0] = $author;
@@ -79,12 +82,20 @@ class OpenidealCommentEventSubscriber implements EventSubscriberInterface {
           return $event->setBuild($build);
         }
 
-        // Render link.
-        $build['content'][0] = [
-          '#type' => 'html_tag',
-          '#tag' => 'p',
-          '#value' => $content[0]['#markup'],
-        ];
+        if ($view_mode !== 'message') {
+          $build['content'][0] = [
+            '#type' => 'link',
+            '#title' => $content[0]['#markup'],
+            '#url' => $uri,
+          ];
+        }
+        else {
+          $build['content'][0] = [
+            '#type' => 'html_tag',
+            '#tag' => 'p',
+            '#value' => $content[0]['#markup'],
+          ];
+        }
 
         $event->setBuild($build);
       }

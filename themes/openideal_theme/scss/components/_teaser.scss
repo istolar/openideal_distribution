@@ -17,9 +17,16 @@
     }
 
     select {
+      border: 1px solid #C6CDD0;
+      border-radius: 4px;
+      appearance: none;
+      background-image: url("../misc/icons/select_dropdown.png");
+      background-repeat: no-repeat;
+      background-position-x: 95%;
+      background-position-y: 50%;
+      padding-right: 22px;
       height: 100%;
       background-color: $white;
-      border: 0;
       font-size: 16px;
     }
 
@@ -84,6 +91,7 @@
     display: flex;
 
     &--section__first {
+      position: relative;
       width: auto;
       max-width: 400px;
       height: 190px;
@@ -102,6 +110,10 @@
     &--section__second {
       flex-grow: 1;
       padding: 23px;
+
+      p {
+        margin-bottom: 2px;
+      }
     }
 
   }
@@ -129,10 +141,13 @@
   /** Blocks */
 
   // Created
+  .block-field-blocknodechallengetitle,
+  .block-field-blocknodearticletitle,
   .block-field-blocknodeideatitle {
     a {
       display: inline-block;
       font-size: 25px;
+      font-weight: 600;
       color: $main-font-color;
       line-height: 30px;
       margin-bottom: 12px;
@@ -140,7 +155,9 @@
   }
 
   // Body
-  .block-field-blocknodeideabody {
+  .block-field-blocknodeideabody,
+  .block-field-blocknodechallengebody,
+  .block-field-blocknodearticlebody {
     p {
       font-size: 18px;
       line-height: 24px;
@@ -164,22 +181,34 @@
         margin: 0;
 
         .item-svg {
-          background-size: 18px 18px;
+          background-size: 16.67px 16.67px;
           width: 18px;
-          height: 18px;
+          height: 16.67px;
         }
 
         &--public_stream_view.item-svg {
-          background: url('../misc/icons/public_stream_view.svg') no-repeat center center;
-          background-size: 20px 20px;
+          background: url('../misc/icons/teaser_view.svg') no-repeat center center;
+          background-size: 18.33px 13.33px;
         }
 
         &--public_stream_comment {
-          background: url('../misc/icons/public_stream_comment.svg') no-repeat center center;
+          background: url('../misc/icons/teaser_comment.svg') no-repeat center center;
+          background-size: 16.67px 16.67px;
         }
 
         &--public_stream_like {
-          background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
+          background-size: 16.67px 16.67px;
+          background: url('../misc/icons/teaser_like.svg') no-repeat center center;
+        }
+
+        &--public_stream_idea.item-svg {
+          background-size: 16.67px 13.33px;
+          background: url('../misc/icons/teaser_idea.svg') no-repeat center center;
+        }
+
+        .idea-statistics-block--list__item--score_tag {
+          background: url("../misc/icons/score_tag.svg") no-repeat center center;
+          background-size: 16px;
         }
       }
     }
@@ -204,10 +233,12 @@
 
   // Created
   .block-field-blocknodeideacreated,
+  .block-field-blocknodearticlecreated,
   .block-field-blocknodechallengecreated {
-    margin-right: 4px;
+    margin-right: 6px;
 
     span {
+      font-weight: $font-weight-base;
       color: #676C72;
       font-size: inherit;
     }

@@ -67,6 +67,23 @@ expression:
         provides_mapping: {  }
         condition_id: rules_data_comparison
         negate: true
+      -
+        id: rules_condition
+        uuid: bbbe5676-f787-4cb1-bac4-4e1e01b751b6
+        weight: 0
+        context_values:
+          operation: '=='
+          value: needs_work
+        context_mapping:
+          data: newState
+        context_processors:
+          operation:
+            rules_tokens: {  }
+          value:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        condition_id: rules_data_comparison
+        negate: true
   actions:
     id: rules_action_set
     uuid: 61e1c472-5ff0-495d-9fd1-76d120c7597c

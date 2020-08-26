@@ -28,6 +28,23 @@
     }
   }
 
+  .block-field-blocknodearticlefield-tags {
+    .field__items {
+      display: flex;
+      li {
+        @include btn-theme($white, $white);
+        border: 1px $primary-color solid;
+        padding: .2em 1em;
+        font-weight: $font-weight-base;
+        margin-right: 3px;
+        font-size: $font-size-sm;
+        color: $primary-color;
+        text-decoration: none;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
   .idea-statistics-and-status-block {
     display: flex;
     justify-content: space-between;
@@ -81,7 +98,7 @@
 }
 
 @media (max-width: 767px) {
-  .node--type-idea .card-body {
+  .node--view-mode-full .card-body {
     padding: 26px 19px;
 
     .block-field-blocknodeideatitle,
@@ -112,6 +129,10 @@
       &--list__item--value {
         font-size: 15px;
         color: $dark-gray;
+      }
+      .challenge-status--deadline {
+        font-size: 15px;
+        color: #EB5757;
       }
     }
   }
