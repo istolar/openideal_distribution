@@ -736,7 +736,7 @@ display:
           exposed: true
           expose:
             label: Date
-          granularity: hour
+          granularity: minute
           plugin_id: date
           entity_type: node
           entity_field: created

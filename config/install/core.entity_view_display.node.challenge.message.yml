@@ -33,25 +33,6 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          71aa3b28-cc75-4320-9d73-eee711deaa46:
-            uuid: 71aa3b28-cc75-4320-9d73-eee711deaa46
-            region: first
-            configuration:
-              id: 'field_block:node:challenge:body'
-              label: Body
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: text_trimmed
-                settings:
-                  trim_length: 100
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
           7d58b000-7492-4203-9e83-1464f6ec8ec0:
             uuid: 7d58b000-7492-4203-9e83-1464f6ec8ec0
             region: first
@@ -70,7 +51,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: -9
           bbe2ea7f-dceb-4e08-8912-dcb4b9ada62f:
             uuid: bbe2ea7f-dceb-4e08-8912-dcb4b9ada62f
             region: footer

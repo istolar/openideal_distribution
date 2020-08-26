@@ -77,7 +77,6 @@ function openideal_theme_preprocess_message(&$variables) {
       $variables['entity_label'] = t('User');
       $variables['label_class'] = 'message--referenced-label--user';
       $create = $message->getOwner()->getCreatedTime();
-      /** @var \Drupal\Core\Field\Plugin\Field\FieldType\CreatedItem $kek */
       $time = \Drupal::service('date.formatter')->format($create, 'custom', 'd/m/Y');
       $variables['created'] = $time;
     }
@@ -132,4 +131,22 @@ function openideal_theme_preprocess_page_title(&$variables) {
       '#url' => Url::fromRoute('user.logout'),
     ];
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_comment__view__my_comments__my_comments(&$variables) {
+  $commented_entity = $variables['commented_entity'];
+  $comment = $variables['comment'];
+  $uri = $commented_entity->toUrl();
+
+  // Set attributes for permalink.
+  $attributes = $uri->getOption('attributes') ?: [];
+  $attributes += ['class' => ['permalink'], 'rel' => 'bookmark'];
+  $uri->setOptions([
+    'attributes' => $attributes,
+    'fragment' => 'comment-' . $comment->id(),
+  ]);
+  $variables['comment_uri'] = $uri->toString();
 }

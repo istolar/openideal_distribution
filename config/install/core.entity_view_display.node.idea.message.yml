@@ -40,44 +40,6 @@ third_party_settings:
         layout_settings:
           label: Content
         components:
-          ee1342fb-64a2-4539-8735-1e653472aac9:
-            uuid: ee1342fb-64a2-4539-8735-1e653472aac9
-            region: first
-            configuration:
-              id: 'field_block:node:idea:body'
-              label: Body
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: text_trimmed
-                settings:
-                  trim_length: 100
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
-          03a2bdc5-fc47-49a5-9137-1db323e38e35:
-            uuid: 03a2bdc5-fc47-49a5-9137-1db323e38e35
-            region: first
-            configuration:
-              id: 'field_block:node:idea:uid'
-              label: 'Authored by'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: author
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
           f3dc7a1f-0767-4d8b-bc0d-24ce1c732941:
             uuid: f3dc7a1f-0767-4d8b-bc0d-24ce1c732941
             region: footer
@@ -111,6 +73,25 @@ third_party_settings:
                 node: layout_builder.entity
             additional: {  }
             weight: 1
+          03a2bdc5-fc47-49a5-9137-1db323e38e35:
+            uuid: 03a2bdc5-fc47-49a5-9137-1db323e38e35
+            region: first
+            configuration:
+              id: 'field_block:node:idea:uid'
+              label: 'Authored by'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_entity_view
+                settings:
+                  view_mode: author
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -9
         third_party_settings: {  }
 id: node.idea.message
 targetEntityType: node

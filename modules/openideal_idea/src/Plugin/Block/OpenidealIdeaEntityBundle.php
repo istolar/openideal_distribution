@@ -5,22 +5,22 @@ namespace Drupal\openideal_idea\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a OpenidealContentContentTypeLabel class.
+ * Provides a OpenidealIdeaEntityBundle class.
  *
  * @Block(
  *   id = "openidel_idea_node_bundle",
- *   admin_label = @Translation("Node bundle"),
+ *   admin_label = @Translation("Entity bundle"),
  *   category = @Translation("Openideal"),
  *   context = {
- *      "node" = @ContextDefinition(
- *       "entity:node",
+ *      "entity" = @ContextDefinition(
+ *       "entity",
  *       label = @Translation("Current Node"),
  *       required = FALSE,
  *     )
  *   }
  * )
  */
-class OpenidealIdeaContentTypeLabel extends BlockBase {
+class OpenidealIdeaEntityBundle extends BlockBase {
 
   /**
    * {@inheritDoc}
@@ -29,12 +29,12 @@ class OpenidealIdeaContentTypeLabel extends BlockBase {
     $build = [];
     $contexts = $this->getContexts();
     // If displayed in layout builder node isn't presented.
-    if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
+    if (isset($contexts['entity']) && ($entity = $contexts['entity']->getContextValue()) && !$entity->isNew()) {
       $build['content_type'] = [
         '#type' => 'html_tag',
         '#tag' => 'div',
-        '#attributes' => ['class' => ['node_bundle_label', 'node_bundle_label--' . $node->bundle()]],
-        '#value' => $node->bundle(),
+        '#attributes' => ['class' => ['entity_bundle_label', 'entity_bundle_label--' . $entity->bundle()]],
+        '#value' => $entity->bundle(),
       ];
     }
 

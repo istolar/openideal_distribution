@@ -3,20 +3,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.message.mail_body
-    - field.field.message.challenge_schedule.field_node_reference
-    - message.template.challenge_schedule
+    - field.field.message.create_challenge.field_node_reference
+    - message.template.create_challenge
   module:
     - layout_builder
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: false
-id: message.challenge_schedule.mail_body
+id: message.create_challenge.mail_body
 targetEntityType: message
-bundle: challenge_schedule
+bundle: create_challenge
 mode: mail_body
 content:
-  partial_2:
+  partial_1:
     weight: 0
     region: content
     settings: {  }
@@ -24,4 +24,4 @@ content:
 hidden:
   field_node_reference: true
   partial_0: true
-  partial_1: true
+  partial_2: true

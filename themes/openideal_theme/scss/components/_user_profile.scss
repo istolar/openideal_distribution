@@ -5,7 +5,15 @@
   }
 
   h5 {
-    font-size: $font-size-base;
+    a {
+      font-size: 25px;
+      font-weight: 600;
+      color: #343352;
+
+      &:hover {
+        color: inherit;
+      }
+    }
   }
 }
 

@@ -54,8 +54,25 @@ expression:
         negate: true
       -
         id: rules_condition
-        uuid: 1e9a9fab-a15e-4de2-b16e-e023fa234235
+        uuid: 3b5e2cc0-5ccd-46a2-89bf-9f0c7eb6d192
         weight: -48
+        context_values:
+          type: node
+          bundle: challenge
+        context_mapping:
+          entity: node
+        context_processors:
+          type:
+            rules_tokens: {  }
+          bundle:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        condition_id: rules_entity_is_of_bundle
+        negate: true
+      -
+        id: rules_condition
+        uuid: 1e9a9fab-a15e-4de2-b16e-e023fa234235
+        weight: -47
         context_values: {  }
         context_mapping:
           node: node

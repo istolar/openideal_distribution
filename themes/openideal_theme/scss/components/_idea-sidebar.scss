@@ -3,7 +3,7 @@
 .region-sidebar {
   flex-direction: column;
 
-  & > div:not(:first-child) {
+  & > div:not([class*="flag-and-like-block"]) {
     margin: 0 25px;
     padding: 40px 0;
     border-bottom: 1px solid #E0E0E0;

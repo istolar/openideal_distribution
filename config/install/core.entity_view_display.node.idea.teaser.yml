@@ -94,11 +94,11 @@ third_party_settings:
             region: first
             configuration:
               id: openidel_idea_node_bundle
-              label: 'Node bundle'
+              label: 'Entity bundle'
               provider: openideal_idea
               label_display: '0'
               context_mapping:
-                node: layout_builder.entity
+                entity: layout_builder.entity
             additional: {  }
             weight: 1
         third_party_settings: {  }

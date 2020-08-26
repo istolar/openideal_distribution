@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.message.created_reply_on_comment.field_comment_reference
-    - message.template.created_reply_on_comment
-id: message.created_reply_on_comment.default
+    - field.field.message.create_challenge.field_node_reference
+    - message.template.create_challenge
+id: message.create_challenge.default
 targetEntityType: message
-bundle: created_reply_on_comment
+bundle: create_challenge
 mode: default
 content:
-  field_comment_reference:
+  field_node_reference:
     type: entity_reference_entity_view
     weight: 1
     region: content
@@ -25,3 +25,4 @@ content:
     third_party_settings: {  }
 hidden:
   partial_1: true
+  partial_2: true

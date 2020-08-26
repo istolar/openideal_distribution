@@ -19,6 +19,7 @@
     attach: function (context, settings) {
       $('.view-frontpage .view-content').once('openideal_content_home_page').masonry({
         itemSelector: '.views-row',
+        horizontalOrder: true,
       })
     }
   }

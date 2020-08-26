@@ -42,6 +42,13 @@ class OpenidealStatisticsIdeaStatisticsBlock extends BlockBase {
     $build['#main_class'] = 'idea-statistics-block';
     $build['#show_title'] = !$is_not_full;
     $build['#content'] = [
+      'overall_score' => [
+        'bottom' => [
+          $challenge ? '' : $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
+        ],
+        'title' => $this->t('Overall score'),
+        'img_class' => 'score_tag',
+      ],
       'votes' => [
         'bottom' => [
           '#lazy_builder' => ['openideal_statistics.lazy_builder:getVotes', [$id]],
@@ -65,13 +72,6 @@ class OpenidealStatisticsIdeaStatisticsBlock extends BlockBase {
         ],
         'title' => $this->t('Views'),
         'img_class' => $is_not_full ? 'public_stream_view' : 'view_tag',
-      ],
-      'overall_score' => [
-        'bottom' => [
-          $challenge ? '' : $node->field_overall_score->first()->view(['settings' => ['scale' => 0]]),
-        ],
-        'title' => $this->t('Overall score'),
-        'img_class' => 'score_tag',
       ],
     ];
     return $build;
