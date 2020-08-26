@@ -130,7 +130,7 @@
             {% endblock %}
         </div>
         {% if page.sidebar %}
-            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ is_node ? 'site-sidebar-node' : '' }} {{ is_article ? 'site-sidebar-node--article' }}">
+            <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-7 d-none d-md-block {{ node_type ? 'site-sidebar-node' }} {{ node_type == 'article' ? 'site-sidebar-node--article' }}">
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

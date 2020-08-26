@@ -19,6 +19,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *  id = "openideal_idea_info_block",
  *  admin_label = @Translation("Idea info"),
+ *   context = {
+ *      "node" = @ContextDefinition(
+ *       "entity:node",
+ *       label = @Translation("Current Node"),
+ *       required = FALSE,
+ *     )
+ *   }
  * )
  */
 class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPluginInterface {
@@ -115,6 +122,7 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
         $build['#content']['edit'] = $link;
       }
       $build['#cache']['tags'] = $node->getCacheTags();
+      $build['#cache']['contexts'][] = 'route';
     }
 
     return $build;
@@ -138,7 +146,8 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
         'custom_date_format' => 'd/m/Y h:i',
       ],
     ];
-    if ($node->field_is_open->value && $node->field_schedule_close->value) {
+    $is_open = $node->field_is_open->value;
+    if ($is_open && !$node->field_schedule_close->isEmpty()) {
       $view = $node->field_schedule_close->view($settings);
       $view['#attributes']['class'][] = 'challenge-status--deadline';
       return [
@@ -146,7 +155,7 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
         'value' => $view,
       ];
     }
-    elseif ($node->field_is_open->value && $node->field_schedule_open->value) {
+    elseif (!$is_open && !$node->field_schedule_open->isEmpty()) {
       $view = $node->field_schedule_close->view($settings);
       $view['#attributes']['class'][] = 'challenge_status--opening';
 
@@ -156,7 +165,7 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
       ];
     }
     else {
-      $value = $node->field_is_open->value ? $this->t('Open') : $this->t('Close');
+      $value = $is_open ? $this->t('Open') : $this->t('Close');
       return [
         'title' => $this->t('Challenge status'),
         'value' => $value,

@@ -14,7 +14,7 @@
  * @see template_preprocess_page_title()
  */
 #}
-{% if logout_link %}
+{% if logout_link and logged_in %}
   <div class="logout-link-title-wrapper">
 {% endif %}
 
@@ -24,7 +24,7 @@
 {% endif %}
 {{ title_suffix }}
 
-{% if logout_link %}
+{% if logout_link and logged_in %}
     ({{ logout_link }})
   </div>
 {% endif %}
