@@ -3,6 +3,7 @@
 namespace Drupal\openideal_slideshow\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'Slideshow' block.
@@ -34,6 +35,7 @@ class Slideshow extends BlockBase {
       : [
         '#theme' => 'openideal_slideshow',
         '#items' => $images,
+        '#image_style' => $this->configuration['image_style'],
         '#attached' => [
           'library' => ['openideal_slideshow/openideal_slideshow.carousel'],
         ],
@@ -41,6 +43,38 @@ class Slideshow extends BlockBase {
           'tags' => $tags,
         ],
       ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $image_styles = image_style_options(TRUE);
+    $image_styles['_original image_'] = $this->t('- None (original image) -');
+
+    $form['image_style'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Image styles'),
+      '#options' => $image_styles,
+      '#default_value' => $this->configuration['image_style'],
+    ];
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['image_style'] = $form_state->getValue('image_style');
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function defaultConfiguration() {
+    return [
+      'image_style' => '_original image_',
+    ];
   }
 
   /**

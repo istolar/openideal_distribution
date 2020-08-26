@@ -98,7 +98,7 @@
 }
 
 @media (max-width: 767px) {
-  .node--type-idea .card-body {
+  .node--view-mode-full .card-body {
     padding: 26px 19px;
 
     .block-field-blocknodeideatitle,
@@ -129,6 +129,10 @@
       &--list__item--value {
         font-size: 15px;
         color: $dark-gray;
+      }
+      .challenge-status--deadline {
+        font-size: 15px;
+        color: #EB5757;
       }
     }
   }

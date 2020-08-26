@@ -12,8 +12,8 @@
     <ul class="idea-information--list">
         {% for key, item in content %}
             <li class="idea-information--list__item">
-                <p class="idea-information--list__item--title">{{ key }}</p>
-                <p class="idea-information--list__item--value">{{ item }}</p>
+                <div class="idea-information--list__item--title">{{ item.title }}</div>
+                <div class="idea-information--list__item--value">{{ item.value }}</div>
             </li>
         {% endfor %}
     </ul>

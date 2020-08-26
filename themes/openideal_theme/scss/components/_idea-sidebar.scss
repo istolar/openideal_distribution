@@ -135,6 +135,10 @@
       &--value {
         font-size: $font-size-sm;
         color: $dark-gray;
+        .challenge-status--deadline {
+          font-size: 15px;
+          color: #EB5757;
+        }
 
         a {
           transition: color 0.4s;

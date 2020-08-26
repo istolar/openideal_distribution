@@ -81,6 +81,7 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
+              image_style: teaser
               context_mapping:
                 node: layout_builder.entity
             additional: {  }

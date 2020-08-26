@@ -100,8 +100,14 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
         $build['#content']['challenge_status'] = $status;
       }
 
-      $build['#content']['created'] = $created;
-      $build['#content']['changed'] = $changed;
+      $build['#content']['created'] = [
+        'value' => $created,
+        'title' => $this->t('Created'),
+      ];
+      $build['#content']['changed'] = [
+        'value' => $changed,
+        'title' => $this->t('Changed'),
+      ];
 
       $member = $this->helper->getGroupMember($this->currentUser, $node);
       if ($member && $member->hasPermission('update any group_node:idea entity')) {
@@ -134,41 +140,26 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
     ];
     if ($node->field_is_open->value && $node->field_schedule_close->value) {
       $view = $node->field_schedule_close->view($settings);
-
+      $view['#attributes']['class'][] = 'challenge-status--deadline';
       return [
-        'title' => [
-          '#type' => 'html_tag',
-          '#tag' => 'h2',
-          '#value' => $this->t('Challenge deadline'),
-        ],
-        'date' => $view,
+        'title' => $this->t('Challenge deadline'),
+        'value' => $view,
       ];
     }
     elseif ($node->field_is_open->value && $node->field_schedule_open->value) {
       $view = $node->field_schedule_close->view($settings);
+      $view['#attributes']['class'][] = 'challenge_status--opening';
 
       return [
-        'title' => [
-          '#type' => 'html_tag',
-          '#tag' => 'h2',
-          '#value' => $this->t('Challenge will open on'),
-        ],
-        'date' => $view,
+        'title' => $this->t('Challenge will open on'),
+        'value' => $view,
       ];
     }
     else {
-      $value = $node->field_is_open->value ? 'Open' : 'Close';
+      $value = $node->field_is_open->value ? $this->t('Open') : $this->t('Close');
       return [
-        'title' => [
-          '#type' => 'html_tag',
-          '#tag' => 'h2',
-          '#value' => $this->t('Challenge status'),
-        ],
-        'status' => [
-          '#type' => 'html_tag',
-          '#tag' => 'div',
-          '#value' => $this->t('@status', ['@status' => $value]),
-        ],
+        'title' => $this->t('Challenge status'),
+        'value' => $value,
       ];
 
     }
