@@ -5,6 +5,7 @@ namespace Drupal\openideal_challenge\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,7 +29,14 @@ class AddIdeaBlock extends BlockBase implements ContainerFactoryPluginInterface 
   protected $currentRouteMatch;
 
   /**
-   * Constructs a new Slideshow.
+   * Current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
+   * Plugin block constructor.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -38,14 +46,13 @@ class AddIdeaBlock extends BlockBase implements ContainerFactoryPluginInterface 
    *   The plugin implementation definition.
    * @param \Drupal\Core\Routing\CurrentRouteMatch $current_route_match
    *   Current route match service.
+   * @param \Drupal\Core\Session\AccountProxyInterface $current_user
+   *   Current user.
    */
-  public function __construct(array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    CurrentRouteMatch $current_route_match
-  ) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CurrentRouteMatch $current_route_match, AccountProxyInterface $current_user) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->currentRouteMatch = $current_route_match;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -53,7 +60,8 @@ class AddIdeaBlock extends BlockBase implements ContainerFactoryPluginInterface 
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($configuration, $plugin_id, $plugin_definition,
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('current_user')
     );
   }
 
@@ -71,12 +79,24 @@ class AddIdeaBlock extends BlockBase implements ContainerFactoryPluginInterface 
       $route_parameters['challenge'] = $node->id();
     }
 
-    return [
-      '#type' => 'link',
-      '#title' => $this->t('Add your idea'),
-      '#url' => Url::fromRoute('node.add', $route_parameters),
-      '#attributes' => ['class' => ['add_your_idea', 'btn', 'btn-primary']],
+    $build = [
+      '#cache' => [
+        'tags' => $node->getCacheTags(),
+        'contexts' => ['user.roles:' . AccountProxyInterface::AUTHENTICATED_ROLE],
+      ],
     ];
+
+    // Display "Add Idea" link only for open challenges.
+    if ($node->get('field_is_open')->value && $this->currentUser->isAuthenticated()) {
+      $build += [
+        '#type' => 'link',
+        '#title' => $this->t('Add your idea'),
+        '#url' => Url::fromRoute('node.add', $route_parameters),
+        '#attributes' => ['class' => ['add_your_idea', 'btn', 'btn-primary']],
+      ];
+    }
+
+    return $build;
   }
 
 }
