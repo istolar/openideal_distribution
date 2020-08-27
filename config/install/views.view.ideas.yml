@@ -10,6 +10,7 @@ dependencies:
     - system.menu.main
     - taxonomy.vocabulary.categories
     - taxonomy.vocabulary.tags
+    - workflows.workflow.life_cycle_phases
   module:
     - better_exposed_filters
     - content_moderation
@@ -782,6 +783,47 @@ display:
             operator_limit_selection: false
             operator_list: {  }
           group: 1
+        moderation_state_1:
+          id: moderation_state_1
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not in'
+          value:
+            life_cycle_phases-draft: life_cycle_phases-draft
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: moderation_state_filter
         combine:
           id: combine
           table: views
@@ -835,7 +877,15 @@ display:
           group_type: group
           admin_label: ''
           operator: in
-          value: {  }
+          value:
+            life_cycle_phases-draft_approval: life_cycle_phases-draft_approval
+            life_cycle_phases-published: life_cycle_phases-published
+            life_cycle_phases-ex: life_cycle_phases-ex
+            life_cycle_phases-needs_work: life_cycle_phases-needs_work
+            life_cycle_phases-approved: life_cycle_phases-approved
+            life_cycle_phases-postponed: life_cycle_phases-postponed
+            life_cycle_phases-launched: life_cycle_phases-launched
+            life_cycle_phases-rejected: life_cycle_phases-rejected
           group: 1
           exposed: true
           expose:
@@ -854,7 +904,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            reduce: false
+              manager: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

@@ -56,20 +56,13 @@ function openideal_idea_cron() {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
-function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'node_idea_form') {
-    // Check challenge query parameter.
-    if ($challenge_id = \Drupal::request()->get('challenge')) {
-      // Load predefined challenge node.
-      $predefined_challenge = \Drupal::entityTypeManager()
-        ->getStorage('node')
-        ->load($challenge_id);
-      if (!empty($predefined_challenge)) {
-        // Set predefined challenge to the idea node form element.
-        $form['field_challenge']['widget'][0]['target_id']['#default_value'] = $predefined_challenge;
-      }
+function openideal_idea_form_node_idea_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Set default challenge based on query parameter.
+  if ($challenge_id = \Drupal::request()->get('challenge')) {
+    if (isset($form['field_challenge']['widget']['#options'][$challenge_id])) {
+      $form['field_challenge']['widget']['#default_value'] = $challenge_id;
     }
   }
 }
@@ -80,9 +73,7 @@ function openideal_idea_form_alter(&$form, FormStateInterface $form_state, $form
 function openideal_idea_node_presave(NodeInterface $node) {
   // Check entity type and duplicate_of field of the entity.
   if ($node->bundle() == 'idea' && !$node->get('field_duplicate_of')->isEmpty()) {
-    // Set 'merged' value for idea_phase field of the entity.
-    // Todo: Should we remove this in favour of Workflow states?
-    $node->set('field_idea_phase', 5);
+    // Todo: Change the workflow state.
   }
   elseif ($node->bundle() == 'idea') {
     $overall_score = \Drupal::service('openideal_idea.helper')->computeOverallScore($node->id());
@@ -191,7 +182,7 @@ function openideal_idea_menu_local_tasks_alter(&$data, $route_name, RefinableCac
     $data['tabs'][0]['group.members'] = [
       '#theme' => 'menu_local_task',
       '#link' => [
-        'title' => t('Group Members'),
+        'title' => t('Members'),
         'url' => Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]),
         'localized_options' => [],
       ],
