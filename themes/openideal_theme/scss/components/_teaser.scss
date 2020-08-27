@@ -82,21 +82,26 @@
 
 /** The teaser mod itself */
 .node--view-mode-teaser {
-  background: $white;
-  border-radius: 8px;
-  overflow: hidden;
   margin-bottom: 20px;
 
   .teaser-top-section {
+    background-color: $white;
     display: flex;
 
     &--section__first {
+      border-top-left-radius: 8px;
       position: relative;
       width: auto;
       max-width: 400px;
       height: 190px;
 
+      &.teaser-top-section--without-slideshow {
+        background-color: #F0F2F3;
+        border-top-right-radius: 0;
+      }
+
       a {
+        overflow: hidden;
         height: 190px;
         display: block;
       }
@@ -104,6 +109,7 @@
       img {
         border-radius: unset;
         height: 100%;
+        object-fit: cover;
       }
     }
 
@@ -119,6 +125,9 @@
   }
 
   .teaser-bottom-section {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: $white;
     padding: 12px;
     box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.05), 0px -1px 6px rgba(0, 0, 0, 0.09);
     display: flex;
@@ -196,9 +205,10 @@
           background-size: 16.67px 16.67px;
         }
 
-        &--public_stream_like {
-          background-size: 16.67px 16.67px;
-          background: url('../misc/icons/teaser_like.svg') no-repeat center center;
+        &--public_stream_like.item-svg {
+          background-size: 15px;
+          height: 18px;
+          background: url('../misc/icons/teaser_like.svg') no-repeat;
         }
 
         &--public_stream_idea.item-svg {
@@ -229,6 +239,10 @@
 
   .profile-author-view-mode .layout__region--content {
     margin-bottom: 0;
+
+    a {
+      display: block;
+    }
   }
 
   // Created
@@ -265,4 +279,126 @@
     width: auto;
   }
 
+}
+
+@media (max-width: 1414px) {
+  .node--view-mode-teaser {
+    .block-field-blocknodechallengetitle a,
+    .block-field-blocknodearticletitle a,
+    .block-field-blocknodeideatitle a {
+      font-size: 23px;
+    }
+
+    .block-field-blocknodeideabody,
+    .block-field-blocknodechallengebody,
+    .block-field-blocknodearticlebody {
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .node--view-mode-teaser {
+    .teaser-top-section {
+      flex-direction: column;
+
+      &--section__first {
+        max-width: unset;
+        height: auto;
+        min-height: 25px;
+      }
+    }
+
+    .block-field-blocknodechallengetitle a,
+    .block-field-blocknodearticletitle a,
+    .block-field-blocknodeideatitle a {
+      font-size: 25px;
+    }
+
+    .block-field-blocknodeideabody,
+    .block-field-blocknodechallengebody,
+    .block-field-blocknodearticlebody {
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 998px) {
+  .teaser-view-mode--teaser {
+    .form-item-search {
+      flex-basis: 100%;
+      flex-grow: 1;
+      font-size: 16px;
+      margin-bottom: 5px;
+
+      .search-submit-button {
+        right: 3%;
+      }
+    }
+
+    fieldset select {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media (max-width: 647px) {
+  .node--view-mode-teaser {
+    .teaser-top-section--section__second {
+      padding: 23px 23px 10px 23px;
+    }
+
+    .block-openideal-user-user-name-block a {
+      font-size: 14px;
+    }
+
+    .teaser-bottom-section {
+      padding: 5px 23px 12px 23px;
+      flex-wrap: wrap;
+
+      &--section__second {
+        margin-bottom: 10px;
+        flex-basis: 100%;
+        flex-grow: 1;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      &--section__first {
+        flex-grow: 1;
+        flex-basis: 100%;
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  .node--view-mode-teaser {
+    .block-openideal-statistics-idea-statistics,
+    .block-openideal-statistics-challenge-statistics {
+      flex-basis: 100%;
+      order: 1;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .idea-statistics-block--list {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 345px) {
+  .teaser-view-mode--teaser {
+    .form-row fieldset {
+      flex-basis: 100%;
+      flex-grow: 1;
+    }
+  }
 }

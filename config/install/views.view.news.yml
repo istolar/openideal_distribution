@@ -209,7 +209,7 @@ display:
         context: '0'
         menu_name: main
       display_description: ''
-      css_class: 'news-teaser-view-mode teaser-view-mode'
+      css_class: 'news-teaser-view-mode teaser-view-mode  teaser-view-mode--teaser'
       defaults:
         css_class: false
     cache_metadata:

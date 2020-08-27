@@ -105,7 +105,7 @@
         {% endblock %}
         <div class="main-content-outer
                 col-xxxl-{{ page.sidebar ? 17 : 22 }}
-                col-xxl-{{ page.sidebar ? 16 : 22 }}
+                col-xxl-{{ page.sidebar ? 16 : 21 }}
                 col-lg-{{ page.sidebar ? 15 : 21 }}
                 col-md-{{ page.sidebar ? 16 : 24 }}"
         >
@@ -151,7 +151,7 @@
 
 {# Footer. #}
 {% if page.footer %}
-    <footer class="site-footer {{ is_node ? 'mobile-idea-site-footer' : '' }}">
+    <footer class="site-footer {{ node_type ? 'mobile-idea-site-footer' : '' }}">
         {% block footer %}
             {{ page.footer }}
         {% endblock %}

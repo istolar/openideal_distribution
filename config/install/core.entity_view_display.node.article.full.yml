@@ -184,6 +184,20 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 5
+          4bdbe2b4-4a31-41b9-a87a-8b0e2b1f3f0e:
+            uuid: 4bdbe2b4-4a31-41b9-a87a-8b0e2b1f3f0e
+            region: second
+            configuration:
+              id: openideal_idea_info_block
+              label: 'Idea info'
+              provider: openideal_idea
+              label_display: '0'
+              context_mapping:
+                node: layout_builder.entity
+            additional:
+              layout_builder_styles_style:
+                mobile_status_and_statistics: 0
+            weight: 6
         third_party_settings: {  }
 id: node.article.full
 targetEntityType: node

@@ -101,8 +101,9 @@
           background-size: 16.67px 16.67px;
         }
 
-        &--public_stream_like {
-          background-size: 16.67px 16.67px;
+        &--public_stream_like.item-svg {
+          background-size: 15px;
+          height: 18px;
           background: url('../misc/icons/teaser_like.svg') no-repeat center center;
         }
 
@@ -181,7 +182,7 @@
 }
 
 @media (max-width: 1226px) {
-  .teaser-view-mode {
+  .teaser-view-mode.view-frontpage {
     fieldset select {
       font-size: 13px;
     }
@@ -198,27 +199,35 @@
       padding-left: 0;
     }
     .view-filters .form-row .frontpage-add-idea-button {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 }
 
-@media (max-width: 656px) {
-  #toolbar-administration {
-    margin-bottom: 36px;
+@media (max-width: 1038px) {
+  .teaser-view-mode.view-frontpage .form-item-search {
+    flex-basis: 100%;
+    flex-grow: 1;
+    margin-bottom: 5px;
+    .search-submit-button {
+      right: 15px;
+    }
   }
 }
 
 @media (max-width: 622px) {
+  .block-openideal-statistics-idea-statistics {
+    margin-bottom: 5px;
+  }
+
   .teaser-view-mode {
     .form-item-search {
-      flex-basis: 100%;
-      flex-grow: 1;
-      order: -1;
+      order: -2;
+      margin-bottom: 5px;
     }
 
     fieldset select {
-      margin-top: 8px;
+      margin-bottom: 5px;
       font-size: 16px;
     }
     .form-item-search input {
@@ -226,11 +235,11 @@
     }
   }
   .view-frontpage .view-filters .form-row .frontpage-add-idea-button {
-    order: -2;
+    margin-bottom: 5px;
+    order: -1;
     flex-grow: 1;
     font-size: 16px;
     flex-basis: 100%;
     text-align: center;
-    margin-top: 8px;
   }
 }

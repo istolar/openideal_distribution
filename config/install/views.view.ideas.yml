@@ -12,6 +12,7 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - better_exposed_filters
+    - content_moderation
     - node
     - taxonomy
     - text
@@ -748,13 +749,11 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_challenge'
-        - 'config:field.storage.node.field_idea_phase'
         - 'config:field.storage.node.field_idea_tags'
   all_ideas_page:
     display_plugin: page
@@ -1369,7 +1368,7 @@ display:
           expose:
             label: 'Overall score'
           plugin_id: standard
-      css_class: 'ideas-teaser-view-page teaser-view-mode'
+      css_class: 'ideas-teaser-view-page teaser-view-mode teaser-view-mode--teaser'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1384,11 +1383,13 @@ display:
         - user.permissions
       tags:
         - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.front_page_teaser'
         - 'config:core.entity_view_display.node.article.full'
         - 'config:core.entity_view_display.node.article.message'
         - 'config:core.entity_view_display.node.article.rss'
         - 'config:core.entity_view_display.node.article.teaser'
         - 'config:core.entity_view_display.node.challenge.default'
+        - 'config:core.entity_view_display.node.challenge.front_page_teaser'
         - 'config:core.entity_view_display.node.challenge.full'
         - 'config:core.entity_view_display.node.challenge.message'
         - 'config:core.entity_view_display.node.challenge.teaser'
@@ -1396,6 +1397,7 @@ display:
         - 'config:core.entity_view_display.node.faq.message'
         - 'config:core.entity_view_display.node.faq.teaser'
         - 'config:core.entity_view_display.node.idea.default'
+        - 'config:core.entity_view_display.node.idea.front_page_teaser'
         - 'config:core.entity_view_display.node.idea.full'
         - 'config:core.entity_view_display.node.idea.message'
         - 'config:core.entity_view_display.node.idea.teaser'
@@ -1525,7 +1527,6 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_challenge'
-        - 'config:field.storage.node.field_idea_phase'
         - 'config:field.storage.node.field_idea_tags'
   idea_workflow_status:
     display_plugin: block

@@ -97,3 +97,15 @@
   }
 
 }
+
+@media (max-width: 530px) {
+  .node--edit-form .field--widget-moderation-state-buttons > div input {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+
+  .node--edit-form--footer .form-group input {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+}

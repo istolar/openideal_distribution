@@ -21,7 +21,7 @@ widgets:
       upload_location: 'public://[date:custom:Y]-[date:custom:m]'
       dropzone_description: 'Drop files here to upload them'
       max_filesize: 32M
-      extensions: 'txt doc xls pdf ppt pps odt ods odp csv'
+      extensions: 'txt doc docx xls xlsx pdf ppt pptx csv'
       clientside_resize: false
       resize_width: null
       resize_height: null

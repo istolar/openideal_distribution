@@ -297,7 +297,7 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: 'col-xl-12 col-xxl-12 col-lg-12 col-md-24'
+          row_class: 'col-xl-24 col-xxl-12'
           default_row_class: true
       defaults:
         style: false

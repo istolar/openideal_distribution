@@ -28,7 +28,7 @@
   &--referenced-label {
     position: absolute;
     font-weight: $font-weight-bold;
-    top: 7%;
+    top: 15px;
     left: 0;
     background: #F2994A;
     padding: 1px 21px 2px 12px;
@@ -156,9 +156,10 @@
             background-size: 16.67px 16.67px;
           }
 
-          &--public_stream_like {
-            background-size: 16.67px 16.67px;
-            background: url('../misc/icons/public_stream_like.svg') no-repeat center center;
+          &--public_stream_like.item-svg {
+            background-size: 15px;
+            height: 18px;
+            background: url('../misc/icons/public_stream_like.svg') no-repeat;
           }
 
           &--public_stream_idea.item-svg {
@@ -262,6 +263,21 @@
           background-size: contain;
         }
       }
+    }
+  }
+
+}
+
+@media (max-width: 656px) {
+  .node--view-mode-teaser {
+    .block-field-blocknodechallengetitle a,
+    .block-field-blocknodearticletitle a,
+    .block-field-blocknodeideatitle a {
+      font-size: 24px;
+    }
+
+    .teaser-top-section--section__second {
+      padding: 15px;
     }
   }
 
