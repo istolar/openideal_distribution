@@ -27,9 +27,10 @@ class OpenidealFooterMobileFooterBlock extends OpenidealIdeaFlagAndLikeBlock {
   public function build() {
     $contexts = $this->getContexts();
     if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
-      $bundle = $node->bundle();
-
-      if ($bundle != 'article' || $this->currentUser->isAnonymous()) {
+      // We should only display share section for article and anonymous user,
+      // because article has not comments, follow, and likes at all
+      // and anonymous user has no access to it.
+      if ($node->bundle() != 'article' || $this->currentUser->isAnonymous()) {
         $build = parent::build();
         $build['#comment'] = TRUE;
       }

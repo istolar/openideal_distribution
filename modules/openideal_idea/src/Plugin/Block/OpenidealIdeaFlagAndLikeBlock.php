@@ -83,13 +83,14 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
    * {@inheritdoc}
    */
   public function build() {
-    if ($this->currentUser->isAnonymous()) {
-      return [];
-    }
-
-    $build['#theme'] = 'openideal_idea_flag_and_like_block';
+    $build = [];
     $contexts = $this->getContexts();
     if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
+      $build['#cache']['tags'] = $node->getCacheTags();
+      if ($this->currentUser->isAnonymous()) {
+        return $build;
+      }
+      $build['#theme'] = 'openideal_idea_flag_and_like_block';
       $flag_link = $this->flagLinkBuilder->build($node->getEntityTypeId(), $node->id(), 'follow');
       $build['#follow'] = $flag_link;
       $build['#main_class'] = $this->configuration['main_class'];
@@ -106,8 +107,6 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
         $like = $node->field_like[0]->view($settings);
         $build['#like'] = $like;
       }
-
-      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;
