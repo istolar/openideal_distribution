@@ -10,4 +10,5 @@ internal: false
 audience: member
 group_type: idea
 permissions_ui: true
-permissions: {  }
+permissions:
+  - 'view group'
