@@ -26,6 +26,12 @@
       color: $dark-gray;
       line-height: 24px;
     }
+
+    .block-openideal-idea-info-block,
+    .block-openideal-statistics-challenge-statistics,
+    .block-views-blockfollowers-followers {
+      display: none;
+    }
   }
 
   .block-field-blocknodearticlefield-tags {
@@ -45,7 +51,8 @@
     }
   }
 
-  .idea-statistics-and-status-block {
+  .idea-statistics-and-status-block,
+  .block-openideal-statistics-challenge-statistics {
     display: flex;
     justify-content: space-between;
     margin-bottom: 44px;
@@ -101,6 +108,17 @@
   .node--view-mode-full .card-body {
     padding: 26px 19px;
 
+    .block-openideal-idea-info-block,
+    .block-openideal-statistics-challenge-statistics,
+    .block-views-blockfollowers-followers {
+      display: unset;
+    }
+    .block-views-blockfollowers-followers {
+      h5 {
+        font-size: 15px;
+      }
+    }
+
     .block-field-blocknodeideatitle,
     .block-field-blocknodearticletitle,
     .block-field-blocknodechallengetitle {
@@ -111,11 +129,12 @@
         font-size: 14px;
       }
 
-      .idea-statistics-block--list__item .item-svg {
-        background-size: 24px 24px;
-        width: 24px;
-        height: 24px;
-      }
+    }
+    .challenge-statistics-block--list__item .item-svg,
+    .idea-statistics-block--list__item .item-svg {
+      background-size: 24px 24px;
+      width: 24px;
+      height: 24px;
     }
 
     .idea-information {

@@ -64,7 +64,6 @@ class OpenidealIdeaGoBack extends BlockBase implements ContainerFactoryPluginInt
    * {@inheritdoc}
    */
   public function build() {
-    // @Todo: make logic for different pages.
     $node = $this->currentRouteMatch->getParameter('node');
     $build = [];
     if ($node instanceof NodeInterface) {

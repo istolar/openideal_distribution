@@ -8,7 +8,6 @@ core_version_requirement: ^8 || ^9
 dependencies:
   # Core and contrib modules.
   - admin_toolbar:admin_toolbar
-  - admin_toolbar_search:admin_toolbar_search
   - admin_toolbar_tools:admin_toolbar_tools
   - adminimal_admin_toolbar:adminimal_admin_toolbar
   - administerusersbyrole:administerusersbyrole

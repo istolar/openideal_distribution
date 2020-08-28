@@ -40,6 +40,25 @@
   };
 
   /**
+   * Teaser mod behaviors.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attach behaviors that react if teaser has no images.
+   */
+  Drupal.behaviors.openidealThemeTeaser = {
+    attach: function (context, settings) {
+      $('.teaser-top-section--section__first').once('openideal_theme_teaser').each(function () {
+        var $this = $(this);
+        if (!$this.has('.block-openidel-slideshow-block').length) {
+          $this.addClass('teaser-top-section--without-slideshow')
+        }
+      });
+    }
+  };
+
+  /**
    * Main navigation behaviour.
    *
    * @type {Drupal~behavior}

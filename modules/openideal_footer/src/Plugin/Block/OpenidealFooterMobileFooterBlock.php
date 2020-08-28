@@ -25,9 +25,21 @@ class OpenidealFooterMobileFooterBlock extends OpenidealIdeaFlagAndLikeBlock {
    * {@inheritdoc}
    */
   public function build() {
-    $build = parent::build();
-    $build['#theme'] = 'openideal_footer_mobile_footer_block';
+    $contexts = $this->getContexts();
+    if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
+      // We should only display share section for article and anonymous user,
+      // because article has not comments, follow, and likes at all
+      // and anonymous user has no access to it.
+      if ($node->bundle() != 'article' || $this->currentUser->isAnonymous()) {
+        $build = parent::build();
+        $build['#comment'] = TRUE;
+      }
+      $build['#cols'] = empty($build) ? 'col-24' : 'col-6';
+      $build['#main_class'] = 'site-footer-mobile-block';
+      $build['#share'] = TRUE;
+    }
 
+    $build['#theme'] = 'openideal_footer_mobile_footer_block';
     return $build;
   }
 

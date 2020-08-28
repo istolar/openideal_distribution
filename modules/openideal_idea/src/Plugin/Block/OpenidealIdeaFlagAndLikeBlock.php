@@ -5,6 +5,7 @@ namespace Drupal\openideal_idea\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Session\AccountProxy;
 use Drupal\flag\FlagLinkBuilderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,6 +34,13 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
   protected $flagLinkBuilder;
 
   /**
+   * Current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxy
+   */
+  protected $currentUser;
+
+  /**
    * Constructs a new MobileFooterBlock object.
    *
    * @param array $configuration
@@ -43,15 +51,19 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
    *   The plugin implementation definition.
    * @param \Drupal\flag\FlagLinkBuilderInterface $flag_link_builder
    *   Flag link builder service.
+   * @param \Drupal\Core\Session\AccountProxy $currentUser
+   *   Current user.
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    FlagLinkBuilderInterface $flag_link_builder
+    FlagLinkBuilderInterface $flag_link_builder,
+    AccountProxy $currentUser
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->flagLinkBuilder = $flag_link_builder;
+    $this->currentUser = $currentUser;
   }
 
   /**
@@ -62,7 +74,8 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('flag.link_builder')
+      $container->get('flag.link_builder'),
+      $container->get('current_user')
     );
   }
 
@@ -70,9 +83,14 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
    * {@inheritdoc}
    */
   public function build() {
-    $build['#theme'] = 'openideal_idea_flag_and_like_block';
+    $build = [];
     $contexts = $this->getContexts();
     if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
+      $build['#cache']['tags'] = $node->getCacheTags();
+      if ($this->currentUser->isAnonymous()) {
+        return $build;
+      }
+      $build['#theme'] = 'openideal_idea_flag_and_like_block';
       $flag_link = $this->flagLinkBuilder->build($node->getEntityTypeId(), $node->id(), 'follow');
       $build['#follow'] = $flag_link;
       $build['#main_class'] = $this->configuration['main_class'];
@@ -89,8 +107,6 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
         $like = $node->field_like[0]->view($settings);
         $build['#like'] = $like;
       }
-
-      $build['#cache']['tags'] = $node->getCacheTags();
     }
 
     return $build;

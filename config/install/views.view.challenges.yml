@@ -1120,7 +1120,7 @@ display:
           entity_type: node
           entity_field: uid
           plugin_id: standard
-      css_class: 'challenge-teaser-view-mode teaser-view-mode'
+      css_class: ' teaser-view-mode--teaser challenge-teaser-view-mode teaser-view-mode'
       style:
         type: default
         options: {  }

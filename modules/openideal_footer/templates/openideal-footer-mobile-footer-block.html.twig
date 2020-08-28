@@ -8,42 +8,47 @@
 * @ingroup themeable
 */
 #}
-{% set classes = [
-    'site-footer-mobile-block',
-] %}
-<div{{ attributes.addClass(classes) }}>
-    <div class="site-footer-mobile-block--element">
+<div{{ attributes.addClass(main_class) }}>
+    {% if like %}
+    <div class="{{ main_class }}--element {{ cols }}">
         {{ like }}
     </div>
+    {% endif %}
 
-    <div class="site-footer-mobile-block--element">
+    {% if follow %}
+    <div class="{{ main_class }}--element {{ cols }}">
         {% if follow['#flag'] is not empty %}
             {{ follow }}
         {% else %}
             <div class="flag-follow--body">
                 {% include active_theme_path() ~ '/misc/icons/follow.svg' %}
-                <span class="site-footer-mobile-block--element__text">
+                <span class="{{ main_class }}--element__text">
                     {{ 'Followed'|t }}
                 </span>
             </div>
         {% endif %}
     </div>
+    {% endif %}
 
-    <div class="site-footer-mobile-block--element site-footer-open-comments-btn">
-        <span class="site-footer-mobile-block--element__icon">
+    {% if comment %}
+    <div class="{{ main_class }}--element site-footer-open-comments-btn {{ cols }}">
+        <span class="{{ main_class }}--element__icon">
             {% include active_theme_path() ~ '/misc/icons/comment.svg' %}
         </span>
-        <span class="site-footer-mobile-block--element__text">
+        <span class="{{ main_class }}--element__text">
             {{ 'Comment'|t }}
         </span>
     </div>
+    {% endif %}
 
-    <div class="site-footer-mobile-block--element site-footer-open-share-btn">
-        <span class="site-footer-mobile-block--element__icon">
+    {% if share %}
+    <div class="{{ main_class }}--element site-footer-open-share-btn {{ cols }}">
+        <span class="{{ main_class }}--element__icon">
             {% include active_theme_path() ~ '/misc/icons/share.svg' %}
         </span>
-        <span class="site-footer-mobile-block--element__text">
+        <span class="{{ main_class }}--element__text">
             {{ 'Share'|t }}
         </span>
     </div>
+    {% endif %}
 </div>

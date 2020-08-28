@@ -50,7 +50,6 @@ class Slideshow extends BlockBase {
    */
   public function blockForm($form, FormStateInterface $form_state) {
     $image_styles = image_style_options(TRUE);
-    $image_styles['_original image_'] = $this->t('- None (original image) -');
 
     $form['image_style'] = [
       '#type' => 'select',
@@ -73,7 +72,7 @@ class Slideshow extends BlockBase {
    */
   public function defaultConfiguration() {
     return [
-      'image_style' => '_original image_',
+      'image_style' => '',
     ];
   }
 

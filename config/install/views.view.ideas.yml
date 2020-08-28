@@ -1419,7 +1419,7 @@ display:
           expose:
             label: 'Overall score'
           plugin_id: standard
-      css_class: 'ideas-teaser-view-page teaser-view-mode'
+      css_class: 'ideas-teaser-view-page teaser-view-mode teaser-view-mode--teaser'
     cache_metadata:
       max-age: -1
       contexts:

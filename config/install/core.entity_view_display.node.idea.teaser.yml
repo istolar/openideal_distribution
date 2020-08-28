@@ -46,7 +46,7 @@ third_party_settings:
               label: Slideshow
               provider: openideal_slideshow
               label_display: '0'
-              image_style: teaser
+              image_style: front_page_teaser_large
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
@@ -82,7 +82,7 @@ third_party_settings:
                 label: hidden
                 type: text_trimmed
                 settings:
-                  trim_length: 300
+                  trim_length: 340
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
