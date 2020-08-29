@@ -1,5 +1,5 @@
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.message.mail_subject
@@ -16,9 +16,12 @@ targetEntityType: message
 bundle: node_created
 mode: mail_subject
 content:
-  partial_0:
+  partial_1:
     weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_node_reference: true
-  partial_1: true
+  partial_0: true
+  partial_2: true

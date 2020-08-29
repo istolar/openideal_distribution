@@ -12,7 +12,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use Drupal\openideal_idea\Plugin\EntityReferenceSelection\GroupTypeRoleSelection;
 use Drupal\openideal_idea\Plugin\Validation\Constraint\OpenidealModerationStateConstraint;
 
 /**
@@ -318,13 +317,4 @@ function openideal_idea_module_implements_alter(&$implementations, $hook) {
  */
 function openideal_idea_validation_constraint_alter(array &$definitions) {
   $definitions['ModerationState']['class'] = OpenidealModerationStateConstraint::class;
-}
-
-/**
- * Implements hook_entity_reference_selection_alter().
- */
-function openideal_idea_entity_reference_selection_alter(array &$definitions) {
-  if (isset($definitions['group_type:group_role'])) {
-    $definitions['group_type:group_role']['class'] = GroupTypeRoleSelection::class;
-  }
 }

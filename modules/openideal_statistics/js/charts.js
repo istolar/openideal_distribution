@@ -3,6 +3,39 @@
   'use strict';
 
   /**
+   * Attach c3 charts behavior.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attach c3 charts.
+   */
+  Drupal.behaviors.OpenidealStatisticsC3Charts = {
+    attach: function (context, settings) {
+      let charts = settings.charts;
+      $(charts.perDay.bindTo, context).once('openideal_statistics_C3_charts').each(function () {
+        c3.generate({
+          bindTo: $(this).get(0),
+          data: {
+            json: charts.perDay.data
+          },
+          keys: {
+            value: ['total']
+          },
+          axis: {
+            date: {
+              type: 'timeseries',
+              tick: {
+                format: '%Y-%m-%d'
+              }
+            }
+          }
+        })
+      })
+    }
+  }
+
+  /**
    * Attach charts behaviour.
    *
    * @see https://bl.ocks.org/syntagmatic/482706e0638c67836d94b20f0cb37122

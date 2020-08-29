@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - openideal_statistics
+    - system
+  theme:
+    - openideal_theme
+id: users_per_day_chart
+theme: openideal_theme
+region: content
+weight: 0
+provider: null
+plugin: openideal_statistics_per_day_charts_block
+settings:
+  id: openideal_statistics_per_day_charts_block
+  label: 'Charts per day'
+  provider: openideal_statistics
+  label_display: '0'
+  entity: user
+visibility:
+  request_path:
+    id: request_path
+    pages: /graphs-and-charts
+    negate: false
+    context_mapping: {  }

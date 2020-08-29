@@ -1,4 +1,10 @@
 text:
   -
-    value: "<p class=\"message--text\"><a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a>&nbsp;has been created.</p>\r\n"
+    value: '[site:name] New comment!'
+    format: basic_html
+  -
+    value: "<p class=\"message--text\">New [message:field_node_reference:entity:content-type]: <a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n"
     format: full_html
+  -
+    value: "<p>New [message:field_node_reference:entity:content-type]: [message:field_node_reference:entity:title]</p>\r\n"
+    format: basic_html

@@ -29,4 +29,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  partial_1: true
+  partial_2: true
