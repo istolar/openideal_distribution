@@ -16,6 +16,7 @@ permissions:
   - 'access user profiles'
   - 'access users overview'
   - 'administer comment types'
+  - 'administer comments'
   - 'administer nodes'
   - 'allow empty user mail'
   - 'assign manager role'
