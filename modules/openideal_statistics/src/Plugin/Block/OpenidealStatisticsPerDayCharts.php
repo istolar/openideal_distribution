@@ -4,6 +4,7 @@ namespace Drupal\openideal_statistics\Plugin\Block;
 
 use Drupal\Component\Datetime\Time;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Block\BlockBase;
@@ -43,6 +44,20 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
   protected $dateFormatter;
 
   /**
+   * Database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+
+  /**
+   * Max total value.
+   *
+   * @var int
+   */
+  protected $max = 0;
+
+  /**
    * Time.
    *
    * @var \Drupal\Component\Datetime\Time
@@ -59,12 +74,14 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
     EntityTypeManager $entityTypeManager,
     Json $json,
     DateFormatter $dateFormatter,
+    Connection $database,
     Time $time
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->serializer = $json;
     $this->dateFormatter = $dateFormatter;
+    $this->database = $database;
     $this->time = $time;
   }
 
@@ -79,6 +96,7 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
       $container->get('entity_type.manager'),
       $container->get('serialization.json'),
       $container->get('date.formatter'),
+      $container->get('database'),
       $container->get('datetime.time')
     );
   }
@@ -91,10 +109,12 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
     $data = $this->getData();
 
     $data = $this->serializer->encode($data);
-    $build['#attached']['drupalSettings']['charts']['perDay']['data'] = $data;
-    $build['#attached']['drupalSettings']['charts']['perDay']['bindTo'] = '#per-day-' . $entity;
-    $build['#attached']['drupalSettings']['charts']['perDay']['label'] = 'No. Of ' . ucfirst($entity) . 's';
-    $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.charts';
+    $build['#attached']['drupalSettings']['charts']['perDay'][$entity] = [
+      'data' => $data,
+      'bindTo' => '#per-day-' . $entity,
+      'label' => $this->t("No. of @entity", ['@entity' => ($entity != 'node' ? $entity : 'ideas') . 's']),
+      'max' => $this->max,
+    ];
     $build['#cache']['tags'] = [$entity . '_list' . ($entity == 'node' ? ':idea' : '')];
 
     $build[] = [
@@ -116,10 +136,11 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
       '#type' => 'select',
       '#options' => [
         'user' => $this->t('Users'),
-        'votes' => $this->t('Votes'),
+        'vote' => $this->t('Votes'),
         'comment' => $this->t('Comments'),
         'node' => $this->t('Ideas'),
       ],
+      '#default_value' => $this->configuration['entity'] ?? '',
       '#required' => TRUE,
     ];
     return $form;
@@ -141,24 +162,60 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
   protected function getData() {
     $entity = $this->configuration['entity'];
     $created = $entity == 'vote' ? 'timestamp' : 'created';
-    $storage = $this->entityTypeManager->getStorage($entity);
-    // @Todo: optimize.
-    $query = $storage->getQuery()
-      ->condition($created, $this->time->getRequestTime() - 2592000, '>');
+    // To loop through dates can't use request time because there is
+    // difference of time during request executing.
+    $to = time();
+    $from = strtotime('-1 month');
+
+    // @Todo: investigate if there is possibility to count occurrences of equal fields.
+    $select = $this->database->select($this->getTable(), 'd');
+    $select->addExpression("DATE_FORMAT(FROM_UNIXTIME(d.${created}), '%Y-%m-%d')", 'date');
+    $select->condition("d.${created}", $this->time->getRequestTime() - $from, '>=');
+
     if ($entity == 'node') {
-      $query->condition('type', 'idea');
+      $select->condition('d.type', 'idea');
     }
-    $ids = $query->execute();
-    $data = $storage->loadMultiple($ids);
-    $result = [];
-    foreach ($data as $entity) {
-      $date = $this->dateFormatter->format($entity->{$created}->value, 'html_date');
-      $result[$date] = [
-        'date' => $date,
-        'total' => ($result[$date]['total'] ?? 0) + 1,
+
+    $result = $select->execute()->fetchCol();
+
+    $fetched_summarized_dates = [];
+    foreach ($result as $item) {
+      $fetched_summarized_dates[$item] = ($fetched_summarized_dates[$item] ?? 0) + 1;
+    }
+    // Need to get max value to set it properly in charts script.
+    $this->max = max($fetched_summarized_dates);
+
+    $data = [];
+    // Loop through month dates and set appropriate values.
+    while ($from <= $to) {
+      $from_date_formatted = $this->dateFormatter->format($from, 'html_date');
+      $data[] = [
+        'date' => $from_date_formatted,
+        'total' => $fetched_summarized_dates[$from_date_formatted] ?? 0,
       ];
+      $from = strtotime('+1 day', $from);
     }
-    return array_values($result);
+    return $data;
+  }
+
+  /**
+   * Get table name.
+   *
+   * @return string
+   *   Table name.
+   */
+  private function getTable() {
+    $entity = $this->configuration['entity'];
+    switch ($entity) {
+      case 'user':
+        return 'users_field_data';
+
+      case 'vote':
+        return 'votingapi_vote';
+
+      default:
+        return $entity . '_field_data';
+    }
   }
 
 }

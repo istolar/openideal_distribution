@@ -3,35 +3,124 @@
   'use strict';
 
   /**
-   * Attach c3 charts behavior.
+   * Attach c3 entity by charts behavior.
    *
    * @type {Drupal~behavior}
    *
    * @prop {Drupal~behaviorAttach} attach
-   *   Attach c3 charts.
+   *   Attach c3 entity by charts.
    */
-  Drupal.behaviors.OpenidealStatisticsC3Charts = {
+  Drupal.behaviors.OpenidealStatisticsC3EntityByCharts = {
     attach: function (context, settings) {
-      let charts = settings.charts;
-      $(charts.perDay.bindTo, context).once('openideal_statistics_C3_charts').each(function () {
-        c3.generate({
-          bindTo: $(this).get(0),
-          data: {
-            json: charts.perDay.data
-          },
-          keys: {
-            value: ['total']
-          },
-          axis: {
-            date: {
-              type: 'timeseries',
-              tick: {
-                format: '%Y-%m-%d'
+      // @Todo: combine this and OpenidealStatisticsC3PerDayCharts behavior?
+      let chartsSettings = settings.charts.byEntity;
+      for (var id in chartsSettings) {
+        if (chartsSettings.hasOwnProperty(id)) {
+          $(chartsSettings[id].bindTo, context).once('openideal_statistics_c3_entity_by_charts').each(function () {
+            c3.generate({
+              bindto: $(this).get(0),
+              padding: {
+                left: 30,
+                right: 30,
+              },
+              size: {
+                height: 300,
+                width: 500,
+              },
+              point: {
+                show: false
+              },
+              data: {
+                json: JSON.parse(chartsSettings[id].data),
+                type: 'pie',
+              },
+            })
+          })
+        }
+      }
+    }
+  }
+
+  /**
+   * Attach c3 per day charts behavior.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attach c3 per day charts.
+   */
+  Drupal.behaviors.OpenidealStatisticsC3PerDayCharts = {
+    attach: function (context, settings) {
+      let chartsSettings = settings.charts.perDay;
+      for (var id in chartsSettings) {
+        if (chartsSettings.hasOwnProperty(id)) {
+          $(chartsSettings[id].bindTo, context).once('openideal_statistics_c3_per_day_charts').each(function () {
+            c3.generate({
+              bindto: $(this).get(0),
+              padding: {
+                left: 30,
+                right: 30,
+              },
+              size: {
+                height: 300,
+                width: 500,
+              },
+              point: {
+                show: false
+              },
+              data: {
+                json: JSON.parse(chartsSettings[id].data),
+                keys: {
+                  x: 'date',
+                  value: ['total'],
+                },
+                names: {
+                  'total': chartsSettings[id].label
+                },
+                type: 'spline',
+              },
+              grid: {
+                y: {
+                  show: true
+                }
+              },
+              axis: {
+                y: {
+                  min: 0,
+                  max: +chartsSettings[id].max + 1,
+                  tick: {
+                    // Need to create custom values in case if we have range
+                    // from 1 -> 2, graph will create too much unneeded ticks.
+                    values: function (d) {
+                      if (d[0] < 0) {
+                        d[0] = 0;
+                      } else {
+                        d[0] = +d3.format("d")(d[0]);
+
+                      }
+                      d[1] = +d3.format("d")(d[1]);
+                      return d3.range(d[0], d[1] + 1);
+                    },
+                    format: function (d) {
+                      return d % 1 === 0 ? d : '';
+                    }
+                  },
+                },
+                x: {
+                  type: 'timeseries',
+                  tick: {
+                    count: 22,
+                    rotate: -33,
+                    format: function (x) {
+                      return x.toLocaleDateString();
+                    }
+                  }
+                }
               }
-            }
-          }
-        })
-      })
+            })
+          });
+        }
+      }
     }
   }
 
@@ -50,8 +139,8 @@
       $('.charts').once('openideal_statistics_charts', context).each(function (name) {
         var devicePixelRatio = window.devicePixelRatio || 1;
         var margin = {top: 40, right: 70, bottom: 20, left: 50},
-        width = $(this).width() - margin.left - margin.right,
-        height = 520 - margin.top - margin.bottom,
+        width = 1200 - margin.left - margin.right,
+        height = 420 - margin.top - margin.bottom,
         innerHeight = height - 2;
 
         // The colors are taken and applied for the first "column" of the chart.

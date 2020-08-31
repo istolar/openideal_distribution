@@ -9,14 +9,14 @@ dependencies:
 id: chartsblock
 theme: openideal_theme
 region: content
-weight: 0
+weight: -8
 provider: null
 plugin: openideal_statistics_charts_block
 settings:
   id: openideal_statistics_charts_block
-  label: 'Charts block'
+  label: Demographic
   provider: openideal_statistics
-  label_display: '0'
+  label_display: visible
 visibility:
   request_path:
     id: request_path

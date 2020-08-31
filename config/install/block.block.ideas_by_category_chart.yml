@@ -6,18 +6,18 @@ dependencies:
     - system
   theme:
     - openideal_theme
-id: users_per_day_chart
+id: ideas_by_category_chart
 theme: openideal_theme
 region: content
-weight: -6
+weight: 0
 provider: null
-plugin: openideal_statistics_per_day_charts_block
+plugin: openideal_statistics_etity_by_chart_block
 settings:
-  id: openideal_statistics_per_day_charts_block
-  label: 'Users joined per day'
+  id: openideal_statistics_etity_by_chart_block
+  label: 'Ideas by category'
   provider: openideal_statistics
   label_display: visible
-  entity: user
+  entity_by: category
 visibility:
   request_path:
     id: request_path
