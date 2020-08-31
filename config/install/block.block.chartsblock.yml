@@ -3,7 +3,7 @@ status: true
 dependencies:
   module:
     - openideal_statistics
-    - system
+    - route_condition
   theme:
     - openideal_theme
 id: chartsblock
@@ -18,8 +18,8 @@ settings:
   provider: openideal_statistics
   label_display: visible
 visibility:
-  request_path:
-    id: request_path
-    pages: /graphs-and-charts
+  route:
+    id: route
+    routes: openideal_statistics.graphs_reports
     negate: false
     context_mapping: {  }

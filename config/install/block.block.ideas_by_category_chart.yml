@@ -3,7 +3,7 @@ status: true
 dependencies:
   module:
     - openideal_statistics
-    - system
+    - route_condition
   theme:
     - openideal_theme
 id: ideas_by_category_chart
@@ -19,8 +19,8 @@ settings:
   label_display: visible
   entity_by: category
 visibility:
-  request_path:
-    id: request_path
-    pages: /graphs-and-charts
+  route:
+    id: route
+    routes: openideal_statistics.graphs_reports
     negate: false
     context_mapping: {  }

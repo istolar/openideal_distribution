@@ -183,7 +183,7 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
       $fetched_summarized_dates[$item] = ($fetched_summarized_dates[$item] ?? 0) + 1;
     }
     // Need to get max value to set it properly in charts script.
-    $this->max = max($fetched_summarized_dates);
+    $this->max = max((empty($fetched_summarized_dates) ? [0] : $fetched_summarized_dates));
 
     $data = [];
     // Loop through month dates and set appropriate values.

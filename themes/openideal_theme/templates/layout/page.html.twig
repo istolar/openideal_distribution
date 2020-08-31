@@ -62,6 +62,9 @@
             {{ page.logo }}
         </div>
     {% endif %}
+    <button id="site-notification-collapse" class="btn d-md-none">
+        {% include active_theme_path() ~ '/misc/icons/notification.svg' %}
+    </button>
 </div>
 <div id="page-wrapper" class="container-fluid">
     <div id="page" class="row">
@@ -132,6 +135,9 @@
         </div>
         {% if page.sidebar %}
             <div class="sidebar site-sidebar col-xxl-5 col-lg-6 col-md-8 d-none d-md-block {{ node_type ? 'site-sidebar-node' }} {{ node_type == 'article' ? 'site-sidebar-node--article' }}">
+                <div class="site-sidebar--dismiss d-md-none">
+                    {% include active_theme_path() ~ '/misc/icons/exit.svg' %}
+                </div>
                 <aside class="section site-sidebar--inner" role="complementary">
                     {{ page.sidebar }}
                 </aside>

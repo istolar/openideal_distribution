@@ -68,9 +68,9 @@
    */
   Drupal.behaviors.openidealThemeNavigationToggle = {
     attach: function (context, settings) {
-      $('.site-navigation--dismiss, .navigation-overlay').once('openideal-theme-navigation-toggle-overlay').on('click', function () {
+      $('.site-navigation--dismiss, .navigation-overlay, .site-sidebar--dismiss').once('openideal-theme-navigation-toggle-overlay').on('click', function () {
         // hide sidebar
-        $('#site-navigation').removeClass('active');
+        $('#site-navigation, .site-sidebar').removeClass('active');
         // hide overlay
         $('.navigation-overlay').removeClass('active');
       });
@@ -78,6 +78,13 @@
       $('#sidebar-collapse').once('openideal-theme-navigation-toggle').on('click', function () {
         // open sidebar
         $('#site-navigation').addClass('active');
+        // fade in the overlay
+        $('.navigation-overlay').addClass('active');
+      });
+
+      $('#site-notification-collapse').once('openideal-theme-navigation-toggle').on('click', function () {
+        // open sidebar
+        $('.site-sidebar').addClass('active');
         // fade in the overlay
         $('.navigation-overlay').addClass('active');
       });

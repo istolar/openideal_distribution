@@ -52,8 +52,7 @@ function openideal_user_tokens($type, $tokens, array $data, array $options, Bubb
                 'type' => 'text_trimmed',
                 'settings' => ['trim_length' => 130],
               ]);
-            $kek = Drupal::service('renderer')->render($body);
-            $replacements[$original] = $kek;
+            $replacements[$original] = Drupal::service('renderer')->render($body);
           }
           break;
 

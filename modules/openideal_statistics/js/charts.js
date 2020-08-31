@@ -89,18 +89,6 @@
                   min: 0,
                   max: +chartsSettings[id].max + 1,
                   tick: {
-                    // Need to create custom values in case if we have range
-                    // from 1 -> 2, graph will create too much unneeded ticks.
-                    values: function (d) {
-                      if (d[0] < 0) {
-                        d[0] = 0;
-                      } else {
-                        d[0] = +d3.format("d")(d[0]);
-
-                      }
-                      d[1] = +d3.format("d")(d[1]);
-                      return d3.range(d[0], d[1] + 1);
-                    },
                     format: function (d) {
                       return d % 1 === 0 ? d : '';
                     }
