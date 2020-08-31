@@ -9,14 +9,14 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'Charts' block.
+ * Provides a 'DemographicChart' block.
  *
  * @Block(
  *  id = "openideal_statistics_charts_block",
  *  admin_label = @Translation("Charts block"),
  * )
  */
-class Charts extends BlockBase implements ContainerFactoryPluginInterface {
+class DemographicChart extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * Entity type manager.
@@ -89,11 +89,6 @@ class Charts extends BlockBase implements ContainerFactoryPluginInterface {
     $build[] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['charts']],
-      'title' => [
-        '#type' => 'html_tag',
-        '#tag' => 'h1',
-        '#value' => $this->t('Demographic chart'),
-      ],
     ];
 
     return $build;

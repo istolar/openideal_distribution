@@ -19,6 +19,10 @@
     &:hover {
       color: #d2caca;
     }
+
+    p {
+      display: inline;
+    }
   }
 
   mark {
@@ -39,7 +43,7 @@
   }
 
   &--referenced-label--article {
-    background: #F2994A;
+    background: #F85B85;
   }
 
   &--referenced-label--news {
@@ -68,7 +72,6 @@
 
   &--text {
     margin: 29px 0 24px 0;
-    font-weight: $font-weight-bold;
     padding: 0;
   }
 
@@ -201,7 +204,6 @@
     color: $white;
     font-size: 25px;
     margin-bottom: 18px;
-    font-weight: $font-weight-bold;
   }
 }
 
@@ -266,6 +268,32 @@
     }
   }
 
+}
+
+@media (max-width: 767px) {
+  .entity--user--canonical .site-sidebar,
+  .view--frontpage--front-page .site-sidebar {
+    display: block !important;
+    width: 312px;
+    padding-left: 0;
+    position: fixed;
+    top: 0;
+    right: -312px;
+    height: 100vh;
+    overflow: scroll;
+    z-index: 999;
+    transition: all 0.3s;
+
+    &.active {
+      right: 0;
+    }
+
+    .site-sidebar--dismiss {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+    }
+  }
 }
 
 @media (max-width: 656px) {

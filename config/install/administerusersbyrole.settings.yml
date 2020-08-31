@@ -1,2 +1,2 @@
 roles:
-  manager: safe
+  manager: unsafe

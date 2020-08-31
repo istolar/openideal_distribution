@@ -1,8 +1,6 @@
 langcode: en
 status: true
-dependencies:
-  config:
-    - group.type.idea
+dependencies: {  }
 id: group_type_idea
 action: openideal_group_page_redirect
 allow_override: 1

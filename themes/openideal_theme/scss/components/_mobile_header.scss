@@ -24,4 +24,11 @@
     font-size: 13px;
     margin: 15px;
   }
+
+  #site-notification-collapse {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+  }
 }

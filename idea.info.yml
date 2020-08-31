@@ -55,6 +55,7 @@ dependencies:
   - flag:flag
   - gnode:gnode
   - group:group
+  - group_roles_management:group_roles_management
   - drupal:hal
   - drupal:history
   - drupal:image

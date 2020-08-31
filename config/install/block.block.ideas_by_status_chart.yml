@@ -6,17 +6,18 @@ dependencies:
     - route_condition
   theme:
     - openideal_theme
-id: chartsblock
+id: ideas_by_status_chart
 theme: openideal_theme
 region: content
-weight: -8
+weight: 0
 provider: null
-plugin: openideal_statistics_charts_block
+plugin: openideal_statistics_etity_by_chart_block
 settings:
-  id: openideal_statistics_charts_block
-  label: Demographic
+  id: openideal_statistics_etity_by_chart_block
+  label: 'Ideas by status'
   provider: openideal_statistics
   label_display: visible
+  entity_by: status
 visibility:
   route:
     id: route
