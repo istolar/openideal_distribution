@@ -2,23 +2,6 @@
   section.main-content {
     padding: 30px 17px;
   }
-  // Content site slogan.
-  .main-site-logo {
-    &--heading {
-      color: $btn-dark;
-      font-weight: $font-weight-bold;
-    }
-
-    &--sub-heading {
-      display: block;
-      font-weight: $font-weight-light;
-      color: $main-font-color;
-    }
-
-    &--subline {
-      color: $dark-gray;
-    }
-  }
 
   .block-site-wide-statistics-block {
     position: absolute;

@@ -2,24 +2,26 @@ langcode: en
 status: true
 dependencies:
   module:
-    - openideal_statistics
     - system
   theme:
     - openideal_theme
-id: site_wide_statistics_block
+id: content_site_branding
 theme: openideal_theme
 region: content
-weight: -15
+weight: -14
 provider: null
-plugin: site_wide_statistics_block
+plugin: system_branding_block
 settings:
-  id: site_wide_statistics_block
-  label: 'Site wide statistics block'
-  provider: openideal_statistics
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
   label_display: '0'
+  use_site_logo: false
+  use_site_name: true
+  use_site_slogan: true
 visibility:
   request_path:
     id: request_path
-    pages: "<front>\r\n/ideas\r\n/challenges"
+    pages: '<front>'
     negate: false
     context_mapping: {  }

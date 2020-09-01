@@ -18,11 +18,18 @@
     padding: 0;
   }
 
-  .site-branding--link {
-    display: flex;
-    flex-direction: row;
-    font-size: 13px;
-    margin: 15px;
+  .site-branding {
+    &--name {
+      display: none;
+    }
+
+    &--link {
+      display: flex;
+      flex-direction: row;
+      font-size: 13px;
+      margin: 15px;
+      color: $white;
+    }
   }
 
   #site-notification-collapse {
