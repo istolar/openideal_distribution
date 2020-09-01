@@ -149,6 +149,33 @@
 
   /** Blocks */
 
+  // Info
+  .block-openideal-idea-info-block {
+    display: flex;
+    align-items: center;
+    .idea-information--list__item {
+      flex-direction: row;
+      margin-bottom: 0;
+
+      &--title {
+        margin-bottom: 0;
+        margin-right: 4px;
+        font-weight: 600;
+        font-size: 14px;
+        &:after {
+          content: ": "
+        }
+      }
+      &--value {
+        margin-right: 5px;
+        font-size: 14px;
+
+        .challenge-status--deadline {
+          font-size: 14px;
+        }
+      }
+    }
+  }
   // Created
   .block-field-blocknodechallengetitle,
   .block-field-blocknodearticletitle,
@@ -281,6 +308,10 @@
 
 }
 
+.view--challenges--all-challenges-page .idea-statistics-block--list {
+  margin: 0 17px 0 0;
+}
+
 @media (max-width: 1414px) {
   .node--view-mode-teaser {
     .block-field-blocknodechallengetitle a,
@@ -378,6 +409,16 @@
   }
 }
 
+@media (max-width: 630px) {
+  .node--view-mode-teaser .block-openideal-idea-info-block {
+    flex-basis: 100%;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+  }
+}
+
 @media (max-width: 530px) {
   .node--view-mode-teaser {
     .block-openideal-statistics-idea-statistics,
@@ -395,6 +436,11 @@
 }
 
 @media (max-width: 345px) {
+  .node--view-mode-teaser .block-openideal-idea-info-block .idea-information--list__item--title,
+  .node--view-mode-teaser .block-openideal-idea-info-block .idea-information--list__item--value,
+  .node--view-mode-teaser .block-openideal-idea-info-block .idea-information--list__item--value .challenge-status--deadline {
+    font-size: 12px;
+  }
   .teaser-view-mode--teaser {
     .form-row fieldset {
       flex-basis: 100%;

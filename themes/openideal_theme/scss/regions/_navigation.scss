@@ -52,11 +52,15 @@
   &--logo {
     .site-branding--link {
       margin-right: 0;
+      color: $white;
       display: flex;
       flex-flow: column wrap;
       align-items: center;
       margin-bottom: 10px;
       margin-top: 36px;
+      &:hover {
+        color: $white;
+      }
     }
   }
 

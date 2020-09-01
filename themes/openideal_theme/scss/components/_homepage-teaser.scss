@@ -32,6 +32,34 @@
     font-size: 16px;
   }
 
+  // Info
+  .block-openideal-idea-info-block {
+    display: flex;
+    align-items: center;
+    .idea-information--list__item {
+      flex-direction: row;
+      margin-bottom: 0;
+
+      &--title {
+        text-transform: unset;
+        margin-bottom: 0;
+        margin-right: 4px;
+        font-weight: 600;
+        font-size: 14px;
+        &:after {
+          content: ": "
+        }
+      }
+      &--value {
+        font-size: 14px;
+
+        .challenge-status--deadline {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
   .block-field-blocknodechallengetitle,
   .block-field-blocknodearticletitle,
   .block-field-blocknodeideatitle {
@@ -181,6 +209,25 @@
   }
 }
 
+
+@media (max-width: 1598px) {
+  .front-page-teaser .block-openideal-idea-info-block {
+    order: 1;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 1329px) {
+  .front-page-teaser .block-openideal-idea-info-block {
+    order: unset;
+    flex-basis: unset;
+    justify-content: unset;
+    margin-top: 0;
+  }
+
+}
 @media (max-width: 1226px) {
   .teaser-view-mode.view-frontpage {
     fieldset select {
@@ -241,5 +288,14 @@
     font-size: 16px;
     flex-basis: 100%;
     text-align: center;
+  }
+}
+
+@media (max-width: 622px) {
+  .front-page-teaser .block-openideal-idea-info-block {
+    order: 1;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 6px;
   }
 }

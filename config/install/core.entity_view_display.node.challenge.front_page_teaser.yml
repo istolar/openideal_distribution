@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.base_field_override.node.challenge.created
     - core.base_field_override.node.challenge.uid
     - core.entity_view_display.comment.comment.default
     - core.entity_view_mode.node.front_page_teaser
@@ -129,28 +128,7 @@ third_party_settings:
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
-            weight: 0
-          dd4f9f89-ea4e-421c-b1e3-cc9a3b8ac19f:
-            uuid: dd4f9f89-ea4e-421c-b1e3-cc9a3b8ac19f
-            region: third
-            configuration:
-              id: 'field_block:node:challenge:created'
-              label: 'Authored on'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: timestamp
-                settings:
-                  date_format: custom
-                  custom_date_format: d/m/Y
-                  timezone: ''
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
+            weight: -10
           b39eaee4-507c-4f27-a7ac-de9da0d5177a:
             uuid: b39eaee4-507c-4f27-a7ac-de9da0d5177a
             region: third
@@ -164,7 +142,7 @@ third_party_settings:
               context_mapping:
                 node: layout_builder.entity
             additional: {  }
-            weight: 2
+            weight: -8
           152e80a9-8e18-4f4f-80e2-93ced16e8bd1:
             uuid: 152e80a9-8e18-4f4f-80e2-93ced16e8bd1
             region: first
@@ -177,6 +155,23 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 1
+          dee92e14-9fd4-46fe-befe-0bede293a0bc:
+            uuid: dee92e14-9fd4-46fe-befe-0bede293a0bc
+            region: third
+            configuration:
+              id: openideal_idea_info_block
+              label: 'Idea info'
+              provider: openideal_idea
+              label_display: '0'
+              use_created: 0
+              use_updated: 0
+              use_schedule: 1
+              context_mapping:
+                node: layout_builder.entity
+            additional:
+              layout_builder_styles_style:
+                mobile_status_and_statistics: 0
+            weight: -9
         third_party_settings: {  }
 id: node.challenge.front_page_teaser
 targetEntityType: node

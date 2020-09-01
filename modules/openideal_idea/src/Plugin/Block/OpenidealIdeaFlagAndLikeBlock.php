@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxy;
 use Drupal\flag\FlagLinkBuilderInterface;
+use Drupal\openideal_challenge\OpenidealContextEntityTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -25,6 +26,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  use OpenidealContextEntityTrait;
 
   /**
    * Flag link builder service.
@@ -84,8 +87,8 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
    */
   public function build() {
     $build = [];
-    $contexts = $this->getContexts();
-    if (isset($contexts['node']) && ($node = $contexts['node']->getContextValue()) && !$node->isNew()) {
+
+    if ($node = $this->getEntity($this->getContexts())) {
       $build['#cache']['tags'] = $node->getCacheTags();
       if ($this->currentUser->isAnonymous()) {
         return $build;
