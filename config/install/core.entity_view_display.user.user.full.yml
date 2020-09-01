@@ -153,7 +153,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 2
+            weight: 3
           d4f485be-72b9-4acc-b786-e1282cb53e2f:
             uuid: d4f485be-72b9-4acc-b786-e1282cb53e2f
             region: content
@@ -180,6 +180,19 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+          8e868078-9987-4237-a8d4-455b7ea522a2:
+            uuid: 8e868078-9987-4237-a8d4-455b7ea522a2
+            region: content
+            configuration:
+              id: 'views_block:user_content-my_draft_ideas_block'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 2
         third_party_settings: {  }
 id: user.user.full
 targetEntityType: user
