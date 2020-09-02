@@ -230,3 +230,26 @@ function _openideal_user_preprocess_group_membership($element, FormStateInterfac
   }
   return $element;
 }
+
+/**
+ * Implements hook_entity_delete().
+ */
+function openideal_user_entity_delete(EntityInterface $entity) {
+  // Delete all messages that have a reference to an entity.
+  $entity_type_id = $entity->getEntityTypeId();
+  if (in_array($entity_type_id, ['node', 'comment', 'user'])) {
+    $storage = \Drupal::entityTypeManager()->getStorage('message');
+    $select = \Drupal::database()->select('message__field_' . $entity_type_id . '_reference', 'x');
+    $select->fields('x', ['entity_id']);
+    $select->condition('x.field_' . $entity_type_id . '_reference_target_id', $entity->id());
+    $ids = $select->execute()->fetchAllKeyed(0, 0);
+    if (empty($ids)) {
+      return;
+    }
+
+    foreach (array_chunk($ids, 50) as $chunk) {
+      $messages = $storage->loadMultiple($chunk);
+      $storage->delete($messages);
+    }
+  }
+}
