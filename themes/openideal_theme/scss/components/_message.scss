@@ -76,6 +76,17 @@
   &--text {
     margin: 29px 0 24px 0;
     padding: 0;
+
+    .field--name-comment-body {
+      display: inline;
+      p {
+        display: inline;
+
+        a {
+          display: inline-block;
+        }
+      }
+    }
   }
 
   .profile {
