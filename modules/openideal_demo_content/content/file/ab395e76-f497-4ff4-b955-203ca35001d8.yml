@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: ab395e76-f497-4ff4-b955-203ca35001d8
+  default_langcode: en
+  depends:
+    4fde9e02-286a-4530-a339-4d62de213812: user
+default:
+  uid:
+    -
+      entity: 4fde9e02-286a-4530-a339-4d62de213812
+  filename:
+    -
+      value: 20120405-040501-ag.jpg
+  uri:
+    -
+      value: 'public://2020-09/20120405-040501-ag.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 150015
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1599074290
