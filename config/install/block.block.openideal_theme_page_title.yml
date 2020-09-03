@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - system
+    - route_condition
   theme:
     - openideal_theme
 id: openideal_theme_page_title
@@ -17,8 +17,8 @@ settings:
   provider: core
   label_display: '0'
 visibility:
-  request_path:
-    id: request_path
-    pages: "<front>\r\n/user/*\r\n/ideas\r\n/challenges\r\n/community"
+  route:
+    id: route
+    routes: "view.challenges.all_challenges_page\r\nview.ideas.all_ideas_page\r\nview.news.all_news_page\r\nview.user_admin_people.community_page\r\nview.frontpage.front_page\r\nentity.user.canonical"
     negate: false
     context_mapping: {  }
