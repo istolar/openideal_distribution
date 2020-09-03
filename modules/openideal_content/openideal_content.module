@@ -5,6 +5,7 @@
  * Contains openideal_content.module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -51,4 +52,17 @@ function openideal_content_form_views_exposed_form_alter(&$form, FormStateInterf
     ];
   }
   $form['#attached']['library'][] = 'openideal_content/openideal_content.masonry';
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function openideal_content_entity_delete(EntityInterface $entity) {
+  // Delete all messages that have a reference to an entity.
+  $entity_type_id = $entity->getEntityTypeId();
+  if (in_array($entity_type_id, ['node', 'comment', 'user'])) {
+    $storage = \Drupal::entityTypeManager()->getStorage('message');
+    $entities = $storage->loadByProperties(['field_' . $entity_type_id . '_reference' => $entity->id()]);
+    $storage->delete($entities);
+  }
 }

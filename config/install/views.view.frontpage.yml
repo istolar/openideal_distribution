@@ -309,6 +309,7 @@ display:
         css_class: false
         show_admin_links: false
         empty: false
+        title: false
       row:
         type: fields
         options:
@@ -764,6 +765,7 @@ display:
           content: 'No front page content has been created yet.'
           label: ''
           plugin_id: text_custom
+      title: Home
     display_plugin: page
     display_title: 'Front page (page)'
     id: front_page

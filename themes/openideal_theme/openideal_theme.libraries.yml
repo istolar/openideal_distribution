@@ -1,8 +1,8 @@
 global-styling:
   version: VERSION
   js:
-    js/popper.min.js: {}
-    js/bootstrap.min.js: {}
+    js/popper.min.js: { minified: true }
+    js/bootstrap.min.js: { minified: true }
     js/global.js: {}
   css:
     component:

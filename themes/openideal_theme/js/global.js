@@ -215,7 +215,7 @@
    */
   Drupal.behaviors.openidealThemeExposedIdeasFilter = {
     attach: function (context, settings) {
-      $('.teaser-view-mode .views-exposed-form fieldset', context).once('openideal_theme_exposed_ideas_filter').each(function () {
+      $('.teaser-view-mode .views-exposed-form fieldset, .view--user-admin-people--community-page .views-exposed-form fieldset', context).once('openideal_theme_exposed_ideas_filter').each(function () {
         var $this = $(this);
         var text = $('label', $this).text();
 

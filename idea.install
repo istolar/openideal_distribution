@@ -23,4 +23,6 @@ function idea_install() {
 
   // Install 'openideal_content' module.
   \Drupal::service('module_installer')->install(['openideal_content']);
+
+  \Drupal::configFactory()->getEditable('administerusersbyrole.settings')->set('roles', ['manager' => 'safe'])->save();
 }

@@ -125,6 +125,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
             $node_query = $storage->getQuery();
             $result = $node_query->condition('field_challenge', $data['node_id'], '=')
               ->condition('type', 'idea')
+              ->condition('status', 1)
               ->count()
               ->execute();
 

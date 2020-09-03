@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 47cbc985-d198-41e1-94fb-986b502e1bb7
+  default_langcode: en
+  depends:
+    4fde9e02-286a-4530-a339-4d62de213812: user
+default:
+  uid:
+    -
+      entity: 4fde9e02-286a-4530-a339-4d62de213812
+  filename:
+    -
+      value: photo-illus.-by-wikimedia-.jpg
+  uri:
+    -
+      value: 'public://2020-09/photo-illus.-by-wikimedia-.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 203930
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1599074754

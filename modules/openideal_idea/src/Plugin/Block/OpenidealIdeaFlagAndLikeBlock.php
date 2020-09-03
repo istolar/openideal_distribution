@@ -3,6 +3,7 @@
 namespace Drupal\openideal_idea\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxy;
@@ -89,7 +90,8 @@ class OpenidealIdeaFlagAndLikeBlock extends BlockBase implements ContainerFactor
     $build = [];
 
     if ($node = $this->getEntity($this->getContexts())) {
-      $build['#cache']['tags'] = $node->getCacheTags();
+      $build['#cache']['tags'] = Cache::mergeTags($node->getCacheTags(), ['flagging_list']);
+      $build['#cache']['contexts'] = ['user.roles:authenticated', 'route'];
       if ($this->currentUser->isAnonymous()) {
         return $build;
       }
