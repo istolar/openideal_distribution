@@ -1,6 +1,6 @@
 text:
   -
-    value: "<div class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;commented on <a href=\"[message:field_node_reference:entity:url]\">[message:trimmed-node-title]:</a> [message:trimmed-comment]</div>\r\n"
+    value: "<div class=\"message--text\"><a href=\"[message:author:url:absolute]\">[message:author:display-name]</a>&nbsp;commented on <a href=\"[message:field_node_reference:entity:url]\">[message:trimmed-node-title]:</a> <a href=\"[message:comment-url]\">[message:trimmed-comment]</a></div>\r\n"
     format: full_html
   -
     value: "<p>[site:name] New comment!</p>\r\n"
