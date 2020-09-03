@@ -138,7 +138,7 @@ class OpenidealStatisticsEntityByChart extends BlockBase implements ContainerFac
     if (isset($filters[OpenidealStatisticsDateSelectForm::TO])) {
       $query->condition('created', $filters[OpenidealStatisticsDateSelectForm::TO], '<=');
     }
-    elseif (isset($filters[OpenidealStatisticsDateSelectForm::FROM])) {
+    if (isset($filters[OpenidealStatisticsDateSelectForm::FROM])) {
       $query->condition('created', $filters[OpenidealStatisticsDateSelectForm::FROM], '>=');
     }
 

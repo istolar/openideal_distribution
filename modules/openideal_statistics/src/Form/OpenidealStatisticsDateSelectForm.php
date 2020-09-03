@@ -4,7 +4,6 @@ namespace Drupal\openideal_statistics\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class OpenidealStatisticsDateSelectForm.
@@ -24,15 +23,6 @@ class OpenidealStatisticsDateSelectForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    $instance = parent::create($container);
-    $instance->getRequest();
-    return $instance;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getFormId() {
     return 'openideal_statistics_date_select_form';
   }
@@ -41,7 +31,7 @@ class OpenidealStatisticsDateSelectForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $query = $this->requestStack->getCurrentRequest()->query;
+    $query = $this->getRequest()->query;
     $options = [];
     for ($month = 1; $month <= 12; $month++) {
       $options[$month] = $this->formatPlural($month, '1 month', '@count months');
@@ -110,7 +100,8 @@ class OpenidealStatisticsDateSelectForm extends FormBase {
       $form_state->setErrorByName(self::FIXED_RANGE, $this->t('An option should be selected'));
     }
     elseif ($values[self::DATE_TYPE] == self::DATE_TYPE_CUSTOM && (!$values[self::FROM] && !$values[self::TO])) {
-      $form_state->setErrorByName('', $this->t('You must specify both dates'));
+      $form_state->setErrorByName(self::FROM, $this->t('You must specify both dates'));
+      $form_state->setErrorByName(self::TO, $this->t('You must specify both dates'));
     }
     elseif ($values[self::DATE_TYPE] == self::DATE_TYPE_CUSTOM && !$values[self::FROM]) {
       $form_state->setErrorByName(self::FROM, $this->t('Field cannot be empty'));
@@ -125,7 +116,7 @@ class OpenidealStatisticsDateSelectForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
-    $query = $this->requestStack->getCurrentRequest()->query;
+    $query = $this->getRequest()->query;
     // Clear query.
     $query->replace([]);
     // Set query params depending on filters.

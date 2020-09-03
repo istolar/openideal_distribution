@@ -5,11 +5,3 @@ openideal_statistics.graphs_reports:
     _title: 'Graphs & Reports'
   requirements:
     _permission: 'access content'
-
-openideal_statistics.openideal_statistics_date_select_form:
-  path: '/openideal_statistics/form/openideal_statistics_date_select'
-  defaults:
-    _form: '\Drupal\openideal_statistics\Form\OpenidealStatisticsDateSelectForm'
-    _title: 'OpenidealStatisticsDateSelectForm'
-  requirements:
-    _access: 'access content'
