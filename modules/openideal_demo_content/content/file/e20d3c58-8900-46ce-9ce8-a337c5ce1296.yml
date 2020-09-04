@@ -1,20 +1,18 @@
 _meta:
   version: '1.0'
   entity_type: file
-  uuid: 47cbc985-d198-41e1-94fb-986b502e1bb7
+  uuid: e20d3c58-8900-46ce-9ce8-a337c5ce1296
   default_langcode: en
-  depends:
-    4fde9e02-286a-4530-a339-4d62de213812: user
 default:
   uid:
     -
-      entity: 4fde9e02-286a-4530-a339-4d62de213812
+      target_id: 1
   filename:
     -
       value: photo-illus.-by-wikimedia-.jpg
   uri:
     -
-      value: 'public://2020-09/photo-illus.-by-wikimedia-.jpg'
+      value: 'public://2020-09/photo-illus.-by-wikimedia-_1.jpg'
   filemime:
     -
       value: image/jpeg
@@ -26,4 +24,4 @@ default:
       value: true
   created:
     -
-      value: 1599074754
+      value: 1599219545

@@ -73,7 +73,7 @@ class DemographicChart extends BlockBase implements ContainerFactoryPluginInterf
     $data = $this->serializer->encode($this->getData());
     $build['#attached']['drupalSettings']['charts']['data'] = $data;
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.charts';
-    $build['#cache']['tags'] = ['user_list'];
+    $build['#cache']['contexts'] = ['url.query_args'];
 
     $build[] = [
       '#type' => 'container',

@@ -15,12 +15,14 @@
   }
 
   &--date-type {
-    .fieldset-legend {
-      display: none;
+    .fieldset-wrapper {
+      & div > div:first-child {
+        margin-bottom: 22px;
+      }
     }
 
     legend {
-      display: none;
+      margin: 0;
     }
 
     .form-item-date-type {
@@ -30,12 +32,6 @@
         font-size: 17px;
         width: 100px;
       }
-    }
-  }
-
-  #edit-date-type {
-    & > div:first-child {
-      margin-bottom: 22px;
     }
   }
 

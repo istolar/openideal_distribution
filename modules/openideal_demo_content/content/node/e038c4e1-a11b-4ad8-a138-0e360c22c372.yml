@@ -33,9 +33,6 @@ default:
   sticky:
     -
       value: false
-  revision_translation_affected:
-    -
-      value: true
   moderation_state:
     -
       value: published
@@ -57,9 +54,9 @@ default:
     -
       status: 2
       cid: 0
-      last_comment_timestamp: 1599077588
+      last_comment_timestamp: 1599207648
       last_comment_name: ''
-      last_comment_uid: 6
+      last_comment_uid: 3
       comment_count: 0
   field_idea_tags:
     -
@@ -84,4 +81,4 @@ default:
       status: 2
   field_overall_score:
     -
-      value: '0.2'
+      value: '0.0'

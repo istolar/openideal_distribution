@@ -6,13 +6,13 @@ _meta:
 default:
   uid:
     -
-      target_id: 0
+      target_id: 1
   filename:
     -
       value: social_auth_facebook_3238129076280183.jpg
   uri:
     -
-      value: 'public://pictures/2020-09/social_auth_facebook_3238129076280183.jpg'
+      value: 'public://pictures/2020-09/social_auth_facebook_3238129076280183_0.jpg'
   filemime:
     -
       value: image/jpeg

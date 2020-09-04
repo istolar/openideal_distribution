@@ -43,6 +43,7 @@ class OpenidealStatisticsDateSelectForm extends FormBase {
     ];
     $form['filters_wrapper'][self::DATE_TYPE] = [
       '#title' => $this->t('Date type'),
+      '#title_display' => 'invisible',
       '#type' => 'radios',
       '#attributes' => ['class' => ['reports-filters--date-type']],
       '#options' => [

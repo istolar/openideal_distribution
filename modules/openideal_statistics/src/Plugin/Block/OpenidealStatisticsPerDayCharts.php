@@ -122,6 +122,7 @@ class OpenidealStatisticsPerDayCharts extends BlockBase implements ContainerFact
       'max' => $this->max,
     ];
     $build['#cache']['tags'] = [$entity . '_list' . ($entity == 'node' ? ':idea' : '')];
+    $build['#cache']['contexts'] = ['url.query_args'];
 
     $build[] = [
       '#type' => 'container',

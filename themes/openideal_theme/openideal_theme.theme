@@ -47,9 +47,14 @@ function openideal_theme_preprocess_html(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function openideal_theme_preprocess_page(&$variables) {
-  $node = \Drupal::routeMatch()->getParameter('node');
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
   if ($node instanceof NodeInterface) {
     $variables['node_type'] = $node->bundle();
+  }
+
+  if ($route_match->getRouteName() == 'view.frontpage.front_page' || $route_match->getRouteName() == 'entity.user.canonical') {
+    $variables['is_activity_page'] = TRUE;
   }
 }
 
@@ -156,4 +161,14 @@ function openideal_theme_preprocess_comment__view__my_comments__my_comments(&$va
     'fragment' => 'comment-' . $comment->id(),
   ]);
   $variables['comment_uri'] = $uri->toString();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function openideal_theme_preprocess_image(&$variables) {
+  // Set image title same as alt.
+  if (empty($variables['attributes']['title']) && !empty($variables['alt'])) {
+    $variables['attributes']['title'] = $variables['alt'];
+  }
 }

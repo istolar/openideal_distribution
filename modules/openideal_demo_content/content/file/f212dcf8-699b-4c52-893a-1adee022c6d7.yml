@@ -14,7 +14,7 @@ default:
       value: ideation.pdf
   uri:
     -
-      value: 'public://2020-09/ideation_0.pdf'
+      value: 'public://2020-09/ideation_0_0.pdf'
   filemime:
     -
       value: application/pdf
