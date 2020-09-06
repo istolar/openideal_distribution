@@ -14,7 +14,7 @@ default:
       value: iso-form_sars_cov_2_042220_800x800-800x480.jpg
   uri:
     -
-      value: 'public://2020-09/iso-form_sars_cov_2_042220_800x800-800x480_1.jpg'
+      value: 'public://2020-09/iso-form_sars_cov_2_042220_800x800-800x480_1_0.jpg'
   filemime:
     -
       value: image/jpeg

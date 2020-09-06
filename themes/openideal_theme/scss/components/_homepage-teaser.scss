@@ -36,6 +36,15 @@
     font-size: 16px;
   }
 
+  .block-field-blocknodechallengefield-images,
+  .block-field-blocknodearticlefield-images,
+  .block-field-blocknodeideafield-images {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   // Info
   .block-openideal-idea-info-block {
     display: flex;

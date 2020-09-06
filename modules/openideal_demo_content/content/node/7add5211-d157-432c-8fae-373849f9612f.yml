@@ -6,13 +6,13 @@ _meta:
   default_langcode: en
   depends:
     4fde9e02-286a-4530-a339-4d62de213812: user
-    47cbc985-d198-41e1-94fb-986b502e1bb7: file
+    e20d3c58-8900-46ce-9ce8-a337c5ce1296: file
     f212dcf8-699b-4c52-893a-1adee022c6d7: file
     92fd95ba-1186-419f-925e-8c3d1ca6caab: file
 default:
   revision_uid:
     -
-      entity: 4fde9e02-286a-4530-a339-4d62de213812
+      target_id: 1
   status:
     -
       value: true
@@ -48,24 +48,24 @@ default:
   field_comments:
     -
       status: 2
-      cid: 15
-      last_comment_timestamp: 1599075216
+      cid: 0
+      last_comment_timestamp: 1599207648
       last_comment_name: ''
-      last_comment_uid: 6
-      comment_count: 2
+      last_comment_uid: 4
+      comment_count: 0
+  field_images:
+    -
+      entity: e20d3c58-8900-46ce-9ce8-a337c5ce1296
+      alt: 'girl in a mask'
+      title: ''
+      width: 1024
+      height: 683
   field_is_open:
     -
       value: true
   field_like:
     -
       status: 2
-  field_main_image:
-    -
-      entity: 47cbc985-d198-41e1-94fb-986b502e1bb7
-      alt: ''
-      title: ''
-      width: 1024
-      height: 683
   field_schedule_close:
     -
       value: 1641038400

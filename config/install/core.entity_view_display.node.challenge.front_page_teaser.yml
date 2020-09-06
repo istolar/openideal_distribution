@@ -24,7 +24,6 @@ dependencies:
     - layout_builder
     - metatag
     - openideal_idea
-    - openideal_slideshow
     - openideal_statistics
     - text
     - user
@@ -47,19 +46,6 @@ third_party_settings:
             user_profile: 0
             user_profile_top: 0
         components:
-          6cc907b5-2bbe-4e0c-b7b5-4198ccd24bb9:
-            uuid: 6cc907b5-2bbe-4e0c-b7b5-4198ccd24bb9
-            region: first
-            configuration:
-              id: openidel_slideshow_block
-              label: Slideshow
-              provider: openideal_slideshow
-              label_display: '0'
-              image_style: front_page_teaser
-              context_mapping:
-                node: layout_builder.entity
-            additional: {  }
-            weight: 0
           3b7212bd-5a17-4a5b-80a6-b54a21c8fba1:
             uuid: 3b7212bd-5a17-4a5b-80a6-b54a21c8fba1
             region: second
@@ -154,7 +140,7 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
-            weight: 1
+            weight: -9
           dee92e14-9fd4-46fe-befe-0bede293a0bc:
             uuid: dee92e14-9fd4-46fe-befe-0bede293a0bc
             region: third
@@ -172,6 +158,28 @@ third_party_settings:
               layout_builder_styles_style:
                 mobile_status_and_statistics: 0
             weight: -9
+          452a0de5-c42b-4d22-b4bd-921d35cc6d97:
+            uuid: 452a0de5-c42b-4d22-b4bd-921d35cc6d97
+            region: first
+            configuration:
+              id: 'field_block:node:challenge:field_images'
+              label: Images
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: image
+                settings:
+                  offset: 0
+                  limit: 1
+                  image_style: front_page_teaser_large
+                  image_link: content
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -10
         third_party_settings: {  }
 id: node.challenge.front_page_teaser
 targetEntityType: node

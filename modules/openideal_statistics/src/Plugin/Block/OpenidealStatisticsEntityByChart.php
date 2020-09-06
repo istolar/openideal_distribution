@@ -91,6 +91,7 @@ class OpenidealStatisticsEntityByChart extends BlockBase implements ContainerFac
     ];
     $build['#attached']['library'][] = 'openideal_statistics/openideal_statistics.charts';
     $build['#cache']['tags'] = ['node_list:idea'];
+    $build['#cache']['contexts'] = ['url.query_args'];
 
     $build[] = [
       '#type' => 'container',

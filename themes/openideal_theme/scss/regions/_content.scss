@@ -6,7 +6,20 @@
   .block-site-wide-statistics-block {
     position: absolute;
     top: 0;
-    right: 3%;
+    right: 16px;
+  }
+
+}
+
+.view--frontpage--front-page {
+  section.main-content {
+    padding: 30px 17px;
+  }
+
+  .block-site-wide-statistics-block {
+    position: absolute;
+    top: 0;
+    right: 23px;
   }
 
 }

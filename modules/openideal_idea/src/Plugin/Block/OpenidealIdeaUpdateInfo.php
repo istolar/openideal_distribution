@@ -189,7 +189,7 @@ class OpenidealIdeaUpdateInfo extends BlockBase implements ContainerFactoryPlugi
       'settings' => [
         'datetime_type' => DateTimeItem::DATETIME_TYPE_DATETIME,
         'date_format' => 'custom',
-        'custom_date_format' => 'd/m/Y h:i',
+        'custom_date_format' => 'd/m/Y',
       ],
     ];
     $is_open = $node->field_is_open->value;

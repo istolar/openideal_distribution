@@ -17,7 +17,7 @@ default:
       value: yanivovadia
   pass:
     -
-      value: $S$E3x1r2nNlEFUijU4FLs5yZQ4t911Mk7//6Bj.3LTEm0bCe1wVxl1
+      value: $S$EWEBv4lSlT5oVjjQZuwjM34lOibeZPEevv5JBCc/ufW4oSeNIPTv
       existing: ''
       pre_hashed: false
   mail:

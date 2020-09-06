@@ -54,7 +54,7 @@
 #}
 {# Mobile header. #}
 <div class="site-navigation-toggle d-lg-none">
-    <button id="sidebar-collapse" class="btn">
+    <button id="sidebar-collapse" class="btn sidebar-collapse-button">
         <span>{% include active_theme_path() ~ '/misc/icons/Menu.svg' %}</span>
     </button>
     {% if page.logo %}
@@ -62,9 +62,11 @@
             {{ page.logo }}
         </div>
     {% endif %}
-    <button id="site-notification-collapse" class="btn d-md-none">
-        {% include active_theme_path() ~ '/misc/icons/notification.svg' %}
-    </button>
+    {% if is_activity_page %}
+        <button id="site-notification-collapse" class="btn d-md-none site-notification-collapse-button">
+            {% include active_theme_path() ~ '/misc/icons/notification.svg' %}
+        </button>
+    {% endif %}
 </div>
 <div id="page-wrapper" class="container-fluid">
     <div id="page" class="row">

@@ -2,8 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.body
     - field.field.node.page.field_attached_docs
-    - field.field.node.page.field_body
     - field.field.node.page.field_images
     - node.type.page
   module:
@@ -33,21 +33,6 @@ third_party_settings:
               id: 'extra_field_block:node:page:links'
             additional: {  }
             weight: 0
-          f0c20d47-4171-4ce2-8bbc-34817fd33fc4:
-            uuid: f0c20d47-4171-4ce2-8bbc-34817fd33fc4
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:page:field_body'
-              formatter:
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-                type: text_default
-            additional: {  }
-            weight: 1
           2619f344-d3a4-4645-ab21-6921d36ec6f9:
             uuid: 2619f344-d3a4-4645-ab21-6921d36ec6f9
             region: content
@@ -81,6 +66,21 @@ third_party_settings:
                 type: file_default
             additional: {  }
             weight: 3
+          bebb7a24-c5c4-48f7-a42e-c04fdbc85988:
+            uuid: bebb7a24-c5c4-48f7-a42e-c04fdbc85988
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:page:body'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
 id: node.page.default
 targetEntityType: node
@@ -92,6 +92,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  body:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_attached_docs:
     weight: 104
     label: above
@@ -99,13 +106,6 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
-    region: content
-  field_body:
-    weight: 102
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
     region: content
   field_images:
     weight: 103
