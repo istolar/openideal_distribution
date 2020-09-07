@@ -1,6 +1,6 @@
-.page-user-login,
-.page-user-register,
-.page-user-password {
+.user--login,
+.user--register,
+.user--path {
   .block-system-main-block {
     display: flex;
     justify-content: center;
@@ -24,8 +24,10 @@
     width: 100%;
   }
 
-  .confirm-parent, .password-parent {
+  .confirm-parent,
+  .password-parent {
     min-width: unset;
+    overflow: unset;
   }
 
   .form-submit {
