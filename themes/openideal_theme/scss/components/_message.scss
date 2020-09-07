@@ -136,6 +136,7 @@
   &--text {
     margin: 29px 0 24px 0;
     padding: 0;
+    overflow: hidden;
 
     .field--name-comment-body {
       display: inline;
