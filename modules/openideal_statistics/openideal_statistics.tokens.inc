@@ -72,6 +72,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
           $query = $entity_type_manager->getStorage('user')->getQuery();
           $result = $query
             ->condition('status', '1')
+            ->condition('uid', '1', '<>')
             ->count()
             ->execute();
           $replacements[$original] = $result;
