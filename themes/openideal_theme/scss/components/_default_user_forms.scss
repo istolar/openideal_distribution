@@ -1,8 +1,16 @@
-.page-user-login .block-system-main-block,
-.page-user-register .block-system-main-block,
-.page-user-password .block-system-main-block {
-  display: flex;
-  justify-content: center;
+.page-user-login,
+.page-user-register,
+.page-user-password {
+  .block-system-main-block,
+  .block-system-main-block,
+  .block-system-main-block {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-tabs {
+    justify-content: center;
+  }
 }
 
 .user-login-form,
