@@ -32,6 +32,21 @@
     .block-views-blockfollowers-followers {
       display: none;
     }
+
+    .block-field-blocknodeideafield-attached-docs,
+    .block-field-blocknodearticlefield-attached-docs,
+    .block-field-blocknodechallengefield-supporting-data {
+      .field {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .field__items {
+        line-height: 180%;
+      }
+    }
+
   }
 
   .block-field-blocknodearticlefield-tags {
