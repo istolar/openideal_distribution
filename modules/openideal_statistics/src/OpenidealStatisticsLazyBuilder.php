@@ -64,6 +64,63 @@ class OpenidealStatisticsLazyBuilder {
   }
 
   /**
+   * Build element that return user ideas.
+   *
+   * @param int $id
+   *   User id.
+   *
+   * @return array
+   *   Renderable array.
+   */
+  public function getUserIdeas($id) {
+    $user = $this->entityTypeManager->getStorage('user')->load($id);
+    return [
+      '#markup' => $this->token->replace('[openideal:user-ideas-count]', ['user' => $user]),
+      '#cache' => [
+        'tags' => ['vote_list'],
+      ],
+    ];
+  }
+
+  /**
+   * Build element that return user votes.
+   *
+   * @param int $id
+   *   User id.
+   *
+   * @return array
+   *   Renderable array.
+   */
+  public function getUserVotes($id) {
+    $user = $this->entityTypeManager->getStorage('user')->load($id);
+    return [
+      '#markup' => $this->token->replace('[openideal:user-votes-count]', ['user' => $user]),
+      '#cache' => [
+        'tags' => ['vote_list'],
+      ],
+    ];
+  }
+
+  /**
+   * Build element that return user comments count.
+   *
+   * @param int $id
+   *   User id.
+   *
+   * @return array
+   *   Renderable array.
+   */
+  public function getUserComments($id) {
+    $user = $this->entityTypeManager->getStorage('user')->load($id);
+    return [
+      '#markup' => $this->token->replace('[openideal:user-comments-count]', ['user' => $user]),
+      '#cache' => [
+        'tags' => ['vote_list'],
+      ],
+    ];
+  }
+
+  /**
    * Build element that return members count.
    *
    * @return array

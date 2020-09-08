@@ -133,24 +133,20 @@
         }
 
         &--public_stream_view.item-svg {
-          background: url('../misc/icons/teaser_view.svg') no-repeat center center;
-          background-size: 18.33px 13.33px;
+          background-size: 18.33px 15.33px;
         }
 
         &--public_stream_comment {
-          background: url('../misc/icons/teaser_comment.svg') no-repeat center center;
           background-size: 16.67px 16.67px;
         }
 
         &--public_stream_like.item-svg {
           background-size: 15px;
           height: 18px;
-          background: url('../misc/icons/teaser_like.svg') no-repeat center center;
         }
 
         &--public_stream_idea.item-svg {
-          background-size: 16.67px 13.33px;
-          background: url('../misc/icons/teaser_idea.svg') no-repeat center center;
+          background-size: 16.67px 15.33px;
         }
 
       }
@@ -203,6 +199,10 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0 10px;
+
+    .form-item-sort-bef-combine {
+      display: none;
+    }
 
     .frontpage-add-idea-button {
       margin-left: auto;
