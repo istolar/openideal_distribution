@@ -359,7 +359,7 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: openideal_date_time
             custom_date_format: 'd/m/Y - H:i'
             timezone: ''
           group_column: value
