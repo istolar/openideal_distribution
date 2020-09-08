@@ -111,7 +111,7 @@ function openideal_theme_preprocess_field__created(&$variables) {
   $element = $variables['element'];
   if (isset($element['#third_party_settings']['layout_builder']['view_mode'])
     && $element['#third_party_settings']['layout_builder']['view_mode'] == 'compact') {
-    $variables['label'] = t('Member since:');
+    $variables['label'] = t('Joined');
   }
 }
 
@@ -126,7 +126,9 @@ function openideal_theme_preprocess_field__field_points(&$variables) {
  * Implements hook_form_alter().
  */
 function openideal_theme_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-ideas-all-ideas-page') {
+  if ($form_id == 'views_exposed_form'
+    && ($form['#id'] == 'views-exposed-form-ideas-all-ideas-page' || $form['#id'] == 'views-exposed-form-user-admin-people-community-page')
+  ) {
     $form['search']['#placeholder'] = t('Search');
   }
 }

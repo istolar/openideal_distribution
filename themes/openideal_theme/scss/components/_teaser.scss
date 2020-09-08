@@ -236,28 +236,23 @@
         }
 
         &--public_stream_view.item-svg {
-          background: url('../misc/icons/teaser_view.svg') no-repeat center center;
           background-size: 18.33px 13.33px;
         }
 
         &--public_stream_comment {
-          background: url('../misc/icons/teaser_comment.svg') no-repeat center center;
           background-size: 16.67px 16.67px;
         }
 
         &--public_stream_like.item-svg {
           background-size: 15px;
           height: 18px;
-          background: url('../misc/icons/teaser_like.svg') no-repeat;
         }
 
         &--public_stream_idea.item-svg {
-          background-size: 16.67px 13.33px;
-          background: url('../misc/icons/teaser_idea.svg') no-repeat center center;
+          background-size: 16.67px 15.33px;
         }
 
         .idea-statistics-block--list__item--score_tag {
-          background: url("../misc/icons/score_tag.svg") no-repeat center center;
           background-size: 16px;
         }
       }
@@ -323,14 +318,6 @@
 
 .view--challenges--all-challenges-page .idea-statistics-block--list {
   margin: 0 17px 0 0;
-}
-
-.view--challenges--all-challenges-page .block-page-title-block .title,
-.view--ideas--all-ideas-page .block-page-title-block .title,
-.view--news--all-news-page .block-page-title-block .title,
-.view--user-admin-people--community-page .block-page-title-block .title,
-.view--frontpage--front-page .block-page-title-block .title {
-  margin-bottom: 55px;
 }
 
 @media (max-width: 1414px) {
