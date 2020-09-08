@@ -5,6 +5,7 @@
  * OpenideaL Challenge module tokens support.
  */
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Render\BubbleableMetadata;
 
 /**
@@ -143,7 +144,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
               ->execute();
 
             $replacements[$original] = $count;
-            $bubbleable_metadata->addCacheTags($data['user']->getCacheTags());
+            $bubbleable_metadata->addCacheTags(Cache::mergeTags($data['user']->getCacheTags(), ['vote_list']));
           }
           break;
 
@@ -156,7 +157,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
               ->count()
               ->execute();
             $replacements[$original] = $result;
-            $bubbleable_metadata->addCacheTags($data['user']->getCacheTags());
+            $bubbleable_metadata->addCacheTags(Cache::mergeTags($data['user']->getCacheTags(), ['comment_list']));
           }
           break;
 
@@ -169,7 +170,7 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
               ->count()
               ->execute();
             $replacements[$original] = $result;
-            $bubbleable_metadata->addCacheTags($data['user']->getCacheTags());
+            $bubbleable_metadata->addCacheTags(Cache::mergeTags($data['user']->getCacheTags(), ['node_list:idea']));
           }
           break;
 
