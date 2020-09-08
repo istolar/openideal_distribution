@@ -50,6 +50,35 @@ function openideal_content_form_views_exposed_form_alter(&$form, FormStateInterf
       '#access' => \Drupal::currentUser()->isAuthenticated(),
       '#weight' => 999,
     ];
+
+    // Create custom options and hide real one.
+    $form['sort_bef_combine']['#attributes']['class'][] = 'visually-hidden';
+    $form['custom_sort'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['custom-sort']],
+      'dropdown' => [
+        '#type' => 'html_tag',
+        '#tag' => 'span',
+        '#value' => 'sort',
+        '#attributes' => ['class' => ['custom-sort--button']],
+      ],
+      'options' => [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['custom-sort--options']],
+      ],
+    ];
+
+    foreach ($form['sort_bef_combine']['#options'] as $id => $option) {
+      $form['custom_sort']['options'][$option] = [
+        '#type' => 'html_tag',
+        '#tag' => 'span',
+        '#value' => $option,
+        '#attributes' => [
+          'class' => ['custom-sort--option'],
+          'data-option-id' => $id,
+        ],
+      ];
+    }
   }
   $form['#attached']['library'][] = 'openideal_content/openideal_content.masonry';
 }

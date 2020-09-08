@@ -1,0 +1,17 @@
+.openideal-user--register--user--more-about-you {
+  .tabledrag-toggle-weight {
+    display: none;
+  }
+
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .skip-button {
+    width: 100%;
+    @include btn-theme(#ffc107, #ffc210);
+    margin-bottom: 5px;
+  }
+}

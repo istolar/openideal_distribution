@@ -59,6 +59,40 @@
   };
 
   /**
+   * Custom select behaviors.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attach behaviors to views created select.
+   */
+  Drupal.behaviors.openidealCustomSelectOption = {
+    attach: function (context, settings) {
+      $('.custom-sort', context).once('openideal_custom_select_option').each(function () {
+        // Hide custom selection on window click.
+        $(window).on('click', function (e) {
+          var $options = $('.custom-sort--options');
+          if (!e.target.matches('.custom-sort--button') && $options.is(':visible')) {
+            $options.hide('400');
+          }
+        });
+
+        // Show custom selection.
+        $('.custom-sort--button' ,this).on('click', function () {
+          $('.custom-sort--options').toggle('show');
+        });
+
+        // Trigger real selection option.
+        $('.custom-sort--option' ,this).each(function () {
+          $(this).on('click', function () {
+            $('.form-item-sort-bef-combine select').val($(this).data('option-id')).change()
+          });
+        });
+      });
+    }
+  };
+
+  /**
    * Main navigation behaviour.
    *
    * @type {Drupal~behavior}
