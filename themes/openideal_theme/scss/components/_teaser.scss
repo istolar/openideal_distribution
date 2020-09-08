@@ -425,6 +425,16 @@
   }
 }
 
+@media (max-width: 679px) {
+  .teaser-view-mode--teaser {
+    .form-row fieldset {
+      flex-basis: 100%;
+      flex-grow: 1;
+    }
+  }
+}
+
+
 @media (max-width: 630px) {
   .node--view-mode-teaser .block-openideal-idea-info-block {
     flex-basis: 100%;
@@ -472,11 +482,5 @@
   .node--view-mode-teaser .block-openideal-idea-info-block .idea-information--list__item--value,
   .node--view-mode-teaser .block-openideal-idea-info-block .idea-information--list__item--value .challenge-status--deadline {
     font-size: 12px;
-  }
-  .teaser-view-mode--teaser {
-    .form-row fieldset {
-      flex-basis: 100%;
-      flex-grow: 1;
-    }
   }
 }

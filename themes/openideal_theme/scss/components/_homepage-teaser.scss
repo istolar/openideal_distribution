@@ -200,6 +200,10 @@
     flex-wrap: wrap;
     padding: 0 10px;
 
+    .form-item-sort-bef-combine {
+      display: none;
+    }
+
     .frontpage-add-idea-button {
       margin-left: auto;
       @include btn-theme($btn-light, #5eaed2);
