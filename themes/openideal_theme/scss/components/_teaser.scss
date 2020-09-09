@@ -300,7 +300,7 @@
   // Follow
   .flag-follow a,
   .teaser-flag--element__text {
-    width: 87px;
+    min-width: 87px;
     cursor: pointer;
     color: #1294CA;
     padding: 0.5em 0.7em;

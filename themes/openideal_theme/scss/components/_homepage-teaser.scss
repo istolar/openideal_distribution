@@ -174,7 +174,7 @@
   // Follow
   .flag-follow a,
   .homepage-teaser--flag--element__text {
-    width: 87px;
+    min-width: 87px;
     cursor: pointer;
     color: #1294CA;
     display: block;
