@@ -79,7 +79,7 @@ third_party_settings:
                 label: inline
                 type: timestamp
                 settings:
-                  date_format: openideal_date
+                  date_format: openideal_short_full_date
                   custom_date_format: d/m/Y
                   timezone: ''
                 third_party_settings: {  }

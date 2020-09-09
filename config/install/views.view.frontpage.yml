@@ -868,7 +868,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'No front page content has been created yet.'
+          content: '<h5>No front page content has been created yet.</h5>'
           label: ''
           plugin_id: text_custom
       title: Home

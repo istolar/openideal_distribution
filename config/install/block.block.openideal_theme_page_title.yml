@@ -19,6 +19,6 @@ settings:
 visibility:
   route:
     id: route
-    routes: "view.challenges.all_challenges_page\r\nview.ideas.all_ideas_page\r\nview.news.all_news_page\r\nview.user_admin_people.community_page\r\nview.frontpage.front_page\r\nentity.user.canonical"
+    routes: "view.challenges.all_challenges_page\r\nview.ideas.all_ideas_page\r\nview.news.all_news_page\r\nview.user_admin_people.community_page\r\nview.frontpage.front_page"
     negate: false
     context_mapping: {  }

@@ -1566,11 +1566,11 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '!='
+          operator: '>'
           value:
             min: ''
             max: ''
-            value: '0'
+            value: '1'
           group: 1
           exposed: false
           expose:
