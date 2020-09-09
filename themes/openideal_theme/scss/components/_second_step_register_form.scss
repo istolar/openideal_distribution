@@ -6,7 +6,19 @@
   .form-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    a {
+      margin-right: 5px;
+    }
+
+    a,
+    input {
+      flex-basis: 10%;
+    }
+  }
+
+  .js-form-type-radio {
+    padding: 4px 11px;
   }
 
   .skip-button {

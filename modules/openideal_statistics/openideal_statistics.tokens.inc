@@ -86,6 +86,9 @@ function openideal_statistics_tokens($type, $tokens, array $data, array $options
           $query = $entity_type_manager->getStorage('user')->getQuery();
           $result = $query
             ->condition('status', '1')
+            // @Todo: Remove once we will find better way to resolve this issue,
+            // and remove the same logic from community page view.
+            ->condition('uid', '1', '>')
             ->count()
             ->execute();
           $replacements[$original] = $result;

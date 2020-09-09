@@ -57,9 +57,6 @@ class OpenidealStatisticsLazyBuilder {
   public function getIdeas() {
     return [
       '#markup' => $this->token->replace('[openideal:ideas-count]'),
-      '#cache' => [
-        'tags' => ['node_list:idea'],
-      ],
     ];
   }
 
@@ -76,9 +73,6 @@ class OpenidealStatisticsLazyBuilder {
     $user = $this->entityTypeManager->getStorage('user')->load($id);
     return [
       '#markup' => $this->token->replace('[openideal:user-ideas-count]', ['user' => $user]),
-      '#cache' => [
-        'tags' => ['vote_list'],
-      ],
     ];
   }
 
@@ -95,9 +89,6 @@ class OpenidealStatisticsLazyBuilder {
     $user = $this->entityTypeManager->getStorage('user')->load($id);
     return [
       '#markup' => $this->token->replace('[openideal:user-votes-count]', ['user' => $user]),
-      '#cache' => [
-        'tags' => ['vote_list'],
-      ],
     ];
   }
 
@@ -114,9 +105,6 @@ class OpenidealStatisticsLazyBuilder {
     $user = $this->entityTypeManager->getStorage('user')->load($id);
     return [
       '#markup' => $this->token->replace('[openideal:user-comments-count]', ['user' => $user]),
-      '#cache' => [
-        'tags' => ['vote_list'],
-      ],
     ];
   }
 
@@ -129,9 +117,6 @@ class OpenidealStatisticsLazyBuilder {
   public function getMembers() {
     return [
       '#markup' => $this->token->replace('[openideal:members-count]'),
-      '#cache' => [
-        'tags' => ['user_list'],
-      ],
     ];
   }
 
@@ -151,9 +136,6 @@ class OpenidealStatisticsLazyBuilder {
       : $this->token->replace('[openideal:comments-count]');
     return [
       '#markup' => $markup,
-      '#cache' => [
-        'tags' => $node ? $node->getCacheTags() : ['comment_list'],
-      ],
     ];
   }
 
@@ -173,7 +155,6 @@ class OpenidealStatisticsLazyBuilder {
       // In case the node created for the first time result will be false,
       // so need to check it.
       '#markup' => $statistics_result ? $statistics_result->getTotalCount() : 0,
-      '#cache' => ['max-age' => 3600],
     ];
   }
 
@@ -193,9 +174,6 @@ class OpenidealStatisticsLazyBuilder {
       : $this->token->replace('[openideal:votes-count]');
     return [
       '#markup' => $markup,
-      '#cache' => [
-        'tags' => $node ? $node->getCacheTags() : ['vote_list'],
-      ],
     ];
   }
 
@@ -213,9 +191,6 @@ class OpenidealStatisticsLazyBuilder {
 
     return [
       '#markup' => $markup,
-      '#cache' => [
-        'tags' => ['node_list:idea'],
-      ],
     ];
   }
 

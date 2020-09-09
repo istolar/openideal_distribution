@@ -1,6 +1,8 @@
 /* ------------------ Sidebar ----------------- */
 
 .region-sidebar {
+  margin-right: -7.5px;
+  margin-left: -7.5px;
   flex-direction: column;
 
   & > div:not([class*="flag-and-like-block"]) {

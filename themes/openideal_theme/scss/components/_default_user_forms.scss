@@ -1,6 +1,13 @@
 .user--login,
 .user--register,
-.user--path {
+.user--pass {
+  section.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .block-system-main-block {
     display: flex;
     justify-content: center;
@@ -36,8 +43,8 @@
   }
 
   .form-actions {
+    width: 100%;
     input {
-      width: 588px;
       @include btn-theme($btn-dark, #1e7697);
     }
   }

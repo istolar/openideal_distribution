@@ -22,7 +22,7 @@
       border: 1px solid #C6CDD0;
       border-radius: 4px;
       appearance: none;
-      background-image: url("../misc/icons/select_dropdown.png");
+      background-image: url("../images/icons/select_dropdown.png");
       background-repeat: no-repeat;
       background-position-x: 95%;
       background-position-y: 50%;
@@ -70,7 +70,7 @@
 
     .search-submit-button {
       position: absolute;
-      background: url('../misc/icons/search.svg') no-repeat center center;
+      background: url('../images/icons/search.svg') no-repeat center center;
       width: 20px;
       height: 20px;
       right: 5%;
@@ -260,6 +260,8 @@
   }
 
   // Statistics
+  .block-openideal-statistics-status,
+  .block-openideal-statistics-challenge-statistics,
   .block-openideal-statistics-idea-statistics {
     display: flex;
     align-items: center;
@@ -284,6 +286,8 @@
   .block-field-blocknodeideacreated,
   .block-field-blocknodearticlecreated,
   .block-field-blocknodechallengecreated {
+    display: flex;
+    align-items: center;
     margin-right: 6px;
 
     span {
@@ -296,6 +300,7 @@
   // Follow
   .flag-follow a,
   .teaser-flag--element__text {
+    width: 87px;
     cursor: pointer;
     color: #1294CA;
     padding: 0.5em 0.7em;

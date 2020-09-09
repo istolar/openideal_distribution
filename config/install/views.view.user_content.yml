@@ -389,7 +389,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      title: 'My Draft Ideas'
+      title: 'Draft Ideas'
       defaults:
         title: false
         relationships: false
@@ -803,7 +803,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      title: 'My Ideas'
+      title: Ideas
       defaults:
         title: false
         relationships: false
@@ -1217,7 +1217,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      title: 'Things I follow'
+      title: Follows
       defaults:
         title: false
         relationships: false
