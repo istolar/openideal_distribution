@@ -16,6 +16,7 @@ permissions:
   - 'access user contact forms'
   - 'access user profiles'
   - 'administer entity browsers'
+  - 'avatars avatar_generator user gravatar'
   - 'avatars avatar_generator user gravatar_generator'
   - 'avatars avatar_generator user user_upload'
   - 'clear own vote on comment:comment:field_voting_comment'
