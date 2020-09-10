@@ -2,10 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.user.field_age_group
+    - field.storage.user.field_gender
     - system.menu.admin
   module:
     - better_exposed_filters
     - csv_serialization
+    - options
     - rest
     - serialization
     - user

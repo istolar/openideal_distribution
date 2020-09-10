@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.comment.comment_body
     - system.menu.admin
   module:
     - better_exposed_filters
@@ -9,6 +10,7 @@ dependencies:
     - csv_serialization
     - rest
     - serialization
+    - text
     - user
     - views_data_export
 id: data_export_comments
