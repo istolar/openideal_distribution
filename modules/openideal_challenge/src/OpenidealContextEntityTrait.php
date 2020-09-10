@@ -22,7 +22,7 @@ trait OpenidealContextEntityTrait {
    * @return \Drupal\Core\Entity\EntityInterface|false
    *   Entity.
    */
-  protected function getEntity(array $contexts, string $entity_type = 'node') {
+  protected function getEntity(array $contexts, $entity_type = 'node') {
     if (isset($contexts[$entity_type])
       && ($entity = $contexts[$entity_type]->getContextValue())
       && !$entity->isNew()) {

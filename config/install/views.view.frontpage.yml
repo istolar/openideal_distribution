@@ -5,8 +5,6 @@ dependencies:
     - core.entity_view_mode.node.front_page_teaser
     - core.entity_view_mode.node.rss
     - core.entity_view_mode.node.teaser
-    - field.storage.node.body
-    - field.storage.node.field_category
     - node.type.article
     - node.type.challenge
     - node.type.idea
@@ -14,7 +12,6 @@ dependencies:
   module:
     - better_exposed_filters
     - node
-    - text
     - user
 id: frontpage
 label: Frontpage

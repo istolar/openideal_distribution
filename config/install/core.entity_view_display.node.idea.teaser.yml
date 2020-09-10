@@ -232,5 +232,4 @@ hidden:
   field_like: true
   field_meta_tags: true
   field_overall_score: true
-  langcode: true
   moderation_state_buttons_widget: true

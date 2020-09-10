@@ -3,21 +3,17 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.storage.node.body
     - field.storage.node.field_is_open
     - field.storage.user.user_picture
     - flag.flag.follow
     - image.style.thumbnail
     - node.type.challenge
     - system.menu.main
-    - taxonomy.vocabulary.categories
   module:
     - better_exposed_filters
     - flag
     - image
     - node
-    - taxonomy
-    - text
     - user
 id: challenges
 label: Challenges

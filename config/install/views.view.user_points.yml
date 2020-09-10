@@ -2,8 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.transaction.field_amount
-    - field.storage.user.field_points
     - system.menu.admin
     - transaction.type.user_points
   module:

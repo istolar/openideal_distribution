@@ -21,7 +21,7 @@ bundle: user
 mode: additional_details
 content:
   avatars_user_picture:
-    type: entity_browser_file
+    type: openideal_user_entity_browser_single_file
     weight: 4
     region: content
     settings:
@@ -72,7 +72,6 @@ hidden:
   avatars_avatar_generator: true
   contact: true
   field_points: true
-  langcode: true
   language: true
   timezone: true
   user_picture: true

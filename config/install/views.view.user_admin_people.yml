@@ -1547,6 +1547,7 @@ display:
         row: false
         exposed_form: false
         css_class: false
+        empty: false
       display_description: ''
       path: community
       menu:
@@ -1767,6 +1768,18 @@ display:
                 collapsible_label: 'Sort options'
                 is_secondary: false
       css_class: community-page
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<h5>No people available.</h5>'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

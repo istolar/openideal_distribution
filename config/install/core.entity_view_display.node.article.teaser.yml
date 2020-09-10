@@ -93,7 +93,7 @@ third_party_settings:
               provider: layout_builder
               label_display: '0'
               formatter:
-                label: above
+                label: hidden
                 type: image
                 settings:
                   offset: 0
@@ -194,4 +194,3 @@ hidden:
   field_attached_docs: true
   field_images: true
   field_meta_tags: true
-  langcode: true
