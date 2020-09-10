@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.storage.message.field_comment_reference
     - field.storage.message.field_node_reference
-    - field.storage.message.field_user_reference
     - flag.flag.follow
     - message.template.created_reply_on_comment
   module:

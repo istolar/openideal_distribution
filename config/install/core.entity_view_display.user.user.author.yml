@@ -98,6 +98,5 @@ hidden:
   field_age_group: true
   field_gender: true
   field_points: true
-  langcode: true
   member_for: true
   realname: true

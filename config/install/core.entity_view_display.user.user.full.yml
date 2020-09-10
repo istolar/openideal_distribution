@@ -239,4 +239,3 @@ hidden:
   avatars_avatar_generator: true
   avatars_user_picture: true
   field_first_name: true
-  langcode: true
