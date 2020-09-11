@@ -175,7 +175,17 @@ third_party_settings:
               views_label: ''
               items_per_page: none
               context_mapping: {  }
-            additional: {  }
+            additional:
+              visibility:
+                a22558a7-2a19-411b-ba09-80d263406ef6:
+                  id: openideal_user_page
+                  is_profile_page: 1
+                  negate: 0
+                  uuid: a22558a7-2a19-411b-ba09-80d263406ef6
+                  roles: null
+                  context_mapping:
+                    user: '@user.current_user_context:current_user'
+              visibility_operator: and
             weight: 2
         third_party_settings: {  }
 id: user.user.full

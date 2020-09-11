@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - route_condition
+    - system
   theme:
     - openideal_theme
 id: openideal_theme_page_title
@@ -20,5 +21,10 @@ visibility:
   route:
     id: route
     routes: entity.node.canonical
+    negate: true
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/user/*'
     negate: true
     context_mapping: {  }
