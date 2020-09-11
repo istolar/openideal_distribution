@@ -35,3 +35,14 @@
 
   }
 }
+
+.openideal-statistics--graphs-reports .container-fluid .main-content {
+  .block-page-title-block {
+    flex-basis: 100%;
+    flex-grow: 1;
+
+    .content {
+      justify-content: flex-start;
+    }
+  }
+}
