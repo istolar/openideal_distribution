@@ -70,9 +70,13 @@ function openideal_idea_form_node_idea_form_alter(&$form, FormStateInterface $fo
  * Implements hook_form_FORM_ID_alter().
  */
 function openideal_idea_form_content_moderation_entity_moderation_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $form['new_state']['#title_display'] = 'invisible';
-  $form['new_state']['#prefix'] = '<span class="entity-moderation-form__item--state-title">' . $form['new_state']['#title'] . '</span>';
-  $form['revision_log']['#access'] = FALSE;
+  if (isset($form['new_state'])) {
+    $form['new_state']['#title_display'] = 'invisible';
+    $form['new_state']['#prefix'] = '<span class="entity-moderation-form__item--state-title">' . $form['new_state']['#title'] . '</span>';
+  }
+  if (isset($form['revision_log'])) {
+    $form['revision_log']['#access'] = FALSE;
+  }
 }
 
 /**
