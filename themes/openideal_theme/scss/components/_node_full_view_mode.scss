@@ -12,6 +12,7 @@
 
     // Block title
     .block-field-blocknodeideatitle,
+    .block-field-blocknodepagetitle,
     .block-field-blocknodearticletitle,
     .block-field-blocknodechallengetitle {
       font-size: 1.6rem;
@@ -21,6 +22,7 @@
 
     // Block body.
     .block-field-blocknodeideabody,
+    .block-field-blocknodepagebody,
     .block-field-blocknodearticlebody,
     .block-field-blocknodechallengebody {
       color: $dark-gray;
@@ -34,6 +36,7 @@
     }
 
     .block-field-blocknodeideafield-attached-docs,
+    .block-field-blocknodepagefield-attached-docs,
     .block-field-blocknodearticlefield-attached-docs,
     .block-field-blocknodechallengefield-supporting-data {
       h2 {
