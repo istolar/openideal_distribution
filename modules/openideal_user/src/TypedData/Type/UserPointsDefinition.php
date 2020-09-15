@@ -21,11 +21,11 @@ class UserPointsDefinition extends ComplexDataDefinitionBase {
         ->setRequired(TRUE);
       $this->propertyDefinitions['comment'] = DataDefinition::create('string')
         ->setLabel('Comment')
-        ->setDescription("The URL of the site's login page.")
+        ->setDescription("Comments weight")
         ->setRequired(TRUE);
       $this->propertyDefinitions['idea'] = DataDefinition::create('string')
         ->setLabel('Idea')
-        ->setDescription('Idea value.')
+        ->setDescription('Idea weight')
         ->setRequired(TRUE);
     }
     return $this->propertyDefinitions;

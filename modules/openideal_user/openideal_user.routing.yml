@@ -31,6 +31,6 @@ openideal_user.openideal_user_points_configuration_form:
     _form: '\Drupal\openideal_user\Form\OpenidealUserPointsConfigurationForm'
     _title: 'OpenidealUserPointsConfigurationForm'
   requirements:
-    _permission: 'access to configuration forms'
+    _permission: 'access to user points configuration forms'
   options:
     _admin_route: TRUE
