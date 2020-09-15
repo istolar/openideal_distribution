@@ -1,5 +1,5 @@
-openideal_user.openideal_user_points_configuration_form:
+openideal_user.user_points_configuration_form:
   title: 'User points configuration'
-  route_name: openideal_user.openideal_user_points_configuration_form
+  route_name: openideal_user.user_points_configuration_form
   parent: openideal_toolbar.configuration
   weight: 3
