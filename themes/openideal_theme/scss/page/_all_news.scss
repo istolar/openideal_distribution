@@ -1,0 +1,21 @@
+.node--view-mode-full .card-body .block-field-blocknodearticletitle {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.view--news--all-news-page {
+  .node--type-article {
+    margin-bottom: 20px;
+  }
+
+  .block-field-blocknodearticlefield-tags {
+    margin-top: 10px;
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+}
