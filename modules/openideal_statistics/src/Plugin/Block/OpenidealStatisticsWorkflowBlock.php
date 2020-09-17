@@ -116,28 +116,33 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
       $configurations = [
         [
           'states' => ['draft', 'draft_approval'],
-          'label' => $this->t('prepare'),
+          'label' => $this->t('Prepare'),
+          'id' => 'prepare',
         ],
         [
           'states' => ['published'],
-          'label' => $this->t('discuss'),
+          'label' => $this->t('Discuss'),
+          'id' => 'discuss',
         ],
         [
           'states' => ['ex', 'needs_work'],
-          'label' => $this->t('refine'),
+          'label' => $this->t('Refine'),
+          'id' => 'refine',
         ],
         [
           'states' => ['postponed'],
-          'label' => $this->t('postponed'),
+          'label' => $this->t('Postponed'),
+          'id' => 'postponed',
         ],
         [
           'states' => ['rejected'],
-          'label' => $this->t('rejected'),
+          'label' => $this->t('Rejected'),
+          'id' => 'rejected',
         ],
         [
-          'states' =>
-            ['approved', 'launched'],
-          'label' => $this->t('innovate'),
+          'states' => ['approved', 'launched'],
+          'label' => $this->t('Innovate'),
+          'id' => 'innovate',
         ],
       ];
 
@@ -151,7 +156,7 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
             '#attributes' => [
               'class' => [
                 'current_group',
-                'idea-workflow-full--group-' . $configuration['label'],
+                'idea-workflow-full--group-' . $configuration['id'],
               ],
             ],
             'group' => [
@@ -164,7 +169,7 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
               '#theme' => 'item_list',
             ],
           ];
-          $build['#wrapper_attributes']['class'][] = 'idea-workflow-full--' . $configuration['label'];
+          $build['#wrapper_attributes']['class'][] = 'idea-workflow-full--' . $configuration['id'];
 
           if ($state->id() == 'postponed' || $state->id() == 'rejected') {
             break;
@@ -201,7 +206,7 @@ class OpenidealStatisticsWorkflowBlock extends BlockBase implements ContainerFac
               '#attributes' => [
                 'class' => [
                   $last_finished_group ?: 'idea-workflow-full--checked',
-                  'idea-workflow-full--group-' . $configuration['label'],
+                  'idea-workflow-full--group-' . $configuration['id'],
                   'idea-workflow-full--indicator',
                 ],
               ],
